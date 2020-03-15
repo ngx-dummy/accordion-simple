@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 import { dummyAccordionList } from '../../../helpers/dummy-data';
 import { IAccordionItemStyling, IAccordionStyling } from '../../../helpers/IAccordionStylings';
@@ -10,6 +10,7 @@ import { Accordion } from '../../../IAccordion';
   styleUrls: ['./accordion.component.scss'],
 })
 export class AccordionComponent implements OnInit {
+  @HostBinding('attr.id') id: string;
   @Input() accordionList: Accordion = dummyAccordionList;
   @Input() accordionStyling: IAccordionStyling = {
     numberdItems: false,
@@ -40,6 +41,7 @@ export class AccordionComponent implements OnInit {
       ...this.itemStyle,
       ...this.accordionStyling.itemStyling
     };
+    this.id = this.accordionList.id.toString();
   }
 
   onItemToggled({ id, isOpen }: { id: number, isOpen: boolean; } = { id: 0, isOpen: false }) {
