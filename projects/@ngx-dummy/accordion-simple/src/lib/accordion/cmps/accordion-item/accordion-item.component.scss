@@ -1,0 +1,64 @@
+/// some default styling
+
+@use '../../../theming/vars.scss';
+
+.accord-item {
+  display: block;
+  min-width: 10rem;
+  min-height: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .accord-item__header {
+    display: flex;
+    min-height: 1rem;
+    background-color: var(--accord-simple-head-item-color);
+    color: #fff;
+    flex-direction: row;
+
+    .accord-item__collapse--btn {
+      background: #ececec;
+      border-radius: 100%;
+      width:  2rem;
+      height: 2rem;
+      text-align: center;
+      vertical-align: middle;
+      border: none;
+      font-size: x-large;
+      color: #363535;
+    }
+
+    .header--control {
+      padding: 1rem;
+      margin: .1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .accord-item__logo {
+      flex: 0 0 1rem;
+    }
+    .accord-item__title {
+      // text-align: center;
+      flex: 1 1 100%;
+    }
+    .accord-item__collapse {
+      flex: 0 0 1rem;
+    }
+  }
+
+  .accord-item__body {
+    
+    &.closed {
+      display: none;
+      max-height: 0;
+    }
+
+    &.opened {
+      transition: max-height 0.4s ease-in-out;
+      max-height: 10rem;
+      display: block;
+      padding: 1rem;
+    }
+  }
+}
