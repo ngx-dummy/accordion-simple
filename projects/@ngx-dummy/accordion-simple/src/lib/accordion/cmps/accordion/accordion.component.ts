@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { dummyAccordionList } from '../../../helpers/dummy-data';
-import { IAccordionItemStyling, IACcordionStyling } from '../../../helpers/IAccordionStylings';
+import { IAccordionItemStyling, IAccordionStyling } from '../../../helpers/IAccordionStylings';
 import { Accordion } from '../../../IAccordion';
 
 @Component({
@@ -11,7 +11,7 @@ import { Accordion } from '../../../IAccordion';
 })
 export class AccordionComponent implements OnInit {
   @Input() accordionList: Accordion = dummyAccordionList;
-  @Input() accordionStyling: IACcordionStyling = {
+  @Input() accordionStyling: IAccordionStyling = {
     numberdItems: false,
     guttedItems: '1rem',
     itemStyling: {
@@ -20,7 +20,9 @@ export class AccordionComponent implements OnInit {
       bodyBgColor: '#fff',
       bodyColor: '#000',
       margin: '1rem',
-      padding: '1px'
+      padding: '1px',
+      logo: '../assets/list-box.svg',
+      openSign: '../assets/plus.svg'
     }
   };
   itemStyle: IAccordionItemStyling = {

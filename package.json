@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -37,9 +37,9 @@
   "scripts": {
     "sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
     "sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --prod",
-    "build": "ng b --prod",
-    "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack @ngx-dummy/accordion-simple",
-    "publish": "npm publish ./dist/@ngx-dummy/accordion-simple",
+    "build": "ng b",
+    "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack",
+    "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish",
     "publish:full": "run-s build pack publish"
   },
   "peerDependencies": {
@@ -68,7 +68,7 @@
     "@angular/language-service": "~9.0.6",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^13.9.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",

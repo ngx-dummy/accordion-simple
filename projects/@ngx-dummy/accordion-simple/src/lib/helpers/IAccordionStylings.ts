@@ -1,4 +1,4 @@
-export interface IACcordionStyling {
+export interface IAccordionStyling {
   numberdItems?: boolean;
   guttedItems?: boolean | string | '1rem',
   itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
@@ -7,6 +7,8 @@ export interface IACcordionStyling {
 export type IAccordionItemStyling = {
   itemId?: number | string | null;
   FontStyles?: string | null;
+  logo?: string;
+  openSign?: string;
 } & IAccordionItemSpacingStyling & IAccordionItemBodyStyling & IAccordionItemHeadStyling;
 
 export interface IAccordionItemSpacingStyling {

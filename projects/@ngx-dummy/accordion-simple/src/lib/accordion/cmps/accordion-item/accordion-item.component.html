@@ -2,7 +2,7 @@
   <header class="accord-item__header" (click)="toggle(item)">
     <div class="header--control accord-item__logo">
       <!-- {{logo || '&#x02261;'}} -->
-      <img src="{{logo}}" alt="{{'&#x02261;'}}" onerror="src='/assets/list-box.svg'">
+      <img src="{{logo}}" alt="{{'&#x02261;'}}" onerror="src='../assets/list-box.svg'">
     </div>
     <div class=" header--control accord-item__title">
       {{item.id + 1}}. &nbsp; {{item.title}}
@@ -10,7 +10,7 @@
     <div class=" header--control accord-item__collapse">
       <button class="accord-item__collapse--btn">
         <!-- {{ openSign ||  '+'}} -->
-        <img src="{{openSign}}" alt="+" onerror="src='/assets/plus.svg'">
+        <img src="{{openSign}}" alt="+" onerror="src='../assets/plus.svg'">
       </button>
     </div>
   </header>

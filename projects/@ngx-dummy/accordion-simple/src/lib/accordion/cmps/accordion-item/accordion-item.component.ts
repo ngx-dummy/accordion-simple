@@ -11,13 +11,16 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   isOpen = false;
   @Output() toggler: EventEmitter<{ id: number, isOpen: boolean; }> = new EventEmitter();
   @Input('headBg') headBg = 'teal';
-  @Input('logo') logo = '/assets/list-box.svg';
-  @Input('openSign') openSign = '/assets/plus.svg';
+  @Input('logo') logo = '../assets/list-box.svg';
+  // @Input('openSign') openSign = '/assets/plus.svg';
+  @Input('openSign') openSign = '../assets/plus.svg';
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headBgColor: 'teal',
     headColor: '#fff',
     bodyBgColor: '#fff',
-    bodyColor: '#000'
+    bodyColor: '#000',
+    logo: this.logo,
+    openSign: this.openSign
   };
   @Input('item') item: AccordionItem = {
     id: 0,
