@@ -1,14 +1,21 @@
-export interface ICcordionStyling {
+export interface IACcordionStyling {
+  numberdItems?: boolean;
+  guttedItems?: boolean | string | '1rem',
   itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
 }
 
 export type IAccordionItemStyling = {
   itemId?: number | string | null;
   FontStyles?: string | null;
-} & IAccordionItemBodyStyling & IAccordionItemHeadStyling;
+} & IAccordionItemSpacingStyling & IAccordionItemBodyStyling & IAccordionItemHeadStyling;
+
+export interface IAccordionItemSpacingStyling {
+  padding?: string | null;
+  margin?: string | null;
+}
 
 export interface IAccordionItemHeadStyling {
-  headontStyle?: string | null;
+  headFontStyle?: string | null;
   headColor?: string;
   headBgColor?: string;
 }

@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -37,7 +37,10 @@
   "scripts": {
     "sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
     "sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --prod",
-    "build": "ng b --prod"
+    "build": "ng b --prod",
+    "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack @ngx-dummy/accordion-simple",
+    "publish": "npm publish ./dist/@ngx-dummy/accordion-simple",
+    "publish:full": "run-s build pack publish"
   },
   "peerDependencies": {
     "@angular/common": "8.x || 9.x",
@@ -63,9 +66,9 @@
     "@angular/cli": "~9.0.6",
     "@angular/compiler-cli": "~9.0.6",
     "@angular/language-service": "~9.0.6",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -75,6 +78,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "ng-packagr": "^9.0.0",
+    "npm-run-all": "^4.1.5",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",

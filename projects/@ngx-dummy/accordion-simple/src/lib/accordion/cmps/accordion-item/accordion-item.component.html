@@ -1,14 +1,16 @@
 <article class="accord-item">
-  <header class="accord-item__header">
+  <header class="accord-item__header" (click)="toggle(item)">
     <div class="header--control accord-item__logo">
-      Logo
+      <!-- {{logo || '&#x02261;'}} -->
+      <img src="{{logo}}" alt="{{'&#x02261;'}}" onerror="src='/assets/list-box.svg'">
     </div>
     <div class=" header--control accord-item__title">
       {{item.id + 1}}. &nbsp; {{item.title}}
     </div>
     <div class=" header--control accord-item__collapse">
-      <button class="accord-item__collapse--btn" (click)="toggle(item)">
-        +
+      <button class="accord-item__collapse--btn">
+        <!-- {{ openSign ||  '+'}} -->
+        <img src="{{openSign}}" alt="+" onerror="src='/assets/plus.svg'">
       </button>
     </div>
   </header>
