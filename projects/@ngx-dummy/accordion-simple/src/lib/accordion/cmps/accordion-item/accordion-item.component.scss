@@ -17,15 +17,22 @@
     flex-direction: row;
 
     .accord-item__collapse--btn {
-      background: #ececec;
-      border-radius: 100%;
-      width:  2rem;
-      height: 2rem;
+      padding-right: 1px;;
+      background: transparent;
+      // border-radius: 100%;
+      max-width:  2rem;
+      // height: 2rem;
       text-align: center;
       vertical-align: middle;
       border: none;
       font-size: x-large;
-      color: #363535;
+      // color: #363535;
+    }
+
+    .accord-item__start--btn {
+      padding-left: 1px;
+      background: transparent;
+      max-width: 2rem;
     }
 
     .header--control {
@@ -38,10 +45,12 @@
     .accord-item__logo {
       flex: 0 0 1rem;
     }
+
     .accord-item__title {
       // text-align: center;
       flex: 1 1 100%;
     }
+
     .accord-item__collapse {
       flex: 0 0 1rem;
     }
