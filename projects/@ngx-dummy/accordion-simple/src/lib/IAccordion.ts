@@ -6,7 +6,7 @@ export interface Accordion {
 }
 
 export interface AccordionItem {
-  id: number;
+  id: number | null;
   title: string;
   body: string;
   isOpen?: boolean;

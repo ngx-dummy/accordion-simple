@@ -1,4 +1,5 @@
 export interface IAccordionStyling {
+  maxWidth?: string | number | null;
   numberdItems?: boolean;
   guttedItems?: boolean | string | '1rem',
   itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
@@ -12,14 +13,15 @@ export type IAccordionItemStyling = {
 } & IAccordionItemSpacingStyling & IAccordionItemBodyStyling & IAccordionItemHeadStyling;
 
 export interface IAccordionItemSpacingStyling {
-  padding?: string | null;
-  margin?: string | null;
+  padding?: string | number | null;
+  margin?: string | number | null;
 }
 
 export interface IAccordionItemHeadStyling {
   headFontStyle?: string | null;
   headColor?: string;
   headBgColor?: string;
+  headHeight?: string | number | null;
 }
 
 export interface IAccordionItemBodyStyling {

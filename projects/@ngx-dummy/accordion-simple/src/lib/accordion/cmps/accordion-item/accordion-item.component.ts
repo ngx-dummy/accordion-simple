@@ -2,6 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 import { AccordionItem } from '../../../IAccordion';
 import { IAccordionItemStyling, IAccordionItemHeadStyling } from '../../../helpers/IAccordionStylings';
 
+declare var require: any;
+const logo     = require('../../../../../assets/list-box-white.svg');
+const openSign = require('../../../../../assets/plus.svg');
+
 @Component({
   selector: 'accord-simple-accordion-item',
   templateUrl: './accordion-item.component.html',
@@ -11,11 +15,13 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   isOpen = false;
   @Output() toggler: EventEmitter<{ id: number, isOpen: boolean; }> = new EventEmitter();
   @Input('headBg') headBg = 'teal';
-  @Input('logo') logo = '../assets/list-box.svg';
-  // @Input('openSign') openSign = '/assets/plus.svg';
-  @Input('openSign') openSign = '../assets/plus.svg';
+  // @Input('logo') logo = '../assets/list-box.svg';
+  @Input('logo') logo = logo;
+  // @Input('openSign') openSign = '../assets/plus.svg';
+  @Input('openSign') openSign = openSign;
   @Input('styling') stylingObj: IAccordionItemStyling = {
-    headBgColor: 'teal',
+    headHeight: '50px',
+    headBgColor: '#4197b2',
     headColor: '#fff',
     bodyBgColor: '#fff',
     bodyColor: '#000',
@@ -34,19 +40,22 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.isOpen = this.item.isOpen || false;
     this.item = {
-      ...this.item
+      ...this.item,
+      id: (this.item.id && !isNaN(this.item.id)) ? this.item.id + 1 : null
     };
   }
 
   ngAfterViewInit() {
-    const accordItemEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item')[0] as HTMLElement;
+    const itemEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item')[0] as HTMLElement;
     const headEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__header')[0] as HTMLElement;
     const bodyEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__body')[0] as HTMLElement;
 
-    this.stylingObj.margin && this.render.setStyle(accordItemEl, 'margin', this.stylingObj?.margin);
-    this.stylingObj.padding && this.render.setStyle(accordItemEl, 'padding', this.stylingObj?.padding);
+    this.stylingObj.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
+    this.stylingObj.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
+    this.stylingObj.FontStyles && this.render.setStyle(itemEl, 'font', this.stylingObj.FontStyles);
 
-    this.stylingObj.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor || this.headBg);
+    this.stylingObj.headHeight && this.render.setStyle(headEl, 'height', this.stylingObj?.headHeight);
+    this.stylingObj.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);
     this.stylingObj.headColor && this.render.setStyle(headEl, 'color', this.stylingObj?.headColor);
 
     this.stylingObj.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);

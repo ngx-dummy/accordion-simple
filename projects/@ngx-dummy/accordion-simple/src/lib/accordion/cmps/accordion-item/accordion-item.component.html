@@ -1,18 +1,19 @@
 <article class="accord-item">
   <header class="accord-item__header" (click)="toggle(item)">
     <div class="header--control accord-item__logo">
-      <button class="accord-item__start--btn">
+      <span class="accord-item__header--start">
         <!-- {{logo || '&#x02261;'}} -->
-        <img src="{{logo}}" alt="{{'&#x02261;'}}" onerror="src='../assets/list-box.svg'">
-      </button>
+        <img class="accord-item__header-img" src="{{logo}}" alt="{{'&#x02261;'}}" onerror="src='node_modules/@ngx-dummy/accordion-simple/assets/list-box-white.svg'" style="color: #fff;">
+        {{item.id || 1}}.
+      </span>
     </div>
     <div class=" header--control accord-item__title">
-      {{item.id + 1}}. &nbsp; {{item.title}}
+     {{item.title}}
     </div>
     <div class=" header--control accord-item__collapse">
-      <button class="accord-item__collapse--btn">
+      <button class="accord-item__header--btn accord-item__collapse--btn">
         <!-- {{ openSign ||  '+'}} -->
-        <img src="{{openSign}}" alt="+" onerror="src='../assets/plus.svg'">
+        <img src="{{openSign}}" alt="+" onerror="src='node_modules/@ngx-dummy/accordion-simple/assets/plus.svg'">
       </button>
     </div>
   </header>

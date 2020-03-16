@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Renderer2, ElementRef } from '@angular/core';
 
 import { dummyAccordionList } from '../../../helpers/dummy-data';
 import { IAccordionItemStyling, IAccordionStyling } from '../../../helpers/IAccordionStylings';
@@ -14,6 +14,7 @@ export class AccordionComponent implements OnInit {
   @Input() accordionList: Accordion = dummyAccordionList;
   @Input() accordionStyling: IAccordionStyling = {
     numberdItems: false,
+    maxWidth: '200px',
     guttedItems: '1rem',
     itemStyling: {
       headBgColor: 'teal',
@@ -31,9 +32,10 @@ export class AccordionComponent implements OnInit {
     headColor: ''
   };
 
-  constructor() { }
+  constructor(private render: Renderer2, public el: ElementRef<HTMLElement>) { }
 
   ngOnInit() {
+    const el = this.el.nativeElement;
     const itemsGutts = (typeof this.accordionStyling.guttedItems === "boolean") ? null : '1rem';
     this.itemStyle = {
       padding: '1px',
@@ -41,7 +43,8 @@ export class AccordionComponent implements OnInit {
       ...this.itemStyle,
       ...this.accordionStyling.itemStyling
     };
-    this.id = this.accordionList.id.toString();
+    this.id = `accordion_${this.accordionList.id.toString()}`;
+    this.accordionStyling.maxWidth && this.render.setStyle(el, 'max-width', this.accordionStyling.maxWidth);
   }
 
   onItemToggled({ id, isOpen }: { id: number, isOpen: boolean; } = { id: 0, isOpen: false }) {
