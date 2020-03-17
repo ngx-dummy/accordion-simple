@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, HostBinding, Renderer2, ElementRef } from '@angular/core';
 
-import { dummyAccordionList } from '../helpers/dummy-data';
-import { IAccordionItemStyling, IAccordionStyling } from '../helpers/IAccordionStylings';
-import { Accordion } from '../IAccordion';
+import { dummyAccordionList } from './helpers/dummy-data';
+import { IAccordionItemStyling, IAccordionStyling } from './helpers/IAccordionStylings';
+import { Accordion } from './IAccordion';
 
 @Component({
   selector: 'accord-simple-accordion',
@@ -21,8 +21,8 @@ export class AccordionComponent implements OnInit {
       headColor: '#fff',
       bodyBgColor: '#fff',
       bodyColor: '#000',
-      margin: '1rem',
-      padding: '1px',
+      margin: '0',
+      padding: '0',
       logo: '../assets/list-box.svg',
       openSign: '../assets/plus.svg'
     }

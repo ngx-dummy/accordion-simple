@@ -1,7 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
-import { AccordionItem } from '../IAccordion';
-import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
-import { logo, openSign } from "../helpers/iconsbase64";
+import { AccordionItem } from './IAccordion';
+import { IAccordionItemStyling } from './helpers/IAccordionStylings';
+import { logo, openSign } from "./helpers/iconsbase64";
+
+export interface IToggleer {
+  itemId: number;
+  isOpen: boolean;
+}
 
 @Component({
   selector: 'accord-simple-accordion-item',
@@ -10,11 +15,9 @@ import { logo, openSign } from "../helpers/iconsbase64";
 })
 export class AccordionItemComponent implements OnInit, AfterViewInit {
   isOpen = false;
-  @Output() toggler: EventEmitter<{ id: number, isOpen: boolean; }> = new EventEmitter();
-  @Input('headBg') headBg = 'teal';
-  // @Input('logo') logo = '../assets/list-box.svg';
+  @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
+  @Input('headBg') headBg = '#4197b2';
   @Input('logo') logo = logo;
-  // @Input('openSign') openSign = '../assets/plus.svg';
   @Input('openSign') openSign = openSign;
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headHeight: '50px',
@@ -61,7 +64,7 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
 
   toggle(item) {
     this.isOpen = !this.isOpen || false;
-    this.toggler.emit({ id: item.id, isOpen: this.isOpen });
+    this.toggled.emit({ itemId: item.id, isOpen: this.isOpen });
   }
 
 }

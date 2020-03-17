@@ -5,7 +5,6 @@
     "assets/*"
   ],
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "styleIncludePaths": ["./assets"]
+    "entryFile": "src/public-api.ts"
   }
 }

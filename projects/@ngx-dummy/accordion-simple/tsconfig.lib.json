@@ -5,7 +5,7 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
-    "inlineSourceMap": true,
+    "types": [],
     "lib": [
       "dom",
       "es2018"
@@ -13,12 +13,8 @@
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
-    "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
-    "enableResourceInlining": true,
-    "strictInjectionParameters": true,
-    "fullTemplateTypeCheck": true,
-    "enableIvy": false
+    "enableResourceInlining": true
   },
   "exclude": [
     "src/test.ts",

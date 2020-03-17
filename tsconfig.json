@@ -15,12 +15,6 @@
       "es2018",
       "dom"
     ],
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "node"
-    ],
     "paths": {
       "@ngx-dummy/accordion-simple": [
         "dist/@ngx-dummy/accordion-simple"
