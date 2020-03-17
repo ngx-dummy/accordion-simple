@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -83,6 +83,7 @@
     "protractor": "^5.4.3",
     "rimraf": "^3.0.2",
     "ts-node": "^8.6.2",
+    "tsickle": "^0.38.1",
     "tslint": "^6.1.0",
     "typescript": "~3.7.5"
   }

@@ -1,5 +1,3 @@
-import { of } from 'rxjs';
-
 import { Accordion } from '../IAccordion';
 
 export const dummyAccordionList: Accordion = {

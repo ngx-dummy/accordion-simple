@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
-import { AccordionItem } from '../../../IAccordion';
-import { IAccordionItemStyling } from '../../../helpers/IAccordionStylings';
-import { logo, openSign } from "../../../helpers/iconsbase64";
+import { AccordionItem } from '../IAccordion';
+import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
+import { logo, openSign } from "../helpers/iconsbase64";
 
 @Component({
   selector: 'accord-simple-accordion-item',
