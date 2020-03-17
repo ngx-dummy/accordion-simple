@@ -1,10 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange, SimpleChanges, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
 import { AccordionItem } from '../../../IAccordion';
-import { IAccordionItemStyling, IAccordionItemHeadStyling } from '../../../helpers/IAccordionStylings';
-
-declare var require: any;
-const logo     = require('../../../../../assets/list-box-white.svg');
-const openSign = require('../../../../../assets/plus.svg');
+import { IAccordionItemStyling } from '../../../helpers/IAccordionStylings';
+import { logo, openSign } from "../../../helpers/iconsbase64";
 
 @Component({
   selector: 'accord-simple-accordion-item',
