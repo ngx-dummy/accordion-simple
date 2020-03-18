@@ -1,7 +1,7 @@
 export interface IAccordionStyling {
   maxWidth?: string | number | null;
   numberdItems?: boolean;
-  guttedItems?: boolean | string | '1rem',
+  guttedItems?: boolean | string,
   itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
 }
 

@@ -1,10 +1,10 @@
 <article class="accord-item">
-  <header class="accord-item__header" (click)="toggle(item)">
+  <header class="accord-item__header" (click)="toggle(item.id)">
     <div class="header--control accord-item__logo">
       <span class="accord-item__header--start">
         <!-- {{logo || '&#x02261;'}} -->
         <img class="accord-item__header-img" src="{{logo}}" alt="{{'&#x02261;'}}">
-        {{item.id || 1}}.
+        {{item.itemNum || 1}}.
       </span>
     </div>
     <div class=" header--control accord-item__title">
@@ -12,8 +12,10 @@
     </div>
     <div class=" header--control accord-item__collapse">
       <span class="accord-item__header--start">
+        <!-- <span class="accord-item__header--start"> -->
         <!-- {{ openSign ||  '+'}} -->
         <img src="{{openSign}}" alt="+">
+        <!-- </span> -->
       </span>
     </div>
   </header>

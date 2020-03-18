@@ -82,13 +82,25 @@
     &.closed {
       display: none;
       max-height: 0;
+      // animation: closeItem .1s ease;
     }
 
     &.opened {
-      transition: max-height 0.4s ease-in-out;
       max-height: 10rem;
       display: block;
       padding: 1rem;
+      animation: showItem .1s ease;
     }
   }
+
+  @keyframes showItem {
+    from { height: 0; }
+    to { height: auto; }
+  };
+
+  // @keyframes showItem {
+  //   from { height: auto; }
+  //   to { height: 0; }
+  // };
+
 }

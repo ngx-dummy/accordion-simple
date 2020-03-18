@@ -1,12 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
 import { AccordionItem } from './IAccordion';
-import { IAccordionItemStyling } from './helpers/IAccordionStylings';
-import { logo, openSign } from "./helpers/iconsbase64";
-
-export interface IToggleer {
-  itemId: number;
-  isOpen: boolean;
-}
+import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
+import { logo, openSign } from "../helpers/iconsbase64";
+import { IToggleer } from '../helpers/IItemToggler';
 
 @Component({
   selector: 'accord-simple-accordion-item',
@@ -41,7 +37,7 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     this.isOpen = this.item.isOpen || false;
     this.item = {
       ...this.item,
-      id: (this.item.id && !isNaN(this.item.id)) ? this.item.id + 1 : null
+      itemNum: (this.item.id && !isNaN(this.item.id)) ? this.item.id + 1 : null
     };
   }
 
@@ -62,9 +58,10 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     this.stylingObj.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
   }
 
-  toggle(item) {
+  toggle(itemId = 0) {
+    console.log(`Toggling Item ${itemId}`);
     this.isOpen = !this.isOpen || false;
-    this.toggled.emit({ itemId: item.id, isOpen: this.isOpen });
+    this.toggled.emit({ itemId, isOpen: this.isOpen });
   }
 
 }
