@@ -2,6 +2,7 @@ export interface IAccordionStyling {
   maxWidth?: string | number | null;
   numberdItems?: boolean;
   guttedItems?: boolean | string,
+  margin?: string | number;
   itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
 }
 
@@ -14,6 +15,7 @@ export type IAccordionItemStyling = {
 
 export interface IAccordionItemSpacingStyling {
   padding?: string | number | null;
+  marginBottom?: string | number | null;
   margin?: string | number | null;
 }
 

@@ -49,6 +49,7 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     this.stylingObj.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
     this.stylingObj.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
     this.stylingObj.FontStyles && this.render.setStyle(itemEl, 'font', this.stylingObj.FontStyles);
+    this.stylingObj.marginBottom && this.render.setStyle(itemEl, 'margin-bottom', this.stylingObj.marginBottom || '1rem');
 
     this.stylingObj.headHeight && this.render.setStyle(headEl, 'height', this.stylingObj?.headHeight);
     this.stylingObj.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);

@@ -15,8 +15,9 @@ export class AccordionComponent implements OnInit {
   @Input() accordionList: Accordion = dummyAccordionList;
   @Input() accordionStyling: IAccordionStyling = {
     numberdItems: false,
-    maxWidth: '200px',
+    maxWidth: '15rem',
     guttedItems: '1rem',
+    margin: '0',
     itemStyling: {
       headBgColor: '#4197b2',
       headColor: '#fff',
@@ -37,13 +38,14 @@ export class AccordionComponent implements OnInit {
     const el = this.el.nativeElement;
     const itemsGutts = (typeof this.accordionStyling.guttedItems == 'boolean' && this.accordionStyling.guttedItems === false) ? null : this.accordionStyling.guttedItems || '.5rem';
     this.itemStyle = {
-      padding: '1px',
-      margin: (itemsGutts && typeof itemsGutts === 'string') ? itemsGutts : '0',
+      padding: '0',
+      marginBottom: (itemsGutts && typeof itemsGutts === 'string') ? itemsGutts : '0',
       ...this.itemStyle,
       ...this.accordionStyling.itemStyling
     };
     this.id = `accordion_${this.accordionList?.id?.toString() ?? '0'}`;
     this.accordionStyling.maxWidth && this.render.setStyle(el, 'max-width', this.accordionStyling.maxWidth);
+    this.accordionStyling.margin && this.render.setStyle(el, 'margin', this.accordionStyling.margin || '0');
   }
 
   onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
