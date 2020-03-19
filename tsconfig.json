@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "esnext",
@@ -17,7 +17,7 @@
     ],
     "paths": {
       "@ngx-dummy/accordion-simple": [
-        "./dist/accordion-simple-lib"
+        "dist/@ngx-dummy/accordion-simple"
       ]
     }
   },

@@ -1,6 +1,5 @@
-/// some default styling
-
-@use '../../../theming/vars.scss';
+/// set some default styling
+@import './theming//vars.scss';
 
 .accord-item {
   display: block;
@@ -15,24 +14,46 @@
     background-color: var(--accord-simple-head-item-color);
     color: #fff;
     flex-direction: row;
+    max-height: 50px;
 
-    .accord-item__collapse--btn {
-      padding-right: 1px;;
+    .accord-item__header--btn {
       background: transparent;
-      // border-radius: 100%;
       max-width:  2rem;
       // height: 2rem;
       text-align: center;
       vertical-align: middle;
       border: none;
       font-size: x-large;
+    }
+
+    .accord-item__collapse--btn {
+      padding-right: 1px;;
+     
       // color: #363535;
     }
 
-    .accord-item__start--btn {
+    .accord-item__header--start, .accord-item__header--end {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding-left: 1px;
-      background: transparent;
-      max-width: 2rem;
+      max-width: 1.5rem;
+      flex: 0 0 1rem;
+
+      .accord-item__header-img {
+        max-width: 1rem;
+        margin-right: .5rem;
+      }
+
+
+      & > img {
+        max-width: 1.5rem;
+      }
+    }
+
+    .accord-item__header--end {
+      padding-left: 0;
+      padding-right: 1px;
     }
 
     .header--control {
@@ -43,7 +64,7 @@
     }
 
     .accord-item__logo {
-      flex: 0 0 1rem;
+ 
     }
 
     .accord-item__title {
@@ -61,13 +82,25 @@
     &.closed {
       display: none;
       max-height: 0;
+      // animation: closeItem .1s ease;
     }
 
     &.opened {
-      transition: max-height 0.4s ease-in-out;
       max-height: 10rem;
       display: block;
       padding: 1rem;
+      animation: showItem .1s ease;
     }
   }
+
+  @keyframes showItem {
+    from { height: 0; }
+    to { height: auto; }
+  };
+
+  // @keyframes showItem {
+  //   from { height: auto; }
+  //   to { height: 0; }
+  // };
+
 }
