@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.0.24",
+  "version": "0.0.28",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -31,9 +31,6 @@
     "url": "https://github.com/ngx-dummy/accordion-simple/issues"
   },
   "homepage": "https://github.com/ngx-dummy/accordion-simple#README",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
     "sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --prod",
@@ -41,7 +38,7 @@
     "build": "ng b",
     "build:prod": "ng b --prod",
     "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack",
-    "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish",
+    "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish --access public",
     "publish:full": "run-s clean:dist build:prod pack publish"
   },
   "peerDependencies": {
