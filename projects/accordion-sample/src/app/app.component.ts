@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MDCRipple,  } from "@material/ripple";
+// import { MDCRipple } from "@material/ripple";
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,8 @@ import { MDCRipple,  } from "@material/ripple";
 })
 export class AppComponent {
   title = 'accordion-sample';
-  rippler;
 
-  constructor() {
-    this.rippler = document.querySelector('#rippler');
-    
-    // MDCRipple.attachTo(this.rippler).initialize();
-  }
+  constructor() { }
 
-  click($event) {
-    console.log($event)
-  }
+  click($event) { }
 }
