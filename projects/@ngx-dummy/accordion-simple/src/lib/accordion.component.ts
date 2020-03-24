@@ -49,7 +49,6 @@ export class AccordionComponent implements OnInit {
   }
 
   onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
-    console.log(`clicked item ${itemId}`)
     this.accordionList.items = this.accordionList?.items?.map(item => { return (item.id == itemId) ? { ...item, isOpen } : { ...item, isOpen: false }; });
   }
 

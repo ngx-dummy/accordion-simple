@@ -1,6 +1,6 @@
 {
   "name": "@ngx-dummy/accordion-simple",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP)",
   "keywords": [
@@ -37,6 +37,7 @@
   "peerDependencies": {
     "@angular/common": "8.x || 9.x",
     "@angular/core": "8.x || 9.x",
+    "@material/ripple": "^5.1.0",
     "tslib": "^1.10.0"
   },
   "devDependencies": {

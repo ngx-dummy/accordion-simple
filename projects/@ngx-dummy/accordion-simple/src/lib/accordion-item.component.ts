@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
+// import { MDCRipple } from "@material/ripple";
+
 import { AccordionItem } from './IAccordion';
 import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
-import { logo, openSign } from "../helpers/iconsbase64";
+import { logo, plus, minus } from "../helpers/iconsbase64";
 import { IToggleer } from '../helpers/IItemToggler';
 
 @Component({
@@ -14,7 +16,8 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
   @Input('headBg') headBg = '#4197b2';
   @Input('logo') logo = logo;
-  @Input('openSign') openSign = openSign;
+  @Input('openSign') openSign = plus;
+  @Input('openSign') closeSign = minus;
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headHeight: '50px',
     headBgColor: '#4197b2',
@@ -46,6 +49,8 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     const headEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__header')[0] as HTMLElement;
     const bodyEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__body')[0] as HTMLElement;
 
+    // MDCRipple.attachTo(headEl).activate();
+
     this.stylingObj.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
     this.stylingObj.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
     this.stylingObj.FontStyles && this.render.setStyle(itemEl, 'font', this.stylingObj.FontStyles);
@@ -60,7 +65,6 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   }
 
   toggle(itemId = 0) {
-    console.log(`Toggling Item ${itemId}`);
     this.isOpen = !this.isOpen || false;
     this.toggled.emit({ itemId, isOpen: this.isOpen });
   }

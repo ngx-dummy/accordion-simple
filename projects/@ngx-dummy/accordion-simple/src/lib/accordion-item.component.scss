@@ -1,5 +1,6 @@
-/// set some default styling
-@import './theming//vars.scss';
+
+@use './theming//vars.scss';
+
 
 .accord-item {
   display: block;
@@ -9,6 +10,7 @@
   overflow: hidden;
 
   .accord-item__header {
+    overflow: visible;
     display: flex;
     min-height: 1rem;
     background-color: var(--accord-simple-head-item-color);
@@ -63,10 +65,6 @@
       align-items: center;
     }
 
-    .accord-item__logo {
- 
-    }
-
     .accord-item__title {
       // text-align: center;
       flex: 1 1 100%;
@@ -89,7 +87,7 @@
       max-height: 10rem;
       display: block;
       padding: 1rem;
-      animation: showItem .1s ease;
+      animation: showItem .1s linear;
     }
   }
 

@@ -1,5 +1,5 @@
 <article class="accord-item">
-  <header class="accord-item__header" (click)="toggle(item.id)">
+  <header class="accord-item__header mdc-line-ripple mdc-ripple-surface" (click)="toggle(item.id)">
     <div class="header--control accord-item__logo">
       <span class="accord-item__header--start">
         <!-- {{logo || '&#x02261;'}} -->
@@ -14,7 +14,8 @@
       <span class="accord-item__header--start">
         <!-- <span class="accord-item__header--start"> -->
         <!-- {{ openSign ||  '+'}} -->
-        <img src="{{openSign}}" alt="+">
+        <img *ngIf="!isOpen" [src]="openSign" alt="+">
+        <img *ngIf="isOpen" [src]="closeSign" alt="+">
         <!-- </span> -->
       </span>
     </div>
