@@ -11,17 +11,26 @@
       {{item.title}}
     </div>
     <div class=" header--control accord-item__collapse">
-      <span class="accord-item__header--start">
+      <span class="accord-item__header--end" [ngClass]="{ 'active': isOpen }">
         <!-- <span class="accord-item__header--start"> -->
         <!-- {{ openSign ||  '+'}} -->
-        <img *ngIf="!isOpen" [src]="openSign" alt="+">
-        <img *ngIf="isOpen" [src]="closeSign" alt="+">
+        <ng-container *ngIf="isImgOpen; then imgOpen; else svgOpen"></ng-container>
+
         <!-- </span> -->
       </span>
     </div>
   </header>
 
-  <section class="accord-item__body" [ngClass]="{ 'opened': item.isOpen , 'closed': !item.isOpen}">
+  <section class="accord-item__body" [ngClass]="{ 'opened': item.isOpen , 'closed': !item.isOpen }">
     {{item.body}}
   </section>
 </article>
+
+<ng-template #imgOpen>
+  <img *ngIf="isOpen" [src]="closeSign" alt="-">
+  <img *ngIf="isOpen" [src]="closeSign" alt="-">
+</ng-template>
+
+<ng-template #svgOpen>
+  <img [src]="openSign" alt="+" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
+</ng-template>

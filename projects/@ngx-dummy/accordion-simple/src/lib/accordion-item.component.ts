@@ -1,10 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, SecurityContext } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 // import { MDCRipple } from "@material/ripple";
 
 import { AccordionItem } from './IAccordion';
 import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
 import { logo, plus, minus } from "../helpers/iconsbase64";
 import { IToggleer } from '../helpers/IItemToggler';
+import { arrow_down } from "./theming/arrow_down";
 
 @Component({
   selector: 'accord-simple-accordion-item',
@@ -16,8 +18,8 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
   @Input('headBg') headBg = '#4197b2';
   @Input('logo') logo = logo;
-  @Input('openSign') openSign = plus;
-  @Input('openSign') closeSign = minus;
+  @Input('openSign') openSign = this.getSvg(arrow_down);
+  @Input('openSign') closeSign = null; //= minus;
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headHeight: '50px',
     headBgColor: '#4197b2',
@@ -27,14 +29,18 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     logo: this.logo,
     openSign: this.openSign
   };
-  @Input('item') item: AccordionItem = {
+  @Input() item: AccordionItem = {
     id: 0,
     title: 'Test Item',
     isOpen: false,
     body: 'Some (lorem ipsum) body text...'
   };
 
-  constructor(private render: Renderer2, public el: ElementRef<HTMLElement>) { }
+  get isImgOpen(): boolean {
+    return this.closeSign && this.closeSign.length;
+  }
+
+  constructor(private render: Renderer2, public el: ElementRef<HTMLElement>, private sanitaizer: DomSanitizer) { }
 
   ngOnInit() {
     this.isOpen = this.item.isOpen || false;
@@ -67,6 +73,11 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   toggle(itemId = 0) {
     this.isOpen = !this.isOpen || false;
     this.toggled.emit({ itemId, isOpen: this.isOpen });
+  }
+
+  private getSvg(file): SafeStyle {
+    const res = ('data:image/svg+xml;base64,' + window.btoa(file));
+    return this.sanitaizer.bypassSecurityTrustUrl(res);
   }
 
 }
