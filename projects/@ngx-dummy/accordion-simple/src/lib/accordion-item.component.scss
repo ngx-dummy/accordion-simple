@@ -10,6 +10,7 @@
   overflow: hidden;
 
   .accord-item__header {
+    transition: .6s ease;
     overflow: visible;
     display: flex;
     min-height: 1rem;
@@ -17,6 +18,11 @@
     color: #fff;
     flex-direction: row;
     max-height: 50px;
+
+    &:hover, 
+    &:active {
+      background-color: var(--accord-simple-head-item-color--active) !important;
+    }
 
     .accord-item__header--btn {
       background: transparent;
@@ -56,6 +62,20 @@
     .accord-item__header--end {
       padding-left: 0;
       padding-right: 1px;
+      
+      &.active {
+
+        .open {
+          transform: rotate(180deg);
+          animation: closeIcon 1s ease;
+        }
+        
+        .close {
+          transform: rotate(0);
+          animation: openIcon 1s ease;
+        }
+      }
+
     }
 
     .header--control {
@@ -76,29 +96,38 @@
   }
 
   .accord-item__body {
+    // background-color: rgba($color: #ccc, $alpha: 0.1) !important;
+    // margin: .1rem;
+    // padding: 1rem;
     
     &.closed {
       display: none;
-      max-height: 0;
+      // max-height: 0;
       // animation: closeItem .1s ease;
     }
 
     &.opened {
-      max-height: 10rem;
+      // max-height: 10rem;
       display: block;
       padding: 1rem;
-      animation: showItem .1s linear;
+      animation: showItem .7s ease;
     }
   }
 
   @keyframes showItem {
     from { height: 0; }
-    to { height: auto; }
+    to { height: 100%; }
   };
 
-  // @keyframes showItem {
-  //   from { height: auto; }
-  //   to { height: 0; }
-  // };
+  @keyframes closeIcon {
+    from { transform: rotate(0); }
+    to {transform: rotate(180deg); }
+  }
+
+  @keyframes openIcon {
+    from { transform: rotate(180deg);  }
+    to { transform: rotate(0); }
+  }
+
 
 }
