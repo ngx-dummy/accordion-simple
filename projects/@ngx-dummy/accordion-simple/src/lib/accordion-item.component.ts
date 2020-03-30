@@ -4,9 +4,9 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 import { AccordionItem } from './IAccordion';
 import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
-import { logo, plus, minus } from "../helpers/iconsbase64";
+import { logo, plus, minus } from '../helpers/iconsbase64';
 import { IToggleer } from '../helpers/IItemToggler';
-import { arrow_down } from "./theming/arrow_down";
+import { arrow_down } from './theming/arrow_down';
 
 @Component({
   selector: 'accord-simple-accordion-item',
@@ -16,10 +16,10 @@ import { arrow_down } from "./theming/arrow_down";
 export class AccordionItemComponent implements OnInit, AfterViewInit {
   isOpen = false;
   @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
-  @Input('headBg') headBg = '#4197b2';
-  @Input('logo') logo = logo;
-  @Input('openSign') openSign = this.getSvg(arrow_down);
-  @Input('openSign') closeSign = null; //= minus;
+  @Input() headBg = '#4197b2';
+  @Input() logo = logo;
+  @Input() openSign = this.getSvg(arrow_down);
+  @Input() closeSign = null; // = minus;
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headHeight: '50px',
     headBgColor: '#4197b2',
@@ -27,7 +27,8 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     bodyBgColor: '#fff',
     bodyColor: '#000',
     logo: this.logo,
-    openSign: this.openSign
+    openSign: this.openSign,
+    closeSign: this.closeSign
   };
   @Input() item: AccordionItem = {
     id: 0,
@@ -57,17 +58,17 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
 
     // MDCRipple.attachTo(headEl).activate();
 
-    this.stylingObj.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
-    this.stylingObj.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
-    this.stylingObj.FontStyles && this.render.setStyle(itemEl, 'font', this.stylingObj.FontStyles);
-    this.stylingObj.marginBottom && this.render.setStyle(itemEl, 'margin-bottom', this.stylingObj.marginBottom || '1rem');
+    this.stylingObj?.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
+    this.stylingObj?.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
+    this.stylingObj?.FontStyles && this.render.setStyle(itemEl, 'font', this.stylingObj.FontStyles);
+    this.stylingObj?.marginBottom && this.render.setStyle(itemEl, 'margin-bottom', this.stylingObj.marginBottom || '1rem');
 
-    this.stylingObj.headHeight && this.render.setStyle(headEl, 'height', this.stylingObj?.headHeight);
-    this.stylingObj.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);
-    this.stylingObj.headColor && this.render.setStyle(headEl, 'color', this.stylingObj?.headColor);
+    this.stylingObj?.headHeight && this.render.setStyle(headEl, 'height', this.stylingObj?.headHeight);
+    this.stylingObj?.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);
+    this.stylingObj?.headColor && this.render.setStyle(headEl, 'color', this.stylingObj?.headColor);
 
-    this.stylingObj.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);
-    this.stylingObj.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
+    this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);
+    this.stylingObj?.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
   }
 
   toggle(itemId = 0) {
