@@ -99,24 +99,26 @@
     // background-color: rgba($color: #ccc, $alpha: 0.1) !important;
     // margin: .1rem;
     // padding: 1rem;
+    transition: all 1s ease !important;
     
     &.closed {
       display: none;
-      // max-height: 0;
+      // height: 0;
+      // padding: 0;
       // animation: closeItem .1s ease;
     }
-
+    
     &.opened {
-      // max-height: 10rem;
+      height: 100%;
       display: block;
-      padding: 1rem;
-      animation: showItem .7s ease;
+      // padding: 2rem;
+      // animation: showItem .1s ease;
     }
   }
 
   @keyframes showItem {
-    from { height: 0; }
-    to { height: 100%; }
+    from { height: 0; padding: 0; }
+    to { height: 100%; padding: 2rem; }
   };
 
   @keyframes closeIcon {

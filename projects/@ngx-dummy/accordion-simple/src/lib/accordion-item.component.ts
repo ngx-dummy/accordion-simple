@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, SecurityContext } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, SecurityContext, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 // import { MDCRipple } from "@material/ripple";
 
@@ -12,6 +12,7 @@ import { arrow_down } from './theming/arrow_down';
   selector: 'accord-simple-accordion-item',
   templateUrl: './accordion-item.component.html',
   styleUrls: ['./accordion-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordionItemComponent implements OnInit, AfterViewInit {
   isOpen = false;
@@ -27,6 +28,7 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     bodyBgColor: '#fff',
     bodyColor: '#000',
     logo: this.logo,
+    bodyPadding: '0',
     openSign: this.openSign,
     closeSign: this.closeSign
   };
@@ -52,9 +54,9 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const itemEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item')[0] as HTMLElement;
-    const headEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__header')[0] as HTMLElement;
-    const bodyEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__body')[0] as HTMLElement;
+    const itemEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item').item(0) as HTMLElement;
+    const headEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__header').item(0) as HTMLElement;
+    const bodyEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__body').item(0) as HTMLElement;
 
     // MDCRipple.attachTo(headEl).activate();
 
@@ -69,6 +71,8 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
 
     this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);
     this.stylingObj?.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
+    this.stylingObj?.bodyPadding && this.render.setStyle(bodyEl, 'padding', this.stylingObj.bodyPadding || '0');
+    this.stylingObj?.bodyMargin && this.render.setStyle(bodyEl, 'margin', this.stylingObj.bodyMargin || '0');
   }
 
   toggle(itemId = 0) {

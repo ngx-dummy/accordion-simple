@@ -27,7 +27,7 @@
 </article>
 
 <ng-template #imgOpen>
-  <img *ngIf="isOpen" [src]="closeSign" alt="-">
+  <img *ngIf="!isOpen" [src]="openSign" alt="+">
   <img *ngIf="isOpen" [src]="closeSign" alt="-">
 </ng-template>
 

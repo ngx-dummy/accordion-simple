@@ -18,7 +18,7 @@ export class AccordionComponent implements OnInit {
   @Input() accordionStyling: IAccordionStyling = {
     numberdItems: false,
     maxWidth: '100%',
-    guttedItems: '1rem',
+    itemsGutts: '1rem',
     margin: '0',
     itemStyling: {
       headBgColor: '#4197b2',
@@ -39,8 +39,9 @@ export class AccordionComponent implements OnInit {
   constructor(private render: Renderer2, public el: ElementRef<HTMLElement>) { }
 
   ngOnInit() {
-    const el = this.el.nativeElement;
-    const itemsGutts = (typeof this.accordionStyling.guttedItems === 'boolean' && this.accordionStyling.guttedItems === false) ? null : (this.accordionStyling.guttedItems ?? '.5rem');
+    const hostEl = this.el.nativeElement;
+    const accordEl = hostEl.querySelector('.accordion');
+    const itemsGutts = (typeof this.accordionStyling.itemsGutts === 'boolean' && this.accordionStyling.itemsGutts === false) ? null : (this.accordionStyling.itemsGutts ?? '.5rem');
     this.itemStyle = {
       padding: '0',
       marginBottom: (itemsGutts && typeof itemsGutts === 'string') ? itemsGutts : '0',
@@ -48,8 +49,8 @@ export class AccordionComponent implements OnInit {
       ...this.accordionStyling.itemStyling
     };
     this.id = `accordion_${this.accordionList?.id?.toString() ?? '0'}`;
-    this.accordionStyling.maxWidth && this.render.setStyle(el, 'max-width', this.accordionStyling.maxWidth || '100%');
-    this.accordionStyling.margin   && this.render.setStyle(el, 'margin', this.accordionStyling.margin || '0');
+    this.accordionStyling.maxWidth && this.render.setStyle(accordEl, 'max-width', this.accordionStyling.maxWidth || '100%');
+    this.accordionStyling.margin   && this.render.setStyle(accordEl, 'margin', this.accordionStyling.margin || '0');
   }
 
   onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
