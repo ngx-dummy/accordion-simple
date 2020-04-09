@@ -54,4 +54,5 @@ jobs:
 
     - name: Publish to npm
       run: npm run publish:full --if-present
-      env: NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      env: 
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
