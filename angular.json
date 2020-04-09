@@ -120,6 +120,9 @@
           "configurations": {
             "production": {
               "browserTarget": "accordion-sample:build:production"
+            },
+            "ci": {
+              "progress": false
             }
           }
         },
@@ -174,6 +177,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "accordion-sample:serve:production"
+            },
+            "ci": {
+              "devServerTarget": "accordion-sample:serve:ci"
             }
           }
         }
