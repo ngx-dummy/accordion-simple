@@ -18,6 +18,15 @@
           "configurations": {
             "production": {
               "tsConfig": "projects/@ngx-dummy/accordion-simple/tsconfig.lib.prod.json"
+            },
+            "ci": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "progress": false
             }
           }
         },
@@ -135,6 +144,12 @@
               "projects/accordion-sample/src/styles.scss"
             ],
             "scripts": []
+          },
+          "configurations": {
+            "ci": {
+              "progress": false,
+              "watch": false
+            }
           }
         },
         "lint": {
