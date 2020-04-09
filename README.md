@@ -9,9 +9,9 @@
 **A simple accordion component to use in Angular / Ionic projects ..**
 ###### A sample (WIP) app demonstrating usages of the library could be found in the   [Sample](https://ngx-dummy.github.io/accordion-simple)
 
-  -[] show 
-
-  -[] Adding to existing Ionic project
+- [x] Basic accordion-simple component
+- [x] Styling interfaces
+- [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
 
 ---
 
