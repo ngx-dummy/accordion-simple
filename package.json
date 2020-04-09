@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.0.32",
+  "version": "0.0.35",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -37,9 +37,12 @@
     "clean:dist": "rimraf ./dist/**",
     "build": "ng b",
     "build:prod": "ng b --prod",
+    "build:sample": "ng b accordion-sample --prod",
     "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack",
     "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish --access public",
-    "publish:full": "run-s clean:dist build:prod pack publish"
+    "publish:full": "run-s clean:dist build:prod pack publish",
+    "test": "ng test",
+    "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI"
   },
   "peerDependencies": {
     "tslib": "^1.10.0"

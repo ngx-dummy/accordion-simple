@@ -1,0 +1,58 @@
+# A basic CI script to automate building / testing @ngx-dummy/accrordion-simple lib
+
+name: CI
+
+# Trigger on master push / pull requests
+on:
+  push:
+    branches:  
+    - master
+    - 'releases/*' 
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [ 13.x ]
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      env:
+        cache-name: cache-node-modules
+      with:
+        path: ~/.npm # npm cache files are stored in `~/.npm` on Linux
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-build-${{ env.cache-name }}-
+          ${{ runner.os }}-build-
+          ${{ runner.os }}-
+
+    - name: Install packages
+      run: |
+        echo Installing..!
+        npm install -g @angular/cli > /dev/null
+        npm ci
+        npm run build:prod --if-present
+
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: drop
+        path: dist/accordion-sample
+
+    - name: Publish to npm
+      run: npm run publish:full --if-present
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
