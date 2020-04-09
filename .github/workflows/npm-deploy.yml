@@ -29,7 +29,3 @@ jobs:
     - run: npm run publish:full --if-present
       env: 
         NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
-    - uses: actions/upload-artifact@v1
-      with:
-        name: drop
-        path: dist/accordion-sample

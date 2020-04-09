@@ -50,6 +50,12 @@ jobs:
       run: |
         echo Running tests
         npm run test:ci -- --configuration=ci
+    - name: Make a drop
+      uses: actions/upload-artifact@v1
+      with:
+        name: drop
+        path: dist/accordion-sample
+
 
     - name: Copy to docs dir
       run: mv dist/accordion-sample/** docs/
