@@ -1,6 +1,6 @@
 # A basic CI script to automate building / testing @ngx-dummy/accrordion-simple lib
 
-name: CI
+name: NPM-DEPLOY
 
 # Trigger on master push / pull requests
 on:
