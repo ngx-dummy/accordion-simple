@@ -1,0 +1,31 @@
+# A basic CI script to automate building / testing @ngx-dummy/accrordion-simple lib
+
+name: NPM-DEPLOY
+
+# Trigger on master push / pull requests
+on:
+  push:
+    branches:  
+    - master
+    - 'releases/*' 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    # Setup .npmrc file to publish to npm
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '13.x'
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@ngx-dummy'
+    - run: |
+        echo Installing..!
+        npm install -g @angular/cli > /dev/null
+        npm ci
+        npm run build:prod --if-present
+    - run: npm run publish:full --if-present
+      env: 
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
