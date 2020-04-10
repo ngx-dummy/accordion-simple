@@ -19,7 +19,7 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
   @Input() headBg = '#4197b2';
   @Input() logo = logo;
-  @Input() openSign = this.getSvg(arrow_down);
+  @Input() openSign = null;
   @Input() closeSign = null; // = minus;
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headHeight: '50px',
@@ -40,7 +40,9 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   };
 
   get isImgOpen(): boolean {
-    return this.closeSign && this.closeSign.length;
+    const isOpen = (this.closeSign && this.closeSign.length && this.openSign && this.openSign.length);
+    if (!isOpen) this.openSign = this.getSvg(arrow_down);
+    return isOpen;
   }
 
   constructor(private render: Renderer2, public el: ElementRef<HTMLElement>, private sanitaizer: DomSanitizer) { }
