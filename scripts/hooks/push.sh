@@ -7,5 +7,11 @@ read msg
 
 echo commiting..
 git add .
-git commit -am "$msg"
-git push origin
+if [ "$msg" != "" ]; 
+then
+  git commit -am "$msg"
+  git push origin
+else
+  echo Pleae enter a commit message
+  exit 256
+fi
