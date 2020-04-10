@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
-':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
-npm run-script build:sample
+# npm run-script build:sample
+
+msg="$1"
+
+echo commiting all
 git add .
-git commit -am ''
+git commit -am "$msg"

@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
-const { commitPrettier } = require('./prettier');
 const { resolve }        = require('path');
 const simpleGit          = require('simple-git/promise');
 const chalk              = require('chalk');
+const { commitPrettier } = require(resolve(__dirname, '../aux-funcs/prettier'));
 
 const root = resolve(__dirname, '../..');
 const git = simpleGit(root);

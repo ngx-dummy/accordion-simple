@@ -2,14 +2,11 @@ const { resolve } = require('path');
 const { spawn } = require('child-process-promise');
 const simpleGit = require('simple-git/promise');
 const ora = require('ora');
-const chalk = require('chalk');
 
-// Computed Deps
 const root = resolve(__dirname, '../..');
 const git = simpleGit(root);
 
 async function commitPrettier(changedFiles) {
-  // Only run on .js or .ts files.
   const targetFiles = changedFiles.filter(line => line.match(/\.(js|ts)$/));
   if (!targetFiles || !targetFiles.length) return;
 
