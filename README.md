@@ -16,7 +16,7 @@
 ---
 
 **Fork from:**
-[  [**Accordion Simple**]  ](!https://github.com/ngx-dummy/accordion-simple)
+[  [**Accordion Simple**]  ](https://github.com/ngx-dummy/accordion-simple)
 ###### `git clone https://github.com/ngx-dummy/accordion-simple.git`
 
 ```shell
