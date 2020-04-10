@@ -1,5 +1,5 @@
 {
   "hooks": {
-    "pre-commit": "node scripts/hooks/prepush.js"
+    "pre-commit": "./scripts/hooks/prepush.sh"
   }
 }

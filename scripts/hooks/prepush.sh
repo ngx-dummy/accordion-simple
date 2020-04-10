@@ -1,3 +1,6 @@
+#!/usr/bin/env sh
+':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+
 const { commitPrettier } = require('./prettier');
 const { resolve }        = require('path');
 const simpleGit          = require('simple-git/promise');
