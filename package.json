@@ -1,0 +1,94 @@
+{
+  "name": "accordion-simple-lib--project",
+  "version": "0.0.37",
+  "license": "GNU GPLv3",
+  "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
+  "keywords": [
+    "Angular",
+    "Ionic",
+    "Angular8",
+    "Angular9",
+    "node.js",
+    "Ionic4",
+    "Ionic5",
+    "accordion-component"
+  ],
+  "private": false,
+  "author": {
+    "name": "Vladimir Ovsyukov",
+    "email": "ovsyukov@yandex.com"
+  },
+  "engines": {
+    "node": ">=12.11.1",
+    "npm": ">=6.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngx-dummy/accordion-simple.git"
+  },
+  "bugs": {
+    "email": "ovsyukov@yandex.com",
+    "url": "https://github.com/ngx-dummy/accordion-simple/issues"
+  },
+  "homepage": "https://github.com/ngx-dummy/accordion-simple#README",
+  "scripts": {
+    "sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
+    "sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --prod",
+    "clean:dist": "rimraf ./dist/**",
+    "build": "ng b",
+    "build:prod": "ng b --prod",
+    "build:sample": "ng b accordion-sample --prod",
+    "cp:sample": "cp -r ./dist/accordion-sample/** ./docs",
+    "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack",
+    "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish --access public",
+    "publish:full": "run-s clean:dist build:prod pack publish",
+    "push:origin": "sh ./scripts/hooks/push.sh",
+    "test": "ng test",
+    "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI"
+  },
+  "dependencies": {
+    "@angular/animations": "~9.1.1",
+    "@angular/common": "~9.1.1",
+    "@angular/compiler": "~9.1.1",
+    "@angular/core": "~9.1.1",
+    "@angular/forms": "~9.1.1",
+    "@angular/platform-browser": "~9.1.1",
+    "@angular/platform-browser-dynamic": "~9.1.1",
+    "@angular/router": "~9.1.1",
+    "@material/ripple": "^5.1.0",
+    "rxjs": "~6.5.5",
+    "tslib": "^1.11.1",
+    "zone.js": "^0.10.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.901.1",
+    "@angular-devkit/build-ng-packagr": "^0.901.1",
+    "@angular/cli": "^9.1.1",
+    "@angular/compiler-cli": "^9.1.1",
+    "@angular/language-service": "^9.1.1",
+    "@types/jasmine": "^3.5.10",
+    "@types/jasminewd2": "^2.0.8",
+    "@types/node": "^13.11.1",
+    "chalk": "^4.0.0",
+    "child-process-promise": "^2.2.1",
+    "codelyzer": "^5.2.2",
+    "husky": "^4.2.5",
+    "jasmine-core": "^3.5.0",
+    "jasmine-spec-reporter": "^5.0.1",
+    "karma": "^5.0.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage-istanbul-reporter": "^2.1.1",
+    "karma-jasmine": "^3.1.1",
+    "karma-jasmine-html-reporter": "^1.5.3",
+    "ng-packagr": "^9.1.0",
+    "npm-run-all": "^4.1.5",
+    "ora": "^4.0.3",
+    "protractor": "^5.4.3",
+    "rimraf": "^3.0.2",
+    "simple-git": "^1.132.0",
+    "svg-to-ts": "^4.1.1",
+    "ts-node": "^8.8.2",
+    "tslint": "^6.1.1",
+    "typescript": "~3.8.3"
+  }
+}

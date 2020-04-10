@@ -1,0 +1,46 @@
+{
+  "name": "@ngx-dummy/accordion-simple",
+  "version": "0.0.37",
+  "license": "GNU GPLv3",
+  "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP)",
+  "keywords": [
+    "Angular",
+    "Ionic",
+    "Angular8",
+    "Angular9",
+    "node.js",
+    "Ionic4",
+    "Ionic5",
+    "accordion-component"
+  ],
+  "private": false,
+  "author": {
+    "name": "Vladimir Ovsyukov",
+    "email": "vovansuper@mail.ru"
+  },
+  "engines": {
+    "node": ">=12.11.1",
+    "npm": ">=6.12.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ngx-dummy/accordion-simple.git"
+  },
+  "bugs": {
+    "email": "ovsyukov@yandex.com",
+    "url": "https://github.com/ngx-dummy/accordion-simple/issues"
+  },
+  "homepage": "https://github.com/ngx-dummy/accordion-simple#README",
+  "scripts": {
+    "build": "ng b"
+  },
+  "peerDependencies": {
+    "@angular/common": "9.x",
+    "@angular/core": "9.x",
+    "@material/ripple": "^5.1.0",
+    "tslib": "^1.11.1"
+  },
+  "devDependencies": {
+    "typescript": "~3.8.3"
+  }
+}

@@ -1,0 +1,135 @@
+
+@use './theming//vars.scss';
+
+
+.accord-item {
+  display: block;
+  min-width: 10rem;
+  min-height: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .accord-item__header {
+    transition: .6s ease;
+    overflow: visible;
+    display: flex;
+    min-height: 1rem;
+    background-color: var(--accord-simple-head-item-color);
+    color: #fff;
+    flex-direction: row;
+    max-height: 50px;
+
+    &:hover, 
+    &:active {
+      background-color: var(--accord-simple-head-item-color--active) !important;
+    }
+
+    .accord-item__header--btn {
+      background: transparent;
+      max-width:  2rem;
+      // height: 2rem;
+      text-align: center;
+      vertical-align: middle;
+      border: none;
+      font-size: x-large;
+    }
+
+    .accord-item__collapse--btn {
+      padding-right: 1px;;
+     
+      // color: #363535;
+    }
+
+    .accord-item__header--start, .accord-item__header--end {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 1px;
+      max-width: 1.5rem;
+      flex: 0 0 1rem;
+
+      .accord-item__header-img {
+        max-width: 1rem;
+        margin-right: .5rem;
+      }
+
+
+      & > img {
+        max-width: 1.5rem;
+      }
+    }
+
+    .accord-item__header--end {
+      padding-left: 0;
+      padding-right: 1px;
+      
+      &.active {
+
+        .open {
+          transform: rotate(180deg);
+          animation: closeIcon 1s ease;
+        }
+        
+        .close {
+          transform: rotate(0);
+          animation: openIcon 1s ease;
+        }
+      }
+
+    }
+
+    .header--control {
+      padding: 1rem;
+      margin: .1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .accord-item__title {
+      // text-align: center;
+      flex: 1 1 100%;
+    }
+
+    .accord-item__collapse {
+      flex: 0 0 1rem;
+    }
+  }
+
+  .accord-item__body {
+    // background-color: rgba($color: #ccc, $alpha: 0.1) !important;
+    // margin: .1rem;
+    // padding: 1rem;
+    transition: all 1s ease !important;
+    
+    &.closed {
+      display: none;
+      // height: 0;
+      // padding: 0;
+      // animation: closeItem .1s ease;
+    }
+    
+    &.opened {
+      height: 100%;
+      display: block;
+      // padding: 2rem;
+      // animation: showItem .1s ease;
+    }
+  }
+
+  @keyframes showItem {
+    from { height: 0; padding: 0; }
+    to { height: 100%; padding: 2rem; }
+  };
+
+  @keyframes closeIcon {
+    from { transform: rotate(0); }
+    to {transform: rotate(180deg); }
+  }
+
+  @keyframes openIcon {
+    from { transform: rotate(180deg);  }
+    to { transform: rotate(0); }
+  }
+
+
+}

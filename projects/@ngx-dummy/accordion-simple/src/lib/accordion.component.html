@@ -1,0 +1,10 @@
+<section class="accordion">
+  <accord-simple-accordion-item *ngFor="let item of accordionList.items; let i = index" 
+    [item]="item" 
+    [styling]="itemStyle" 
+    [openSign]="openSign"
+    [closeSign]="closeSign"
+    (toggled)="onItemToggled($event)">
+    
+  </accord-simple-accordion-item>
+</section>
