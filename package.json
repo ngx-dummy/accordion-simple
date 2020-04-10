@@ -42,11 +42,10 @@
     "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack",
     "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish --access public",
     "publish:full": "run-s clean:dist build:prod pack publish",
+    "prepush:origin": "",
+    "push:origin": "sh ./scripts/push",
     "test": "ng test",
     "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI"
-  },
-  "peerDependencies": {
-    "tslib": "^1.10.0"
   },
   "dependencies": {
     "@angular/animations": "~9.1.1",
@@ -72,6 +71,7 @@
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^13.11.1",
     "codelyzer": "^5.2.2",
+    "husky": "^4.2.5",
     "jasmine-core": "^3.5.0",
     "jasmine-spec-reporter": "^5.0.1",
     "karma": "^5.0.1",

@@ -14,7 +14,7 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [10, 13]
+        node-version: [ 10, 13 ]
     
     steps:
     - uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
       env:
         cache-name: cache-node-modules
       with:
-        path: ~/.npm # npm cache files are stored in `~/.npm` on Linux
+        path: ~/.npm    # npm cache files are stored in `~/.npm` on Linux
         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -43,13 +43,14 @@ jobs:
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
+    - name: Copy to docs dir
+      run: cp -r ./dist/accordion-sample/* ./docs/
+      working-directory: ./
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:
         name: drop
         path: dist/accordion-sample
-    - name: Copy to docs dir
-      run: npm run cp:sample --if-present
     - name: Run tests
       run: |
         echo Running tests

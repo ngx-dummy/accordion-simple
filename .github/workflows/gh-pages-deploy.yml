@@ -2,14 +2,14 @@
 
 name: NPM-DEPLOY
 
-# Trigger after release created (tagged version is pushed to repo)
+# Trigger after release created 
 on:
   release:
     types: [ created ]
 
 jobs:
   build:
-    if: contains('ngx-dummy', github.actor)
+    if: contains('ngx-dummy', github.repository)
     runs-on: ubuntu-latest
     
     steps:
@@ -18,7 +18,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '13.x'
-        registry-url: 'https://registry.npmjs.org'
+        registry-url: 'https://npm.pkg.github.com'
         scope: '@ngx-dummy'
     - run: |
         echo Installing..!
@@ -27,4 +27,4 @@ jobs:
         npm run build:prod --if-present
     - run: npm run publish:full --if-present
       env: 
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_PUBLISH_TOKEN }}
