@@ -4,7 +4,7 @@
 const { resolve }        = require('path');
 const simpleGit          = require('simple-git/promise');
 const chalk              = require('chalk');
-const { commitPrettier } = require(resolve(__dirname, '../aux-funcs/prettier'));
+const { commitPrettier } = require(resolve(__dirname, '../aux-funcs/prettier.sh'));
 
 const root = resolve(__dirname, '../..');
 const git = simpleGit(root);
