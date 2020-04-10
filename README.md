@@ -2,6 +2,8 @@
 
 ![](https://github.com/ngx-dummy/accordion-simple/workflows/CI/badge.svg)
 
+[![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple@2x.png)](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple)
+
 
 ---
 
