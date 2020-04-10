@@ -43,10 +43,6 @@ jobs:
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
-    - name: Run tests
-      run: |
-        echo Running tests
-        npm run test:ci
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:
@@ -54,3 +50,7 @@ jobs:
         path: dist/accordion-sample
     - name: Copy to docs dir
       run: npm run cp:sample --if-present
+    - name: Run tests
+      run: |
+        echo Running tests
+        npm run test:ci
