@@ -6,7 +6,6 @@ name: NPM-DEPLOY
 on:
   push:
     branches:  
-    - master
     - 'releases/*' 
 
 jobs:

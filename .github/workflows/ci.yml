@@ -34,18 +34,15 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
-
     - name: Install packages global
       run: |
         echo Installing..!
         npm install -g @angular/cli > /dev/null
-
     - name: Build accordion-sample app
       run: |
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
-
     - name: Run tests
       run: |
         echo Running tests
@@ -55,7 +52,5 @@ jobs:
       with:
         name: drop
         path: dist/accordion-sample
-
-
     - name: Copy to docs dir
-      run: mv dist/accordion-sample/** docs/
+      run: npm run cp:sample --if-present
