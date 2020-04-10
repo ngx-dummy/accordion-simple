@@ -1,6 +1,6 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](../blob/master/LICENSE)
 
-https://github.com/ngx-dummy/accordion-simple/workflows/ci/badge.svg
+https://github.com/ngx-dummy/accordion-simple/workflows/CI/badge.svg
 
 
 ---
