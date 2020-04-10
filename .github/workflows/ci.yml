@@ -46,7 +46,7 @@ jobs:
     - name: Run tests
       run: |
         echo Running tests
-        npm run test:ci -- --configuration=ci
+        npm run test:ci
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:
