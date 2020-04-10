@@ -1,9 +1,8 @@
 const { commitPrettier } = require('./prettier');
-const { resolve } = require('path');
-const simpleGit = require('simple-git/promise');
-const chalk = require('chalk');
+const { resolve }        = require('path');
+const simpleGit          = require('simple-git/promise');
+const chalk              = require('chalk');
 
-// Computed Deps
 const root = resolve(__dirname, '../..');
 const git = simpleGit(root);
 
