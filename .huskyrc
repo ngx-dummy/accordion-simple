@@ -1,5 +1,0 @@
-{
-  "hooks": {
-    "pre-commit": "./scripts/hooks/prepush.sh"
-  }
-}
