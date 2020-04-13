@@ -2,12 +2,9 @@
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
 const { resolve }        = require('path');
-const simpleGit          = require('simple-git/promise');
 const chalk              = require('chalk');
 const { commitPrettier } = require(resolve(__dirname, '../aux-funcs/prettier.sh'));
-
-const root = resolve(__dirname, '../..');
-const git = simpleGit(root);
+const { hasDiff, diff }  = require(resolve(__dirname, '../aux-funcs/git.sh'));
 
 const notCleanTreeString = chalk`
 {red Cannot push non clean tree (stash or add/commit all )}
@@ -16,32 +13,22 @@ const notCleanTreeString = chalk`
 
 (async () => {
   try {
-    const hasDiff = !!(await git.diff());
-
-    if (hasDiff) {
+    if (!!(await hasDiff())) {
       console.error(notCleanTreeString);
       return process.exit(1);
     }
 
-    const diff = await git.diff([
-      '--name-only',
-      '--diff-filter=d',
-      'origin/master...HEAD'
-    ]);
-    const changedFiles = diff.split('\n');
-
+    const changedFiles = (await diff()).split('\n');
     await commitPrettier(changedFiles);
 
     console.log(chalk`
-Pre-Push Validation Succeeded
-
-`);
+      {green Pre-Push Validation Succeeded}
+   `);
     process.exit();
   } catch (err) {
     console.error(chalk`
-{red Pre-Push Validation Failed, error body below}
-
-`);
+      {red Pre-Push Validation Failed, error body below}
+  `);
     console.error(err);
     return process.exit(1);
   }

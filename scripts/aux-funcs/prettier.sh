@@ -2,9 +2,12 @@
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
 const { resolve } = require('path');
-const { spawn } = require('child-process-promise');
+
+const { promisify } = require('util');
+const { spawn } = require('child_process');
 const simpleGit = require('simple-git/promise');
 const ora = require('ora');
+const spawnAsync = promisify(spawn);
 
 const root = resolve(__dirname, '../..');
 const git = simpleGit(root);
@@ -15,7 +18,7 @@ async function commitPrettier(changedFiles) {
 
 	const stylingSpinner = ora(` Formatting ${targetFiles.length} files `).start();
 
-	await spawn('prettier', ['--config', `${resolve(root, '.prettierrc')}`, '--write', ...targetFiles], {
+	await spawnAsync('prettier', ['--config', `${resolve(root, '.prettierrc')}`, '--write', ...targetFiles], {
 		stdio: ['ignore', 'ignore', process.stderr],
 		cwd: root,
 		env: {
