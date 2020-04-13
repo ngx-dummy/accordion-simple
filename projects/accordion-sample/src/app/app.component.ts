@@ -12,6 +12,7 @@ import { IAccordionStyling } from "projects/@ngx-dummy/accordion-simple/src/help
 export class AppComponent {
   title = 'accordion-sample';
   sampleAccordionData: Accordion = {
+    id: 'sample_accordion',
     
     items: [
       {

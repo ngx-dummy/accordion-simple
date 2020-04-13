@@ -109,6 +109,15 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "ci": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "progress": false
             }
           }
         },

@@ -1,0 +1,9 @@
+{
+  singleQuote: true,
+  printWidth: 140,
+  quoteProps: preserve,
+  tabWidth: 2,
+  useTabs: true,  
+  semi: true,
+  bracketSpacing: true
+}

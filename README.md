@@ -1,6 +1,8 @@
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](../blob/master/LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
-![](https://github.com/ngx-dummy/accordion-simple/workflows/ci/badge.svg)
+![CI/CD](https://github.com/ngx-dummy/accordion-simple/workflows/CI/badge.svg)
+
+[![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple@2x.png)](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple)
 
 
 ---
@@ -12,11 +14,12 @@
 - [x] Basic accordion-simple component
 - [x] Styling interfaces
 - [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
+- [ ] Add documentation (jsdocs/annotate the styling/settings interfaces
 
 ---
 
 **Fork from:**
-[  [**Accordion Simple**]  ](!https://github.com/ngx-dummy/accordion-simple)
+[  [**Accordion Simple**]  ](https://github.com/ngx-dummy/accordion-simple)
 ###### `git clone https://github.com/ngx-dummy/accordion-simple.git`
 
 ```shell
@@ -34,3 +37,14 @@ $~> npm run sample
 
 
 ---
+
+## Main idea
+
+Simple Angular accordion component and a simple demostrator app to use in Angular/Ionic apps; 
+This is a simple demonstrator project - to be consumed/used as is (links to the original repository are must).
+To ask for features / report on a bug follow the guide in : [Issue Report](./.github/ISSUE_TEMPLATE/bug_report.md)
+
+##### Redistribution
+
+**GNU GPLv3**
+*Copyright (c) Vladimir Ovsyukov <<ovsyukov@yandex.com>> -- with link required to original sources point*
