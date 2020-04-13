@@ -35,7 +35,7 @@
     "sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
     "sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --prod",
     "clean:dist": "rimraf ./dist/**",
-    "clean:docs": "rimraf ./docs/**",
+    "clean:docs": "rimraf ./docs/*",
     "build": "ng b",
     "build:prod": "ng b --prod",
     "build:sample": "ng b accordion-sample --prod",
@@ -44,7 +44,7 @@
     "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish --access public",
     "publish:full": "run-s clean:dist build:prod pack publish",
     "gh-pages": "run-s build:sample -- --base-href https://vovansuper.github.io/accordion-simple/ cp:sample",
-    "prepush:origin": "run-p clean:docs gh-pages",
+    "prepush:origin": "run-s clean:docs gh-pages",
     "push:origin": "sh ./scripts/push.sh",
     "test": "ng test",
     "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI"
