@@ -29,6 +29,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.container accord-simple-accordion')).toBeTruthy();
+    expect(compiled.querySelector('.container ngxd-accordion')).toBeTruthy();
   });
 });

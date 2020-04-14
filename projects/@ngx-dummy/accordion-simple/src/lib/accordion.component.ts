@@ -6,7 +6,7 @@ import { Accordion } from './IAccordion';
 import { IToggleer } from '../helpers/IItemToggler';
 
 @Component({
-  selector: 'accord-simple-accordion',
+  selector: 'ngxd-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
 })

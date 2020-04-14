@@ -9,7 +9,7 @@ import { IToggleer } from '../helpers/IItemToggler';
 import { arrow_down } from './theming/arrow_down';
 
 @Component({
-  selector: 'accord-simple-accordion-item',
+  selector: 'ngxd-accordion-item',
   templateUrl: './accordion-item.component.html',
   styleUrls: ['./accordion-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
