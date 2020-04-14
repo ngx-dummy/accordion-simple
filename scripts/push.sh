@@ -6,9 +6,9 @@ read msg
 # msg="$1"
 
 echo commiting..
-git add .
 if [ "$msg" != "" ]; 
 then
+  git add .
   git commit -am "$msg"
   git push origin
 else

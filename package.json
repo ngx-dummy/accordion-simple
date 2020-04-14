@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.0.37",
+  "version": "0.0.45",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -41,14 +41,14 @@
     "build:sample": "ng b accordion-sample",
     "build:sample:prod": "ng b accordion-sample --prod  -- --base-href https://vovansuper.github.io/accordion-simple/",
     "cp:sample": "cp -r ./dist/accordion-sample/** ./docs",
-    "pack": "cd ./dist/@ngx-dummy/accordion-simple && npm pack",
-    "publish": "cd ./dist/@ngx-dummy/accordion-simple && npm publish --access public",
-    "publish:full": "run-s clean:dist build:prod pack publish",
+    "publish": "sh ./scripts/publish.sh",
+    "publish:full": "run-s clean:dist build:prod publish",
     "gh-pages": "run-s build:sample:prod cp:sample",
     "prepush:origin": "run-s clean:docs gh-pages",
     "push:origin": "sh ./scripts/push.sh",
     "test": "ng test",
-    "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI"
+    "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "release": "sh ./scripts/release.sh"
   },
   "dependencies": {
     "@angular/animations": "~9.1.1",
@@ -89,6 +89,7 @@
     "ora": "^4.0.3",
     "protractor": "^5.4.3",
     "rimraf": "^3.0.2",
+    "shelljs": "^0.8.3",
     "simple-git": "^1.132.0",
     "svg-to-ts": "^4.2.1",
     "ts-node": "^8.8.2",
