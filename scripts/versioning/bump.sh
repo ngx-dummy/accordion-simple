@@ -23,7 +23,7 @@ function incrementVersionFragment(version, type) {
 			return `${major}.${minor}.${(parseInt(patch) + 1).toString()}`;
 
 		default:
-			throw "Please set one  of  of following 'major', 'minor' or 'patch .. ";
+			throw "Please set one  of  of following major.minor.patch  ";
 	}
 }
 
@@ -48,7 +48,7 @@ const replacePackageJsonStringVersion = (packageJsonString, newVersion) => {
 };
 
 const updatePackJsonFileInPlace = (packageJsonFile, newVersion) => {
-	return sed('-i', verReg, "$1$"+newVersion, packageJsonFile);
+	return sed('-i', verReg, `$1${newVersion}`+ '"', packageJsonFile);
 };
 
 
