@@ -47,4 +47,5 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 ##### Redistribution
 
 **GNU GPLv3**
+Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
 *Copyright (c) Vladimir Ovsyukov <<ovsyukov@yandex.com>> -- with link required to original sources point*
