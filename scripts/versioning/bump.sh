@@ -1,3 +1,7 @@
+#!/usr/bin/env sh
+':'; //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+
+
 const { run } = require('node-jq');
 const { sed } = require('shelljs');
 
@@ -6,11 +10,11 @@ const l = console.log;
 const verReg = new RegExp(/(["|']version["|']\s?\:\s*)\"([\.\d]+)"/gi);
 
 
-/**
- *
- * @param {string} version - version (in form: [major].[minor].[patch]) from package.json
- * @param {('major'|'minor'|'patch')} type - how to update version (i.e, which part)S
- */
+# /**
+#  *
+#  * @param {string} version - version (in form: [major].[minor].[patch]) from package.json
+#  * @param {('major'|'minor'|'patch')} type - how to update version (i.e, which part)S
+#  */
 function incrementVersionFragment(version, type) {
 	l('Version to increment fragment on :: ', version);
 	let [major, minor, patch] = version.split('.');
@@ -40,11 +44,11 @@ function incPatchVersion(version) {
 }
 
 
-/**
- * 
- * @param {string} packageJsonString - contents of 'package.json' file to be parsed / version field updated
- * @param {string} newVersion - string representations of new 'version' field to be injected in 'package.json' file (i.e, "1.1.0")
- */
+# /**
+#  * 
+#  * @param {string} packageJsonString - contents of 'package.json' file to be parsed / version field updated
+#  * @param {string} newVersion - string representations of new 'version' field to be injected in 'package.json' file (i.e, "1.1.0")
+#  */
 const replacePackageJsonStringVersion = (packageJsonString, newVersion) => {
 	if (!newVersion) throw new Error('Provide new Version to substitute..');
 
