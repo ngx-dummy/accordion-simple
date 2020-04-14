@@ -13,7 +13,7 @@ const root = resolve(__dirname, '../..');
 const git = simpleGit(root);
 
 async function commitPrettier(changedFiles) {
-	const targetFiles = changedFiles.filter(line => line.match(/\.(js|ts)$/));
+	const targetFiles = changedFiles.filter(line => line.match(/\.ts$/));
 	if (!targetFiles || !targetFiles.length) return;
 
 	const stylingSpinner = ora(` Formatting ${targetFiles.length} files `).start();
