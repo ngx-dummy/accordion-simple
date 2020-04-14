@@ -1,4 +1,4 @@
-# A basic CI script to automate building / testing @ngx-dummy/accrordion-simple lib
+# A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
 
 name: NPM-DEPLOY
 
