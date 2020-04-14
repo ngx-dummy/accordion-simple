@@ -7,14 +7,8 @@ const { sed } = require('shelljs');
 
 const l = console.log;
 
-const verReg = new RegExp(/(["|']version["|']\s?\:\s*)\"([\.\d]+)"/gi);
+const verReg = new RegExp(/([\"|\']version[\"|\']\s?\:\s*)\"([\.\d]+)\"/gi);
 
-
-# /**
-#  *
-#  * @param {string} version - version (in form: [major].[minor].[patch]) from package.json
-#  * @param {('major'|'minor'|'patch')} type - how to update version (i.e, which part)S
-#  */
 function incrementVersionFragment(version, type) {
 	l('Version to increment fragment on :: ', version);
 	let [major, minor, patch] = version.split('.');
@@ -29,7 +23,7 @@ function incrementVersionFragment(version, type) {
 			return `${major}.${minor}.${(parseInt(patch) + 1).toString()}`;
 
 		default:
-			throw `Please set one  of  of following 'major', 'minor' or 'patch .. `;
+			throw "Please set one  of  of following 'major', 'minor' or 'patch .. ";
 	}
 }
 
@@ -43,12 +37,6 @@ function incPatchVersion(version) {
 	return incrementVersionFragment(version, 'patch');
 }
 
-
-# /**
-#  * 
-#  * @param {string} packageJsonString - contents of 'package.json' file to be parsed / version field updated
-#  * @param {string} newVersion - string representations of new 'version' field to be injected in 'package.json' file (i.e, "1.1.0")
-#  */
 const replacePackageJsonStringVersion = (packageJsonString, newVersion) => {
 	if (!newVersion) throw new Error('Provide new Version to substitute..');
 
@@ -60,7 +48,7 @@ const replacePackageJsonStringVersion = (packageJsonString, newVersion) => {
 };
 
 const updatePackJsonFileInPlace = (packageJsonFile, newVersion) => {
-	return sed('-i', verReg, `$1${newVersion}"`, packageJsonFile);
+	return sed('-i', verReg, "$1$"+newVersion, packageJsonFile);
 };
 
 
