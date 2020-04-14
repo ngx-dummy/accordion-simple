@@ -1,6 +1,6 @@
 # A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
 
-name: NPM-DEPLOY
+name: GHP-DEPLOY
 
 # Trigger after release created 
 on:
