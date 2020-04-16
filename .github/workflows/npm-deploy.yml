@@ -1,10 +1,15 @@
 # A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
-name: NPMDEPLOY
+name: npm-deploy
 # Trigger after release created (tagged version is pushed to repo)
 on:
   release:
-    types:
-      - published
+    types: [created, published]
+  push:
+    # Sequence of patterns matched against refs/tags
+    # Created when `npm run releae` commeand is executed (which pushes tagged commit with version pathed from current package.json version ..)
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v2.0.1
+
 jobs:
   build:
     runs-on: ubuntu-latest
