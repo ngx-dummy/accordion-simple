@@ -16,8 +16,8 @@
       "dom"
     ],
     "paths": {
-      "@ngx-dummy/accordion-simple": [
-        "dist/@ngx-dummy/accordion-simple"
+      "@ngx-dummy/accordion-simple/*": [
+        "projects/@ngx-dummy/accordion-simple/src/lib/*"
       ]
     }
   },

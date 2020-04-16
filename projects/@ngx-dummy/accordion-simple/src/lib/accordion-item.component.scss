@@ -14,14 +14,14 @@
     overflow: visible;
     display: flex;
     min-height: 1rem;
-    background-color: var(--accord-simple-head-item-color);
+    background-color: var(--ngxd-head-item-color);
     color: #fff;
     flex-direction: row;
     max-height: 50px;
 
     &:hover, 
     &:active {
-      background-color: var(--accord-simple-head-item-color--active) !important;
+      background-color: var(--ngxd-head-item-color--active) !important;
     }
 
     .accord-item__header--btn {

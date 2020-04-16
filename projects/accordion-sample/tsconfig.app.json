@@ -1,11 +1,12 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
-      "@ngx-dummy/accordion-simple/": [
-        "../@ngx-dummy/accordion-simple"
+      "@ngx-dummy/accordion-simple/*": [
+        "../@ngx-dummy/accordion-simple/src/lib/*"
       ]
     }
   },

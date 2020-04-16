@@ -43,9 +43,9 @@ jobs:
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
-    - name: Copy to docs dir
-      run: cp -r ./dist/accordion-sample/* ./docs/
-      working-directory: ./
+    # - name: Copy to docs dir
+    #   run: cp -r ./dist/accordion-sample/* ./docs/
+    #   working-directory: ./
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:

@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, HostBinding, Renderer2, ElementRef } from '@angular/core';
 
 import { dummyAccordionList as sampleData } from '../helpers/dummy-data';
-import { IAccordionItemStyling, IAccordionStyling } from '../helpers/IAccordionStylings';
-import { Accordion } from './IAccordion';
-import { IToggleer } from '../helpers/IItemToggler';
+import { IAccordionItemStyling, IAccordionStyling } from './settings/IAccordionStylings';
+import { Accordion } from './settings/IAccordion';
+import { IToggleer } from './settings/IItemToggler';
 
 @Component({
-  selector: 'accord-simple-accordion',
+  selector: 'ngxd-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.scss'],
 })

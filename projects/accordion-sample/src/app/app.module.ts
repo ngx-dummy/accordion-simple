@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AccordionModule } from 'projects/@ngx-dummy/accordion-simple/src/lib/accordion.module';
+import { AccordionModule } from '@ngx-dummy/accordion-simple/accordion.module';
 
 
 @NgModule({
@@ -13,7 +13,6 @@ import { AccordionModule } from 'projects/@ngx-dummy/accordion-simple/src/lib/ac
     BrowserModule,
     AccordionModule
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

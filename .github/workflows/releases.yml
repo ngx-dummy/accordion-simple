@@ -1,11 +1,12 @@
+# create release
+name: release
+
 on:
   push:
     # Sequence of patterns matched against refs/tags
     # Created when `npm run releae` commeand is executed (which pushes tagged commit with version pathed from current package.json version ..)
     tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
-
-name: Create Release
+      - 'v*' # Push events to matching v*, i.e. v1.0, v2.0.1
 
 jobs:
   build:

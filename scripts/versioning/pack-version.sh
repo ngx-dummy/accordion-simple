@@ -13,7 +13,7 @@ const {
   incPatchVersion,
   replacePackageJsonStringVersion,
   updatePackJsonFileInPlace
-} = require('./bump');
+} = require('./bump.sh');
 
 const mainPackJsonPath = join(__dirname, '../../', 'package.json');
 const accordSimplePackJsonPath = join(__dirname, '../../', 'projects/@ngx-dummy/accordion-simple', 'package.json');
