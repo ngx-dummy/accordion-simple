@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, SecurityContext, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-// import { MDCRipple } from "@material/ripple";
+// import { MDCRipple } from '@material/ripple';
 
-import { AccordionItem } from './IAccordion';
-import { IAccordionItemStyling } from '../helpers/IAccordionStylings';
-import { logo, plus, minus } from '../helpers/iconsbase64';
-import { IToggleer } from '../helpers/IItemToggler';
+import { AccordionItem } from './settings/IAccordion';
+import { IAccordionItemStyling } from './settings/IAccordionStylings';
+import { logo, plus, minus } from './settings/iconsbase64';
+import { IToggleer } from './settings/IItemToggler';
 import { arrow_down } from './theming/arrow_down';
 
 @Component({

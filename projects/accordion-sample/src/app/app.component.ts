@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
+import { Accordion, IAccordionStyling } from '@ngx-dummy/accordion-simple/settings/index';
 // import { MDCRipple } from "@material/ripple";
 
-import { Accordion } from 'projects/@ngx-dummy/accordion-simple/src/lib';
-import { IAccordionStyling } from "projects/@ngx-dummy/accordion-simple/src/helpers";
 
 @Component({
   selector: 'app-root',

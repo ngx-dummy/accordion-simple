@@ -1,4 +1,4 @@
-import { Accordion } from '../lib/IAccordion';
+import { Accordion } from '../lib/settings/IAccordion';
 
 export const dummyAccordionList: Accordion = {
   id: 0,
