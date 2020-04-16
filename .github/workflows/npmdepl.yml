@@ -3,7 +3,8 @@ name: NPMDEPLOY
 # Trigger after release created (tagged version is pushed to repo)
 on:
   release:
-    types: [ published ]
+    types:
+      - published
 jobs:
   build:
     runs-on: ubuntu-latest
