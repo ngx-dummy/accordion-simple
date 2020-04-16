@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: contains('ngx-dummy', github.actor)
+    if: contains('vovansuper', github.actor)
     runs-on: ubuntu-latest
     
     steps:
