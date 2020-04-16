@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 PROJ_DIR=$(pwd)/dist/@ngx-dummy/accordion-simple
 pushd $PROJ_DIR
