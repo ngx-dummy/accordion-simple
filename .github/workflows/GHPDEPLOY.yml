@@ -1,5 +1,5 @@
 # A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
-name: GHP-DEPLOY
+name: GHPDEPLOY
 # Trigger after release created 
 on:
   release:

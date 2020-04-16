@@ -1,5 +1,5 @@
 # A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
-name: NPM-DEPLOY
+name: NPMDEPLOY
 # Trigger after release created (tagged version is pushed to repo)
 on:
   release:
