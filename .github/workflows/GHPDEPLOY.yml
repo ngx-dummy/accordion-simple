@@ -3,7 +3,7 @@ name: GHPDEPLOY
 # Trigger after release created 
 on:
   release:
-    types: [ created ]
+    types: [ published ]
 jobs:
   build:
     runs-on: ubuntu-latest
