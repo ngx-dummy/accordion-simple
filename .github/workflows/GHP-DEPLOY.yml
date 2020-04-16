@@ -1,17 +1,12 @@
 # A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
-
 name: GHP-DEPLOY
-
 # Trigger after release created 
 on:
   release:
     types: [ created ]
-
 jobs:
   build:
-    if: contains('actor', github.actor)
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to npm
