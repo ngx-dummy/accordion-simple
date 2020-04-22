@@ -10,7 +10,7 @@
   overflow: hidden;
 
   .accord-item__header {
-    transition: .6s ease;
+    transition: 2.6s ease;
     overflow: visible;
     display: flex;
     min-height: 1rem;
@@ -19,9 +19,13 @@
     flex-direction: row;
     max-height: 50px;
 
-    &:hover, 
+    &:hover {
+      background-color: var(--ngxd-head-item-color--active) !important;
+      cursor: pointer;
+    } 
     &:active {
       background-color: var(--ngxd-head-item-color--active) !important;
+      cursor: pointer;
     }
 
     .accord-item__header--btn {
@@ -103,32 +107,37 @@
     
     &.closed {
       display: none;
-      // height: 0;
-      // padding: 0;
-      // animation: closeItem .1s ease;
+      height: 0;
+      padding: 0;
+      // animation: closeItem 1.1s ease;
     }
     
     &.opened {
       height: 100%;
       display: block;
-      // padding: 2rem;
-      // animation: showItem .1s ease;
+      padding: 2rem;
+      // animation: showItem 1.1s ease;
     }
   }
 
+  @keyframes closeItem {
+    from { padding: 2rem; }
+    to   { padding: 0; }
+  };
+
   @keyframes showItem {
-    from { height: 0; padding: 0; }
-    to { height: 100%; padding: 2rem; }
+    from {   padding: 0; }
+    to   {   padding: 2rem; }
   };
 
   @keyframes closeIcon {
     from { transform: rotate(0); }
-    to {transform: rotate(180deg); }
+    to   { transform: rotate(180deg); }
   }
 
   @keyframes openIcon {
     from { transform: rotate(180deg);  }
-    to { transform: rotate(0); }
+    to   { transform: rotate(0); }
   }
 
 

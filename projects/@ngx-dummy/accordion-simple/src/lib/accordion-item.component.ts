@@ -71,9 +71,10 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     this.stylingObj?.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);
     this.stylingObj?.headColor && this.render.setStyle(headEl, 'color', this.stylingObj?.headColor);
 
+    this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'transition', 'padding 1s ease');
     this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);
     this.stylingObj?.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
-    this.stylingObj?.bodyPadding && this.render.setStyle(bodyEl, 'padding', this.stylingObj.bodyPadding || '0');
+    this.stylingObj?.bodyPadding && this.render.setStyle(bodyEl, 'padding',  '4rem');
     this.stylingObj?.bodyMargin && this.render.setStyle(bodyEl, 'margin', this.stylingObj.bodyMargin || '0');
   }
 
