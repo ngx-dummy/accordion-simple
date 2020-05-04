@@ -1,7 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-      <ngxd-accordion [accordionList]="sampleAccordionData" [accordionStyling]="styling"></ngxd-accordion>
+  <div class="container-fluid">
+    <div class="row mb-100">
+      <div class="col-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <h2 class="text-center">Accordion Sample</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+        <ngxd-accordion [accordionList]="sampleAccordionData" [accordionStyling]="styling" openSign="/assets/plus.png" closeSign="/assets/minus.png">
+        </ngxd-accordion>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <div class="mdc-touch-target-wrapper">
+          <button class="mdc-button mdc-button--touch" > Hi
+            <div class="mdc-button__ripple"></div>
+            <!-- <span class="mdc-button__label">My Accessible Button</span> -->
+            <!-- <div class="mdc-button__touch"></div> -->
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

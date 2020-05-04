@@ -11,6 +11,6 @@ then
   git push --force origin $tag
   git push
 else
-  echo Pleae enter a tag number of form number.number.number
+  echo Pleae enter a tag number of a form of: number.number.number
   exit 256
 fi

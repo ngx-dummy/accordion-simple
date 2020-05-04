@@ -1,5 +1,5 @@
 
-@use './theming//vars.scss';
+@use './theming/vars.scss';
 
 
 .accord-item {
@@ -10,7 +10,7 @@
   overflow: hidden;
 
   .accord-item__header {
-    transition: 2.6s ease;
+    transition: .6s ease;
     overflow: visible;
     display: flex;
     min-height: 1rem;
@@ -26,6 +26,9 @@
     &:active {
       background-color: var(--ngxd-head-item-color--active) !important;
       cursor: pointer;
+    }
+    &.opened {
+      background-color: var(--ngxd-head-item-color--opened) !important;
     }
 
     .accord-item__header--btn {
@@ -44,7 +47,8 @@
       // color: #363535;
     }
 
-    .accord-item__header--start, .accord-item__header--end {
+    .accord-item__header--start, 
+    .accord-item__header--end {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -55,6 +59,7 @@
       .accord-item__header-img {
         max-width: 1rem;
         margin-right: .5rem;
+        fill: black;
       }
 
 
@@ -103,7 +108,7 @@
     // background-color: rgba($color: #ccc, $alpha: 0.1) !important;
     // margin: .1rem;
     // padding: 1rem;
-    transition: all 1s ease !important;
+    // transition: all 1s ease !important;
     
     &.closed {
       display: none;

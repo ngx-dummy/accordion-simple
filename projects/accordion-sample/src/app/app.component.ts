@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Accordion, IAccordionStyling } from '@ngx-dummy/accordion-simple/settings/index';
-// import { MDCRipple } from "@material/ripple";
+import { Accordion, IAccordionStyling } from '@ngx-dummy/accordion-simple/index';
 
+
+import {MDCRipple} from '@material/ripple';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,13 @@ import { Accordion, IAccordionStyling } from '@ngx-dummy/accordion-simple/settin
 })
 export class AppComponent {
   title = 'accordion-sample';
+
+  
+  ngAfterViewInit() {
+    let buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
+
+  }
+
   sampleAccordionData: Accordion = {
     id: 'sample_accordion',
     
@@ -94,17 +102,16 @@ export class AppComponent {
   styling: IAccordionStyling = {
     itemsGutts: '1px',
     maxWidth: '99%',
-    margin: '1rem',
+    // margin: '1rem',
     
     itemStyling: {
-      margin: '1px',
+      headBgColor: '#ccc',
+      headColor: 'black',
+      // margin: '1px',
       bodyBgColor: '#f9f9f9',
       bodyPadding: '1rem',
       bodyMargin: '.1rem'
     }
   }
 
-  constructor() { }
-
-  click($event) { }
 }

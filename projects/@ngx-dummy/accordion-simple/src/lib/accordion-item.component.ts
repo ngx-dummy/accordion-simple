@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, SecurityContext, ChangeDetectionStrategy } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-// import { MDCRipple } from '@material/ripple';
+import { MDCRipple, MDCRippleAttachOpts} from '@material/ripple';
 
 import { AccordionItem } from './settings/IAccordion';
 import { IAccordionItemStyling } from './settings/IAccordionStylings';
@@ -17,13 +17,13 @@ import { arrow_down } from './theming/arrow_down';
 export class AccordionItemComponent implements OnInit, AfterViewInit {
   isOpen = false;
   @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
-  @Input() headBg = '#4197b2';
+  @Input() headBg = '#ccc';
   @Input() logo = logo;
-  @Input() openSign = null;
-  @Input() closeSign = null; // = minus;
+  @Input() openSign = null;   // plus
+  @Input() closeSign = null;  // minus
   @Input('styling') stylingObj: IAccordionItemStyling = {
     headHeight: '50px',
-    headBgColor: '#4197b2',
+    headBgColor: '#ccc',
     headColor: '#fff',
     bodyBgColor: '#fff',
     bodyColor: '#000',
@@ -39,8 +39,8 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     body: 'Some (lorem ipsum) body text...'
   };
 
-  get isImgOpen(): boolean {
-    const isOpen = (this.closeSign && this.closeSign.length && this.openSign && this.openSign.length);
+  get isImgOpen(){
+    const isOpen = (this.closeSign && !!this.closeSign.length && this.openSign && !!this.openSign.length);
     if (!isOpen) this.openSign = this.getSvg(arrow_down);
     return isOpen;
   }
@@ -56,11 +56,14 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const itemEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item').item(0) as HTMLElement;
-    const headEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__header').item(0) as HTMLElement;
-    const bodyEl: HTMLElement = this.el.nativeElement.getElementsByClassName('accord-item__body').item(0) as HTMLElement;
+    const itemEl: HTMLDivElement = this.el.nativeElement.getElementsByClassName('accord-item').item(0)          as HTMLDivElement;
+    const headEl: HTMLDivElement = this.el.nativeElement.getElementsByClassName('accord-item__header').item(0)  as HTMLDivElement;
+    const bodyEl: HTMLDivElement = this.el.nativeElement.getElementsByClassName('accord-item__body').item(0)    as HTMLDivElement;
 
-    // MDCRipple.attachTo(headEl).activate();
+    let bodyClientRect = bodyEl.getBoundingClientRect();
+    let { width, height,   } = bodyClientRect;
+
+    MDCRipple.attachTo(document.querySelector('.accord-item__header'));
 
     this.stylingObj?.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
     this.stylingObj?.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
@@ -71,10 +74,10 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     this.stylingObj?.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);
     this.stylingObj?.headColor && this.render.setStyle(headEl, 'color', this.stylingObj?.headColor);
 
-    this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'transition', 'padding 1s ease');
+    // this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'transition', 'all .1s ease');
     this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);
     this.stylingObj?.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
-    this.stylingObj?.bodyPadding && this.render.setStyle(bodyEl, 'padding',  '4rem');
+    this.stylingObj?.bodyPadding && this.render.setStyle(bodyEl, 'padding',  '1rem');
     this.stylingObj?.bodyMargin && this.render.setStyle(bodyEl, 'margin', this.stylingObj.bodyMargin || '0');
   }
 
@@ -84,7 +87,7 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
   }
 
   private getSvg(file): SafeStyle {
-    const res = ('data:image/svg+xml;base64,' + window.btoa(file));
+    const res = ('data:image/svg+xml;base64,' + btoa(file));
     return this.sanitaizer.bypassSecurityTrustUrl(res);
   }
 

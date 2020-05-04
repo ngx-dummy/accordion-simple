@@ -1,7 +1,11 @@
+$item-header__bg: #4197b2;
+// $item-header__bg--active: #7ea8b4;
+$item-header__bg--active: lighten($item-header__bg, 1%);
+$item-header__bg--opened: darken($item-header__bg, 10%);
 
 :host {
-  --ngxd-head-item-color: #4197b2;
-  --ngxd-head-item-color--active: #7ea8b4;
+  --ngxd-head-item-color: #{$item-header__bg};
+  --ngxd-head-item-color--active: #{$item-header__bg--active};
+  --ngxd-head-item-color--opened: #{$item-header__bg--opened};
 }
 
-$item-header__bg: #4197b2;

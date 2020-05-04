@@ -1,0 +1,14 @@
+.container {
+  display: block;
+  flex-direction: row;
+  
+  .row {
+    display: block;
+
+    .col-12 {
+      display: block;
+      border-radius: .8rem;
+      overflow: hidden;
+    }
+  }
+}

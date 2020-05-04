@@ -4,19 +4,18 @@
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP)",
   "keywords": [
+    "accordion",
+    "accordion-simple",
     "Angular",
     "Ionic",
-    "Angular8",
     "Angular9",
-    "node.js",
-    "Ionic4",
     "Ionic5",
     "accordion-component"
   ],
   "private": false,
   "author": {
     "name": "Vladimir Ovsyukov",
-    "email": "vovansuper@mail.ru"
+    "email": "ovsyukov@yandex.com"
   },
   "engines": {
     "node": ">=12.11.1",
@@ -35,9 +34,8 @@
     "build": "ng b"
   },
   "peerDependencies": {
-    "@angular/common": "9.x",
-    "@angular/core": "9.x",
-    "@material/ripple": "^5.1.0",
+    "@angular/common": "9.x || 10.x",
+    "@angular/core": "9.x || 10.x",
     "tslib": "^1.11.1"
   },
   "devDependencies": {
