@@ -18,6 +18,9 @@
     color: #fff;
     flex-direction: row;
     max-height: 50px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 
     &:hover {
       background-color: var(--ngxd-head-item-color--active) !important;
@@ -92,19 +95,28 @@
       margin: .1rem;
       display: flex;
       align-items: center;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      touch-action: pan-y;
     }
-
+    
     .accord-item__title {
-      // text-align: center;
+      text-align: center;
+      font-size: 14px;
       flex: 1 1 100%;
     }
-
+    
     .accord-item__collapse {
       flex: 0 0 1rem;
     }
   }
-
+  
   .accord-item__body {
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
+    touch-action: pinch-zoom double-tap-zoom pan-y;
     // background-color: rgba($color: #ccc, $alpha: 0.1) !important;
     // margin: .1rem;
     // padding: 1rem;

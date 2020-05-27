@@ -20,7 +20,7 @@
 [![bundle size](https://badgen.net/bundlephobia/min/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=@ngx-dummy/accordion-simple)
 [![size](https://badgen.net/packagephobia/publish/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=ngx-dummy/accordion-simple)
 [![deps](https://david-dm.org/ngx-dummy/accordion-simple.svg)](https://david-dm.org/ngx-dummy/accordion-simpe)
-[![Donations](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/ovsyukov)
+[![Donations](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ovsyukov)
 [![downloads](https://data.jsdelivr.com/v1/package/npm/@ngx-dummy/accordion-simple/badge)](https://www.jsdelivr.com/package/npm/@ngx-dummy/accordion-simple)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5233cc1-3156-4033-9d43-5db2b6cd351b/deploy-status)](https://accordion-simple-tester.netlify.app/)
 [![GitHub forks](https://img.shields.io/github/forks/ngx-dummy/accordion-simple.svg?style=social&label=Fork)](https://github.com/ngx-dummy/accordion-simple/fork)
@@ -62,18 +62,20 @@ $~> npm run sample
 
 ## Main idea
 
-Simple Angular accordion component and a simple demostrator app to use in Angular/Ionic apps;  This is a simple demonstrator project - to be consumed/used as is (links to the original repository are must).
+Simple Angular accordion component and a simple demostrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
 
-Any suggestions for improvement are welcome. Please [file a new issue](https://github.com/VovanSuper/accordion-simple/issues/new) if you have any problems using this package or find ways in which it could be improved. 
+Any suggestions for improvement are welcome. Please [setup a new issue](https://github.com/VovanSuper/accordion-simple/issues/new) if you have any problems using this package or find ways in which it could be improved. 
 To ask for features / report on a bug follow the guide in : [Issue Report](./.github/ISSUE_TEMPLATE/bug_report.md)
 
+<details closed>
+<summary>TODO:</summary>
 
-#### TODO:
 - [x] Basic accordion-simple component
 - [x] Styling interfaces
 - [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
 - [ ] Add documentation (jsdocs/annotate the styling/settings interfaces
 
+</details>
 
 ---
 
@@ -82,4 +84,4 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
-*Copyright (c) belongs to Vladimir Ovsyukov <<ovsyukov@yandex.com>>; Please freely use __AS IS__ (with links to the code sources)*
+*Copyright (c) belongs to Vladimir Ovsyukov <<ovsyukov@yandex.com>>; Please, freely use __AS_IS__ (with links to the code sources)*

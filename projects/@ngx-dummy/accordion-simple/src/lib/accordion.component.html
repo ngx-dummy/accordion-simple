@@ -1,10 +1,12 @@
-<section class="accordion">
-  <ngxd-accordion-item *ngFor="let item of accordionList.items; let i = index" 
-    [item]="item" 
-    [styling]="itemStyle" 
+<div class="accordion" *ngIf="accordionList && accordionList.items && accordionList.items.length">
+  <ngxd-accordion-item *ngFor="let item of accordionList.items; let i = index" ngxdAccordionItem
+    [item]="item"
     [openSign]="openSign"
+    [logo]="listLogo"
     [closeSign]="closeSign"
-    (toggled)="onItemToggled($event)">
-    
+    [styling]="itemStyle"
+    (toggled)="onItemToggled($event)"
+    [attr.data-idx]="i"
+  >
   </ngxd-accordion-item>
-</section>
+</div>

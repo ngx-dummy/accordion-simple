@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, HostBinding, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, HostBinding, Renderer2, ElementRef, AfterViewInit, ViewChild, QueryList, ViewChildren } from '@angular/core';
+import { Accordion, AccordionItems, IAccordionStyling, IAccordionItemStyling, IToggleer } from './settings/';
 
-import { dummyAccordionList as sampleData } from '../helpers/dummy-data';
-import { IAccordionItemStyling, IAccordionStyling } from './settings/IAccordionStylings';
-import { Accordion } from './settings/IAccordion';
-import { IToggleer } from './settings/IItemToggler';
+let idx = 0;
+const l = console.log;
 
 @Component({
   selector: 'ngxd-accordion',
@@ -11,10 +10,21 @@ import { IToggleer } from './settings/IItemToggler';
   styleUrls: ['./accordion.component.scss'],
 })
 export class AccordionComponent implements OnInit {
-  @HostBinding('attr.id') id = 'accordion_0';
+  @HostBinding('attr.id') get id() { return `accordion_${this.attributes.id}`; }
+  @HostBinding('attr.name') get name() { return this.attributes.name; };
+  // @HostBinding('attr.opened') opened = this.attributes.name;
   @Input() openSign = null; // = plus
   @Input() closeSign = null; // = minus;
-  @Input() accordionList: Accordion = sampleData;
+  @Input() listLogo = null; // = logo;
+  @Input('accordionList')
+  set accordionList(acc: Accordion) {
+    this._accord = Object.assign({} as AccordionItems, { items: acc.items, name: acc['name'] ?? 'Sample accordion', id: acc['id'] ?? `acc_${idx}` });
+  };
+  get accordionList(): Accordion {
+    return this._accord;
+  }
+  private _accord: Accordion = null;
+
   @Input() accordionStyling: IAccordionStyling = {
     numberdItems: false,
     maxWidth: '100%',
@@ -26,21 +36,26 @@ export class AccordionComponent implements OnInit {
       bodyBgColor: '#fff',
       bodyColor: '#000',
       margin: '0',
-      padding: '0',
-      openSign: null,
-      closeSign: null
+      padding: '0'
     }
   };
   itemStyle: IAccordionItemStyling = {
     headBgColor: 'teal',
     headColor: 'white'
   };
+  hostEl: HTMLElement;
 
   constructor(private render: Renderer2, public el: ElementRef<HTMLElement>) { }
 
+  get attributes(): Partial<Accordion> {
+    const { id, name } = (this.accordionList && 'name' in this.accordionList && 'id' in this.accordionList) ? { ...this.accordionList } : { name: 'Sample-Accordion', id: ++idx };
+    return { id, name };
+  }
+
   ngOnInit() {
-    const hostEl = this.el.nativeElement;
-    const accordEl = hostEl.querySelector('.accordion');
+    this.accordionList.items = this.accordionList.items.map((item, i) => ({ ...item, id: i }));
+    this.hostEl = this.el.nativeElement;
+    const accordEl: HTMLDivElement = this.hostEl.querySelector('.accordion');
     const itemsGutts = (typeof this.accordionStyling.itemsGutts === 'boolean' && this.accordionStyling.itemsGutts === false) ? null : (this.accordionStyling.itemsGutts ?? '.5rem');
     this.itemStyle = {
       padding: '0',
@@ -48,13 +63,12 @@ export class AccordionComponent implements OnInit {
       ...this.itemStyle,
       ...this.accordionStyling.itemStyling
     };
-    this.id = `accordion_${this.accordionList?.id?.toString() ?? '0'}`;
     this.accordionStyling.maxWidth && this.render.setStyle(accordEl, 'max-width', this.accordionStyling.maxWidth || '100%');
-    this.accordionStyling.margin   && this.render.setStyle(accordEl, 'margin', this.accordionStyling.margin || '0');
+    this.accordionStyling.margin && this.render.setStyle(accordEl, 'margin', this.accordionStyling.margin || '0');
   }
 
   onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
-    this.accordionList.items = this.accordionList?.items?.map(item => { return (item.id === itemId) ? { ...item, isOpen } : { ...item, isOpen: false }; }) ?? [];
+    this.accordionList.items = this.accordionList.items.map(item => ((item.id === +itemId) ? { ...item, isOpen } : { ...item, isOpen: false })) ?? [];
   }
 
 }

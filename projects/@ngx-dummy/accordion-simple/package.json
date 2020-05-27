@@ -36,7 +36,7 @@
   "peerDependencies": {
     "@angular/common": "9.x || 10.x",
     "@angular/core": "9.x || 10.x",
-    "tslib": "^1.11.1"
+    "rxjs": "~6.5.5"
   },
   "devDependencies": {
     "typescript": "~3.8.3"

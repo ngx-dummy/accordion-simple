@@ -6,4 +6,8 @@ export {
   IAccordionStyling
 } from './IAccordionStylings';
 
-export { Accordion, AccordionItem } from './IAccordion';
+export { Accordion, AccordionItem, AccordionItems } from './IAccordion';
+
+export { IToggleer } from './IToggler';
+
+export { pngBase64ToBlob } from './healpers';

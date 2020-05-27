@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+// This is just to center the spinner
+
+html, body { height: 100%; padding: 0; margin: 0; box-sizing: border-box; font-size: 18px; }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+$offset: 187;
+$duration: 1.4s;
+
+.spinner {
+  margin-top: 20%;
+  animation: rotator $duration linear infinite;
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation:
+    dash $duration ease-in-out infinite, 
+    colors ($duration*2) ease-in-out infinite;
+}
+
+@keyframes colors {
+	0% { stroke: #4285F4; }
+	25% { stroke: #DE3E35; }
+	50% { stroke: #F7C223; }
+	75% { stroke: #1B9A59; }
+  100% { stroke: #4285F4; }
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: $offset; }
+ 50% {
+   stroke-dashoffset: $offset/4;
+   transform:rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: $offset;
+   transform:rotate(450deg);
+ }
+}
+
+.screen {
+  overflow-y: auto !important;
+  padding: 1rem; box-sizing: border-box;
+}
+
+.device-settings {
+  max-width: 70vw;
+  max-height: 70vh;
+  text-align: center;
+}
+
+.container-transparent {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: rgba($color: #555, $alpha: 0.1);
+}

@@ -1,10 +1,9 @@
-<article class="accord-item" >
-  <header class="accord-item__header" [class.opened]="isOpen" (click)="toggle(item.id)" style="position: relative;" ngxdAccordionItem>
-    <div class="mdc-ripple-surface" style="position: absolute;top: 0;bottom: 0;right: 0;left: 0;"></div>
+<article class="accord-item" >  
+  <header class="accord-item__header" [class.opened]="isOpen"  style="position: relative;">
+    <!-- <div class="mdc-ripple-surface" style="position: absolute;top: 0;bottom: 0;right: 0;left: 0;"></div> -->
     <div class="header--control accord-item__logo">
       <span class="accord-item__header--start">
-        <!-- {{logo || '&#x02261;'}} -->
-        <img class="accord-item__header-img" src="{{logo}}" alt="{{'&#x02261;'}}">
+        <img class="accord-item__header-img" [src]="logo" alt="{{'&#x02261;'}}">
         {{item.itemNum || 1}}.
       </span>
     </div>
@@ -24,8 +23,8 @@
 </article>
 
 <ng-template #imgOpen let-open="openner" let-close="closer">
-  <img *ngIf="!isOpen" [src]="open" alt="+">
-  <img *ngIf="isOpen" [src]="close" alt="-">
+  <img *ngIf="!isOpen" src="{{open}}" alt="+" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
+  <img *ngIf="isOpen"  src="{{close}}" alt="-" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
 </ng-template>
 
 <ng-template #svgOpen let-open="openner">

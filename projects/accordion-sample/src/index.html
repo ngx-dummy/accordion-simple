@@ -26,12 +26,27 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="//unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js" async></script>
+  <link rel="stylesheet" href="/assets/devices.min.css">
 
 </head>
 
 <body>
-  <app-root></app-root>
+  <div class="container-center">
+    <div class="marvel-device ipad silver device-settings">
+      <div class="camera"></div>
+      <div class="screen">
+        <app-root>
+          <div class="container-transparent">
+            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+              <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        </app-root>
+      </div>
+      <div class="home"></div>
+    </div>
+  </div>
+  <script src="//unpkg.com/material-components-web@latest/dist/material-components-web.min.js" async></script>
 </body>
 
 </html>

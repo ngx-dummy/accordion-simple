@@ -1,5 +1,3 @@
-import { SafeUrl } from '@angular/platform-browser';
-
 export interface IAccordionStyling {
   maxWidth?: string | number | null;
   numberdItems?: boolean;
@@ -12,8 +10,8 @@ export type IAccordionItemStyling = {
   itemId?: number | string | null;
   FontStyles?: string | null;
   logo?: string;
-  openSign?: string | SafeUrl;
-  closeSign?: string | SafeUrl;
+  openSign?: string;
+  closeSign?: string;
 }
   & IAccordionItemSpacingStyling & IAccordionItemBodyStyling & IAccordionItemHeadStyling;
 

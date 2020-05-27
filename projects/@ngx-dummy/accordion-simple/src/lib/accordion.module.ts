@@ -5,10 +5,11 @@ import { MDCRipple } from "@material/ripple";
 import { AccordionComponent } from './accordion.component';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
+import { AccordionDirective } from './accordion.directive';
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [AccordionComponent, AccordionItemComponent, AccordionItemDirective],
+  declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective],
   exports: [AccordionComponent],
   providers: [MDCRipple]
 })

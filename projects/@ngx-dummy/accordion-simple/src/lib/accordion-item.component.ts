@@ -1,12 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, SecurityContext, ChangeDetectionStrategy } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
-import { MDCRipple, MDCRippleAttachOpts} from '@material/ripple';
+import { Component, OnInit, Input, Output, EventEmitter, Renderer2, AfterViewInit, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MDCRipple } from '@material/ripple';
 
-import { AccordionItem } from './settings/IAccordion';
-import { IAccordionItemStyling } from './settings/IAccordionStylings';
-import { logo, plus, minus } from './settings/iconsbase64';
-import { IToggleer } from './settings/IItemToggler';
 import { arrow_down } from './theming/arrow_down';
+import { AccordionItem, IAccordionItemStyling, pngBase64ToBlob } from './settings/';
+import { logo as baseLogo } from './theming/iconsbase64';
+
+const l = console.log;
+let idx = 0;
 
 @Component({
   selector: 'ngxd-accordion-item',
@@ -14,38 +15,22 @@ import { arrow_down } from './theming/arrow_down';
   styleUrls: ['./accordion-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccordionItemComponent implements OnInit, AfterViewInit {
-  isOpen = false;
-  @Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
+export class AccordionItemComponent implements OnInit {
   @Input() headBg = '#ccc';
-  @Input() logo = logo;
-  @Input() openSign = null;   // plus
-  @Input() closeSign = null;  // minus
-  @Input('styling') stylingObj: IAccordionItemStyling = {
-    headHeight: '50px',
-    headBgColor: '#ccc',
-    headColor: '#fff',
-    bodyBgColor: '#fff',
-    bodyColor: '#000',
-    logo: this.logo,
-    bodyPadding: '0',
-    openSign: this.openSign,
-    closeSign: this.closeSign
-  };
-  @Input() item: AccordionItem = {
-    id: 0,
-    title: 'Test Item',
-    isOpen: false,
-    body: 'Some (lorem ipsum) body text...'
-  };
-
-  get isImgOpen(){
-    const isOpen = (this.closeSign && !!this.closeSign.length && this.openSign && !!this.openSign.length);
-    if (!isOpen) this.openSign = this.getSvg(arrow_down);
-    return isOpen;
+  @Input('logo')
+  set logo(img: string) {
+    this._logo = ((img && !!img.length)) ? img : this.getSanResource(baseLogo);
   }
+  get logo() {
+    return this._logo;
+  }
+  @Input() openSign = null;    // plus
+  @Input() closeSign = null;   // minus
+  @Input() item: AccordionItem = { title: 'Test Item', body: 'Some (lorem ipsum) body text...' };
+  isOpen = false;
+  _logo;
 
-  constructor(private render: Renderer2, public el: ElementRef<HTMLElement>, private sanitaizer: DomSanitizer) { }
+  constructor(private sanitaizer: DomSanitizer) { }
 
   ngOnInit() {
     this.isOpen = this.item.isOpen || false;
@@ -55,40 +40,23 @@ export class AccordionItemComponent implements OnInit, AfterViewInit {
     };
   }
 
-  ngAfterViewInit() {
-    const itemEl: HTMLDivElement = this.el.nativeElement.getElementsByClassName('accord-item').item(0)          as HTMLDivElement;
-    const headEl: HTMLDivElement = this.el.nativeElement.getElementsByClassName('accord-item__header').item(0)  as HTMLDivElement;
-    const bodyEl: HTMLDivElement = this.el.nativeElement.getElementsByClassName('accord-item__body').item(0)    as HTMLDivElement;
-
-    let bodyClientRect = bodyEl.getBoundingClientRect();
-    let { width, height,   } = bodyClientRect;
-
-    MDCRipple.attachTo(document.querySelector('.accord-item__header'));
-
-    this.stylingObj?.margin && this.render.setStyle(itemEl, 'margin', this.stylingObj?.margin);
-    this.stylingObj?.padding && this.render.setStyle(itemEl, 'padding', this.stylingObj?.padding);
-    this.stylingObj?.FontStyles && this.render.setStyle(itemEl, 'font', this.stylingObj.FontStyles);
-    this.stylingObj?.marginBottom && this.render.setStyle(itemEl, 'margin-bottom', this.stylingObj.marginBottom || '1rem');
-
-    this.stylingObj?.headHeight && this.render.setStyle(headEl, 'height', this.stylingObj?.headHeight);
-    this.stylingObj?.headBgColor && this.render.setStyle(headEl, 'background-color', this.stylingObj?.headBgColor ?? this.headBg);
-    this.stylingObj?.headColor && this.render.setStyle(headEl, 'color', this.stylingObj?.headColor);
-
-    // this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'transition', 'all .1s ease');
-    this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'background-color', this.stylingObj?.bodyBgColor);
-    this.stylingObj?.bodyColor && this.render.setStyle(bodyEl, 'color', this.stylingObj?.bodyColor);
-    this.stylingObj?.bodyPadding && this.render.setStyle(bodyEl, 'padding',  '1rem');
-    this.stylingObj?.bodyMargin && this.render.setStyle(bodyEl, 'margin', this.stylingObj.bodyMargin || '0');
+  get isImgOpen() {
+    const imgOpen = (this.closeSign && !!this.closeSign.length && this.openSign && !!(<string>this.openSign).length);
+    if (!imgOpen) this.openSign = this.getSvg(arrow_down);
+    return imgOpen;
   }
 
-  toggle(itemId = 0) {
-    this.isOpen = !this.isOpen || false;
-    this.toggled.emit({ itemId, isOpen: this.isOpen });
+  private getSvg(file: string) {
+    return this.sanitazeRes('data:image/svg+xml;base64,' + btoa(file));
   }
 
-  private getSvg(file): SafeStyle {
-    const res = ('data:image/svg+xml;base64,' + btoa(file));
-    return this.sanitaizer.bypassSecurityTrustUrl(res);
+  private getSanResource(file: string) {
+    let obj = URL.createObjectURL(pngBase64ToBlob(file));
+    return this.sanitazeRes(obj);
+  }
+
+  private sanitazeRes(item: string) {
+    return this.sanitaizer.bypassSecurityTrustResourceUrl(item);
   }
 
 }
