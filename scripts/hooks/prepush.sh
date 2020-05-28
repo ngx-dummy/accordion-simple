@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env node
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
 const { resolve }        = require('path');
@@ -26,9 +26,9 @@ const notCleanTreeString = chalk`
    `);
     process.exit();
   } catch (err) {
-    console.error(chalk`
+    console.log(chalk`
       {red Pre-Push Validation Failed, error body below}
-  `);
+    `);
     console.error(err);
     return process.exit(1);
   }

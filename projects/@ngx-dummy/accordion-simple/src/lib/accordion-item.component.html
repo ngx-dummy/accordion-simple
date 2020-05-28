@@ -1,5 +1,5 @@
 <article class="accord-item" >  
-  <header class="accord-item__header" [class.opened]="isOpen"  style="position: relative;">
+  <header class="accord-item__header" [class.opened]="item.isOpen"  style="position: relative;">
     <!-- <div class="mdc-ripple-surface" style="position: absolute;top: 0;bottom: 0;right: 0;left: 0;"></div> -->
     <div class="header--control accord-item__logo">
       <span class="accord-item__header--start">
@@ -11,8 +11,8 @@
       {{item.title}}
     </div>
     <div class=" header--control accord-item__collapse">
-      <span class="accord-item__header--end" [ngClass]="{ 'active': isOpen }">
-        <ng-container *ngTemplateOutlet="isImgOpen ? imgOpen : svgOpen; context: { $implicit: openSign, openner: openSign, closer: closeSign, opened: isOpen }"></ng-container>
+      <span class="accord-item__header--end" [ngClass]="{ 'active': item.isOpen }">
+        <ng-container *ngTemplateOutlet="isImgOpen ? imgOpen : svgOpen; context: { $implicit: openSign, openner: openSign, closer: closeSign, opened: item.isOpen }"></ng-container>
       </span>
     </div>
   </header>
@@ -22,11 +22,11 @@
   </section>
 </article>
 
-<ng-template #imgOpen let-open="openner" let-close="closer">
-  <img *ngIf="!isOpen" src="{{open}}" alt="+" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
-  <img *ngIf="isOpen"  src="{{close}}" alt="-" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
+<ng-template #imgOpen let-openImg="openner" let-closeImg="closer">
+  <img *ngIf="!item.isOpen" src="{{openImg}}" alt="+" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
+  <img *ngIf="item.isOpen"  src="{{closeImg}}" alt="-" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
 </ng-template>
 
 <ng-template #svgOpen let-open="openner">
-  <img [src]="open" alt="+" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
+  <img [src]="open" alt="+" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
 </ng-template>

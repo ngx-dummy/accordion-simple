@@ -1,7 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env node
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
-const { resolve } = require('path');
+const { resolve, join } = require('path');
 
 const { promisify } = require('util');
 const { spawn } = require('child_process');
@@ -9,7 +9,7 @@ const simpleGit = require('simple-git/promise');
 const ora = require('ora');
 const spawnAsync = promisify(spawn);
 
-const root = resolve(__dirname, '../..');
+const root = join(__dirname, '../..');
 const git = simpleGit(root);
 
 async function commitPrettier(changedFiles) {
@@ -18,12 +18,9 @@ async function commitPrettier(changedFiles) {
 
 	const stylingSpinner = ora(` Formatting ${targetFiles.length} files `).start();
 
-	await spawnAsync('prettier', ['--config', `${resolve(root, '.prettierrc')}`, '--write', ...targetFiles], {
+	await spawnAsync(join(root, 'node_modules/.bin/', 'prettier.cmd'), ['--config', `${join(root, '.prettierrc')}`, '--write', ...targetFiles], {
 		stdio: ['ignore', 'ignore', process.stderr],
-		cwd: root,
-		env: {
-			PATH: `${resolve(root, 'node_modules/.bin')}:${process.env.PATH}`
-		}
+		cwd: root
 	});
 	stylingSpinner.stopAndPersist({
 		symbol: '✅'

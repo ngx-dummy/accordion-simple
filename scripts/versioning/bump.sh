@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env node
 ':'; //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
 
