@@ -1,4 +1,4 @@
 export interface IToggleer {
-  itemId: number;
-  isOpen: boolean;
+	itemId: number;
+	isOpen: boolean;
 }

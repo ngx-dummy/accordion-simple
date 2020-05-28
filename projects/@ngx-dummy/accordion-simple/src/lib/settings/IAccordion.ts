@@ -1,18 +1,17 @@
 export interface Accordion extends AccordionItems {
-  id: string | number | null;
-  name: string | null;
-  isOpen?: boolean | null;
-  openedItem?: number | string | null;
-};
+	id: string | number | null;
+	name: string | null;
+	isOpen?: boolean | null;
+	openedItem?: number | string | null;
+}
 
 export interface AccordionItems {
-  items: AccordionItem[];
+	items: AccordionItem[];
 }
 
 export type AccordionItem = {
-  id?: number | null;
-  title: string;
-  body: string;
-  isOpen?: boolean;
-}
-  & { itemNum?: number | string | null; };
+	id?: number | null;
+	title: string;
+	body: string;
+	isOpen?: boolean;
+} & { itemNum?: number | string | null };

@@ -17,8 +17,8 @@ async function commitPrettier(changedFiles) {
 	if (!targetFiles || !targetFiles.length) return;
 
 	const stylingSpinner = ora(` Formatting ${targetFiles.length} files `).start();
-
-	await spawnAsync(join(root, 'node_modules/.bin/', 'prettier.cmd'), ['--config', `${join(root, '.prettierrc')}`, '--write', ...targetFiles], {
+	let prettierName = (process.platform === "win32") ? 'prettier.cmd' : 'prettier'
+	await spawnAsync(join(root, 'node_modules/.bin/', prettierName), ['--config', `${join(root, '.prettierrc')}`, '--write', ...targetFiles], {
 		stdio: ['ignore', 'ignore', process.stderr],
 		cwd: root
 	});
