@@ -1,6 +1,6 @@
 $item-header__bg: #4197b2;
 // $item-header__bg--active: #7ea8b4;
-$item-header__bg--active: lighten($item-header__bg, 1%);
+$item-header__bg--active: lighten($item-header__bg, 10%);
 $item-header__bg--opened: darken($item-header__bg, 10%);
 
 :host {

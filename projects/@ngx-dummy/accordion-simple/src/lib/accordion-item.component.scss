@@ -116,7 +116,7 @@
     -moz-user-select: text;
     -webkit-user-select: text;
     user-select: text;
-    touch-action: pinch-zoom double-tap-zoom pan-y;
+    touch-action: pinch-zoom pan-y;
     // background-color: rgba($color: #ccc, $alpha: 0.1) !important;
     // margin: .1rem;
     // padding: 1rem;
@@ -126,25 +126,25 @@
       display: none;
       height: 0;
       padding: 0;
-      // animation: closeItem 1.1s ease;
+      // animation: closeItem 1s ease;
     }
     
     &.opened {
       height: 100%;
       display: block;
-      padding: 2rem;
-      // animation: showItem 1.1s ease;
+      padding: .3rem;
+      // animation: showItem 1s ease;
     }
   }
 
   @keyframes closeItem {
-    from { padding: 2rem; }
+    from { padding: .3rem; }
     to   { padding: 0; }
   };
 
   @keyframes showItem {
+    to   {   padding: .3rem; }
     from {   padding: 0; }
-    to   {   padding: 2rem; }
   };
 
   @keyframes closeIcon {

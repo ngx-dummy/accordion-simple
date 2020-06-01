@@ -4,7 +4,7 @@
     <div class="header--control accord-item__logo">
       <span class="accord-item__header--start">
         <img class="accord-item__header-img" [src]="logo" alt="{{'&#x02261;'}}">
-        {{item.itemNum || 1}}.
+        <span *ngIf="item.itemNum">{{item.itemNum}}.</span>
       </span>
     </div>
     <div class=" header--control accord-item__title">

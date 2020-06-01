@@ -1,23 +1,17 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { isEqual } from 'lodash';
-
-import { arrow_down } from './theming/arrow_down';
-import { AccordionItem, pngBase64ToBlob } from './settings/';
-import { logo as baseLogo } from './theming/iconsbase64';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { AccordionItem } from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion-item',
 	templateUrl: './accordion-item.component.html',
 	styleUrls: ['./accordion-item.component.scss'],
-	// changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordionItemComponent {
-	item: Partial<AccordionItem> = { isOpen: false, title: 'Test Item', body: 'Some (lorem ipsum) body text...', itemNum: 0 };
+	item: Partial<AccordionItem> = { isOpen: false, title: 'Test Item', body: 'Some (lorem ipsum) body text...' };
 	logo = null;
 	isImgOpen = false;
 	openSign = null;
 	closeSign = null;
 
-	constructor() {}
 }

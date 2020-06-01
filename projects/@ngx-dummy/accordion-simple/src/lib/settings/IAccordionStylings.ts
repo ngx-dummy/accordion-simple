@@ -1,37 +1,39 @@
 export interface IAccordionStyling {
 	maxWidth?: string | number | null;
 	numberdItems?: boolean;
-	itemsGutts?: boolean | string;
+	isMultiShow?: boolean;
+	itemsGutts?: number | string | null;
 	margin?: string | number;
 	itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
 }
 
 export type IAccordionItemStyling = {
 	itemId?: number | string | null;
-	FontStyles?: string | null;
-	logo?: string;
-	openSign?: string;
-	closeSign?: string;
-} & IAccordionItemSpacingStyling &
-	IAccordionItemBodyStyling &
-	IAccordionItemHeadStyling;
+	font?: string | null;
+	fontSize?: number | string;
+}
+	& IAccordionItemSpacingStyling
+	& IAccordionItemBodyStyling
+	& IAccordionItemHeadStyling;
 
 export interface IAccordionItemSpacingStyling {
 	padding?: string | number | null;
 	marginBottom?: string | number | null;
+	marginTop?: string | number | null;
 	margin?: string | number | null;
 }
 
 export interface IAccordionItemHeadStyling {
-	headFontStyle?: string | null;
+	headFontSize?: string | null;
+	headFont?: string | null;
 	headColor?: string;
 	headBgColor?: string;
 	headHeight?: string | number | null;
-	openImg?: string | null;
 }
 
 export interface IAccordionItemBodyStyling {
-	bodyFontStyle?: string | null;
+	bodyFont?: string | null;
+	bodyFontSize?: string | null;
 	bodyColor?: string;
 	bodyBgColor?: string;
 	bodyPadding?: string | number | null;

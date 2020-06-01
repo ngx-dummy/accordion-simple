@@ -22,17 +22,36 @@ export class AppComponent {
 	}
 
 	styling: IAccordionStyling = {
-		itemsGutts: '1px',
+		itemsGutts: '0',
 		maxWidth: '99%',
-		// margin: '1rem',
+		margin: '.1rem',
+		numberdItems: false,
 
 		itemStyling: {
-			headBgColor: '#ccc',
-			headColor: 'black',
-			// margin: '1px',
-			bodyBgColor: '#f9f9f9',
+			headBgColor: 'brown',
+			headColor: 'gold',
+			margin: '.1rem',
 			bodyPadding: '.1rem',
-			bodyMargin: '.1rem',
+			bodyMargin: '0',
+
 		},
 	};
+
+
+
+	styling1: IAccordionStyling = {
+		...this.styling,
+		itemsGutts: '1rem',
+		numberdItems: true,
+		isMultiShow: true,
+		itemStyling: {
+			...this.styling.itemStyling,
+			headBgColor: 'darkcyan',
+			headColor: 'white',
+			bodyColor: '#aaffff',
+			bodyBgColor: '#87a3d1',
+			font: '1.8rem Comic Sans MS'
+		}
+	};
+
 }

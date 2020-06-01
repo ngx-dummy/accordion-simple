@@ -1,6 +1,7 @@
-<div class="accordion" *ngIf="accordionList && accordionList.items && accordionList.items.length">
+<div class="accordion" *ngIf="accordionList && accordionList.items && accordionList.items.length" ngxdAccordion>
   <ngxd-accordion-item *ngFor="let item of accordionList.items; let i = index"
     [ngxdAccordionItem]="item"
+    [isNumbered]="isNumbered"
     [openSign]="openSign"
     [logo]="listLogo"
     [closeSign]="closeSign"
