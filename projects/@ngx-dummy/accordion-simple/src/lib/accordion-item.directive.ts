@@ -2,11 +2,9 @@ import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Rend
 import { DomSanitizer } from '@angular/platform-browser';
 import { isEqual, clone, isNil } from 'lodash';
 
-import { logo as baseLogo } from './theming/iconsbase64';
-import { arrow_down } from './theming/arrow_down';
-import { IToggleer, IAccordionItemStyling, AccordionItem, pngBase64ToBlob } from './settings/';
 import { AccordionItemComponent } from './accordion-item.component';
-import { logo } from './theming/iconsbase64';
+import { IToggleer, IAccordionItemStyling, AccordionItem, pngBase64ToBlob } from './settings/';
+import { logo as baseLogo, arrow_down } from './theming/';
 
 const l = console.log;
 
@@ -14,7 +12,8 @@ const l = console.log;
 	selector: '[ngxdAccordionItem]',
 	host: {
 		'[class.item-opened]': 'hostCmp.item.isOpen',
-		'(click)': 'onClick($event.currentTarget)',
+		'(dblclick)': 'onDblClick([$event.target, $event.currentTarget])',
+		'(click)': 'onClick([$event.target, $event.currentTarget])'
 	},
 })
 export class AccordionItemDirective implements AfterViewInit {
@@ -31,15 +30,11 @@ export class AccordionItemDirective implements AfterViewInit {
 	set logo(img: string) {
 		if (this._logo && !!this._logo.length) return;
 		if (this._logo && isEqual(img, this._logo)) return;
-		this._logo = img && !!img.length ? img : this.getPng(baseLogo);
+		this._logo = img && !!img.length ? img : this._baseLogoImg;
 	}
 	get logo() {
 		return this._logo;
 	}
-	@Input() openSign = null;
-	@Input() closeSign = null;
-	@Input() isNumbered = false;
-	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
 	@Input('styling') itemStyles: IAccordionItemStyling = {
 		headHeight: '50px',
 		headBgColor: '#ccc',
@@ -49,11 +44,16 @@ export class AccordionItemDirective implements AfterViewInit {
 		fontSize: '10px',
 		bodyPadding: '0',
 	};
-	_logo = null;
-	logoEl: HTMLDivElement;
-	titleEl: HTMLDivElement;
-	collapseEl: HTMLDivElement;
+	@Input() bodyDblckcClose = false;
+	@Input() openSign = null;
+	@Input() closeSign = null;
+	@Input() isNumbered = false;
+	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
+
+	private _logo = null;
 	private _item: AccordionItem;
+	private _baseLogoImg = this.getPng(baseLogo);
+	private _basePlusImg = this.getSvg(arrow_down);
 
 	constructor(private hostCmp: AccordionItemComponent, private hostElRef: ElementRef<HTMLElement>, private render: Renderer2, private sanitaizer: DomSanitizer) { }
 
@@ -71,14 +71,16 @@ export class AccordionItemDirective implements AfterViewInit {
 
 	ngAfterViewInit() {
 		const nativeEl = this.hostElRef.nativeElement;
-		const itemEl: HTMLDivElement = nativeEl.getElementsByClassName('accord-item').item(0) as HTMLDivElement;
-		const headEl: HTMLDivElement = nativeEl.getElementsByClassName('accord-item__header').item(0) as HTMLDivElement;
-		const bodyEl: HTMLDivElement = nativeEl.getElementsByClassName('accord-item__body').item(0) as HTMLDivElement;
+		const itemEl = nativeEl.getElementsByClassName('accord-item').item(0) as HTMLElement;
+		const headEl = nativeEl.getElementsByClassName('accord-item__header').item(0) as HTMLElement;
+		const bodyEl = nativeEl.getElementsByClassName('accord-item__body').item(0) as HTMLElement;
 
 		this.render.setStyle(itemEl, 'margin', this.itemStyles.margin ?? '0');
 		this.render.setStyle(itemEl, 'padding', this.itemStyles.padding ?? '0');
 		this.itemStyles.font && this.render.setStyle(itemEl, 'font', this.itemStyles.font);
 		this.itemStyles.fontSize && this.render.setStyle(itemEl, 'font-size', this.itemStyles.fontSize);
+		this.itemStyles.fontStyle && this.render.setStyle(itemEl, 'font-style', this.itemStyles.fontStyle);
+		this.itemStyles.fontFamily && this.render.setStyle(itemEl, 'font-family', this.itemStyles.fontFamily);
 		this.render.setStyle(itemEl, 'margin-bottom', this.itemStyles.marginBottom);
 		this.render.setStyle(itemEl, 'margin-top', this.itemStyles.marginTop);
 
@@ -89,32 +91,42 @@ export class AccordionItemDirective implements AfterViewInit {
 		this.render.setStyle(headEl, 'font-size', this.itemStyles.headFontSize ?? '1.1rem');
 		this.render.setStyle(headEl, 'color', this.itemStyles.headColor ?? '#ccc');
 
-		// this.stylingObj?.bodyBgColor && this.render.setStyle(bodyEl, 'transition', 'all .1s ease');
+		this.render.setStyle(bodyEl, 'transition', 'all .1s ease');
 		this.render.setStyle(bodyEl, 'background-color', this.itemStyles.bodyBgColor ?? 'rgba(200, 200, 200, 0.2)');
 		this.render.setStyle(bodyEl, 'color', this.itemStyles.bodyColor ?? '#000');
 		this.render.setStyle(bodyEl, 'padding', this.itemStyles.bodyPadding ?? '.1rem');
 		this.render.setStyle(bodyEl, 'margin', this.itemStyles.bodyMargin ?? '0');
 		this.itemStyles.bodyFont && this.render.setStyle(bodyEl, 'font', this.itemStyles.bodyFont);
 		this.render.setStyle(bodyEl, 'font-size', this.itemStyles.bodyFontSize ?? '1rem');
+		this.bodyDblckcClose && this.hostCmp.item.isOpen && this.render.setStyle(bodyEl, 'cursor', 'grab');
 	}
 
-	onClick({ dataset }) {
-		const { idx } = dataset;
-		this.toggle(+idx);
+	// onClick({ dataset }) {
+	onClick([{ outerHTML }, { dataset }]) {
+		if (outerHTML.indexOf('header') > -1) {
+			// if($event.target)
+			const { idx } = dataset;
+			this.toggle(+idx);
+		}
 	}
 
-	toggle(itemId = 0) {
-		let isHostOpen = this.hostCmp.item.isOpen;
-		let freshIsOpen = !isHostOpen;
-		this.hostCmp.item.isOpen = freshIsOpen;
-		this.toggled.emit({ itemId, isOpen: freshIsOpen });
-		// console.log('Clicked ', itemId);
+	onDblClick([{ outerHTML }, { dataset }]) {
+		if (this.bodyDblckcClose && outerHTML.indexOf('accord-item__body') > -1) {
+			// if($event.target)
+			const { idx } = dataset;
+			this.toggle(+idx);
+		}
 	}
 
-	get isImgOpen() {
+	private toggle(itemId = 0) {
+		this.hostCmp.item.isOpen = !this.hostCmp.item.isOpen;
+		this.toggled.emit({ itemId, isOpen: this.hostCmp.item.isOpen });
+	}
+
+	private get isImgOpen() {
 		const imgOpen = this.closeSign && !!this.closeSign.length && this.openSign && !!(<string>this.openSign).length;
 		if (!imgOpen) {
-			this.openSign = this.getSvg(arrow_down);
+			this.openSign = this._basePlusImg;
 			this.hostCmp.openSign = this.openSign;
 		}
 		return imgOpen;

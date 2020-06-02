@@ -1,6 +1,7 @@
 export interface IAccordionStyling {
 	maxWidth?: string | number | null;
 	numberdItems?: boolean;
+	bodyDbclkcloseItems?: boolean;
 	isMultiShow?: boolean;
 	itemsGutts?: number | string | null;
 	margin?: string | number;
@@ -11,6 +12,8 @@ export type IAccordionItemStyling = {
 	itemId?: number | string | null;
 	font?: string | null;
 	fontSize?: number | string;
+	fontFamily?: string;
+	fontStyle?: 'normal' | 'italic' | 'oblique' | 'initial' | 'inherit';
 }
 	& IAccordionItemSpacingStyling
 	& IAccordionItemBodyStyling

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { MDCRipple } from '@material/ripple';
+
 import { IAccordionStyling } from '@ngx-dummy/accordion-simple/index';
 import { dummyAccordionList1, dummyAccordionList2 } from './helpers/dummy-data';
 
-import { MDCRipple } from '@material/ripple';
 
 @Component({
 	selector: 'app-root',
@@ -19,38 +20,42 @@ export class AppComponent {
 		btnRipple.style.width = '100%';
 		btnRipple.style.display = 'flex';
 		let ripple = new MDCRipple(btnRipple);
+		return () => ripple.destroy();
 	}
 
 	styling: IAccordionStyling = {
-		itemsGutts: '0',
+		itemsGutts: '.1rem',
 		maxWidth: '99%',
 		margin: '.1rem',
-		numberdItems: false,
+		numberdItems: true,
 
 		itemStyling: {
-			headBgColor: 'brown',
-			headColor: 'gold',
+			headBgColor: '#89a',
+			headColor: '#fff',
 			margin: '.1rem',
-			bodyPadding: '.1rem',
-			bodyMargin: '0',
-
-		},
+			bodyPadding: 11,
+			bodyMargin: '0'
+		}
 	};
 
 
 
 	styling1: IAccordionStyling = {
 		...this.styling,
-		itemsGutts: '1rem',
-		numberdItems: true,
+		itemsGutts: 0,
+		numberdItems: false,
+		margin: '0 auto',
 		isMultiShow: true,
+		maxWidth: '94%',
+		bodyDbclkcloseItems: true,
 		itemStyling: {
 			...this.styling.itemStyling,
 			headBgColor: 'darkcyan',
-			headColor: 'white',
+			headColor: 'yellow',
 			bodyColor: '#aaffff',
 			bodyBgColor: '#87a3d1',
-			font: '1.8rem Comic Sans MS'
+			font: 'Comic Sans MS',
+			margin: '0'
 		}
 	};
 

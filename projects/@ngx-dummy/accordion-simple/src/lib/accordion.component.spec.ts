@@ -31,7 +31,6 @@ describe('An Accordion component', () => {
       const sampleItemStyling = { ...sampleStyling.itemStyling, fontSize: '1.8rem',  headBgColor: '#ccc', bodyColor: 'brown', bodyBgColor: 'green' } as IAccordionItemStyling;
       const additionItemStyling = { bodyBgColor: '#a88' };
       accordCmp.accordionStyling.itemStyling = [sampleItemStyling, additionItemStyling];
-      accordCmp.ngOnInit();
       accordCmpFixture.detectChanges();
     });
 
