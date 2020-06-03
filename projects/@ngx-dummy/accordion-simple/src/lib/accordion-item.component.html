@@ -23,10 +23,10 @@
 </article>
 
 <ng-template #imgOpen let-openImg="openner" let-closeImg="closer">
-  <img *ngIf="!item.isOpen" src="{{openImg}}" alt="+" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
-  <img *ngIf="item.isOpen"  src="{{closeImg}}" alt="-" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
+  <img  class="accord-item__header--end-img" *ngIf="!item.isOpen" src="{{openImg}}" alt="+" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
+  <img  class="accord-item__header--end-img" *ngIf="item.isOpen"  src="{{closeImg}}" alt="-" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
 </ng-template>
 
 <ng-template #svgOpen let-open="openner">
-  <img [src]="open" alt="+" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
+  <img class="accord-item__header--end-img" [src]="open" alt="+" [ngClass]="{ 'open': item.isOpen, 'close': !item.isOpen }">
 </ng-template>

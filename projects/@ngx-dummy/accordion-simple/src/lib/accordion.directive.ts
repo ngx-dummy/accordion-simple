@@ -1,17 +1,19 @@
-import { Directive, ElementRef, OnInit, AfterViewInit, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, OnInit, AfterViewInit, Renderer2, Inject } from '@angular/core';
 
 import { AccordionComponent } from './accordion.component';
 import { IAccordionItemStyling } from './settings/';
-
-const l = console.log;
 
 @Directive({
 	selector: '[ngxdAccordion]',
 })
 export class AccordionDirective implements OnInit, AfterViewInit {
 	accordEl: HTMLElement;
-	
-	constructor(private hostEl: ElementRef<HTMLElement>, private render: Renderer2, private accordCmp: AccordionComponent) { }
+
+	constructor(
+		@Inject(ElementRef) private hostEl: ElementRef<HTMLElement>,
+		@Inject(AccordionComponent) private accordCmp: AccordionComponent,
+		private render: Renderer2
+	) { }
 
 	ngOnInit() {
 		this.accordEl = this.hostEl.nativeElement;

@@ -1,13 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
-// This is just to center the spinner
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
 
-html, body { height: 100%; padding: 0; margin: 0; box-sizing: border-box; font-size: 18px; }
+:root {
+  --light-bg: #fafafa;
+  --medium-bg: #f4f4f4;
+  --dark-bg: #efefef;
+  --text-color: #2c3e50;
+  --accent-color: #42b883;
+  --warn-color: #f85a40;
+}
 
-body {
+
+
+*:focus {
+  outline: none;
+}
+
+body,
+html {
+  box-sizing: border-box;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--light-bg);
+  color: var(--text-color);
+  overflow-x: hidden;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 
 $offset: 187;
 $duration: 1.4s;
@@ -68,4 +93,8 @@ $duration: 1.4s;
   padding: 0;
   margin: 0;
   background: rgba($color: #555, $alpha: 0.1);
+}
+
+.light-bg {
+  background: radial-gradient(var(--dark-bg),var(--light-bg));
 }

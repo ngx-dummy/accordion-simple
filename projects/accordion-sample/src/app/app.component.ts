@@ -33,8 +33,8 @@ export class AppComponent {
 			headBgColor: '#89a',
 			headColor: '#fff',
 			margin: '.1rem',
-			bodyPadding: 11,
-			bodyMargin: '0'
+			bodyPadding: '1rem',
+			bodyMargin: 1
 		}
 	};
 
@@ -55,7 +55,9 @@ export class AppComponent {
 			bodyColor: '#aaffff',
 			bodyBgColor: '#87a3d1',
 			font: 'Comic Sans MS',
-			margin: '0'
+			bodyPadding: 1,
+			bodyMargin: 0,
+			margin: 0
 		}
 	};
 
