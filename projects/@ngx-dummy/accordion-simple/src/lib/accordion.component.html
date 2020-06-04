@@ -1,14 +1,15 @@
-<div class="accordion" *ngIf="accordionList && accordionList.items && accordionList.items.length" ngxdAccordion>
-  <ngxd-accordion-item *ngFor="let item of accordionList.items; let i = index"
+<div class="accordion" *ngIf="accordionList && accordionList.items && !!accordionList.items.length" ngxdAccordion>
+  <ngxd-accordion-item *ngFor="let item of items; trackBy: trackByFn"
     [ngxdAccordionItem]="item"
     [isNumbered]="isNumbered"
+    [isMultiSelect]="multiSelect"
+    [bodyDblckcClose]="bodyDblckcClose"
     [openSign]="openSign"
     [logo]="listLogo"
     [closeSign]="closeSign"
     [styling]="itemStyle"
-    [bodyDblckcClose]="bodyDblckcClose"
     (toggled)="onItemToggled($event)"
-    [attr.data-idx]="i"
+    [attr.data-idx]="item.id"
   >
   </ngxd-accordion-item>
 </div>

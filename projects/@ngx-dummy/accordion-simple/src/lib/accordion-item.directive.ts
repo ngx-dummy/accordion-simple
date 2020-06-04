@@ -1,22 +1,26 @@
-import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { isEqual, clone, isNil } from 'lodash';
+import { isEqual, isNil } from 'lodash';
 
 import { AccordionItemComponent } from './accordion-item.component';
-import { IToggleer, IAccordionItemStyling, AccordionItem, pngBase64ToBlob } from './settings/';
+import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg } from './settings/';
 import { logo as baseLogo, arrow_down } from './theming/';
+import { AccordionOpenService } from './accordion-open.service';
+import { startWith, filter, map, concatMap, tap, pluck } from 'rxjs/operators';
+import { iif, of } from 'rxjs';
 
 const l = console.log;
 
 @Directive({
 	selector: '[ngxdAccordionItem]',
 	host: {
-		'[class.item-opened]': 'hostCmp.item.isOpen',
+		'[class.item-last-opened]': 'isOpen',
 		'(dblclick)': 'onDblClick([$event.target, $event.currentTarget])',
 		'(click)': 'onClick([$event.target, $event.currentTarget])'
 	},
 })
 export class AccordionItemDirective implements AfterViewInit {
+	isOpen = false
 	@Input('ngxdAccordionItem')
 	set item(val) {
 		if (isNil(val)) throw new Error('Proper Item of type <IAccordionItem> should be provided.. ');
@@ -44,18 +48,24 @@ export class AccordionItemDirective implements AfterViewInit {
 		fontSize: '10px',
 		bodyPadding: '0',
 	};
+	@Input() isMultiSelect = false;
 	@Input() bodyDblckcClose = false;
 	@Input() openSign = null;
 	@Input() closeSign = null;
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
-
 	private _logo = null;
 	private _item: AccordionItem;
-	private _baseLogoImg = this.getPng(baseLogo);
-	private _basePlusImg = this.getSvg(arrow_down);
+	private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
+	private _basePlusImg = getSvg(arrow_down, this.sanitaizer);
 
-	constructor(private hostCmp: AccordionItemComponent, private hostElRef: ElementRef<HTMLElement>, private render: Renderer2, private sanitaizer: DomSanitizer) { }
+	constructor(
+		@Inject(AccordionItemComponent) private hostCmp: AccordionItemComponent,
+		@Inject(ElementRef) private hostElRef: ElementRef<HTMLElement>,
+		private itemStatusSvc: AccordionOpenService,
+		private render: Renderer2,
+		private sanitaizer: DomSanitizer
+	) { }
 
 	ngOnInit() {
 		this._item = {
@@ -63,10 +73,17 @@ export class AccordionItemDirective implements AfterViewInit {
 			itemNum: (this.isNumbered) ? this._item.id + 1 : null
 		};
 		this.hostCmp.item = { ...this._item } as Partial<AccordionItem>;
-		this.hostCmp.closeSign = clone(this.closeSign);
-		this.hostCmp.openSign = clone(this.openSign);
-		this.hostCmp.logo = clone(this.logo);
+		this.hostCmp.closeSign = this.closeSign;
+		this.hostCmp.openSign = this.openSign;
+		this.hostCmp.logo = this.logo;
 		this.hostCmp.isImgOpen = this.isImgOpen;
+
+		this.hostCmp.isOpen$ = this.itemStatusSvc.itemOpen$.pipe(
+			filter(val => !!val),
+			concatMap(toggles => of(toggles.find(t => t.itemId == this._item.id))),
+			pluck('isOpen'),
+			tap(isOpen => this.isOpen = isOpen)
+		);
 	}
 
 	ngAfterViewInit() {
@@ -98,13 +115,11 @@ export class AccordionItemDirective implements AfterViewInit {
 		this.render.setStyle(bodyEl, 'margin', this.itemStyles.bodyMargin ?? '0');
 		this.itemStyles.bodyFont && this.render.setStyle(bodyEl, 'font', this.itemStyles.bodyFont);
 		this.render.setStyle(bodyEl, 'font-size', this.itemStyles.bodyFontSize ?? '1rem');
-		(this.bodyDblckcClose && this.hostCmp.item.isOpen) && this.render.setStyle(bodyEl, 'cursor', 'grab');
+		(this.bodyDblckcClose) && this.render.setStyle(bodyEl, 'cursor', 'grab');
 	}
 
-	// onClick({ dataset }) {
 	onClick([{ outerHTML }, { dataset }]) {
 		if (outerHTML.indexOf('header') > -1) {
-			// if($event.target)
 			const { idx } = dataset;
 			this.toggle(+idx);
 		}
@@ -112,15 +127,13 @@ export class AccordionItemDirective implements AfterViewInit {
 
 	onDblClick([{ outerHTML }, { dataset }]) {
 		if (this.bodyDblckcClose && outerHTML.indexOf('accord-item__body') > -1) {
-			// if($event.target)
 			const { idx } = dataset;
 			this.toggle(+idx);
 		}
 	}
 
 	private toggle(itemId = 0) {
-		this.hostCmp.item.isOpen = !this.hostCmp.item.isOpen;
-		this.toggled.emit({ itemId, isOpen: this.hostCmp.item.isOpen });
+		this.toggled.emit({ itemId, isOpen: !this.isOpen });
 	}
 
 	private get isImgOpen() {
@@ -132,16 +145,4 @@ export class AccordionItemDirective implements AfterViewInit {
 		return imgOpen;
 	}
 
-	private getSvg(file: string) {
-		return this.sanitazeRes('data:image/svg+xml;base64,' + btoa(file));
-	}
-
-	private getPng(file: string) {
-		if (this._logo) return this._logo;
-		return this.sanitazeRes(URL.createObjectURL(pngBase64ToBlob(file)));
-	}
-
-	private sanitazeRes(item: string) {
-		return this.sanitaizer.bypassSecurityTrustResourceUrl(item);
-	}
 }

@@ -2,13 +2,14 @@ import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'test-host',
   template: `
-    <header><h4 style="color: #9fa;">Test component</h4></header>
-    <main>
-      <div id="container"></div>
-    </main>
-    <footer><small>end of test</small></footer>
+    <section class="container" style="background-color: #ccc">
+      <header><h4 style="text-align: center"> --- Test component start --- </h4></header>
+      <main>
+        <div id="container"></div>
+      </main>
+      <footer style="text-align: center"><small>--- Test component end ---</small></footer>
+    </section>
   `
 })
 export class TestHostComponent{

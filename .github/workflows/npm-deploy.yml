@@ -26,6 +26,6 @@ jobs:
         npm install -g @angular/cli > /dev/null
         npm ci
         npm run build:prod --if-present
-    - run: npm run publish:full --if-present
+    - run: npm run publish --if-present
       env: 
         NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

@@ -1,6 +1,7 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, AfterContentChecked, QueryList, ViewChildren } from '@angular/core';
 import { Accordion, AccordionItems, IAccordionStyling, IAccordionItemStyling, IToggleer, AccordionItem } from './settings/';
-import { AccordionItemComponent } from './accordion-item.component';
+import { AccordionOpenService } from './accordion-open.service';
+import { clone } from 'lodash';
 
 let idx = 0;
 const l = console.log;
@@ -9,16 +10,23 @@ const l = console.log;
 	selector: 'ngxd-accordion',
 	templateUrl: './accordion.component.html',
 	styleUrls: ['./accordion.component.scss'],
+	providers: [AccordionOpenService],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AccordionComponent implements OnInit, AfterContentChecked {
-	@ViewChildren(AccordionItemComponent) accordItemRef: QueryList<AccordionItemComponent>;
+export class AccordionComponent implements OnInit {
 	@HostBinding('attr.data-item-opened') openedItem = null;
 	@HostBinding('attr.id') get id() { return `accordion_${this.attributes.id}`; }
 	@HostBinding('attr.name') get name() { return this.attributes.name; }
 	@Input('accordionList')
 	set accordionList(acc: Accordion) {
-		this._accord = Object.assign({} as AccordionItems, { items: acc.items, name: acc['name'] ?? 'Sample accordion', id: (acc['id'] ?? `acc_${idx}`) });
+		this._accord = Object.assign(
+			{} as AccordionItems,
+			{
+				items: acc.items.map((item, i) => (item.id ? { ...item } : { ...item, id: i })),
+				name: acc['name'] ?? 'Sample accordion',
+				id: (acc['id'] ?? `acc_${idx}`)
+			}
+		);
 	}
 	get accordionList(): Accordion {
 		return this._accord;
@@ -41,41 +49,30 @@ export class AccordionComponent implements OnInit, AfterContentChecked {
 			padding: '0',
 		},
 	};
-	items: AccordionItem[] = null;
-	accordionItemsCmps: AccordionItemComponent[];
-	bodyDblckcClose = false;
-	itemStyle: IAccordionItemStyling;
 	private _accord: Accordion = null;
+	items: AccordionItem[] = null;
+	bodyDblckcClose = false;
+	multiSelect = false;
+	itemStyle: IAccordionItemStyling;
 	isNumbered = false;
 
+	constructor(private itemsopenSvc: AccordionOpenService) { }
+
 	ngOnInit() {
-		this.items = this._accord.items;
-	}
-
-	ngAfterContentChecked() {
-
-	}
-
-	ngAfterViewInit() {
-		this.accordionItemsCmps = Array.from(this.accordItemRef);
-
+		this.items = clone(this._accord.items);
+		this.bodyDblckcClose = this.accordionStyling.bodyDbclkcloseItems ?? false;
+		this.multiSelect = this.accordionStyling.isMultiShow ?? false;
 	}
 
 	onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
 		this.openedItem = isOpen ? itemId : null;
-		this.accordionList.items = this.accordionList.items.map((item) => (item.id === +itemId ? { ...item, isOpen } : { ...item, isOpen: false })) ?? [];
-		this.accordionItemsCmps.forEach((cmp, i) => {
-			if (i == itemId) {
-				cmp.isOpen = isOpen;
-			} else {
-				cmp.isOpen = false;
-			}
-			return cmp;
-		});
+		this.items = this.items.map((item) => ((item.id === +itemId) ? { ...item, isOpen } : { ...item, isOpen: (this.multiSelect) ? item.isOpen : false })) ?? [];
+		// this.itemsopenSvc.setItemsOpen({ itemId, isOpen });
+		this.itemsopenSvc.setItemsOpen(this.items.map(item => ({ itemId: item.id, isOpen: item.isOpen } as IToggleer)));
 	}
 
 	trackByFn(ind, item) {
-		return ind;
+		return item.id;
 	}
 
 	private get attributes(): Partial<Accordion> {
@@ -84,4 +81,3 @@ export class AccordionComponent implements OnInit, AfterContentChecked {
 	}
 
 }
-1;
