@@ -23,10 +23,14 @@
 [![Donations](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ovsyukov)
 [![downloads](https://data.jsdelivr.com/v1/package/npm/@ngx-dummy/accordion-simple/badge)](https://www.jsdelivr.com/package/npm/@ngx-dummy/accordion-simple)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5233cc1-3156-4033-9d43-5db2b6cd351b/deploy-status)](https://accordion-simple-tester.netlify.app/)
+
+[![Issues](https://img.shields.io/github/issues/vovansuper/accordion-simple)](https://github.com/VovanSuper/accordion-simple/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ngx-dummy/accordion-simple.svg?style=social&label=Fork)](https://github.com/ngx-dummy/accordion-simple/fork)
 [![GitHub stars](https://img.shields.io/github/stars/ngx-dummy/accordion-simple.svg?style=social&label=Star)](https://github.com/ngx-dummy/accordion-simple)
 
 ---
+
+###  https://vovansuper.github.io/accordion-simple
 
 ### Installation:
 
@@ -41,7 +45,58 @@ npm install --save @ngx-dummy/accordion-simple
 ```
 
 ##### .. use (*in your Angular/Ionic app*):
-<script src="https://gist.github.com/VovanSuper/ad3087c382e99525eab04776683dbcf2.js"></script>
+
+```typescript
+import { NgModule, Component, enableProdMode } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import {
+  AccordionModule,
+  Accordion,
+  IAccordionStyling
+} from 'https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js';
+
+@Component({
+  selector: 'my-app',
+  template: '<ngxd-accordion [accordionList]="sampleAccordionData" [accordionStyling]="styling"></ngxd-accordion>'
+})
+class AppCmp {
+  sampleAccordionData: Accordion = {
+    name: 'sample_accordion',
+    items: [{
+        title: 'Card 1',
+        body:
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione'
+      }, {
+        title: 'Card 2',
+        body: `
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas.
+        `
+      }]
+  };
+  styling: IAccordionStyling = {
+    itemsGutts: '1px',
+    maxWidth: '99%',
+    itemStyling: {
+      headBgColor: '#ccc',
+      headColor: 'black',
+      bodyBgColor: '#f9f9f9',
+      bodyPadding: '1rem',
+      bodyMargin: '.1rem'
+    }
+  };
+}
+
+@NgModule({
+  imports: [BrowserModule, AccordionModule],
+  declarations: [AppCmp],
+  bootstrap: [AppCmp]
+})
+class AppModule {}
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+// inside your 'index.html' :  <my-app>loading</my-app>
+```
 
 
 ### or check the sibling [*sample* app](https://github.com/VovanSuper/accordion-simple/tree/master/projects/accordion-sample) :
@@ -54,7 +109,7 @@ $~> npm install -g @angular/cli@latest && npm i
 $~> npm run sample
 ```
 
-##### **or .. Try code _directly_:**
+##### **or .. Try _directly_:**
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vovansuper/accordion-simple)
 
@@ -79,9 +134,13 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 
 ## Documentation
 
-    General typeDoc generated types of the Accordion-simple library are available in [`docs`](./docs/typedocs/globals.html)
+ * General typeDoc generated types of the Accordion-simple library are available in [[docs](./docs/typedocs/globals.html)]
 
-* Base component to use as is [`<ngxd-accordion>`](./docs/typedocs/classes/_lib_accordion_component_.accordioncomponent.html)
+* Base component to use as is [[`<ngxd-accordion>`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts)]
+
+* [`Accordion`](./docs/typedocs/classes/_lib_accordion_component_.accordioncomponent.html) should have `Input` on type [[IAccordion]./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
+
+* Sample usage vovansuper.github.io/accordion-simple
 
 ---
 

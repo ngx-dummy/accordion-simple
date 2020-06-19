@@ -9,11 +9,10 @@
     "experimentalDecorators": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "importHelpers": true,
     "target": "es2015",
     "lib": [
-      "ES2020",
-      "dom"
+      "dom",
+      "ES2020"
     ],
     "paths": {
       "@ngx-dummy/accordion-simple/*": [

@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.2.10",
+  "version": "0.2.12",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
@@ -43,16 +43,16 @@
     "build:prod": "ng b --prod",
     "build:sample": "ng b accordion-sample",
     "build:sample:prod": "ng b accordion-sample --prod  -- --base-href /accordion-simple/",
-    "cp:sample:docs": "cp -r ./dist/accordion-sample/** ./docs",
     "publish:exec": "sh ./scripts/publish.sh",
     "publish:full": "run-s clean:dist build:prod publish:exec",
-    "docs:gh-pages": "run-s build:sample:prod cp:sample:docs",
+    "docs:gh-pages": "sh ./scripts/docs.sh",
     "docs:typedocs": "sh ./scripts/typedocs.sh",
     "docs": "run-s clean:docs docs:gh-pages docs:typedocs",
     "prepush:origin": "npm run docs",
     "push:origin": "sh ./scripts/push.sh",
     "test": "ng test",
     "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress",
+    "prerelease": "npm run docs",
     "release": "sh ./scripts/release.sh"
   },
   "dependencies": {
