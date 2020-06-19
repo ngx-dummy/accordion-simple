@@ -145,6 +145,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 ---
 
 ##### Redistribution
+Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 

@@ -43,7 +43,6 @@ jobs:
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
-
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:
