@@ -1,13 +1,11 @@
 import { Directive, ElementRef, OnInit, AfterViewInit, Renderer2, Inject } from '@angular/core';
-
 import { AccordionComponent } from './accordion.component';
 import { IAccordionItemStyling } from './settings/';
 
 @Directive({
-	selector: '[ngxdAccordion]',
+	selector: '[ngxdAccordion]'
 })
 export class AccordionDirective implements OnInit, AfterViewInit {
-	accordEl: HTMLElement;
 
 	constructor(
 		@Inject(ElementRef) private hostEl: ElementRef<HTMLElement>,
@@ -16,16 +14,15 @@ export class AccordionDirective implements OnInit, AfterViewInit {
 	) { }
 
 	ngOnInit() {
-		this.accordEl = this.hostEl.nativeElement;
-		this.accordCmp.isNumbered = this.accordCmp.accordionStyling.numberdItems;
+		this.accordCmp.isNumbered = this.accordCmp.accordionStyling.numberdItems ?? false;
 		this.accordCmp.bodyDblckcClose = this.accordCmp.accordionStyling.bodyDbclkcloseItems ?? false;
-		this.accordCmp.accordionList.items = this.accordCmp.accordionList.items.map((item, i) => ({ ...item, id: i }));
+		this.accordCmp.accordionList.items = this.accordCmp.accordionList?.items?.map((item, i) => ({ ...item, id: i })) ?? [];
 
 		let itemStyles: IAccordionItemStyling = (Array.isArray(this.accordCmp.accordionStyling.itemStyling)) ?
 			this.accordCmp.accordionStyling.itemStyling.reduce((accu = {}, curr) => ({ ...accu, ...curr }))
 			: { ...this.accordCmp.accordionStyling.itemStyling };
 
-		const itemsGutts = this.accordCmp.accordionStyling.itemsGutts;
+		const itemsGutts = this.accordCmp.accordionStyling.itemsGutts ?? 0;
 		itemStyles = {
 			padding: '0',
 			marginBottom: itemsGutts,
@@ -38,7 +35,8 @@ export class AccordionDirective implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		this.render.setStyle(this.accordEl, 'max-width', this.accordCmp.accordionStyling.maxWidth ?? '100%');
-		this.render.setStyle(this.accordEl, 'margin', this.accordCmp.accordionStyling.margin ?? '0');
+		let accordEl = this.hostEl.nativeElement;
+		this.render.setStyle(accordEl, 'max-width', this.accordCmp.accordionStyling.maxWidth ?? '100%');
+		this.render.setStyle(accordEl, 'margin', this.accordCmp.accordionStyling.margin ?? '0');
 	}
 }

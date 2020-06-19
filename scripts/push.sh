@@ -10,6 +10,7 @@ if [ "$msg" != "" ];
 then
   git add .
   git commit -am "$msg"
+  echo Start pushing to $(git remote get-url origin) ..
   git push origin
 else
   echo Pleae enter a commit message

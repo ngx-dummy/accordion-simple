@@ -1,17 +1,8 @@
-.container {
-  // display: flex;
-  // flex-direction: row;
-  
-  .row {
-    display: block;
-    margin: 1rem 0;
-
-    .col-12 {
-      display: block;
-      overflow: hidden;
-    }
-    .cornered {
-      border-radius: 1.1rem;
-    }
+@media screen and (min-width: 840px) {
+  .align {
+      line-height: 100%;
   }
+}
+.mb-1 {
+  margin-bottom: 1rem;
 }

@@ -1,26 +1,26 @@
-import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { isEqual, isNil } from 'lodash';
+import { filter, concatMap, tap, pluck } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { isEqual, isNil, isNaN } from 'lodash';
 
-import { AccordionItemComponent } from './accordion-item.component';
 import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg } from './settings/';
+import { AccordionItemComponent } from './accordion-item.component';
 import { logo as baseLogo, arrow_down } from './theming/';
 import { AccordionOpenService } from './accordion-open.service';
-import { startWith, filter, map, concatMap, tap, pluck } from 'rxjs/operators';
-import { iif, of } from 'rxjs';
 
 const l = console.log;
 
 @Directive({
 	selector: '[ngxdAccordionItem]',
 	host: {
-		'[class.item-last-opened]': 'isOpen',
+		'[class.opened]': 'isOpen',
 		'(dblclick)': 'onDblClick([$event.target, $event.currentTarget])',
 		'(click)': 'onClick([$event.target, $event.currentTarget])'
-	},
+	}
 })
-export class AccordionItemDirective implements AfterViewInit {
-	isOpen = false
+export class AccordionItemDirective implements OnInit, AfterViewInit {
+	isOpen = false;
 	@Input('ngxdAccordionItem')
 	set item(val) {
 		if (isNil(val)) throw new Error('Proper Item of type <IAccordionItem> should be provided.. ');
@@ -48,7 +48,6 @@ export class AccordionItemDirective implements AfterViewInit {
 		fontSize: '10px',
 		bodyPadding: '0',
 	};
-	@Input() isMultiSelect = false;
 	@Input() bodyDblckcClose = false;
 	@Input() openSign = null;
 	@Input() closeSign = null;
@@ -62,7 +61,7 @@ export class AccordionItemDirective implements AfterViewInit {
 	constructor(
 		@Inject(AccordionItemComponent) private hostCmp: AccordionItemComponent,
 		@Inject(ElementRef) private hostElRef: ElementRef<HTMLElement>,
-		private itemStatusSvc: AccordionOpenService,
+		@Host() private itemStatusSvc: AccordionOpenService,
 		private render: Renderer2,
 		private sanitaizer: DomSanitizer
 	) { }
@@ -108,33 +107,35 @@ export class AccordionItemDirective implements AfterViewInit {
 		this.render.setStyle(headEl, 'font-size', this.itemStyles.headFontSize ?? '1.1rem');
 		this.render.setStyle(headEl, 'color', this.itemStyles.headColor ?? '#ccc');
 
-		// this.render.setStyle(bodyEl, 'transition', 'all .1s ease');
 		this.render.setStyle(bodyEl, 'background-color', this.itemStyles.bodyBgColor ?? 'rgba(200, 200, 200, 0.2)');
 		this.render.setStyle(bodyEl, 'color', this.itemStyles.bodyColor ?? '#000');
 		this.render.setStyle(bodyEl, 'padding', this.itemStyles.bodyPadding ?? '.1rem');
 		this.render.setStyle(bodyEl, 'margin', this.itemStyles.bodyMargin ?? '0');
 		this.itemStyles.bodyFont && this.render.setStyle(bodyEl, 'font', this.itemStyles.bodyFont);
 		this.render.setStyle(bodyEl, 'font-size', this.itemStyles.bodyFontSize ?? '1rem');
-		(this.bodyDblckcClose) && this.render.setStyle(bodyEl, 'cursor', 'grab');
+		this.itemStyles.bodyTextAlign && this.render.setStyle(bodyEl, 'text-align', this.itemStyles.bodyTextAlign);
+		this.bodyDblckcClose && this.render.setStyle(bodyEl, 'cursor', 'grab');
+		// this.render.setStyle(bodyEl, '')
 	}
 
 	onClick([{ outerHTML }, { dataset }]) {
 		if (outerHTML.indexOf('header') > -1) {
-			const { idx } = dataset;
-			this.toggle(+idx);
+			this.handleClick({ dataset });
 		}
 	}
 
 	onDblClick([{ outerHTML }, { dataset }]) {
 		if (this.bodyDblckcClose && outerHTML.indexOf('accord-item__body') > -1) {
-			const { idx } = dataset;
-			this.toggle(+idx);
+			this.handleClick({ dataset });
 		}
 	}
 
-	private toggle(itemId = 0) {
-		this.toggled.emit({ itemId, isOpen: !this.isOpen });
-	}
+	private handleClick = ({ dataset }) => {
+		const { idx } = dataset;
+		this.toggle(+idx);
+	};
+
+	private toggle = (itemId = 0) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
 
 	private get isImgOpen() {
 		const imgOpen = this.closeSign && !!this.closeSign.length && this.openSign && !!(<string>this.openSign).length;

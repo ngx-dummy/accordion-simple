@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
-
-import { AccordionModule } from './accordion.module';
+import { Subject } from 'rxjs';
 import { IToggleer } from './settings/';
 
 @Injectable()

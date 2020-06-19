@@ -5,7 +5,7 @@ import { cloneDeep } from 'lodash';
 
 import { AccordionComponent } from './accordion.component';
 import { AccordionModule } from './accordion.module';
-import { IAccordionStyling, IAccordionItemStyling } from './settings/IAccordionStylings';
+import { IAccordionItemStyling } from './settings/IAccordionStylings';
 import { simpleAccordionList, sampleStyling, dummyAccordionList1 } from '../helpers/dummy-data';
 import { TestHostModule, TestHostComponent } from '../helpers/test-host.compoent';
 import { AccordionDirective } from './accordion.directive';
@@ -28,7 +28,7 @@ describe('An Accordion component', () => {
     beforeEach(() => {
       accordCmp.accordionList = simpleAccordionList;
       accordCmp.accordionStyling = { ...sampleStyling, numberdItems: true, };
-      const sampleItemStyling = { ...sampleStyling.itemStyling, fontSize: '1.8rem',  headBgColor: '#ccc', bodyColor: 'brown', bodyBgColor: 'green' } as IAccordionItemStyling;
+      const sampleItemStyling = { ...sampleStyling.itemStyling, fontSize: '1.8rem', headBgColor: '#ccc', bodyColor: 'brown', bodyBgColor: 'green' } as IAccordionItemStyling;
       const additionItemStyling = { bodyBgColor: '#a88' };
       accordCmp.accordionStyling.itemStyling = [sampleItemStyling, additionItemStyling];
       accordCmpFixture.detectChanges();

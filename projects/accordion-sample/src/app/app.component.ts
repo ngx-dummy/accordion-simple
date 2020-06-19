@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { delay } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { MDCRipple } from '@material/ripple';
 
 import { IAccordionStyling } from '@ngx-dummy/accordion-simple/index';
 import { dummyAccordionList1, dummyAccordionList2 } from './helpers/dummy-data';
-
 
 @Component({
 	selector: 'app-root',
@@ -13,14 +14,12 @@ import { dummyAccordionList1, dummyAccordionList2 } from './helpers/dummy-data';
 export class AppComponent {
 	title = 'Accordion Sample';
 	accordList1 = dummyAccordionList1;
-	accordList2 = dummyAccordionList2;
+	accordList$ = of(dummyAccordionList2).pipe(delay(3000));
 
 	ngAfterViewInit() {
-		let btnRipple: HTMLButtonElement = document.querySelector('.mdc-button');
-		btnRipple.style.width = '100%';
-		btnRipple.style.display = 'flex';
-		let ripple = new MDCRipple(btnRipple);
-		return () => ripple.destroy();
+		const btnRipple = document.querySelector('.mdc-button');
+		const ripple = new MDCRipple(btnRipple);
+		return () => (ripple.destroy());
 	}
 
 	styling: IAccordionStyling = {
@@ -28,7 +27,6 @@ export class AppComponent {
 		maxWidth: '99%',
 		margin: '.1rem',
 		numberdItems: true,
-
 		itemStyling: {
 			headBgColor: '#89a',
 			headColor: '#fff',
@@ -38,8 +36,6 @@ export class AppComponent {
 		}
 	};
 
-
-
 	styling1: IAccordionStyling = {
 		...this.styling,
 		itemsGutts: 0,
@@ -48,6 +44,7 @@ export class AppComponent {
 		isMultiShow: true,
 		maxWidth: '94%',
 		bodyDbclkcloseItems: true,
+
 		itemStyling: {
 			...this.styling.itemStyling,
 			headBgColor: 'darkcyan',
@@ -57,6 +54,7 @@ export class AppComponent {
 			font: 'Comic Sans MS',
 			bodyPadding: 1,
 			bodyMargin: 0,
+			bodyTextAlign: 'left',
 			margin: 0
 		}
 	};

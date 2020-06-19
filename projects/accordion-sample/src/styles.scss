@@ -1,84 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,900&display=swap');
 
 :root {
   --light-bg: #fafafa;
   --medium-bg: #f4f4f4;
   --dark-bg: #efefef;
-  --text-color: #2c3e50;
+  --light-blue-color: #4d4dfa;
+  --yellow-color: #dcdf36;
+  --darker-color: #607386;
+  --item-color: #adbdce;
   --accent-color: #42b883;
   --warn-color: #f85a40;
+  --light-warn-color: #f07764;
+  --dark-blue-color: #52529b;
+  --mdc-typography-font-family: 'Lato', sans-serif;
+  --mdc-theme-on-primary: #{var(--warn-color)};
+  --mdc-theme-secondary: var(--light-warn-color);
 }
 
-
-
-*:focus {
-  outline: none;
-}
-
-body,
-html {
+body {
   box-sizing: border-box;
   font-size: 14px;
   margin: 0;
   padding: 0;
   height: 100%;
-  background: var(--light-bg);
-  color: var(--text-color);
-  overflow-x: hidden;
-  font-family: 'Lato', sans-serif;
+  background: var(--dark-bg);
+  color: var(--darker-color);
+  font-family: var(--mdc-typography-font-family);
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
+$offset: 188;
+$duration: 1.5s;
 
-$offset: 187;
-$duration: 1.4s;
-
-.spinner {
-  margin-top: 20%;
-  animation: rotator $duration linear infinite;
+*:focus {
+  outline: none;
 }
 
-@keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
+.mdc-drawer-app-content {
+  flex: auto;
+  overflow: auto;
+  position: relative;
 }
 
-.path {
-  stroke-dasharray: $offset;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation:
-    dash $duration ease-in-out infinite, 
-    colors ($duration*2) ease-in-out infinite;
+.main-content {
+  margin: .2rem;
+  overflow: auto;
+  height: 100%;
 }
 
-@keyframes colors {
-	0% { stroke: #4285F4; }
-	25% { stroke: #DE3E35; }
-	50% { stroke: #F7C223; }
-	75% { stroke: #1B9A59; }
-  100% { stroke: #4285F4; }
+.app-bar {
+  position: absolute;
+  top: 0;
+  background: linear-gradient(var(--dark-blue-color), var(--darker-color));
+  transition: 1s ease-in;
+  background-color: var(--ligth-warn-color);
 }
 
-@keyframes dash {
- 0% { stroke-dashoffset: $offset; }
- 50% {
-   stroke-dashoffset: $offset/4;
-   transform:rotate(135deg);
- }
- 100% {
-   stroke-dashoffset: $offset;
-   transform:rotate(450deg);
- }
+// only apply this style if below top app bar
+.mdc-top-app-bar {
+  z-index: 7;
+}
+
+.mdc-top-app-bar__title{
+  cursor: pointer;
 }
 
 .screen {
-  overflow-y: auto !important;
-  padding: 1rem; box-sizing: border-box;
+  overflow-y: auto;
+  padding: 1rem; 
+  box-sizing: border-box;
 }
 
 .device-settings {
@@ -87,14 +79,61 @@ $duration: 1.4s;
   text-align: center;
 }
 
+.light-bg {
+  background: radial-gradient(var(--dark-bg),var(--light-bg));
+}
+
 .container-transparent {
   height: 100%;
   width: 100%;
   padding: 0;
   margin: 0;
-  background: rgba($color: #555, $alpha: 0.1);
+  background: rgba($color: var(--darker-color), $alpha: 0.1);
 }
 
-.light-bg {
-  background: radial-gradient(var(--dark-bg),var(--light-bg));
+.spinner {
+  margin-top: 20%;
+  animation: rotator $duration linear infinite;
+}
+
+.path {
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation:
+    dash $duration ease-in-out infinite, 
+    colors ($duration * 2) ease-in-out infinite;
+}
+
+.mdc-list {
+  list-style: none;
+    a {
+      text-decoration: none;
+      color: var(--warn-color);
+    }
+}
+
+@keyframes colors {
+	0% { stroke: var(--dark-blue-color); }
+	25% { stroke: var(--warn-color); }
+	50% { stroke: var(--yellow-color); }
+	75% { stroke: var(--accent-color); }
+  100% { stroke: var(--light-blue-color); }
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: $offset; }
+ 50% {
+   stroke-dashoffset: $offset / 4;
+   transform: rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: $offset;
+   transform: rotate(450deg);
+ }
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
 }

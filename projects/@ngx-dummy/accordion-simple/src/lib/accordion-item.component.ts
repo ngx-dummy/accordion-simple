@@ -1,19 +1,16 @@
-import { Component, ChangeDetectionStrategy, OnInit, Input } from '@angular/core';
-import { map } from "rxjs/operators";
-
-import { AccordionItem } from './settings/';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AccordionItem } from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion-item',
 	templateUrl: './accordion-item.component.html',
 	styleUrls: ['./accordion-item.component.scss'],
-	// changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordionItemComponent {
-	isOpen = false;
 	isOpen$: Observable<boolean>;
-	item: Partial<AccordionItem> = { title: 'Test Item', body: 'Some body text...', id: 0 };
+	item: Partial<AccordionItem> = { title: 'Test Item', body: 'Some body text...' };
 	logo = null;
 	isImgOpen = false;
 	openSign = null;

@@ -1,8 +1,8 @@
 <ng-container *ngTemplateOutlet="itemTpl; context: { itemOpened: isOpen$ | async}"></ng-container>
 
-<ng-template #itemTpl let-isOpen="itemOpened">
+<ng-template #itemTpl let-isOpened="itemOpened">
   <article class="accord-item" >  
-    <header class="accord-item__header" [class.opened]="isOpen"  style="position: relative;">
+    <header class="accord-item__header" [class.opened]="isOpened"  style="position: relative;">
       <!-- <div class="mdc-ripple-surface" style="position: absolute;top: 0;bottom: 0;right: 0;left: 0;"></div> -->
       <div class="header--control accord-item__logo">
         <span class="accord-item__header--start">
@@ -14,23 +14,23 @@
         {{item.title}}
       </div>
       <div class=" header--control accord-item__collapse">
-        <span class="accord-item__header--end" [ngClass]="{ 'active': isOpen }">
-          <ng-container *ngTemplateOutlet="isImgOpen ? imgOpen : svgOpen; context: { $implicit: openSign, openner: openSign, closer: closeSign, opened: isOpen }"></ng-container>
+        <span class="accord-item__header--end" [ngClass]="{ 'active': isOpened }">
+          <ng-container *ngTemplateOutlet="isImgOpen ? imgOpen : defaultOpen; context: { $implicit: openSign, openner: openSign, closer: closeSign, opened: isOpened }"></ng-container>
         </span>
       </div>
     </header>
     
-    <section class="accord-item__body" [ngClass]="{ 'opened': isOpen , 'closed': !isOpen }">
+    <section class="accord-item__body" [ngClass]="{ 'opened': isOpened , 'closed': !isOpened }">
       {{item.body}}
     </section>
   </article>
   
-  <ng-template #imgOpen let-openImg="openner" let-closeImg="closer">
-    <img  class="accord-item__header--end-img" *ngIf="!isOpen" src="{{openImg}}" alt="+" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
-    <img  class="accord-item__header--end-img" *ngIf="isOpen"  src="{{closeImg}}" alt="-" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
+  <ng-template #imgOpen let-openImg="openner" let-closeImg="closer" let-opened="opened">
+    <img  class="accord-item__header--end-img" *ngIf="!opened" src="{{openImg}}" alt="+" [ngClass]="{ 'open': opened, 'close': !opened }">
+    <img  class="accord-item__header--end-img" *ngIf="opened"  src="{{closeImg}}" alt="-" [ngClass]="{ 'open': opened, 'close': !opened }">
   </ng-template>
   
-  <ng-template #svgOpen let-open="openner">
-    <img class="accord-item__header--end-img" [src]="open" alt="+" [ngClass]="{ 'open': isOpen, 'close': !isOpen }">
+  <ng-template #defaultOpen let-openImg="openner" let-opened="opened">
+    <img class="accord-item__header--end-img" [src]="openImg" alt="+" [ngClass]="{ 'open': opened, 'close': !opened }">
   </ng-template>
 </ng-template>

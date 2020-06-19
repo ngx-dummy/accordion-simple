@@ -1,3 +1,7 @@
+/**
+ *  Data type accordion-component accepts as an {@link AccordionComponent#accordionStyling} Input
+ *  Comprises {@link AccordionComponent} styling as well as {@link AccordionItemComponent} stylings 
+ */
 export interface IAccordionStyling {
 	maxWidth?: string | number | null;
 	numberdItems?: boolean;
@@ -41,4 +45,5 @@ export interface IAccordionItemBodyStyling {
 	bodyBgColor?: string;
 	bodyPadding?: string | number | null;
 	bodyMargin?: string | number | null;
+	bodyTextAlign?: string;
 }

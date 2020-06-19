@@ -1,7 +1,5 @@
-# A basic CI script to automate building / testing @ngx-dummy/accrordion-simple lib
 name: CI
 
-# Trigger on master, releases push / pull requests
 on:
   push:
     branches:  
@@ -34,23 +32,24 @@ jobs:
           ${{ runner.os }}-build-${{ env.cache-name }}-
           ${{ runner.os }}-build-
           ${{ runner.os }}-
+
     - name: Install packages global
       run: |
         echo Installing..!
         npm install -g @angular/cli > /dev/null
+
     - name: Build accordion-sample app
       run: |
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
-    # - name: Copy to docs dir
-    #   run: cp -r ./dist/accordion-sample/* ./docs/
-    #   working-directory: ./
+
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:
         name: drop
         path: dist/accordion-sample
+
     - name: Run tests
       run: |
         echo Running tests

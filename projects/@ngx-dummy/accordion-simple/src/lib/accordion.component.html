@@ -1,15 +1,62 @@
-<div class="accordion" *ngIf="accordionList && accordionList.items && !!accordionList.items.length" ngxdAccordion>
-  <ngxd-accordion-item *ngFor="let item of items; trackBy: trackByFn"
-    [ngxdAccordionItem]="item"
-    [isNumbered]="isNumbered"
-    [isMultiSelect]="multiSelect"
-    [bodyDblckcClose]="bodyDblckcClose"
-    [openSign]="openSign"
-    [logo]="listLogo"
-    [closeSign]="closeSign"
-    [styling]="itemStyle"
-    (toggled)="onItemToggled($event)"
-    [attr.data-idx]="item.id"
-  >
-  </ngxd-accordion-item>
+<div class="accordion"  ngxdAccordion>
+  <ng-container *ngIf="accordionList?.items && !!accordionList?.items?.length; else loadingTpl">
+    <ngxd-accordion-item *ngFor="let item of accordionList?.items; trackBy: trackByFn" 
+      [ngxdAccordionItem]="item"
+      [isNumbered]="isNumbered"
+      [bodyDblckcClose]="bodyDblckcClose"
+      [openSign]="openSign"
+      [closeSign]="closeSign"
+      [logo]="listLogo"
+      [styling]="itemStyle"
+      (toggled)="onItemToggled($event)"
+      [attr.data-idx]="item.id"
+      @accordItemsIn
+    ></ngxd-accordion-item>
+  </ng-container>
 </div>
+
+<ng-template #loadingTpl >
+  <style>
+    :host {
+      --spin-bg: #46cccc;
+      --spin-in-bg: #4adada;
+    }
+    .container-transparent {
+      background: transparent;
+      display: grid;
+      min-height: 6rem;
+      width: 100%;
+      place-content: center;
+    }
+    .loader {
+      width: 3rem;
+      height: 3rem;
+      border: .3rem solid var(--spin-bg);
+      animation: spin 2s infinite ease-in-out;
+    }
+    .loader-inner {
+      vertical-align: top;
+      display: inline-block;
+      width: 100%;
+      background-color: var(--spin-in-bg);
+      animation: spin-in 2s infinite ease-in;
+    }
+    @keyframes spin {
+      0%    { opacity: .4; transform: rotate(0deg);   }
+      25%   { opacity: .6; transform: rotate(180deg); }
+      50%   { opacity: .9; transform: rotate(180deg); }
+      75%   { opacity:  1; transform: rotate(360deg); }
+      100%  { opacity: .9; transform: rotate(360deg); }
+    }
+    @keyframes spin-in {
+      0%    { opacity: .4; height: 0%;   }
+      25%   { opacity: .6; height: 0%;   }
+      50%   { opacity: .9; height: 100%; }
+      75%   { opacity:  1; height: 100%; }
+      100%  { opacity: .9; height: 0%;   }
+    }
+  </style>
+  <div class="container-transparent" @spinnerIn>
+    <span class="loader"><span class="loader-inner"></span></span>
+  </div>
+</ng-template>

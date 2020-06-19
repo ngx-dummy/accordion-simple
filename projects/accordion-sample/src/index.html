@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>AccordionSample</title>
@@ -26,27 +25,204 @@
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="//unpkg.com/material-components-web@latest/dist/material-components-web.min.css" >
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <style>
+    @import url("//unpkg.com/material-components-web@latest/dist/material-components-web.min.css");
+    @import url("//unpkg.com/swiper/css/swiper.min.css");
+  </style>
 </head>
 
-<body>
-  <div class="container-center">
-    <div class="marvel-device ipad silver device-settings">
-      <div class="camera"></div>
-      <div class="screen">
-        <app-root>
-          <div class="container-transparent">
-            <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
-              <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
-            </svg>
-          </div>
-        </app-root>
-      </div>
-      <div class="home"></div>
+<body class="mdc-typography">
+  <header class="mdc-top-app-bar app-bar" id="app-bar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+          aria-label="Open navigation menu">menu</button>
+        <span class="mdc-top-app-bar__title" onclick="location.href='/'">Usage sample</span>
+      </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+        <!-- <a class="material-icons mdc-top-app-bar__action-item mdc-icon-button md" aria-label="Favorite" 
+          href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component"
+          class="twitter-share-button" data-show-count="false">share</a> -->
+          <a class="mdc-fab mdc-fab--mini" aria-label="Favorite" aria-label="Favorite" 
+          href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component"
+          class="twitter-share-button" data-show-count="false">
+            <div class="mdc-fab__ripple"></div>
+            <span class="mdc-fab__icon material-icons">share</span>
+            <img src="/assets/twitter-icon-logo.png" style="width: 1rem;opacity: .8;transform: translate(-.2rem, .4rem);"> 
+          </a>
+        <button id="vert_menu_opener" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+        <div class="mdc-menu mdc-menu-surface">
+          <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+            <li class="mdc-list-item" role="menuitem">
+              <a href="https://vovansuper.github.io/accordion-simple/" target="_blank" class="mdc-list-item__text">Sample App</a>
+            </li>
+            <li class="mdc-list-item" role="menuitem">
+              <a href="https://github.com/VovanSuper/accordion-simple/docs/typedocs/globals.html" target="_blank" class="mdc-list-item__text">Docs</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
+  </header>
+
+  <!-- <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust "> -->
+  <aside class="mdc-drawer mdc-top-app-bar--fixed-adjust mdc-drawer--modal">
+    <div class="mdc-drawer__content">
+      <div class="mdc-drawer__header">
+        <h3 class="mdc-drawer__title">AccordionSimple</h3>
+        <h5 class="mdc-drawer__subtitle">Demonstrator app</h5>
+      </div>
+      <br />
+      <nav class="mdc-list">
+        <li role="separator" class="mdc-list-divider"></li>
+        <br />
+        <a class="mdc-list-item mdc-list-item--activated" href="/" aria-current="page" tabindex="0">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+          <span class="mdc-list-item__text">Sample</span>
+        </a>
+        <a class="mdc-list-item" id="forward">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">east</i>
+          <span class="mdc-list-item__text">Next Slide</span>
+        </a>
+        <a class="mdc-list-item" id="back">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">west</i>
+          <span class="mdc-list-item__text">Previous Slide</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-scrim"></div>
+  <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+    <main class="main-content " id="main-content">
+      <div class="swiper-container" style="overflow: hidden;">
+        <div class="swiper-wrapper" style="text-align: center;">
+          <div class="container-center swiper-slide">
+            <div class="marvel-device ipad silver device-settings">
+              <div class="camera"></div>
+              <div class="screen">
+                <app-root id="app1">
+                  <div class="container-transparent">
+                    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </app-root>
+              </div>
+              <div class="home"></div>
+            </div>
+          </div>
+          <div class="container-center swiper-slide">
+            <div class="marvel-device iphone-x">
+              <div class="notch">
+                <div class="camera"></div>
+                <div class="speaker"></div>
+              </div>
+              <div class="top-bar"></div>
+              <div class="sleep"></div>
+              <div class="bottom-bar"></div>
+              <div class="volume"></div>
+              <div class="overflow">
+                <div class="shadow shadow--tr"></div>
+                <div class="shadow shadow--tl"></div>
+                <div class="shadow shadow--br"></div>
+                <div class="shadow shadow--bl"></div>
+              </div>
+              <div class="inner-shadow"></div>
+              <div class="screen">
+                <app-root2 id="app2">
+                  <div class="container-transparent">
+                    <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </app-root2>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </main>
   </div>
-  <script src="//unpkg.com/material-components-web@latest/dist/material-components-web.min.js" async></script>
+  <footer class="footer" style=" background-color: rgba(200, 200, 200, .1);min-height: .1rem;margin:0; position:absolute; bottom: 0; width: 100%; text-align: center;font-size: xx-small;">(C) Vladimir Ovsyukov - <a href="mailto:ovsyukov@yandex.com?subject=Accordion-Simple component">mail your ideas</a> </footer>
+  <script src="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+  <script src="//unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <script src="//unpkg.com/swiper/js/swiper.min.js" ></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', function (e) {
+      initSwiper();
+      let swiperContainer = document.querySelector('.swiper-container');
+      let swiper = swiperContainer.swiper;
+
+      // setTimeout(function() {
+      //   let app = document.getElementById('app1');
+      //   let app2Container = document.getElementById('app2Container');
+      //   let app3Container = document.getElementById('app3Container');
+      //   let clone = app.cloneNode(true);
+      //   let clone2 = app.cloneNode(true);
+
+      //   clone.id = 'app2'
+      //   clone2.id = 'app3'
+      //   app2Container.appendChild(clone);
+      //   app3Container.appendChild(clone2);
+      // }, 2000);
+
+      let swiperContObserver = new MutationObserver(changes => {
+        console.log(changes);
+      });
+      swiperContObserver.observe(swiperContainer, { childList: true });
+
+      console.log(swiper);
+
+      let MDCTopAppBar = window.mdc.topAppBar.MDCTopAppBar;
+      let MDCDrawer = window.mdc.drawer.MDCDrawer;
+      let MDCList = window.mdc.list.MDCList;
+      let MDCMenu = window.mdc.menu.MDCMenu;
+
+      const vert_menu_opener = document.getElementById('vert_menu_opener');
+      const forwardBtn = document.getElementById('forward');
+      const backBtn = document.getElementById('back');
+      const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+      const menu = new MDCMenu(document.querySelector('.mdc-menu'));
+      menu.setFixedPosition(true);
+      menu.setAnchorElement(vert_menu_opener)
+      vert_menu_opener.addEventListener('click', e => {
+        menu.open = !!!menu.open;
+      });
+      forwardBtn.addEventListener('click', e => {
+        e.preventDefault();
+        swiper.slideNext();
+      });
+      backBtn.addEventListener('click', e => {
+        e.preventDefault();
+        swiper.slidePrev();
+      });
+
+
+      const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+      topAppBar.setScrollTarget(document.getElementById('main-content'));
+      const list = MDCList.attachTo(document.querySelector('.mdc-list'));
+      // list.wrapFocus = true;
+      topAppBar.listen('MDCTopAppBar:nav', () => {
+        drawer.open = !drawer.open;
+      });
+    });
+    function initSwiper() {
+      let swiper = new Swiper('.swiper-container', {
+        effect: 'flip',
+        grabCursor: true,
+        allowTouchMove: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    }
+  </script>
+
 </body>
 
 </html>

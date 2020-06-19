@@ -40,11 +40,11 @@
 npm install --save @ngx-dummy/accordion-simple
 ```
 
-##### ..or/and use (*in your Angular/Ionic app*):
+##### .. use (*in your Angular/Ionic app*):
 <script src="https://gist.github.com/VovanSuper/ad3087c382e99525eab04776683dbcf2.js"></script>
 
 
-### or check the sibling *sample* :
+### or check the sibling [*sample* app](https://github.com/VovanSuper/accordion-simple/tree/master/projects/accordion-sample) :
 
 ##### clone *(and deps install)* and run Sample app :
 ```shell
@@ -54,7 +54,7 @@ $~> npm install -g @angular/cli@latest && npm i
 $~> npm run sample
 ```
 
-##### **or .. Try yourself directly:**
+##### **or .. Try code _directly_:**
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vovansuper/accordion-simple)
 
@@ -76,6 +76,12 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 - [ ] Add documentation (jsdocs/annotate the styling/settings interfaces
 
 </details>
+
+## Documentation
+
+    General typeDoc generated types of the Accordion-simple library are available in [`docs`](./docs/typedocs/globals.html)
+
+* Base component to use as is [`<ngxd-accordion>`](./docs/typedocs/classes/_lib_accordion_component_.accordioncomponent.html)
 
 ---
 

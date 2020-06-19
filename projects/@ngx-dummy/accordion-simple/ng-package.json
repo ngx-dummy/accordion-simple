@@ -5,6 +5,10 @@
     "assets/*"
   ],
   "lib": {
+    "languageLevel": [
+      "dom",
+      "es2020"
+    ],
     "entryFile": "src/public-api.ts"
   }
 }

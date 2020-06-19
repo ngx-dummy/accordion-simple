@@ -1,31 +1,25 @@
-<div class="container">
-  <div class="container-fluid">
-    <div class="row mb-100">
-      <div class="col-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <h2 class="text-center">{{title}}</h2>
+<div class="mdc-layout-grid">
+  <div class="mdc-layout-grid__inner mb-1">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone mdc-layout-grid__cell--span-12-tablet align">
+      <h2 class="text-center">{{title}}</h2>
+    </div>
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-12-phone  mdc-layout-grid__cell--span-12-tablet align">
+      <div class="mdc-touch-target-wrapper">
+        <button class="mdc-button mdc-button--touch light-bg" (click)="acc1.closeAll();acc2.closeAll()">
+          <div class="mdc-button__ripple"></div>
+          <span>Close All</span>
+        </button>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 cornered">
-        <ngxd-accordion [accordionList]="accordList1" [accordionStyling]="styling" openSign="/assets/plus.png" closeSign="/assets/minus.png"></ngxd-accordion>
-      </div>
+  </div>
+  <div class="mdc-layout-grid__inner mb-1">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+      <ngxd-accordion #acc1="ngxdAccordion" [accordionList]="accordList1" [accordionStyling]="styling" openSign="/assets/plus.png" closeSign="/assets/minus.png"></ngxd-accordion>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
-        <ngxd-accordion [accordionList]="accordList2" [accordionStyling]="styling1" listLogo="/assets/baseline_view_list_white_48dp.png"></ngxd-accordion>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="mdc-touch-target-wrapper">
-          <button class="mdc-button mdc-button--touch light-bg" >
-            <div class="mdc-button__ripple"></div>
-            <span>Next</span>
-            <!-- <span class="mdc-button__label">My Accessible Button</span> -->
-            <!-- <div class="mdc-button__touch"></div> -->
-          </button>
-        </div>
-      </div>
+  </div>
+  <div class="mdc-layout-grid__inner">
+    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+      <ngxd-accordion #acc2="ngxdAccordion" [accordionList]="accordList$ | async" [accordionStyling]="styling1" listLogo="/assets/baseline_view_list_white_48dp.png"></ngxd-accordion>
     </div>
   </div>
 </div>

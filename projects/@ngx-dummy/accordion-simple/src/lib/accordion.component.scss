@@ -1,9 +1,28 @@
 :host {
   margin: auto;
-
+  
   .accordion {
-    // max-width: 30rem;
-    margin: auto;
-    // padding: .1rem;
+    display: flex;
+    flex-direction: column;;
+    vertical-align: middle;
+    
+  }
+  
+  .accordion-horizontal-menu {
+    display: flex;
+    flex-direction: row ;
+    vertical-align: middle;
+    width: 100%;
+    
+    & > ngxd-accordion-item {
+      flex: 1 1 auto;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 720px) {
+  .accordion-horizontal-menu {
+    flex-wrap: wrap;
   }
 }

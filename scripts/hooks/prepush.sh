@@ -6,14 +6,14 @@ const chalk              = require('chalk');
 const { commitPrettier } = require(resolve(__dirname, '../aux-funcs/prettier.sh'));
 const { hasDiff, diff }  = require(resolve(__dirname, '../aux-funcs/git.sh'));
 
-const notCleanTreeString = chalk`
+const notCleanTreeString  = chalk`
 {red Cannot push non clean tree (stash or add/commit all )}
 
 `;
 
-(async () => {
+(async function () {
   try {
-    if (!!(await hasDiff())) {
+    if (await hasDiff()) {
       console.error(notCleanTreeString);
       return process.exit(1);
     }

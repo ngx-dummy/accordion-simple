@@ -7,10 +7,10 @@ const { resolve } = require('path');
 const root = resolve(__dirname, '../..');
 const git = simpleGit(root);
 
-const hasDiff = async () => { return !!(await git.diff()) };
+const hasDiff = async function () { return !!(await git.diff()) };
 
-const diff = async () => {
-   return await git.diff([
+const diff = function () {
+   return git.diff([
     '--name-only',
     '--diff-filter=d',
     'origin/master...HEAD'
