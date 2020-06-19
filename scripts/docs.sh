@@ -11,3 +11,4 @@ fi
 
 npm run build:sample:prod
 cp -r $SRC_DIR/** $TD_OUT
+cp $(pwd)/.nojekyll $TD_OUT
