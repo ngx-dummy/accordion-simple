@@ -1,6 +1,6 @@
 {
   "name": "@ngx-dummy/accordion-simple",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP)",
   "keywords": [

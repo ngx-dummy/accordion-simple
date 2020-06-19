@@ -24,11 +24,4 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Accordion Sample');
   });
-
-  it('should render accordion', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const el = fixture.nativeElement;
-    expect(el.querySelector('ngxd-accordion')).toBeTruthy();
-  });
 });
