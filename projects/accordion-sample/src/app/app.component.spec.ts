@@ -19,16 +19,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'accordion-sample'`, () => {
+  it(`should have as title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('accordion-sample');
+    expect(app.title).toEqual('Accordion Sample');
   });
 
-  it('should render title', () => {
+  it('should render accordion', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.container ngxd-accordion')).toBeTruthy();
+    const el = fixture.nativeElement;
+    expect(el.querySelector('ngxd-accordion')).toBeTruthy();
   });
 });

@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 ':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
+
 const { resolve }        = require('path');
 const chalk              = require('chalk');
 const { commitPrettier } = require(resolve(__dirname, '../aux-funcs/prettier.sh'));
