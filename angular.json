@@ -91,7 +91,9 @@
               "projects/accordion-sample/src/styles.scss",
               "projects/accordion-sample/src/assets/devices.min.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "projects/accordion-sample/src/loading.js"
+            ]
           },
           "configurations": {
             "production": {

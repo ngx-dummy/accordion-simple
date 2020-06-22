@@ -113,6 +113,17 @@ $duration: 1.5s;
     }
 }
 
+.footer {
+  background-color: rgba(200, 200, 200, .1);
+  min-height: .1rem;
+  margin:0;
+  position:absolute;
+  bottom: 0; 
+  width: 100%; 
+  text-align: center;
+  font-size: xx-small;
+}
+
 @keyframes colors {
 	0% { stroke: var(--dark-blue-color); }
 	25% { stroke: var(--warn-color); }

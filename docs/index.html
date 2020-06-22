@@ -20,17 +20,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <!-- <link rel="stylesheet" href="devices.min.css"> -->
-  <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
   <style>
+    @import url("//fonts.googleapis.com/icon?family=Material+Icons");
     @import url("//unpkg.com/material-components-web@latest/dist/material-components-web.min.css");
     @import url("//unpkg.com/swiper/css/swiper.min.css");
   </style>
-<link rel="stylesheet" href="styles.ffaf4cc1be408c4565bc.css"></head>
+<link rel="stylesheet" href="styles.94c738c7fe807c36ce59.css"></head>
 
 <body class="mdc-typography">
   <header class="mdc-top-app-bar app-bar" id="app-bar">
@@ -49,7 +47,7 @@
           class="twitter-share-button" data-show-count="false">
             <div class="mdc-fab__ripple"></div>
             <span class="mdc-fab__icon material-icons">share</span>
-            <img src="/assets/twitter-icon-logo.png" style="width: 1rem;opacity: .8;transform: translate(-.2rem, .4rem);"> 
+            <img src="/twitter-icon-logo.png" style="width: 1rem;opacity: .8;transform: translate(-.2rem, .4rem);"> 
           </a>
         <button id="vert_menu_opener" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
         <div class="mdc-menu mdc-menu-surface">
@@ -147,82 +145,11 @@
       </div>
     </main>
   </div>
-  <footer class="footer" style=" background-color: rgba(200, 200, 200, .1);min-height: .1rem;margin:0; position:absolute; bottom: 0; width: 100%; text-align: center;font-size: xx-small;">(C) Vladimir Ovsyukov - <a href="mailto:ovsyukov@yandex.com?subject=Accordion-Simple component">mail your ideas</a> </footer>
+  <footer class="footer">(C) Vladimir Ovsyukov - <a href="mailto:ovsyukov@yandex.com?subject=Accordion-Simple component">mail your ideas</a> </footer>
   <script src="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
   <script src="//unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <script src="//unpkg.com/swiper/js/swiper.min.js" ></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', function (e) {
-      initSwiper();
-      let swiperContainer = document.querySelector('.swiper-container');
-      let swiper = swiperContainer.swiper;
 
-      // setTimeout(function() {
-      //   let app = document.getElementById('app1');
-      //   let app2Container = document.getElementById('app2Container');
-      //   let app3Container = document.getElementById('app3Container');
-      //   let clone = app.cloneNode(true);
-      //   let clone2 = app.cloneNode(true);
-
-      //   clone.id = 'app2'
-      //   clone2.id = 'app3'
-      //   app2Container.appendChild(clone);
-      //   app3Container.appendChild(clone2);
-      // }, 2000);
-
-      let swiperContObserver = new MutationObserver(changes => {
-        console.log(changes);
-      });
-      swiperContObserver.observe(swiperContainer, { childList: true });
-
-      console.log(swiper);
-
-      let MDCTopAppBar = window.mdc.topAppBar.MDCTopAppBar;
-      let MDCDrawer = window.mdc.drawer.MDCDrawer;
-      let MDCList = window.mdc.list.MDCList;
-      let MDCMenu = window.mdc.menu.MDCMenu;
-
-      const vert_menu_opener = document.getElementById('vert_menu_opener');
-      const forwardBtn = document.getElementById('forward');
-      const backBtn = document.getElementById('back');
-      const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
-      const menu = new MDCMenu(document.querySelector('.mdc-menu'));
-      menu.setFixedPosition(true);
-      menu.setAnchorElement(vert_menu_opener)
-      vert_menu_opener.addEventListener('click', e => {
-        menu.open = !!!menu.open;
-      });
-      forwardBtn.addEventListener('click', e => {
-        e.preventDefault();
-        swiper.slideNext();
-      });
-      backBtn.addEventListener('click', e => {
-        e.preventDefault();
-        swiper.slidePrev();
-      });
-
-
-      const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
-      topAppBar.setScrollTarget(document.getElementById('main-content'));
-      const list = MDCList.attachTo(document.querySelector('.mdc-list'));
-      // list.wrapFocus = true;
-      topAppBar.listen('MDCTopAppBar:nav', () => {
-        drawer.open = !drawer.open;
-      });
-    });
-    function initSwiper() {
-      let swiper = new Swiper('.swiper-container', {
-        effect: 'flip',
-        grabCursor: true,
-        allowTouchMove: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-      });
-    }
-  </script>
-
-<script src="runtime-es2015.0dae8cbc97194c7caed4.js" type="module"></script><script src="runtime-es5.0dae8cbc97194c7caed4.js" nomodule defer></script><script src="polyfills-es5.54e1eadafdc8e95b59c2.js" nomodule defer></script><script src="polyfills-es2015.c0e48dc800a7aec83546.js" type="module"></script><script src="vendor-es2015.645a495c206069e5e435.js" type="module"></script><script src="vendor-es5.645a495c206069e5e435.js" nomodule defer></script><script src="main-es2015.ef52e61c2918bdca7f9c.js" type="module"></script><script src="main-es5.ef52e61c2918bdca7f9c.js" nomodule defer></script></body>
+<script src="runtime-es2015.0dae8cbc97194c7caed4.js" type="module"></script><script src="runtime-es5.0dae8cbc97194c7caed4.js" nomodule defer></script><script src="polyfills-es5.54e1eadafdc8e95b59c2.js" nomodule defer></script><script src="polyfills-es2015.c0e48dc800a7aec83546.js" type="module"></script><script src="scripts.8f991a25b483bee57902.js" defer></script><script src="vendor-es2015.645a495c206069e5e435.js" type="module"></script><script src="vendor-es5.645a495c206069e5e435.js" nomodule defer></script><script src="main-es2015.0a7c64fbb1bb782f235a.js" type="module"></script><script src="main-es5.0a7c64fbb1bb782f235a.js" nomodule defer></script></body>
 
 </html>
