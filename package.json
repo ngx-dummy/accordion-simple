@@ -8,13 +8,13 @@
     "accordion-component",
     "accordion-simple",
     "Angular",
-    "Angular8",
     "Angular9",
     "Angular10",
     "Ionic",
     "Ionic4",
     "Ionic5",
-    "node.js"
+    "typescript",
+    "javascript"
   ],
   "private": false,
   "author": {
@@ -81,7 +81,7 @@
     "@angular/cli": "^9.1.9",
     "@angular/compiler-cli": "^9.1.11",
     "@angular/language-service": "^9.1.11",
-    "@types/jasmine": "^3.5.10",
+    "@types/jasmine": "^3.5.11",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^14.0.13",
     "chalk": "^4.1.0",
@@ -102,7 +102,7 @@
     "protractor": "^7.0.0",
     "rimraf": "^3.0.2",
     "shelljs": "^0.8.4",
-    "simple-git": "^2.8.0",
+    "simple-git": "^2.9.0",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",
     "typedoc": "^0.17.7",

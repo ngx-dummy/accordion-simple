@@ -2,7 +2,16 @@
  * Public API Surface of accordion-simple-lib
  */
 
-export * from './lib/settings/';
-export * from './lib/accordion.component';
-export * from './lib/accordion-item.component';
+export {
+  Accordion,
+  IToggleer,
+  IAccordionItemBodyStyling,
+  IAccordionItemHeadStyling,
+  IAccordionItemSpacingStyling,
+  IAccordionItemStyling,
+  IAccordionStyling,
+  AccordionItem,
+  AccordionItems
+} from './lib/settings/';
 export { AccordionModule } from './lib/accordion.module';
+export { AccordionComponent } from './lib/accordion.component';

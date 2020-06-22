@@ -73,11 +73,23 @@
             "tsConfig": "projects/accordion-sample/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/accordion-sample/src/favicon.ico",
-              "projects/accordion-sample/src/assets"
+              {
+                "glob": "favicon.ico",
+                "input": "projects/accordion-sample/src/",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/accordion-sample/src/assets/icons",
+                "output": "/",
+                "ignore": [
+                  "devices.min.css"
+                ]
+              }
             ],
             "styles": [
-              "projects/accordion-sample/src/styles.scss"
+              "projects/accordion-sample/src/styles.scss",
+              "projects/accordion-sample/src/assets/devices.min.scss"
             ],
             "scripts": []
           },
@@ -91,11 +103,12 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": true,
               "extractCss": true,
-              "namedChunks": false,
+              "namedChunks": true,
               "extractLicenses": true,
-              "vendorChunk": false,
+              "vendorChunk": true,
+              "es5BrowserSupport": false,
               "buildOptimizer": true,
               "budgets": [
                 {
@@ -106,7 +119,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumError": "15kb"
                 }
               ]
             },
@@ -114,7 +127,7 @@
               "budgets": [
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "maximumWarning": "10kb"
                 }
               ],
               "progress": false
