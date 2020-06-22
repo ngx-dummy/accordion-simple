@@ -19,7 +19,7 @@ export class AppComponent {
 	ngAfterViewInit() {
 		const btnRipple = document.querySelector('.mdc-button');
 		const ripple = new MDCRipple(btnRipple);
-		return () => (ripple.destroy());
+		return () => ripple.destroy();
 	}
 
 	styling: IAccordionStyling = {
