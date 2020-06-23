@@ -1,6 +1,8 @@
 <center>
   <a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" taget="_blank">
-  <img src="https://avatars3.githubusercontent.com/u/62136587?s=400&u=4580be0183d1496d982253d3a0d803de82465626&v=4" width="200" height="200" />
+    <p align="center">
+      <img src="https://avatars3.githubusercontent.com/u/62136587?s=400&u=4580be0183d1496d982253d3a0d803de82465626&v=4" width="200" height="200" />
+    </p>
   </a>
   <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" taget="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>     
 
