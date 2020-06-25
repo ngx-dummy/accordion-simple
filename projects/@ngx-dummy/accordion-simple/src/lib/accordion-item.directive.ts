@@ -2,14 +2,11 @@ import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Rend
 import { DomSanitizer } from '@angular/platform-browser';
 import { filter, concatMap, tap, pluck } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { isEqual, isNil, isNaN } from 'lodash';
 
 import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg } from './settings/';
 import { AccordionItemComponent } from './accordion-item.component';
 import { logo as baseLogo, arrow_down } from './theming/';
 import { AccordionOpenService } from './accordion-open.service';
-
-const l = console.log;
 
 @Directive({
 	selector: '[ngxdAccordionItem]',
@@ -23,8 +20,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	isOpen = false;
 	@Input('ngxdAccordionItem')
 	set item(val) {
-		if (isNil(val)) throw new Error('Proper Item of type <IAccordionItem> should be provided.. ');
-		if (isEqual(val, this._item)) return;
+		if (val && typeof val !== 'undefined') throw new Error('Proper Item of type <IAccordionItem> should be provided.. ');
 		this._item = val;
 	}
 	get item() {
@@ -33,7 +29,6 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input('logo')
 	set logo(img: string) {
 		if (this._logo && !!this._logo.length) return;
-		if (this._logo && isEqual(img, this._logo)) return;
 		this._logo = img && !!img.length ? img : this._baseLogoImg;
 	}
 	get logo() {

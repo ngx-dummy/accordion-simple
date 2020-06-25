@@ -4,7 +4,6 @@
 
 export {
   Accordion,
-  IToggleer,
   IAccordionItemBodyStyling,
   IAccordionItemHeadStyling,
   IAccordionItemSpacingStyling,
