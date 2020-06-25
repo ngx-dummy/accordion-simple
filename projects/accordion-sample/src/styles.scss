@@ -18,6 +18,7 @@
 }
 
 body {
+  overflow: hidden;
   box-sizing: border-box;
   font-size: 14px;
   margin: 0;
@@ -105,12 +106,15 @@ $duration: 1.5s;
     colors ($duration * 2) ease-in-out infinite;
 }
 
-.mdc-list {
+.mdc-list-item {
   list-style: none;
-    a {
-      text-decoration: none;
-      color: var(--warn-color);
-    }
+  text-decoration: none;
+  color: var(--warn-color);
+  
+  a {
+    text-decoration: none;
+    color: var(--warn-color);
+  }
 }
 
 .footer {
@@ -122,6 +126,10 @@ $duration: 1.5s;
   width: 100%; 
   text-align: center;
   font-size: xx-small;
+}
+
+.menu-icon {
+  color: var(--warn-color) !important;
 }
 
 @keyframes colors {
