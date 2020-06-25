@@ -1,12 +1,13 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "license": "GNU GPLv3",
   "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
   "keywords": [
     "accordion",
     "accordion-component",
     "accordion-simple",
+    "simple accordion",
     "Angular",
     "Angular9",
     "Angular10",
@@ -78,8 +79,8 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1000.0",
     "@angular-devkit/build-ng-packagr": "^0.1000.0",
-    "@angular-eslint/eslint-plugin": "0.0.1-alpha.32",
-    "@angular-eslint/eslint-plugin-template": "0.0.1-alpha.32",
+    "@angular-eslint/eslint-plugin": "^0.0.1-alpha.32",
+    "@angular-eslint/eslint-plugin-template": "^0.0.1-alpha.32",
     "@angular/cli": "^10.0.0",
     "@angular/compiler-cli": "^10.0.0",
     "@angular/language-service": "^10.0.0",

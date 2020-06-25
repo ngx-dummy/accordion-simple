@@ -20,7 +20,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	isOpen = false;
 	@Input('ngxdAccordionItem')
 	set item(val) {
-		if (val && typeof val !== 'undefined') throw new Error('Proper Item of type <IAccordionItem> should be provided.. ');
+		if (!val || typeof val === 'undefined') throw new Error('Proper Item of type <IAccordionItem> should be provided.. ');
 		this._item = val;
 	}
 	get item() {

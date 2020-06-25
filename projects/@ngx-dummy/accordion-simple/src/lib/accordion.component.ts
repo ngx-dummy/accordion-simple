@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self } from '@angular/core';
 
 import { Accordion, AccordionItems, IAccordionStyling, IAccordionItemStyling, IToggleer } from './settings/';
 import { AccordionOpenService } from './accordion-open.service';

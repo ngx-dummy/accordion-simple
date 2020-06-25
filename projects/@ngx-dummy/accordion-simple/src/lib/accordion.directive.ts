@@ -16,7 +16,7 @@ export class AccordionDirective implements OnInit, AfterViewInit {
 	ngOnInit() {
 		this.accordCmp.isNumbered = this.accordCmp.accordionStyling.numberdItems ?? false;
 		this.accordCmp.bodyDblckcClose = this.accordCmp.accordionStyling.bodyDbclkcloseItems ?? false;
-		this.accordCmp.accordionList.items = this.accordCmp.accordionList?.items?.map((item, i) => ({ ...item, id: i })) ?? [];
+		// this.accordCmp.accordionList.items = this.accordCmp.accordionList?.items?.map((item, i) => ({ ...item, id: i })) ?? [];
 
 		let itemStyles: IAccordionItemStyling = (Array.isArray(this.accordCmp.accordionStyling.itemStyling)) ?
 			this.accordCmp.accordionStyling.itemStyling.reduce((accu = {}, curr) => ({ ...accu, ...curr }))
