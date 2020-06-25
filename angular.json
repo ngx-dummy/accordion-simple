@@ -110,7 +110,6 @@
               "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": true,
-              "es5BrowserSupport": false,
               "buildOptimizer": true,
               "budgets": [
                 {

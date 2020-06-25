@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { of } from 'rxjs';
 
 import { IAccordionStyling } from '@ngx-dummy/accordion-simple/index';
 import { dummyAccordionList2, dummyAccordionList1 } from './helpers/dummy-data';
@@ -16,7 +15,7 @@ import { AppComponent } from './app.component';
 			</div>
 			<div class="mdc-layout-grid__inner mb-1">
 				<div class="mdc-layout-grid__cell mdc-layout-grid__cell--align-center mdc-layout-grid__cell--span-12">
-					<ngxd-accordion [accordionList]="accordList1$ | async" [accordionStyling]="styling" openSign="/accordion-simple/plus.png" closeSign="/accordion-simple/minus.png"></ngxd-accordion>
+					<ngxd-accordion [accordionList]="accordList1$ | async" [accordionStyling]="styling" ></ngxd-accordion>
 				</div>
 			</div>
 		</div>
@@ -25,7 +24,7 @@ import { AppComponent } from './app.component';
 })
 export class AppComponent2 extends AppComponent {
 	title = 'Yet another Accordion Sample';
-	accordList1$ = of({ ...dummyAccordionList2, items: [...dummyAccordionList1.items, ...dummyAccordionList2.items] });
+	accordList1$ = new Promise(resolve => ( resolve({ ...dummyAccordionList2, items: [...dummyAccordionList1.items, ...dummyAccordionList2.items] })));
 
 	styling: IAccordionStyling = {
 		...super.styling,

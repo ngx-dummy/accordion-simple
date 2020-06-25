@@ -3,10 +3,7 @@
 (function () {
 
   window.addEventListener('DOMContentLoaded', function (e) {
-    initSwiper();
-    let swiperContainer = document.querySelector('.swiper-container');
-    let swiper = swiperContainer.swiper;
-
+    const swiper = initSwiper(); 
     // setTimeout(function() {
     //   let app = document.getElementById('app1');
     //   let app2Container = document.getElementById('app2Container');
@@ -19,21 +16,14 @@
     //   app2Container.appendChild(clone);
     //   app3Container.appendChild(clone2);
     // }, 2000);
-
-    let swiperContObserver = new MutationObserver(changes => {
-      console.log(changes);
-    });
-    swiperContObserver.observe(swiperContainer, { childList: true });
-
-    console.log(swiper);
-
-    let MDCTopAppBar = window.mdc.topAppBar.MDCTopAppBar;
-    let MDCDrawer = window.mdc.drawer.MDCDrawer;
-    let MDCList = window.mdc.list.MDCList;
-    let MDCMenu = window.mdc.menu.MDCMenu;
+    const MDCTopAppBar = window.mdc.topAppBar.MDCTopAppBar;
+    const MDCDrawer = window.mdc.drawer.MDCDrawer;
+    const MDCList = window.mdc.list.MDCList;
+    const MDCMenu = window.mdc.menu.MDCMenu;
 
     const vert_menu_opener = document.getElementById('vert_menu_opener');
     const forwardBtn = document.getElementById('forward');
+    const navToDocs = document.getElementById('nav-to-docs');
     const backBtn = document.getElementById('back');
     const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
     const menu = new MDCMenu(document.querySelector('.mdc-menu'));
@@ -45,23 +35,32 @@
     forwardBtn.addEventListener('click', e => {
       e.preventDefault();
       swiper.slideNext();
+      toggleDrawer(drawer);
     });
     backBtn.addEventListener('click', e => {
       e.preventDefault();
       swiper.slidePrev();
+      toggleDrawer(drawer);
     });
-
-
+    navToDocs.addEventListener('click', e => {
+      // e.preventDefault();
+      swiper.slideTo(swiper.slides.length - 1, 2000);
+    });
+    
+    
     const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
     topAppBar.setScrollTarget(document.getElementById('main-content'));
     const list = MDCList.attachTo(document.querySelector('.mdc-list'));
-    // list.wrapFocus = true;
+    list.wrapFocus = true;
     topAppBar.listen('MDCTopAppBar:nav', () => {
-      drawer.open = !drawer.open;
+      toggleDrawer(drawer);
     });
   });
+  function toggleDrawer(drawer) {
+    drawer.open = !drawer.open;
+  }
   function initSwiper() {
-    let swiper = new Swiper('.swiper-container', {
+    return new Swiper('.swiper-container', {
       effect: 'flip',
       grabCursor: true,
       allowTouchMove: true,
