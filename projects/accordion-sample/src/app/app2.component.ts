@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 })
 export class AppComponent2 extends AppComponent {
 	title = 'Yet another Accordion Sample';
-	accordList1$ = Promise.resolve(_ => ({ ...dummyAccordionList2, items: [...dummyAccordionList1.items, ...dummyAccordionList2.items] }));
+	accordList1$ = new Promise(resolve => ( resolve({ ...dummyAccordionList2, items: [...dummyAccordionList1.items, ...dummyAccordionList2.items] })));
 
 	styling: IAccordionStyling = {
 		...super.styling,
