@@ -1,7 +1,6 @@
 
 export * from './IToggler';
 export * from './healpers';
-export * from './iconsbase64';
 
 export {
   IAccordionItemBodyStyling,
