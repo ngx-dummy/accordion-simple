@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AccordionItem } from './settings/';
+import { AccordionItemInternal } from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion-item',
@@ -10,7 +10,7 @@ import { AccordionItem } from './settings/';
 })
 export class AccordionItemComponent {
 	isOpen$: Observable<boolean>;
-	item: Partial<AccordionItem> = { title: 'Test Item', body: 'Some body text...' };
+	item: Partial<AccordionItemInternal> = { title: 'Test Item', body: 'Some body text...' };
 	logo = null;
 	isImgOpen = false;
 	openSign = null;

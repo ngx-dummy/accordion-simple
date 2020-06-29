@@ -17,9 +17,18 @@ export interface AccordionItems {
  * Properties of every Accordion items 
  * @member {Object}
  */
-export type AccordionItem = {
+export interface AccordionItem {
 	id?: number | null;
 	title: string;
 	body: string;
+};
+
+export interface AccordionItemInternal extends AccordionItem {
+	itemId: number;
+	itemNum?: number | string | null;
 	isOpen?: boolean;
-} & { itemNum?: number | string | null };
+}
+
+export interface AccordionInternal extends Accordion {
+	items: AccordionItemInternal[];
+}

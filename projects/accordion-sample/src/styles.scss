@@ -68,7 +68,7 @@ $duration: 1.5s;
 }
 
 .screen {
-  overflow-y: auto;
+  overflow-y: auto !important;
   padding: 1rem; 
   box-sizing: border-box;
 }

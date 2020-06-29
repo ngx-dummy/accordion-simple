@@ -1,6 +1,6 @@
 import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self } from '@angular/core';
 
-import { Accordion, AccordionItems, IAccordionStyling, IAccordionItemStyling, IToggleer } from './settings/';
+import { Accordion, AccordionItems, IAccordionStyling, IAccordionItemStyling, IToggleer, AccordionItemInternal, AccordionInternal } from './settings/';
 import { AccordionOpenService } from './accordion-open.service';
 import { accorAnims } from './animations';
 
@@ -23,16 +23,16 @@ export class AccordionComponent implements OnInit {
 	@Input('accordionList')
 	set accordionList(acc: Accordion) {
 		this._accord = Object.assign(
-			{} as AccordionItems,
+			{},
 			{
-				items: acc?.items?.map((item, i) => (item.id ? { ...item } : { ...item, id: i })),
+				items: acc?.items?.map((item, i) => ((!!item.id) ? { ...item, itemId: i } : { ...item, itemId: i, id: item.id })),
 				name: (acc && acc['name']) ?? 'Sample accordion',
 				id: (acc && acc['id']) ?? `accordion_${idx}`
 			}
-		);
+		) as AccordionInternal;
 	}
-	get accordionList(): Accordion {
-		return this._accord;
+	get accordionItems(): AccordionItemInternal[] {
+		return this._accord.items;
 	}
 	@Input() openSign = null;
 	@Input() closeSign = null;
@@ -53,7 +53,7 @@ export class AccordionComponent implements OnInit {
 			padding: '0',
 		},
 	};
-	private _accord: Accordion = null;
+	private _accord: AccordionInternal = null;
 	bodyDblckcClose = false;
 	multiSelect = false;
 	itemStyle: IAccordionItemStyling;
@@ -68,16 +68,16 @@ export class AccordionComponent implements OnInit {
 
 	onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
 		this.openedItem = isOpen ? itemId : null;
-		this._accord.items = this._accord.items?.map((item) => ((item?.id === +itemId) ? { ...item, isOpen } : { ...item, isOpen: (this.multiSelect) ? item?.isOpen : false })) ?? [];
-		this.itemsopenSvc.setItemsOpen(this._accord.items?.map(item => ({ itemId: item?.id, isOpen: item?.isOpen } as IToggleer)));
+		this._accord.items = this._accord.items?.map((item) => ((item?.itemId === +itemId) ? { ...item, isOpen } : { ...item, isOpen: (this.multiSelect) ? item?.isOpen : false })) ?? [];
+		this.itemsopenSvc.setItemsOpen(this._accord.items?.map(item => ({ itemId: item?.itemId, isOpen: item?.isOpen } as IToggleer)));
 	}
 
-	public closeAll = () => this._accord.items?.forEach(item => this.onItemToggled({ itemId: item?.id, isOpen: false }));
+	public closeAll = () => this._accord.items?.forEach(item => this.onItemToggled({ itemId: item?.itemId, isOpen: false }));
 
-	public trackByFn = (ind, item) => item?.id;
+	public trackByFn = (ind, item) => item?.itemId;
 
 	private get attributes(): Partial<Accordion> {
-		const { id, name } = this.accordionList && 'name' in this.accordionList && 'id' in this.accordionList ? { ...this.accordionList } : { name: 'Sample-Accordion', id: ++idx };
+		const { id, name } = this._accord && 'name' in this._accord && 'id' in this._accord ? { ...this.accordionList } : { name: 'Sample-Accordion', id: ++idx };
 		return { id, name };
 	}
 
