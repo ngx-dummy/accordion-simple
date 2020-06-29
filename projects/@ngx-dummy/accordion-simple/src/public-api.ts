@@ -1,5 +1,5 @@
 /*
- * Public API Surface of accordion-simple-lib
+ * Public API Surface of @ngx-dummy/accordion-simple lib
  */
 
 export {

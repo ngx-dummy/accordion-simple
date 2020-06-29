@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { filter, concatMap, tap, pluck } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg } from './settings/';
+import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg, AccordionItemInternal } from './settings/';
 import { AccordionItemComponent } from './accordion-item.component';
 import { logo as baseLogo, arrow_down } from './theming/';
 import { AccordionOpenService } from './accordion-open.service';
@@ -49,7 +49,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
 	private _logo = null;
-	private _item: AccordionItem;
+	private _item: AccordionItemInternal;
 	private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
 	private _basePlusImg = getSvg(arrow_down, this.sanitaizer);
 
@@ -74,7 +74,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemOpen$.pipe(
 			filter(val => !!val),
-			concatMap(toggles => of(toggles.find(t => t.itemId == this._item.id))),
+			concatMap(toggles => of(toggles.find(t => t.itemId == this._item.itemId))),
 			pluck('isOpen'),
 			tap(isOpen => this.isOpen = isOpen)
 		);

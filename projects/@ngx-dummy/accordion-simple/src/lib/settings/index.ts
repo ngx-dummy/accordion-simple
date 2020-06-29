@@ -10,4 +10,4 @@ export {
   IAccordionStyling
 } from './IAccordionStylings';
 
-export { Accordion, AccordionItem, AccordionItems } from './IAccordion';
+export { Accordion, AccordionItem, AccordionItems, AccordionItemInternal, AccordionInternal } from './IAccordion';

@@ -1,6 +1,6 @@
 <div class="accordion"  ngxdAccordion>
-  <ng-container *ngIf="accordionList?.items && !!accordionList?.items?.length; else loadingTpl">
-    <ngxd-accordion-item *ngFor="let item of accordionList?.items; trackBy: trackByFn" 
+  <ng-container *ngIf="!!accordionItems?.length; else loadingTpl">
+    <ngxd-accordion-item *ngFor="let item of accordionItems; trackBy: trackByFn" 
       [ngxdAccordionItem]="item"
       [isNumbered]="isNumbered"
       [bodyDblckcClose]="bodyDblckcClose"
@@ -9,7 +9,8 @@
       [logo]="listLogo"
       [styling]="itemStyle"
       (toggled)="onItemToggled($event)"
-      [attr.data-idx]="item.id"
+      [attr.data-idx]="item.itemId"
+      [attr.data-o-id]="item.id"
       @accordItemsIn
     ></ngxd-accordion-item>
   </ng-container>
