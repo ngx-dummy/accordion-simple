@@ -25,7 +25,7 @@ export class AccordionComponent implements OnInit {
 		this._accord = Object.assign(
 			{},
 			{
-				items: acc?.items?.map((item, i) => ((!!item.id) ? { ...item, itemId: i } : { ...item, itemId: i, id: item.id })),
+				items: acc?.items?.map((item, i) => ({ ...item, itemId: i } as AccordionItemInternal)),
 				name: (acc && acc['name']) ?? 'Sample accordion',
 				id: (acc && acc['id']) ?? `accordion_${idx}`
 			}
@@ -56,7 +56,7 @@ export class AccordionComponent implements OnInit {
 	private _accord: AccordionInternal = null;
 	bodyDblckcClose = false;
 	multiSelect = false;
-	itemStyle: IAccordionItemStyling;
+	itemStyle: IAccordionItemStyling = null;
 	isNumbered = false;
 
 	constructor(@Self() private itemsopenSvc: AccordionOpenService) { }
@@ -68,8 +68,11 @@ export class AccordionComponent implements OnInit {
 
 	onItemToggled({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) {
 		this.openedItem = isOpen ? itemId : null;
-		this._accord.items = this._accord.items?.map((item) => ((item?.itemId === +itemId) ? { ...item, isOpen } : { ...item, isOpen: (this.multiSelect) ? item?.isOpen : false })) ?? [];
-		this.itemsopenSvc.setItemsOpen(this._accord.items?.map(item => ({ itemId: item?.itemId, isOpen: item?.isOpen } as IToggleer)));
+		this.itemsopenSvc.setItemsOpen(
+			this._accord.items
+				.map(item => ((item.itemId === +itemId) ? { ...item, isOpen } : { ...item, isOpen: (this.multiSelect) ? item.isOpen : false }))
+				.map(item => ({ itemId: item?.itemId, isOpen: item?.isOpen } as IToggleer))
+		);
 	}
 
 	public closeAll = () => this._accord.items?.forEach(item => this.onItemToggled({ itemId: item?.itemId, isOpen: false }));

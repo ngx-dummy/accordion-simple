@@ -11,6 +11,6 @@ export const pngBase64ToBlob = (Base64Image: any) => {
 };
 
 
-export const sanitazeRes = (item: string, sanitaizer) => (sanitaizer && sanitaizer.bypassSecurityTrustResourceUrl && sanitaizer.bypassSecurityTrustResourceUrl(item));
-export const getSvg = (file: string, sanitaizer) => (sanitazeRes('data:image/svg+xml;base64,' + btoa(file), sanitaizer));
-export const getPng = (file: string, sanitaizer) => (sanitazeRes(URL.createObjectURL(pngBase64ToBlob(file)), sanitaizer));
+export const sanitazeRes = (item: string, sanitaizer: any) => (sanitaizer && sanitaizer.bypassSecurityTrustResourceUrl && sanitaizer.bypassSecurityTrustResourceUrl(item));
+export const getSvg = (file: string, sanitaizer: any) => (sanitazeRes('data:image/svg+xml;base64,' + btoa(file), sanitaizer));
+export const getPng = (file: string, sanitaizer: any) => (sanitazeRes(URL.createObjectURL(pngBase64ToBlob(file)), sanitaizer));

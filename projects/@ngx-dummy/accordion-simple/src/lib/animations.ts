@@ -33,4 +33,15 @@ const spinnerIn = trigger('spinnerIn', [
   ])
 ]);
 
-export const accorAnims = [ accordItemsIn, spinnerIn ];
+// const itemsTransition = (items: HTMLElement[], timing: string, easingFn: string, direction: 'open' | 'close', dist: number) => {
+//   return items.forEach(item => {
+//     item.style.transition = `translateY ${timing}, ${easingFn}`;
+//     item.style.transform = `translateY(${(direction === 'open') ? dist : '-' + dist}px)`;
+//     item.addEventListener('transitionend', e => {
+//       item.style.transition = 'none';
+//       item.style.transform = '';
+//     });
+//   });
+// };
+
+export const accorAnims = [accordItemsIn, spinnerIn];
