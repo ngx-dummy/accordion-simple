@@ -39,7 +39,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input() closeSign = null;
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
-	private isOpen = false;
+	isOpen = false;
 	private _logo = null;
 	private _item: AccordionItemInternal = null;
 	private _baseLogoImg = getPng(baseLogo, this.sanitaizer);

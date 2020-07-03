@@ -56,7 +56,7 @@ export class AccordionComponent implements OnInit {
 	private _accord: AccordionInternal = null;
 	bodyDblckcClose = false;
 	multiSelect = false;
-	itemStyle: IAccordionItemStyling;
+	itemStyle: IAccordionItemStyling = null;
 	isNumbered = false;
 
 	constructor(@Self() private itemsopenSvc: AccordionOpenService) { }
