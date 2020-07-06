@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
-':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+':'; //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+
 
 const { resolve, join } = require('path');
 
@@ -17,8 +18,8 @@ async function commitPrettier(changedFiles) {
 	if (!targetFiles || !targetFiles.length) return;
 
 	const stylingSpinner = ora(` Formatting ${targetFiles.length} files `).start();
-	let prettierName = (process.platform === 'win32') ? 'prettier.cmd' : 'prettier'
-	await spawnAsync(prettierName, ['--config', `${join(root, '.prettierrc')}`, '--write', ...targetFiles], {
+	const prettierProcName = (process.platform === 'win32') ? 'prettier.cmd' : 'prettier';
+	await spawnAsync(prettierProcName, ['--config', `${join(root, '.prettierrc')}`, '--write', ...targetFiles], {
 		stdio: ['ignore', 'ignore', process.stderr],
 		cwd: root,
 		env: {

@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
-':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+':'; //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
-const simpleGit   = require('simple-git/promise');
+
+const simpleGit = require('simple-git/promise');
 const { resolve } = require('path');
 
 const root = resolve(__dirname, '../..');

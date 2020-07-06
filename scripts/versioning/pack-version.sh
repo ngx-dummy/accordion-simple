@@ -2,8 +2,6 @@
 ':'; //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
 
 
-const l = console.log;
-
 const fs = require('fs');
 const { join } = require('path');
 const {
