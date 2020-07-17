@@ -64,9 +64,9 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.hostCmp.logo = this.logo;
 		this.hostCmp.isImgOpen = this.isImgOpen;
 
-		this.hostCmp.isOpen$ = this.itemStatusSvc.itemOpen$.pipe(
+		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
 			filter(val => !!val),
-			map(toggles => toggles.find(t => t.itemId == this._item.itemId)),
+			map(toggles => toggles.find(t => +t.itemId === +this._item.itemId)),
 			pluck('isOpen'),
 			tap(isOpen => this.isOpen = isOpen)
 		);
