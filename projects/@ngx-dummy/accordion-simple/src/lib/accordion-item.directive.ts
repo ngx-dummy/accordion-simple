@@ -3,8 +3,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { filter, tap, pluck, map } from 'rxjs/operators';
 
 import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg, AccordionItemInternal } from './settings/';
-import { AccordionItemComponent } from './accordion-item.component';
 import { logo as baseLogo, arrow_down } from './theming/';
+import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionOpenService } from './accordion-open.service';
 
 @Directive({
@@ -39,7 +39,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input() closeSign = null;
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
-	isOpen = false;
+	private isOpen = false;
 	private _logo = null;
 	private _item: AccordionItemInternal = null;
 	private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
@@ -56,7 +56,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	ngOnInit() {
 		this._item = {
 			...this.item,
-			itemNum: this.isNumbered ? this.item.itemId + 1 : null
+			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		};
 		this.hostCmp.item = { ...this._item } as Partial<AccordionItem>;
 		this.hostCmp.closeSign = this.closeSign;
@@ -65,8 +65,8 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.hostCmp.isImgOpen = this.isImgOpen;
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
-			filter(val => !!val),
-			map(toggles => toggles.find(t => +t.itemId === +this._item.itemId)),
+			filter(val => (!!val && !!val.length)),
+			map((toggles: IToggleer[]) => toggles.find(({ itemId }) => itemId === +this._item.itemId)),
 			pluck('isOpen'),
 			tap(isOpen => this.isOpen = isOpen)
 		);
@@ -87,7 +87,6 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.render.setStyle(itemEl, 'margin-bottom', this.itemStyles.marginBottom);
 		this.render.setStyle(itemEl, 'margin-top', this.itemStyles.marginTop);
 
-
 		this.render.setStyle(headEl, 'background-color', this.itemStyles.headBgColor ?? '#ccc');
 		this.itemStyles.headHeight && this.render.setStyle(headEl, 'height', this.itemStyles.headHeight);
 		this.itemStyles.headFont && this.render.setStyle(headEl, 'font', this.itemStyles.headFont);
@@ -101,30 +100,18 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.itemStyles.bodyFont && this.render.setStyle(bodyEl, 'font', this.itemStyles.bodyFont);
 		this.render.setStyle(bodyEl, 'font-size', this.itemStyles.bodyFontSize ?? '1rem');
 		this.itemStyles.bodyTextAlign && this.render.setStyle(bodyEl, 'text-align', this.itemStyles.bodyTextAlign);
+
 		this.bodyDblckcClose ? this.render.setStyle(bodyEl, 'cursor', 'grab') : this.render.setStyle(bodyEl, 'cursor', 'default');
 	}
 
-	onClick([{ outerHTML }, { dataset }]) {
-		if (outerHTML.indexOf('header') > -1) {
-			this.handleClick({ dataset });
-		}
-	}
+	onClick = ([{ outerHTML }, { dataset }]) => (outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
+	onDblClick = ([{ outerHTML }, { dataset }]) => ((this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset }) : void 0);
 
-	onDblClick([{ outerHTML }, { dataset }]) {
-		if (this.bodyDblckcClose && outerHTML.indexOf('accord-item__body') > -1) {
-			this.handleClick({ dataset });
-		}
-	}
-
-	private handleClick = ({ dataset }) => {
-		const { idx } = dataset;
-		this.toggle(+idx);
-	};
-
+	private handleClick = ({ idx, ...rest } = { idx: 0 }) => this.toggle(+idx);
 	private toggle = (itemId = 0) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
 
 	private get isImgOpen() {
-		const imgOpen = this.closeSign && !!this.closeSign.length && this.openSign && !!(<string>this.openSign).length;
+		const imgOpen = (!!this.closeSign && !!this.closeSign.length && !!this.openSign && !!(<string>this.openSign).length);
 		if (!imgOpen) {
 			this.openSign = this._basePlusImg;
 			this.hostCmp.openSign = this.openSign;

@@ -1,7 +1,6 @@
 
 @use './theming/vars.scss';
 
-
 .accord-item {
   display: block;
   min-width: 10rem;
@@ -37,7 +36,6 @@
     .accord-item__header--btn {
       background: transparent;
       max-width:  2rem;
-      // height: 2rem;
       text-align: center;
       vertical-align: middle;
       border: none;
@@ -45,9 +43,7 @@
     }
 
     .accord-item__collapse--btn {
-      padding-right: 1px;;
-     
-      // color: #363535;
+      padding-right: 1px;
     }
 
     .accord-item__header--start, 
@@ -75,17 +71,13 @@
       padding-right: 1px;
       
       &.active {
-        // .open {
-          transform: rotate(180deg);
-          transition: transform .3s ease-out; 
-        // }
+        transform: rotate(180deg);
+        transition: transform .3s ease-out; 
       }
 
       &:not(.active) { 
-        // .close {
-          transform: rotate(0);
-          transition: transform .3s ease-out; 
-        // }
+        transform: rotate(0);
+        transition: transform .3s ease-out; 
       }
 
     }

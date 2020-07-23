@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { IToggleer } from './settings/';
 
 @Injectable()
@@ -8,9 +8,7 @@ export class AccordionOpenService {
 
   constructor() { }
 
-  setItemsOpen(itemsStats: IToggleer[]) {
-    this._itemsOpen$$.next(itemsStats);
-  }
+  setItemsOpen = (itemsStats: IToggleer[]) => this._itemsOpen$$.next(itemsStats);
 
   get itemsOpen$() {
     return this._itemsOpen$$.asObservable();
