@@ -138,9 +138,9 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 
  * General typeDoc generated types of the Accordion-simple library are available in [[docs](./docs/typedocs/globals.html)]
 
-* Base component to use as is [[`<ngxd-accordion>`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts)]
+* Base element  is [`<ngxd-accordion>`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts)
 
-* [`Accordion`](./docs/typedocs/classes/_lib_accordion_component_.accordioncomponent.html) should have `Input` on type [[IAccordion]./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
+* [`Accordion`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts) should have `@Input` on type [ [IAccordion ](./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
 
 * Sample usage vovansuper.github.io/accordion-simple
 
