@@ -39,9 +39,8 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input() closeSign = null;
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
-	private isOpen = false;
+	isOpen = false;
 	private _logo = null;
-	private _item: AccordionItemInternal = null;
 	private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
 	private _basePlusImg = getSvg(arrow_down, this.sanitaizer);
 
@@ -54,11 +53,10 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	) { }
 
 	ngOnInit() {
-		this._item = {
+		this.hostCmp.item = {
 			...this.item,
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
-		};
-		this.hostCmp.item = { ...this._item } as Partial<AccordionItem>;
+		} as Partial<AccordionItem>;
 		this.hostCmp.closeSign = this.closeSign;
 		this.hostCmp.openSign = this.openSign;
 		this.hostCmp.logo = this.logo;
@@ -66,7 +64,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
 			filter(val => (!!val && !!val.length)),
-			map((toggles: IToggleer[]) => toggles.find(({ itemId }) => itemId === +this._item.itemId)),
+			map((toggles: IToggleer[]) => toggles.find(({ itemId }) => itemId === +this.item.itemId)),
 			pluck('isOpen'),
 			tap(isOpen => this.isOpen = isOpen)
 		);
