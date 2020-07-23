@@ -5,4 +5,5 @@ export interface IToggleer {
 	isOpen: boolean;
 }
 
-export const pluckIToggler = ({ itemId, isOpen, ...rest }: AccordionItemInternal = { itemId: 0, isOpen: false, title: '', body: '' }) => <IToggleer>({ itemId, isOpen });
+export const pluckIToggler = ({ itemId, isOpen, ...rest }: AccordionItemInternal) => (<IToggleer>{ itemId, isOpen });
+export const pluckOpenTogglesIds = (toggles: IToggleer[]): string => toggles.filter(t => t.isOpen === true).map(t => t.itemId).join(',');

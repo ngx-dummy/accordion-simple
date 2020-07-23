@@ -152,4 +152,4 @@ Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for detai
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
 Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
-*Copyright (c) belongs to Vladimir Ovsyukov <<ovsyukov@yandex.com>>; Please, freely use __AS_IS__ (with links to the code sources)*
+*Copyright (c) belongs to Vladimir Ovsyukov <<ovsyukov@yandex.com>>; Please, freely use __AS_IS__ (under conditions defined within the [LICENSE](LICENSE))*

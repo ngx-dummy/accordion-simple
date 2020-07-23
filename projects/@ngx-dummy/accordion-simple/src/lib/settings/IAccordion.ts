@@ -18,7 +18,7 @@ export interface AccordionItems {
  * @member {Object}
  */
 export interface AccordionItem {
-	id?: number | null;
+	id?: number | string | null;
 	title: string;
 	body: string;
 };

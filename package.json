@@ -1,8 +1,8 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.2.26",
+  "version": "0.2.27",
   "license": "GNU GPLv3",
-  "description": "A very primitive accordion component to use in Angular / Ionic projects .. (WIP) and sample app (Ionic) using it",
+  "description": "A simple accordion component to use in Angular / Ionic projects .. (WIP) and sample app using it",
   "keywords": [
     "accordion",
     "accordion-component",
