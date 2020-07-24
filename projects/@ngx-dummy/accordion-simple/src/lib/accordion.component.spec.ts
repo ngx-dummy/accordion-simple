@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { TestBed, ComponentFixture, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { cloneDeep } from 'lodash';
 
@@ -12,6 +12,7 @@ import { AccordionDirective } from './accordion.directive';
 
 describe('An Accordion component', () => {
   let accordCmpFixture: ComponentFixture<AccordionComponent>;
+  let accordCmpDebugEl: DebugElement;
   let accordCmp: AccordionComponent;
 
   describe('single component', () => {
@@ -28,10 +29,11 @@ describe('An Accordion component', () => {
     beforeEach(() => {
       accordCmp.accordionList = simpleAccordionList;
       accordCmp.accordionStyling = { ...sampleStyling, numberdItems: true, };
-      const sampleItemStyling = { ...sampleStyling.itemStyling, fontSize: '1.8rem', headBgColor: 'rgb(200, 200, 200)', bodyColor: 'brown', bodyBgColor: 'green' } as IAccordionItemStyling;
+      const sampleItemStyling = { ...sampleStyling.itemStyling, fontSize: '10px', headBgColor: 'rgb(200, 200, 200)', bodyColor: 'brown', bodyBgColor: 'green' } as IAccordionItemStyling;
       const additionItemStyling = { bodyBgColor: '#a88' };
       accordCmp.accordionStyling.itemStyling = [sampleItemStyling, additionItemStyling];
       accordCmpFixture.detectChanges();
+      accordCmpDebugEl = accordCmpFixture.debugElement;
     });
 
     it('should exist in the dom', () => {
@@ -40,40 +42,40 @@ describe('An Accordion component', () => {
     });
 
     it('should contain [ngxdAccordion] directive as attribute of element with .accordion class', () => {
-      let cmp = accordCmpFixture.debugElement.query(By.directive(AccordionDirective)).nativeElement as HTMLElement;
+      let cmp = accordCmpDebugEl.query(By.directive(AccordionDirective)).nativeElement as HTMLElement;
       expect(cmp).toBeTruthy();
       expect(cmp).toHaveClass('accordion');
       expect(cmp.getAttributeNames()).toContain('ngxdaccordion');
     });
 
-    it('shold contain ngxd-accordion-item element as the first child', () => {
-      let cmp = accordCmpFixture.debugElement.nativeElement as HTMLElement;
-      let getAccordItemEl: () => HTMLElement = () => cmp.querySelector('ngxd-accordion-item') as HTMLElement;
+    it('shold contain ngxd-accordion-item element as the first child', (cb) => {
+      let cmp = accordCmpDebugEl.nativeElement as HTMLElement;
+      // let getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(1) as HTMLElement;
+      let getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(0) as HTMLElement;
       let getAccordItemElHeader = () => (getAccordItemEl().querySelector('.accord-item__header') as HTMLElement);
       let getAccordItemElBody = () => (getAccordItemEl().querySelector('.accord-item__body') as HTMLElement);
 
       expect(Array.from(getAccordItemElBody().classList)).toContain('closed');
       expect(getAccordItemEl().nodeName.toLowerCase()).toEqual('ngxd-accordion-item');
+      accordCmpFixture.autoDetectChanges();
 
+      // accordCmpDebugEl.query(By.css('.accord-item__header')).triggerEventHandler('click', null);
       getAccordItemElHeader().click();
-      accordCmpFixture.detectChanges();
 
-      //TODO: recheck why stoped working !!
-      // expect((<HTMLElement>accordCmpFixture.debugElement.nativeElement).querySelector('.accord-item__body').classList.contains('opened')).toBeTruthy();
-      // expect(getAccordItemEl().querySelector('.accord-item__body')).toHaveClass('opened');
-      // tick();
+      // TODO: recheck why stoped working !!
+      // expect((<HTMLElement>accordCmpDebugEl.nativeElement).querySelector('.accord-item__body').classList.contains('opened')).toBeTruthy();
+      // expect(getAccordItemElBody()).toHaveClass('opened');
+      cb();
     });
 
     it('should have defined styling being properly applied', () => {
-      let cmp = accordCmpFixture.debugElement.nativeElement as HTMLElement;
+      let cmp = accordCmpDebugEl.nativeElement as HTMLElement;
       let getAccordItemEl = () => cmp.querySelector('ngxd-accordion-item');
-      let getAccordItemElHeader = () => (getAccordItemEl().querySelector('.accord-item__header') as HTMLElement);
       let getAccordItemElBody = () => (getAccordItemEl().querySelector('.accord-item__body') as HTMLElement);
-      // expect(getAccordItemElBody().style.fontSize).toBe('1.8rem')
-      // expect(getAccordItemElHeader().style.color).toBe('rgb(200, 200, 200)');
+
       expect(getAccordItemElBody().style.color).toBe('brown');
     });
-    
+
   });
 
   describe('several Accordions in a surface', () => {

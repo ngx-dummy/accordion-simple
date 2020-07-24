@@ -18,12 +18,13 @@ describe('AccordionOpenService', () => {
     expect(service).toBeTruthy();
     expect(service.itemsOpen$).toBeInstanceOf(Observable);
     expect(service.setItemsOpen).toBeInstanceOf(Function);
+    expect(service.itemsOpenSnapshot).toBeInstanceOf(Array);
   });
 
   it('should emit value', () => {
     const testVals: IToggleer[] = [{ itemId: 0, isOpen: true }];
     service.setItemsOpen(testVals);
-    
+
     expect(service.itemsOpenSnapshot).toBeTruthy();
     expect(service.itemsOpenSnapshot.length).toBeGreaterThan(0);
     svcSub = service.itemsOpen$.subscribe(toggler => {

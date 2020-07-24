@@ -8,8 +8,8 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
+  it('should display welcome message', async () => {
+    await page.navigateTo();
     expect(page.getTitleText()).toEqual('accordion-sample app is running!');
   });
 
