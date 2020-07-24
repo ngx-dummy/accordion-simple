@@ -132,23 +132,23 @@ changes/dates in source files. Any modifications to or software
 including (via compiler) GPL-licensed code must also be made 
 available under the GPL along with build & install instructions.
 
-A one using this program ( as well as any portion of that) should: 
+A one using this program ( as well as any portion of that) is kindly asked to: 
 
 1. Include Original:
   The copies of the original software, mention of the license file 
   (and therefore the source code) location (the github repository of the software url) or 
   instructions to obtain copies should be distributed with software using the provided library or code under the current license, Or:
 2. Include License:
-  Including the full text of license in modified software (in case condition in paragraph 1. was not fulfilled).
+  Including the full text of license in modified software (in case condition in paragraph 1. was not fulfilled), And / Or:
 3. State Changes:
-  All code linked with GPL 3.0 source code should be disclosed under a GPL 3.0 compatible license.
+  All code linked with GPL 3.0 source code should be disclosed under a GPL 3.0 compatible license, And:
 4. Include Copyright:
-  The original copyright should be retained.
+  The original copyright should be retained, And / Or:
 5. Include Install Instructions:
   If the software is part of a consumer device, the one using the software 
   should include the installation information necessary to modify and reinstall the software.
 
-                      Terms of warranties and liablilities
+                      Terms of warranties and liabilities
                       
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -180,23 +180,23 @@ changes/dates in source files. Any modifications to or software
 including (via compiler) GPL-licensed code must also be made 
 available under the GPL along with build & install instructions.
 
-A one using this program ( as well as any portion of that) should: 
+A one using this program ( as well as any portion of that) is kindly asked to: 
 
 1. Include Original:
   The copies of the original software, mention of the license file 
   (and therefore the source code) location (the github repository of the software url) or 
   instructions to obtain copies should be distributed with software using the provided library or code under the current license, Or:
 2. Include License:
-  Including the full text of license in modified software (in case condition in paragraph 1. was not fulfilled).
+  Including the full text of license in modified software (in case condition in paragraph 1. was not fulfilled), And / Or:
 3. State Changes:
-  All code linked with GPL 3.0 source code should be disclosed under a GPL 3.0 compatible license.
+  All code linked with GPL 3.0 source code should be disclosed under a GPL 3.0 compatible license, And:
 4. Include Copyright:
-  The original copyright should be retained.
+  The original copyright should be retained, And / Or:
 5. Include Install Instructions:
   If the software is part of a consumer device, the one using the software 
   should include the installation information necessary to modify and reinstall the software.
 
-                      Terms of warranties and liablilities
+                      Terms of warranties and liabilities
                       
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,

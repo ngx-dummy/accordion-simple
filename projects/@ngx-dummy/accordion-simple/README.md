@@ -130,7 +130,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 - [x] Basic accordion-simple component
 - [x] Styling interfaces
 - [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
-- [ ] Add documentation (jsdocs/annotate the styling/settings interfaces
+- [ ] Add documentation (jsdocs/annotate the styling/settings interfaces)
 
 </details>
 
