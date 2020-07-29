@@ -6,6 +6,8 @@
     "inlineSources": true,
   },
   "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableResourceInlining": true
@@ -14,5 +16,8 @@
     "src/helpers/*",
     "src/test.ts",
     "**/*.spec.ts"
+  ],
+  "include": [
+    "src/lib/*"
   ]
 }

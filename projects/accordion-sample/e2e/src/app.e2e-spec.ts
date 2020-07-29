@@ -9,9 +9,35 @@ describe('workspace-project App', () => {
   });
 
   it('should display welcome message', async () => {
-    await page.navigateTo();
-    expect(page.getTitleText()).toEqual('accordion-sample app is running!');
+    await page.navigateHome();
+    expect(page.getTitleText()).toEqual('Accordion Sample');
   });
+
+  it('should open item of first accordion', async () => {
+    await page.navigateHome();
+    let itemHeaderWebEl = await page.getAccordionSecondItemHeaderEl();
+    await (itemHeaderWebEl).click();
+    expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('opened');
+
+  });
+
+  // it('should verify proper behaviour of first accordion on item opening (only one opened item at a time)', async () => {
+  //   await page.navigateHome();
+  //   await (await page.getAccordionSecondItemHeaderEl()).click();
+  //   expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('opened');
+
+  //   await (await page.getAccordionThirdItemBodyEl()).click();
+  //   expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('closed');
+  //   expect((await page.getAccordionThirdItemBodyEl()).getAttribute('class')).toContain('opened');
+
+  //   await (await page.getAccordionFirstItemHeaderEl()).click();
+  //   expect((await page.getAccordionFirstItemBodyEl()).getAttribute('class')).toContain('opened');
+  //   expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('closed');
+  //   expect((await page.getAccordionThirdItemBodyEl()).getAttribute('class')).toContain('closed');
+
+  // });
+
+
 
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
@@ -19,5 +45,9 @@ describe('workspace-project App', () => {
     expect(logs).not.toContain(jasmine.objectContaining({
       level: logging.Level.SEVERE,
     } as logging.Entry));
+  });
+
+  afterAll(async () => {
+    await browser.close();
   });
 });

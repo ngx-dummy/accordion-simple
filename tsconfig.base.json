@@ -5,14 +5,18 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": true,
-    "downlevelIteration": true,
+    "downlevelIteration": false,
     "experimentalDecorators": true,
     "module": "es2020",
     "moduleResolution": "node",
-    "target": "es2018",
+    "target": "es2016",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "dom",
-      "ES2020"
+      "es2016",
+      "ES2017.Object"
     ],
     "paths": {
       "@ngx-dummy/accordion-simple/*": [

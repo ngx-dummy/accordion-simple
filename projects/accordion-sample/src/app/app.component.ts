@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, TemplateRef, OnInit, AfterViewInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { MDCRipple } from '@material/ripple';
 
-import { IAccordionStyling } from '@ngx-dummy/accordion-simple/index';
+import { IAccordionStyling, Accordion } from '@ngx-dummy/accordion-simple/index';
 import { dummyAccordionList1, dummyAccordionList2 } from './helpers/dummy-data';
 
 @Component({
@@ -11,10 +11,18 @@ import { dummyAccordionList1, dummyAccordionList2 } from './helpers/dummy-data';
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
+	@ViewChild('simpleBodyTmpl', { static: true }) simpleBodyTmpl: TemplateRef<HTMLElement>;
 	title = 'Accordion Sample';
-	accordList1 = dummyAccordionList1;
+	accordList1: Accordion = null;
 	accordList$ = of(dummyAccordionList2).pipe(delay(3000));
+
+	ngOnInit() {
+		this.accordList1 = {
+			...dummyAccordionList1,
+			items: [...dummyAccordionList1.items.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: <string>item.body } }) : item)]
+		};
+	}
 
 	ngAfterViewInit() {
 		const btnRipple = document.querySelector('.mdc-button');
@@ -59,4 +67,4 @@ export class AppComponent {
 		}
 	};
 
-}
+};

@@ -1,3 +1,5 @@
+import { TemplateRef } from '@angular/core';
+
 /**
  * Data type accordion-component accepts as an {@link AccordionComponent#accordionList} Input
  * @member {Object}
@@ -20,7 +22,12 @@ export interface AccordionItems {
 export interface AccordionItem {
 	id?: number | string | null;
 	title: string;
-	body: string;
+	body: string | ItemTemplateContext | undefined;
+};
+
+export interface ItemTemplateContext {
+	itemTemplate: TemplateRef<Element | HTMLElement> | undefined;
+	itemBody?: string | object | undefined;
 };
 
 export interface AccordionItemInternal extends AccordionItem {

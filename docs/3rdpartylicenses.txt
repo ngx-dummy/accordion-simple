@@ -111,7 +111,7 @@ THE SOFTWARE.
 
 
 @ngx-dummy/accordion-simple
-GNU GPLv3
+GPL-3.0
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 
@@ -159,7 +159,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 accordion-simple-lib--project
-GNU GPLv3
+GPL-3.0
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
 

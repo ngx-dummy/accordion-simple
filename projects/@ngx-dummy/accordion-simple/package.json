@@ -1,17 +1,27 @@
 {
   "name": "@ngx-dummy/accordion-simple",
-  "version": "0.2.27",
-  "license": "GNU GPLv3",
+  "version": "0.3.2",
+  "license": "GPL-3.0",
   "description": "A simple accordion component to use in Angular / Ionic projects ..",
   "keywords": [
     "accordion",
+    "accordion-component",
+    "accordion component",
     "accordion-simple",
+    "simple accordion",
     "Angular",
-    "Ionic",
     "Angular9",
     "Angular10",
+    "Ionic",
     "Ionic5",
-    "accordion-component"
+    "typescript",
+    "javascript",
+    "widget",
+    "foldable",
+    "collapse",
+    "expandable",
+    "toggle",
+    "ui"
   ],
   "private": false,
   "author": {

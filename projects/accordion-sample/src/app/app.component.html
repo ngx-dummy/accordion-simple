@@ -23,3 +23,105 @@
     </div>
   </div>
 </div>
+
+<ng-template #simpleBodyTmpl let-ctxcontent>
+  <style>
+    .tmpl-item-container {
+      font-family:'Roboto', sans-serif !important;
+    }
+    .head6 {
+      font-style: italic;
+    }
+    .subtitle1 {
+      color: var(---mdc-theme-text-primary-on-light,rgba(250,250,250,.9));
+      text-align: start;
+      margin: .1rem 1rem;
+    }
+    .subtitle2 {
+      color: var(---mdc-theme-text-primary-on-light, rgba(250,250,250,.9));
+      text-align: start;
+      margin: .1rem 1rem;
+    }
+    .card-media__items {
+      position: absolute;
+      bottom: 1rem;
+      left: .4rem;
+    }
+    .tmpl-item-logo {
+      background-image:url('myTwitLogo.png');
+    }
+    .tmpl-main-content {
+      background-color: floralwhite;
+      font-size: medium;
+    }
+    .body2 {
+      margin: .4rem 1rem;
+    }
+    .tmpl-footer {
+      background-color: lavenderblush;
+      color: black;
+      font-size: xx-small;
+    }
+    @media screen and (max-width: 500px) {
+      .head6 {
+        font-size: 1rem;
+        margin: .1rem;
+      }
+      .subtitle1 {
+        font-size: .4rem;
+      }
+      .subtitle2 {
+        font-size: .2rem;
+      }
+      .mdc-card__actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  </style>
+  <ng-container ngProjectAs="tmpl-item-card__container" >
+    <div class="mdc-card tmpl-item-container">
+      <div class="tmpl-header">
+        <h6 class="mdc-typography mdc-typography--headline6 head6">Custom templated Item sample</h6>
+      </div>
+      <div class="mdc-card__primary-action" tabindex="0">
+        <div class="mdc-card__media mdc-card__media--16-9 demo-card__media tmpl-item-logo" onclick="location.href='//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component'">
+          <div class="mdc-card__media-content demo-card__media-content">
+            <div class="card-media__items">
+              <h3 class=" mdc-typography mdc-typography--subtitle1 subtitle1">by Vladimir Ovsyukov</h3>
+              <h6 class=" mdc-typography mdc-typography--subtitle2 subtitle1">github.com/VovanSuper</h6>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-typography mdc-typography--body2 mt-1 mb-1 body2" [innerHTML]="ctxcontent"></div>
+      </div>
+      <div class="mdc-card__actions">
+        <div class="mdc-card__action-buttons">
+          <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/ngx-dummy/accordion-simple'">
+            <span class="mdc-button__ripple"></span> 
+            <span class="material-icons">
+              description
+            </span>
+            Docs
+            </button>
+          <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/VovanSuper' "  aria-label="Follow @VovanSuper on GitHub">
+            <span class="mdc-button__ripple"></span>
+            <span class="material-icons">
+              thumb_up_alt
+            </span>
+            Follow
+          </button>
+        </div>
+        <div class="mdc-card__action-icons">
+          <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Sponsor" title="Sponsor" onclick="location.href='//github.com/sponsors/ngx-dummy'" data-icon="octicon-heart" aria-label="Sponsor @ngx-dummy on GitHub" >
+            <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+            <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+          </button>
+          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true" onclick="location.href='//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component'">share</button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-template>

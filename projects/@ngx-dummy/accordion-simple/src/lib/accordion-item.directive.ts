@@ -1,11 +1,19 @@
-import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, SecurityContext } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { filter, tap, pluck, map } from 'rxjs/operators';
 
-import { IToggleer, IAccordionItemStyling, AccordionItem, getPng, getSvg, AccordionItemInternal } from './settings/';
-import { logo as baseLogo, arrow_down } from './theming/';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionOpenService } from './accordion-open.service';
+import { logo as baseLogo, arrow_down } from './theming/';
+import {
+	IToggleer,
+	IAccordionItemStyling,
+	AccordionItem,
+	getPng,
+	getSvg,
+	AccordionItemInternal,
+	ItemTemplateContext
+} from './settings/';
 
 @Directive({
 	selector: '[ngxdAccordionItem]',
@@ -55,6 +63,10 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
+			// body: (typeof this.item.body === 'string') ? this.sanitaizer.sanitize(SecurityContext.HTML, this.item.body) : <ItemTemplateContext>{
+			// 	itemTemplate: this.item.body.itemTemplate,
+			// 	itemBody: this.sanitaizer.bypassSecurityTrustHtml(<string>this.item.body.itemBody)
+			// },
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;
 		this.hostCmp.closeSign = this.closeSign;
@@ -103,9 +115,9 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	}
 
 	onClick = ([{ outerHTML }, { dataset }]) => (outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
-	onDblClick = ([{ outerHTML }, { dataset }]) => ((this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset }) : void 0);
+	onDblClick = ([{ outerHTML }, { dataset }]) => ((this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset, outerHTML }) : void 0);
 
-	private handleClick = ({ idx, ...rest } = { idx: 0 }) => this.toggle(+idx);
+	private handleClick = ({ idx, ...rest } = { idx: 0 }) => { console.log(rest); this.toggle(+idx)  };
 	private toggle = (itemId = 0) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
 
 	private get isImgOpen() {
