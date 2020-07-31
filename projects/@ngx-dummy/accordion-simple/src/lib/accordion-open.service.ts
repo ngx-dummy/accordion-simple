@@ -2,9 +2,14 @@ import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IToggleer } from './settings/';
 
+export const iniTogglerFn = function () {
+  const resp = <IToggleer[]>[];
+  return resp;
+};
+
 export const INI_STATE = new InjectionToken<IToggleer[]>(
   'Accordion Initial Items Open state provider token',
-  { factory: () => <IToggleer[]>[] }
+  { factory: iniTogglerFn }
 );
 
 @Injectable()
@@ -17,5 +22,5 @@ export class AccordionOpenService extends BehaviorSubject<IToggleer[]> {
   get itemsOpen$() { return this.asObservable(); }
   get itemsOpenSnapshot() { return this.value; }
 
-  close = () => { this.complete(); super.unsubscribe(); };
+  close = () => { this.complete(); super.unsubscribe; };
 }
