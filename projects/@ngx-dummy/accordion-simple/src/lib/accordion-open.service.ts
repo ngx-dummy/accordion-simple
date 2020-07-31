@@ -2,7 +2,7 @@ import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IToggleer } from './settings/';
 
-export const iniTogglerFn = function () {
+export function iniTogglerFn() {
   const resp = <IToggleer[]>[];
   return resp;
 };

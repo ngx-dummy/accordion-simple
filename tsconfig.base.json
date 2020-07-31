@@ -15,8 +15,7 @@
     ],
     "lib": [
       "dom",
-      "es2016",
-      "ES2017.Object"
+      "ES2020"
     ],
     "paths": {
       "@ngx-dummy/accordion-simple/*": [
