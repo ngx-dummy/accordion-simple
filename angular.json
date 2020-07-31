@@ -50,6 +50,11 @@
             ]
           }
         }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
       }
     },
     "accordion-sample": {

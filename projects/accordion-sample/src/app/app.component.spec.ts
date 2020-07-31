@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 
 import { AccordionModule, AccordionComponent } from '@ngx-dummy/accordion-simple/index';
 import { AppComponent } from './app.component';
-import { dummyAccordionList1 } from './helpers/dummy-data';
+import { list1 } from './helpers/dummy-data';
 
 describe('AppComponent', () => {
   let appCmpFixture: ComponentFixture<AppComponent>;
@@ -37,8 +37,8 @@ describe('AppComponent', () => {
   it('should get accordion', () => {
     const getchildAccordion: () => DebugElement = () => appCmpFixture.debugElement.query(By.css('ngxd-accordion:first-of-type'));
     const getchildAccordionCmpInstance = () => getchildAccordion().componentInstance;
-    app.accordList1 = dummyAccordionList1;
-    app.accordList$ = of(dummyAccordionList1);
+    app.accordList1 = list1;
+    app.accordList$ = of(list1);
     app.ngAfterViewInit();
     appCmpFixture.detectChanges();
 

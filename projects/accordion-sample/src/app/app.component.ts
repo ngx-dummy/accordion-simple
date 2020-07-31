@@ -4,10 +4,24 @@ import { of } from 'rxjs';
 import { MDCRipple } from '@material/ripple';
 
 import { IAccordionStyling, Accordion } from '@ngx-dummy/accordion-simple/index';
-import { dummyAccordionList1, dummyAccordionList2 } from './helpers/dummy-data';
+import { dummyAccordionList1 as list1, dummyAccordionList2 } from './helpers/dummy-data';
+import { trigger, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
 	selector: 'app-root',
+	animations: [
+		trigger('moveIn', [
+			transition(':enter', [
+				style({ opacity: 0, transform: 'translateY(-3rem)' }),
+				animate('1s ease-in-out', keyframes([
+					style({ offset: .2, opacity: .1, transform: 'translateY(-1rem)' }),
+					style({ offset: .6, opacity: .4, transform: 'translateY(-0.1rem)' }),
+					style({ offset: 1, opacity: 1, transform: 'none' })
+				])
+				)
+			])
+		])
+	],
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 })
@@ -19,8 +33,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	ngOnInit() {
 		this.accordList1 = {
-			...dummyAccordionList1,
-			items: [...dummyAccordionList1.items.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: <string>item.body } }) : item)]
+			...list1,
+			items: [
+				...list1.items.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: <string>item.body } }) : item)
+			]
 		};
 	}
 

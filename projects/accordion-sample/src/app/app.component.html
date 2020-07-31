@@ -19,26 +19,106 @@
   </div>
   <div class="mdc-layout-grid__inner">
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-      <ngxd-accordion #acc2="ngxdAccordion" [accordionList]="accordList$ | async" [accordionStyling]="styling1" listLogo="list_white_48dp.png"></ngxd-accordion>
+      <ngxd-accordion #acc2="ngxdAccordion" [loadingTpl]="simpleLoader" [accordionList]="accordList$ | async" [accordionStyling]="styling1" listLogo="list_white_48dp.png"></ngxd-accordion>
     </div>
   </div>
 </div>
 
+<ng-template #simpleLoader>
+  <style>
+    :host {
+      --spin-bg: #46cccc;
+      --spin-in-bg: #4adada;
+    }
+    .container-transparent {
+      background: transparent;
+      display: grid;
+      min-height: 6rem;
+      width: 100%;
+      place-content: center;
+    }
+    .loader {
+      width: 3rem;
+      height: 3rem;
+      border: .3rem solid var(--spin-bg);
+      animation: spin 2s infinite ease-in-out;
+    }
+    .loader-inner {
+      vertical-align: top;
+      display: inline-block;
+      width: 100%;
+      background-color: var(--spin-in-bg);
+      animation: spin-in 2s infinite ease-in;
+    }
+
+    @keyframes spin {
+      0% {
+        opacity: .4;
+        transform: rotate(0deg);
+      }
+      25% {
+        opacity: .6;
+        transform: rotate(180deg);
+      }
+      50% {
+        opacity: .9;
+        transform: rotate(180deg);
+      }
+      75% {
+        opacity: 1;
+        transform: rotate(390deg);
+      }
+      100% {
+        opacity: .9;
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin-in {
+      0% {
+        opacity: .4;
+        height: 0%;
+      }
+      25% {
+        opacity: .6;
+        height: 0%;
+      }
+      50% {
+        opacity: .9;
+        height: 100%;
+      }
+      75% {
+        opacity: 1;
+        height: 100%;
+      }
+      100% {
+        opacity: .9;
+        height: 0%;
+      }
+    }
+  </style>
+  <div class="container-transparent" @moveIn>
+    <span class="loader"><span class="loader-inner"></span></span>
+  </div>
+</ng-template>
+
+
 <ng-template #simpleBodyTmpl let-ctxcontent>
   <style>
     .tmpl-item-container {
-      font-family:'Roboto', sans-serif !important;
+      font-family: 'Roboto', sans-serif !important;
     }
     .head6 {
       font-style: italic;
+      margin: 1.1rem;
     }
     .subtitle1 {
-      color: var(---mdc-theme-text-primary-on-light,rgba(250,250,250,.9));
+      color: var(---mdc-theme-text-primary-on-light, rgba(250, 250, 250, .9));
       text-align: start;
       margin: .1rem 1rem;
     }
     .subtitle2 {
-      color: var(---mdc-theme-text-primary-on-light, rgba(250,250,250,.9));
+      color: var(---mdc-theme-text-primary-on-light, rgba(250, 250, 250, .9));
       text-align: start;
       margin: .1rem 1rem;
     }
@@ -48,7 +128,7 @@
       left: .4rem;
     }
     .tmpl-item-logo {
-      background-image:url('myTwitLogo.png');
+      background-image: url('myTwitLogo.png');
     }
     .tmpl-main-content {
       background-color: floralwhite;
@@ -62,6 +142,7 @@
       color: black;
       font-size: xx-small;
     }
+
     @media screen and (max-width: 500px) {
       .head6 {
         font-size: 1rem;
@@ -81,7 +162,7 @@
       }
     }
   </style>
-  <ng-container ngProjectAs="tmpl-item-card__container" >
+  <ng-container ngProjectAs="tmpl-item-card__container">
     <div class="mdc-card tmpl-item-container">
       <div class="tmpl-header">
         <h6 class="mdc-typography mdc-typography--headline6 head6">Custom templated Item sample</h6>
@@ -99,14 +180,15 @@
       </div>
       <div class="mdc-card__actions">
         <div class="mdc-card__action-buttons">
-          <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/ngx-dummy/accordion-simple'">
-            <span class="mdc-button__ripple"></span> 
+          <button class="mdc-button mdc-card__action mdc-card__action--button"
+            onclick="location.href='//github.com/ngx-dummy/accordion-simple'">
+            <span class="mdc-button__ripple"></span>
             <span class="material-icons">
               description
             </span>
             Docs
-            </button>
-          <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/VovanSuper' "  aria-label="Follow @VovanSuper on GitHub">
+          </button>
+          <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/VovanSuper' " aria-label="Follow VovanSuper on GitHub">
             <span class="mdc-button__ripple"></span>
             <span class="material-icons">
               thumb_up_alt
@@ -115,11 +197,14 @@
           </button>
         </div>
         <div class="mdc-card__action-icons">
-          <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Sponsor" title="Sponsor" onclick="location.href='//github.com/sponsors/ngx-dummy'" data-icon="octicon-heart" aria-label="Sponsor @ngx-dummy on GitHub" >
+          <button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false"
+            aria-label="Sponsor" title="Sponsor" onclick="location.href='//github.com/sponsors/VovanSuper'"
+            data-icon="octicon-heart" aria-label="Sponsor VovanSuper on GitHub">
             <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
             <i class="material-icons mdc-icon-button__icon">favorite_border</i>
           </button>
-          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true" onclick="location.href='//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component'">share</button>
+          <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded" title="Share" data-mdc-ripple-is-unbounded="true"
+            onclick="location.href='//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component'">share</button>
         </div>
       </div>
     </div>

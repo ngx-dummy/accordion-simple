@@ -1,37 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, InjectionToken, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IToggleer } from './settings/';
 
+export const INI_STATE = new InjectionToken<IToggleer[]>(
+  'Accordion Initial Items Open state provider token',
+  { factory: () => <IToggleer[]>[] }
+);
+
 @Injectable()
-export class AccordionOpenService {
-  private _itemsOpen$$: BehaviorSubject<IToggleer[]> = new BehaviorSubject([]);
-
-  setItemsOpen = (itemsStats: IToggleer[]) => this._itemsOpen$$.next(itemsStats);
-
-  get itemsOpen$() {
-    return this._itemsOpen$$.asObservable();
+export class AccordionOpenService extends BehaviorSubject<IToggleer[]> {
+  constructor(@Inject(INI_STATE) iniState: IToggleer[] = []) {
+    super(iniState);
   }
 
-  get itemsOpenSnapshot() {
-    return this._itemsOpen$$.value;
-  }
+  setItemsOpen = (itemsStats: IToggleer[]) => this.next(itemsStats);
+  get itemsOpen$() { return this.asObservable(); }
+  get itemsOpenSnapshot() { return this.value; }
+
+  unsubscribe = () => !super.closed && !!this.observers.length && this.unsubscribe();
 }
-
-// @Injectable()
-// export class AccoirdionOpenService2 extends BehaviorSubject<IToggleer[]> {
-//   constructor(iniState: IToggleer[] = []) {
-//     super(iniState);
-//   }
-
-//   setItemsOpn = (itemsStats: IToggleer[]) => this.next(itemsStats);
-
-//   get itemsOpen$() {
-//     return this.asObservable();
-//   }
-
-//   get itemsOpenSnapshot() {
-//     return this.value;
-//   }
-
-//   finalize = () => !this.closed && !!!this.observers.length && this.unsubscribe();
-// }

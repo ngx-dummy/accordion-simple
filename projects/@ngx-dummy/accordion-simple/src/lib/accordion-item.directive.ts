@@ -63,10 +63,10 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
-			// body: (typeof this.item.body === 'string') ? this.sanitaizer.sanitize(SecurityContext.HTML, this.item.body) : <ItemTemplateContext>{
-			// 	itemTemplate: this.item.body.itemTemplate,
-			// 	itemBody: this.sanitaizer.bypassSecurityTrustHtml(<string>this.item.body.itemBody)
-			// },
+			body: (typeof this.item.body === 'string') ? this.sanitaizer.sanitize(SecurityContext.HTML, this.item.body) : <ItemTemplateContext>{
+				itemTemplate: this.item.body.itemTemplate,
+				itemBody: this.sanitaizer.sanitize(SecurityContext.HTML, this.item.body.itemBody)
+			},
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;
 		this.hostCmp.closeSign = this.closeSign;
@@ -114,10 +114,10 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.bodyDblckcClose ? this.render.setStyle(bodyEl, 'cursor', 'grab') : this.render.setStyle(bodyEl, 'cursor', 'default');
 	}
 
-	onClick = ([{ outerHTML }, { dataset }]) => (outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
-	onDblClick = ([{ outerHTML }, { dataset }]) => ((this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset, outerHTML }) : void 0);
+	onClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
+	onDblClick = ([{ outerHTML }, { dataset }]) => ((!!outerHTML && this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset, outerHTML }) : void 0);
 
-	private handleClick = ({ idx, ...rest } = { idx: 0 }) => { console.log(rest); this.toggle(+idx)  };
+	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
 	private toggle = (itemId = 0) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
 
 	private get isImgOpen() {

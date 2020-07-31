@@ -1,64 +1,67 @@
-<div class="accordion"  ngxdAccordion>
+<div class="accordion" ngxdAccordion>
   <ng-container *ngIf="!!accordionItems?.length; else loadingTpl">
-    <ngxd-accordion-item *ngFor="let item of accordionItems; trackBy: trackByFn" 
-      [ngxdAccordionItem]="item"
-      [isNumbered]="isNumbered"
-      [bodyDblckcClose]="bodyDblckcClose"
-      [openSign]="openSign"
-      [closeSign]="closeSign"
-      [logo]="listLogo"
-      [styling]="itemStyle"
-      (toggled)="onItemToggled($event)"
-      [attr.data-idx]="item.itemId"
-      [id]="item.id"
-      @accordItemsIn
-    >
-    </ngxd-accordion-item>
+    <ng-container *ngFor="let item of accordionItems; trackBy: trackByFn" 
+      [ngTemplateOutlet]="accordItemTmpl"
+      [ngTemplateOutletContext]="{ $implicit: item }">
+    </ng-container>
   </ng-container>
 </div>
 
-<ng-template #loadingTpl >
+<ng-template #accordItemTmpl let-item>
+  <ngxd-accordion-item 
+    [ngxdAccordionItem]="item"
+    [isNumbered]="isNumbered" 
+    [bodyDblckcClose]="bodyDblckcClose"
+    [openSign]="openSign" 
+    [closeSign]="closeSign" 
+    [logo]="listLogo" 
+    [styling]="itemStyle"
+    [attr.data-idx]="item.itemId" 
+    [id]="item.id" 
+    (toggled)="onItemToggled($event)" 
+    @accordItemsIn
+  >
+  </ngxd-accordion-item>
+</ng-template>
+
+<ng-template #defloadingTpl>
   <style>
-    :host {
-      --spin-bg: #46cccc;
-      --spin-in-bg: #4adada;
+    .loading {
+      display: block;
+      background-color: transparent;
+      min-width: 50px;
+      min-height: 50px;
+      animation: rotate 1s ease-out infinite;
+      border-radius: 50%;
     }
-    .container-transparent {
-      background: transparent;
-      display: grid;
-      min-height: 6rem;
-      width: 100%;
-      place-content: center;
+    .loading > svg {
+      transform: rotate(90deg);
+      fill: var(--dark-bg);
     }
-    .loader {
-      width: 3rem;
-      height: 3rem;
-      border: .3rem solid var(--spin-bg);
-      animation: spin 2s infinite ease-in-out;
+    .loading > svg rect:first-of-type {
+      fill: var(--darker-color);
     }
-    .loader-inner {
-      vertical-align: top;
-      display: inline-block;
-      width: 100%;
-      background-color: var(--spin-in-bg);
-      animation: spin-in 2s infinite ease-in;
+    .loading > svg rect:nth-of-type(2) {
+      fill: var(--accent-color);
     }
-    @keyframes spin {
-      0%    { opacity: .4; transform: rotate(0deg);   }
-      25%   { opacity: .6; transform: rotate(180deg); }
-      50%   { opacity: .9; transform: rotate(180deg); }
-      75%   { opacity:  1; transform: rotate(390deg); }
-      100%  { opacity: .9; transform: rotate(360deg); }
-    }
-    @keyframes spin-in {
-      0%    { opacity: .4; height: 0%;   }
-      25%   { opacity: .6; height: 0%;   }
-      50%   { opacity: .9; height: 100%; }
-      75%   { opacity:  1; height: 100%; }
-      100%  { opacity: .9; height: 0%;   }
+    .loading > svg rect:n-of-type(3) {
+      fill: var(--dark-blue-color);
     }
   </style>
-  <div class="container-transparent" @spinnerIn>
-    <span class="loader"><span class="loader-inner"></span></span>
+  <div class="loading" @spinnerIn>
+    <svg width="51px" height="50px" viewBox="0 0 51 50">
+      <rect y="0" width="13" height="50">
+          <animate attributeName="height" values="50;10;50" begin="0s" dur="1s" repeatCount="indefinite" />
+          <animate attributeName="y" values="0;20;0" begin="0s" dur="1s" repeatCount="indefinite" />
+      </rect>
+      <rect x="19" y="0" width="13" height="50">
+          <animate attributeName="height" values="50;10;50" begin="0.2s" dur="1s" repeatCount="indefinite" />
+          <animate attributeName="y" values="0;20;0" begin="0.2s" dur="1s" repeatCount="indefinite" />
+      </rect>
+      <rect x="38" y="0" width="13" height="50">
+          <animate attributeName="height" values="50;10;50" begin="0.4s" dur="1s" repeatCount="indefinite" />
+          <animate attributeName="y" values="0;20;0" begin="0.4s" dur="1s" repeatCount="indefinite" />
+      </rect>
+    </svg>
   </div>
 </ng-template>

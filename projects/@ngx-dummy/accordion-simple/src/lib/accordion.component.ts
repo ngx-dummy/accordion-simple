@@ -1,8 +1,8 @@
-import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self, SimpleChanges, OnChanges, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
 import { map, filter } from 'rxjs/operators';
 
 import { AccordionOpenService } from './accordion-open.service';
-import { accorAnims } from './animations';
+import { accordionAnims } from './animations';
 import {
 	Accordion,
 	IAccordionStyling,
@@ -21,14 +21,15 @@ let idx = 0;
 	exportAs: 'ngxdAccordion',
 	templateUrl: './accordion.component.html',
 	styleUrls: ['./accordion.component.scss'],
-	animations: [...accorAnims],
+	animations: [...accordionAnims],
 	viewProviders: [AccordionOpenService],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccordionComponent implements OnInit, OnChanges {
-	@HostBinding('attr.data-items-opened') openedItems = undefined;
-	@HostBinding('attr.id') get id() { return `${this.attributes.id}`; }
-	@HostBinding('attr.name') get name() { return this.attributes.name; }
+export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
+	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) defloadingTpl: TemplateRef<Element>;
+	@HostBinding('attr.data-items-opened') private openedItems = undefined;
+	@HostBinding('attr.id') private get id() { return `${this.attributes.id}`; }
+	@HostBinding('attr.name') private get name() { return this.attributes.name; }
 	@Input() set accordionList(acc: Accordion) {
 		let [name, id] = [(!!acc && !!acc['name'].length && acc.name) ?? 'Sample-Accordion', (!!acc && !!acc['id'] && acc.id) ?? `accordion_${++idx}`];
 		this._accord = Object.assign(
@@ -58,6 +59,16 @@ export class AccordionComponent implements OnInit, OnChanges {
 			padding: '0',
 		},
 	};
+	@Input() set loadingTpl(val: TemplateRef<Element>) {
+		if (!!val)
+		 this._loadingTpl = val;
+		 else
+		 this._loadingTpl = this.defloadingTpl;
+	}
+	get loadingTpl(): TemplateRef<Element> {
+		return this._loadingTpl ?? this.defloadingTpl;
+	}
+	private _loadingTpl: TemplateRef<Element> = null;
 	private _accord: AccordionInternal = null;
 	bodyDblckcClose = false;
 	multiSelect = false;
@@ -80,6 +91,10 @@ export class AccordionComponent implements OnInit, OnChanges {
 			if (prop === 'accordionList' && changes[prop].previousValue !== changes[prop].currentValue)
 				this.itemsopenSvc.setItemsOpen(this.accordionItems?.map(pluckIToggler));
 		});
+	}
+
+	ngOnDestroy() {
+		this.itemsopenSvc.unsubscribe();
 	}
 
 	onItemToggled = ({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) =>

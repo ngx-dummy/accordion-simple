@@ -12,7 +12,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    if: contains(github.repository_owner, 'ngx-dummy')
+    runs-on: ubuntu-lates
     steps:
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to npm

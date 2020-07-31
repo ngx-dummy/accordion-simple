@@ -44,4 +44,4 @@ const spinnerIn = trigger('spinnerIn', [
 //   });
 // };
 
-export const accorAnims = [accordItemsIn, spinnerIn];
+export const accordionAnims = [accordItemsIn, spinnerIn];

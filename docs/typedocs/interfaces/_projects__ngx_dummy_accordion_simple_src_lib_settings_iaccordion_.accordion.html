@@ -69,12 +69,13 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Data type accordion-component accepts as an {@link AccordionComponent#accordionList} Input</p>
-					</div>
 					<dl class="tsd-comment-tags">
+						<dt>description</dt>
+						<dd><p>The default Data structure, thich <code>AccordionComponent</code> accepts as an <code>@Input</code> <code>accordionList</code>
+							Data type accordion-component accepts as an {@link AccordionComponent#accordionList} Input</p>
+						</dd>
 						<dt>member</dt>
-						<dd><p>{Object}</p>
+						<dd><p>{Object} Accordion @extends AccordionItems</p>
 						</dd>
 					</dl>
 				</div>
@@ -105,10 +106,8 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#isopen" class="tsd-kind-icon">is<wbr>Open</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external"><a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#items" class="tsd-kind-icon">items</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#openeditem" class="tsd-kind-icon">opened<wbr>Item</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,19 +121,20 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:8</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L18">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:18</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="isopen" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> is<wbr>Open</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Open<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:10</li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>description</dt>
+							<dd><p>(Optional) Id propertry of accordion components. Would be set as dom element <code>id</code>attribute.</p>
+							</dd>
+							<dt>property</dt>
+							<dd><p>{string|number} id</p>
+								<p>Could be omitted (in the case <code>id</code> attribute would be set by <code>AccordionComponent</code> itself)</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="items" class="tsd-anchor"></a>
@@ -143,9 +143,28 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html">Accordion</a>.<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#items">items</a></p>
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:15</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L43">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:43</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>description</dt>
+							<dd><p>Items defining Every <code>AccordionItemsComponent</code> shape</p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{Object[]} items - single accordion item data                     <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html">AccordionItem</a></p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{number|string} items[].id - <code>id</code> of an accordion item <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html#id">AccordionItem.id</a></p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{string} items[].title - <code>title</code> of an accordion item     <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html#title">AccordionItem.title</a></p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{string|Object} items[].body                                                     <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html#body">AccordionItem.body</a></p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="name" class="tsd-anchor"></a>
@@ -153,19 +172,20 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:9</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L27">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:27</a></li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-					<a name="openeditem" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> opened<wbr>Item</h3>
-					<div class="tsd-signature tsd-kind-icon">opened<wbr>Item<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:11</li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>description</dt>
+							<dd><p>(Optional) Name propertry of accordion components. Would be set as dom element <code>name</code> attribute.</p>
+							</dd>
+							<dt>property</dt>
+							<dd><p>{string} name</p>
+								<p>Could be omitted (in the case <code>name</code> attribute would be set by <code>AccordionComponent</code> itself)</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -232,17 +252,11 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 								<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#id" class="tsd-kind-icon">id</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#isopen" class="tsd-kind-icon">is<wbr>Open</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 								<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#items" class="tsd-kind-icon">items</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 								<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
-								<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordion.html#openeditem" class="tsd-kind-icon">opened<wbr>Item</a>
 							</li>
 						</ul>
 					</li>

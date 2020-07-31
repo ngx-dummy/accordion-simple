@@ -67,6 +67,17 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>internally extended {@link AccorionItem} interface for managing state of every Accorion item</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>internal</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -107,9 +118,27 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html">AccordionItem</a>.<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html#body">body</a></p>
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:25</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L64">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:64</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>description</dt>
+							<dd><p>body data of accordion item
+									could be simple string (will be interpolated into body container of the corresponding <code>AccordionItemComponent</code> element), or:
+								could be <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.itemtemplatecontext.html">ItemTemplateContext</a></p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{Object} body - complex object containing <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.itemtemplatecontext.html#itemtemplate">ItemTemplateContext.itemTemplate</a> - { import(&quot;@angular/core&quot;).TemplateRef } to provide custom accordion item body</p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{Object} body.itemTemplate - the <code>TemplateRef</code> to be used as body of accordion item</p>
+							</dd>
+							<dt>member</dt>
+							<dd><p>{Object} body.itemBody  -  string(/html) to be interpolated to <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.itemtemplatecontext.html#itembody">ItemTemplateContext.itemBody</a></p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="id" class="tsd-anchor"></a>
@@ -118,9 +147,16 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html">AccordionItem</a>.<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html#id">id</a></p>
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:23</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L53">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:53</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>member</dt>
+							<dd><p>{number|string} id - id of accordion item</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="isopen" class="tsd-anchor"></a>
@@ -128,9 +164,14 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Open<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:36</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L85">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:85</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>identifies whether  any item is open or closed</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="itemid" class="tsd-anchor"></a>
@@ -138,9 +179,14 @@
 					<div class="tsd-signature tsd-kind-icon">item<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:34</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L77">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:77</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>unique identifier of every item (used internally)</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
 					<a name="itemnum" class="tsd-anchor"></a>
@@ -148,9 +194,15 @@
 					<div class="tsd-signature tsd-kind-icon">item<wbr>Num<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:35</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L81">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:81</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>an (optional) identifier of every item (show numbered items in every accordion item element&#39; header,
+							depending on value set in { import(&quot;./IAccordionStylings.ts&quot;).IAccordionStyling.numberdItems })</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-external">
 					<a name="title" class="tsd-anchor"></a>
@@ -159,9 +211,16 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html">AccordionItem</a>.<a href="_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.accordionitem.html#title">title</a></p>
 						<ul>
-							<li>Defined in projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:24</li>
+							<li>Defined in <a href="https://github.com/VovanSuper/accordion-simple/blob/dbd5992/projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts#L55">projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts:55</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>member</dt>
+							<dd><p>{number|string} id - title of accordion item</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
