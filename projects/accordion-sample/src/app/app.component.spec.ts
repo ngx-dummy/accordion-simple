@@ -5,7 +5,7 @@ import { of } from 'rxjs';
 
 import { AccordionModule, AccordionComponent } from '@ngx-dummy/accordion-simple/index';
 import { AppComponent } from './app.component';
-import { list1 } from './helpers/dummy-data';
+import { dummyAccordionList1 as list1 } from './helpers/dummy-data';
 
 describe('AppComponent', () => {
   let appCmpFixture: ComponentFixture<AppComponent>;
@@ -28,7 +28,7 @@ describe('AppComponent', () => {
   it('should create the app', () => {
     expect(app).toBeTruthy();
     expect(app.title).toEqual(testTitle);
-    
+
     app.title = 'Test2Title';
     appCmpFixture.detectChanges();
     expect(app.title).toEqual('Test2Title');

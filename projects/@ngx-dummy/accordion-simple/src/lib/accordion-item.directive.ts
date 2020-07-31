@@ -12,7 +12,8 @@ import {
 	getPng,
 	getSvg,
 	AccordionItemInternal,
-	ItemTemplateContext
+	ItemTemplateContext,
+	sanitizeHTML
 } from './settings/';
 
 @Directive({
@@ -63,9 +64,9 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
-			body: (typeof this.item.body === 'string') ? this.sanitaizer.sanitize(SecurityContext.HTML, this.item.body) : <ItemTemplateContext>{
+			body: (typeof this.item.body === 'string') ? sanitizeHTML(this.item.body, this.sanitaizer) : <ItemTemplateContext>{
 				itemTemplate: this.item.body.itemTemplate,
-				itemBody: this.sanitaizer.sanitize(SecurityContext.HTML, this.item.body.itemBody)
+				itemBody: sanitizeHTML(this.item.body.itemBody, this.sanitaizer)
 			},
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;

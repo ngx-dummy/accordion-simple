@@ -30,8 +30,8 @@
   </ng-template>
 
   <ng-template #imgOpen let-openImg let-closeImg="closer" let-opened="opened">
-    <img class="accord-item__header--end-img" *ngIf="!opened" src="{{openImg}}" alt="+" [ngClass]="{ 'open': opened, 'close': !opened }">
-    <img class="accord-item__header--end-img" *ngIf="opened" src="{{closeImg}}" alt="-" [ngClass]="{ 'open': opened, 'close': !opened }">
+    <img class="accord-item__header--end-img" *ngIf="!opened" src="{{openImg}}"  alt="+" [ngClass]="{ 'open': opened, 'close': !opened }">
+    <img class="accord-item__header--end-img" *ngIf="opened"  src="{{closeImg}}" alt="-" [ngClass]="{ 'open': opened, 'close': !opened }">
   </ng-template>
 
   <ng-template #defaultOpen let-openImg let-opened="opened">

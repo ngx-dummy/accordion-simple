@@ -23,26 +23,26 @@ export class AppPage {
   }
 
   async getAccordionFirstItemBodyEl() {
-    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item .accord-item__body:nth-of-type(1)'));
+    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:first-of-type .accord-item__body'));
   }
 
   async getAccordionFirstItemHeaderEl() {
-    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item .accord-item__header:nth-of-type(1)'));
+    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:first-of-type .accord-item__header'));
   }
   async getAccordionSecondItemBodyEl() {
-    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item .accord-item__body:nth-of-type(2)'));
+    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(2) .accord-item__body'));
   }
 
   async getAccordionSecondItemHeaderEl() {
-    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item .accord-item__header:nth-of-type(2)'));
+    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(2) .accord-item__header'));
   }
 
   async getAccordionThirdItemBodyEl() {
-    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item .accord-item__body:nth-of-type(3)'));
+    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(3) .accord-item__body'));
   }
 
   async getAccordionThirdItemHeaderEl() {
-    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item .accord-item__header:nth-of-type(3)'));
+    return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(3) .accord-item__header'));
   }
 
 }

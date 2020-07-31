@@ -4,14 +4,13 @@ import { IToggleer } from './settings/';
 
 describe('AccordionOpenService', () => {
   let service: AccordionOpenService = null;
-  let svcSub: Subscription = null;
 
   beforeEach(async () => {
     service = new AccordionOpenService();
   });
 
   afterEach(() => {
-    svcSub && !!!svcSub?.closed && svcSub?.unsubscribe();
+    !service?.closed && service?.close();
   });
 
   it('should be created', () => {
@@ -27,7 +26,7 @@ describe('AccordionOpenService', () => {
 
     expect(service.itemsOpenSnapshot).toBeTruthy();
     expect(service.itemsOpenSnapshot.length).toBeGreaterThan(0);
-    svcSub = service.itemsOpen$.subscribe(toggler => {
+    service.itemsOpen$.subscribe(toggler => {
       expect(toggler).not.toBeFalsy();
       expect(toggler.length).toBeGreaterThan(0);
     });

@@ -1,6 +1,6 @@
 {
   "name": "@ngx-dummy/accordion-simple",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "GPL-3.0",
   "description": "A simple accordion component to use in Angular / Ionic projects ..",
   "keywords": [
@@ -49,7 +49,7 @@
     "@angular/core": "9.x || 10.x",
     "@angular/animations": "9.x || 10.x",
     "@angular/platform-browser": "9.x || 10.x",
-    "rxjs": "~6.6.0"
+    "rxjs": "~6.6.2"
   },
   "devDependencies": {
     "typescript": "~3.9.7"

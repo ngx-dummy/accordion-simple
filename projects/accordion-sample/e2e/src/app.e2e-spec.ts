@@ -21,21 +21,23 @@ describe('workspace-project App', () => {
 
   });
 
-  // it('should verify proper behaviour of first accordion on item opening (only one opened item at a time)', async () => {
-  //   await page.navigateHome();
-  //   await (await page.getAccordionSecondItemHeaderEl()).click();
-  //   expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('opened');
+  it('should verify proper behaviour of first accordion on item opening (only one opened item at a time)', async () => {
+    await page.navigateHome();
+    await (await page.getAccordionFirstItemHeaderEl()).click();
+    expect((await page.getAccordionFirstItemBodyEl()).getAttribute('class')).toContain('opened');
 
-  //   await (await page.getAccordionThirdItemBodyEl()).click();
-  //   expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('closed');
-  //   expect((await page.getAccordionThirdItemBodyEl()).getAttribute('class')).toContain('opened');
+    browser.wait((() => { return setTimeout(() => true), 1000; }), 5000, 'just waiting...');
+    await (await page.getAccordionSecondItemHeaderEl()).click();
+    expect((await page.getAccordionFirstItemBodyEl()).getAttribute('class')).toContain('closed');
+    expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('opened');
+    
+    browser.wait((() => { return setTimeout(() => true), 1000; }), 5000, 'just waiting...');
+    await (await page.getAccordionThirdItemHeaderEl()).click();
+    expect((await page.getAccordionThirdItemBodyEl()).getAttribute('class')).toContain('opened');
+    expect((await page.getAccordionFirstItemBodyEl()).getAttribute('class')).toContain('closed');
+    expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('closed');
 
-  //   await (await page.getAccordionFirstItemHeaderEl()).click();
-  //   expect((await page.getAccordionFirstItemBodyEl()).getAttribute('class')).toContain('opened');
-  //   expect((await page.getAccordionSecondItemBodyEl()).getAttribute('class')).toContain('closed');
-  //   expect((await page.getAccordionThirdItemBodyEl()).getAttribute('class')).toContain('closed');
-
-  // });
+  });
 
 
 

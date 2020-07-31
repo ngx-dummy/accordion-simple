@@ -1,4 +1,4 @@
-import { Injectable, Inject, InjectionToken, inject } from '@angular/core';
+import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IToggleer } from './settings/';
 
@@ -17,5 +17,5 @@ export class AccordionOpenService extends BehaviorSubject<IToggleer[]> {
   get itemsOpen$() { return this.asObservable(); }
   get itemsOpenSnapshot() { return this.value; }
 
-  unsubscribe = () => !super.closed && !!this.observers.length && this.unsubscribe();
+  close = () => { this.complete(); super.unsubscribe(); };
 }

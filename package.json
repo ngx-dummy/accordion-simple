@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "GPL-3.0",
   "description": "A simple accordion component to use in Angular / Ionic projects .. (WIP) and sample app using it",
   "keywords": [
@@ -55,7 +55,7 @@
     "docs:gh-pages": "sh ./scripts/docs.sh",
     "docs:typedocs": "sh ./scripts/typedocs.sh",
     "docs": "run-s clean:docs docs:gh-pages docs:typedocs",
-    "e2e": "ng e2e accordion-sample --webdriverUpdate=false --protractorConfig=projects/accordion-sample/e2e/protractor.conf.js",
+    "e2e": "ng e2e accordion-sample --webdriverUpdate=true --protractorConfig=projects/accordion-sample/e2e/protractor.conf.js",
     "prepush:origin": "npm run docs",
     "push:origin": "sh ./scripts/push.sh",
     "test:lib": "ng test",
