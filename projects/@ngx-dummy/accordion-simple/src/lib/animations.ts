@@ -1,4 +1,4 @@
-import { trigger, query, stagger, transition, animate, style, keyframes } from '@angular/animations';
+import { trigger, query, stagger, transition, animate, style, keyframes, animation, AnimationMetadataType } from '@angular/animations';
 
 const accordItemsIn = trigger('accordItemsIn', [
   transition('* => *', [

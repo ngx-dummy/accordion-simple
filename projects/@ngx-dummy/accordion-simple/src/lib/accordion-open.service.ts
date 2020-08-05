@@ -3,8 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IToggleer } from './settings/';
 
 export function iniTogglerFn() {
-  const resp = <IToggleer[]>[];
-  return resp;
+  return <IToggleer[]>[];
 };
 
 export const INI_STATE = new InjectionToken<IToggleer[]>(
@@ -14,13 +13,11 @@ export const INI_STATE = new InjectionToken<IToggleer[]>(
 
 @Injectable()
 export class AccordionOpenService extends BehaviorSubject<IToggleer[]> {
-  constructor(@Inject(INI_STATE) iniState: IToggleer[] = []) {
-    super(iniState);
-  }
+  constructor(@Inject(INI_STATE) iniState: IToggleer[] = []) { super(iniState); }
 
-  setItemsOpen = (itemsStats: IToggleer[]) => this.next(itemsStats);
   get itemsOpen$() { return this.asObservable(); }
   get itemsOpenSnapshot() { return this.value; }
-
+  
+  setItemsOpen = (itemsStats: IToggleer[]) => this.next(itemsStats);
   close = () => { this.complete(); super.unsubscribe; };
 }

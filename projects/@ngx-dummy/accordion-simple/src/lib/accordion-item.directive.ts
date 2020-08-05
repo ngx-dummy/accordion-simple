@@ -4,12 +4,11 @@ import { filter, tap, pluck, map } from 'rxjs/operators';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionOpenService } from './accordion-open.service';
-import { logo as baseLogo, arrow_down } from './theming/';
+import { arrow_down, logo_svg } from './theming/';
 import {
 	IToggleer,
 	IAccordionItemStyling,
 	AccordionItem,
-	getPng,
 	getSvg,
 	AccordionItemInternal,
 	ItemTemplateContext,
@@ -50,7 +49,8 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
 	isOpen = false;
 	private _logo = null;
-	private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
+	// private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
+	private _baseLogoImg = getSvg(logo_svg, this.sanitaizer);
 	private _basePlusImg = getSvg(arrow_down, this.sanitaizer);
 
 	constructor(
@@ -116,7 +116,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	}
 
 	onClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
-	onDblClick = ([{ outerHTML }, { dataset }]) => ((!!outerHTML && this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset, outerHTML }) : void 0);
+	onDblClick = ([{ outerHTML }, { dataset }]) => ((!!outerHTML && this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset }) : void 0);
 
 	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
 	private toggle = (itemId = 0) => this.toggled.emit({ itemId, isOpen: !this.isOpen });

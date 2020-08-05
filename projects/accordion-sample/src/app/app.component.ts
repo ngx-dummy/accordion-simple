@@ -35,7 +35,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 		this.accordList1 = {
 			...list1,
 			items: [
-				...list1.items.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: <string>item.body } }) : item)
+				...list1.items.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: item.body } }) : item)
 			]
 		};
 	}
