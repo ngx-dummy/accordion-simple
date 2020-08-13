@@ -1,6 +1,6 @@
 
 export * from './IToggler';
-export * from './healpers';
+export * from './helpers';
 
 export {
   IAccordionItemBodyStyling,

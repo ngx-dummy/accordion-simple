@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, SecurityContext } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { filter, tap, pluck, map } from 'rxjs/operators';
 
@@ -6,7 +6,7 @@ import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionOpenService } from './accordion-open.service';
 import { arrow_down, logo_svg } from './theming/';
 import {
-	IToggleer,
+	IToggler,
 	IAccordionItemStyling,
 	AccordionItem,
 	getSvg,
@@ -25,10 +25,9 @@ import {
 })
 export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input('ngxdAccordionItem') item: AccordionItemInternal = null;
-	@Input('logo')
-	set logo(img: string) {
-		if (this._logo && !!this._logo.length) return;
-		this._logo = img && !!img.length ? img : this._baseLogoImg;
+	@Input() set logo(img: string) {
+		if (typeof this._logo === 'string' && !!this._logo?.length && img === this._logo) return;
+		this._logo = !!img && !!img.length ? img : this._baseLogoImg;
 	}
 	get logo() {
 		return this._logo;
@@ -42,31 +41,30 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		fontSize: '10px',
 		bodyPadding: '0',
 	};
-	@Input() bodyDblckcClose = false;
+	@Input() bodyDblclkClose = false;
 	@Input() openSign = null;
 	@Input() closeSign = null;
 	@Input() isNumbered = false;
-	@Output() toggled: EventEmitter<IToggleer> = new EventEmitter();
+	@Output() toggled: EventEmitter<IToggler> = new EventEmitter();
 	isOpen = false;
 	private _logo = null;
-	// private _baseLogoImg = getPng(baseLogo, this.sanitaizer);
-	private _baseLogoImg = getSvg(logo_svg, this.sanitaizer);
-	private _basePlusImg = getSvg(arrow_down, this.sanitaizer);
+	private _baseLogoImg = getSvg(logo_svg, this.sanitizer);
+	private _basePlusImg = getSvg(arrow_down, this.sanitizer);
 
 	constructor(
 		@Inject(AccordionItemComponent) private hostCmp: AccordionItemComponent,
 		@Inject(ElementRef) private hostElRef: ElementRef<HTMLElement>,
 		@Host() private itemStatusSvc: AccordionOpenService,
 		private render: Renderer2,
-		private sanitaizer: DomSanitizer
+		private sanitizer: DomSanitizer
 	) { }
 
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
-			body: (typeof this.item.body === 'string') ? sanitizeHTML(this.item.body, this.sanitaizer) : <ItemTemplateContext>{
+			body: (typeof this.item.body === 'string') ? sanitizeHTML(this.item.body, this.sanitizer) : <ItemTemplateContext>{
 				itemTemplate: this.item.body.itemTemplate,
-				itemBody: sanitizeHTML(this.item.body.itemBody, this.sanitaizer)
+				itemBody: sanitizeHTML(this.item.body.itemBody, this.sanitizer)
 			},
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;
@@ -77,7 +75,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
 			filter(val => (!!val && !!val.length)),
-			map((toggles: IToggleer[]) => toggles.find(({ itemId }) => itemId === +this.item.itemId)),
+			map((toggles: IToggler[]) => toggles.find(({ itemId }) => itemId === +this.item.itemId)),
 			pluck('isOpen'),
 			tap(isOpen => this.isOpen = isOpen)
 		);
@@ -112,14 +110,14 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.render.setStyle(bodyEl, 'font-size', this.itemStyles.bodyFontSize ?? '1rem');
 		this.itemStyles.bodyTextAlign && this.render.setStyle(bodyEl, 'text-align', this.itemStyles.bodyTextAlign);
 
-		this.bodyDblckcClose ? this.render.setStyle(bodyEl, 'cursor', 'grab') : this.render.setStyle(bodyEl, 'cursor', 'default');
+		this.bodyDblclkClose ? this.render.setStyle(bodyEl, 'cursor', 'grab') : this.render.setStyle(bodyEl, 'cursor', 'default');
 	}
 
 	onClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
-	onDblClick = ([{ outerHTML }, { dataset }]) => ((!!outerHTML && this.bodyDblckcClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset }) : void 0);
+	onDblClick = ([{ outerHTML }, { dataset }]) => ((!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body')) ? this.handleClick({ ...dataset }) : void 0);
 
 	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
-	private toggle = (itemId = 0) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
+	private toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
 
 	private get isImgOpen() {
 		const imgOpen = (!!this.closeSign && !!this.closeSign.length && !!this.openSign && !!(<string>this.openSign).length);

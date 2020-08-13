@@ -7,7 +7,7 @@ import {
 	Accordion,
 	IAccordionStyling,
 	IAccordionItemStyling,
-	IToggleer,
+	IToggler,
 	AccordionItemInternal,
 	AccordionInternal,
 	pluckIToggler,
@@ -44,11 +44,11 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	@Input() closeSign = null;
 	@Input() listLogo = null;
 	@Input() accordionStyling: IAccordionStyling = {
-		numberdItems: false,
+		numberedItems: false,
 		isMultiShow: false,
-		bodyDbclkcloseItems: false,
+		bodyDblclkCloseItems: false,
 		maxWidth: '100%',
-		itemsGutts: '1rem',
+		itemsGuts: '1rem',
 		margin: '0',
 		itemStyling: {
 			headBgColor: '#4197b2',
@@ -60,27 +60,24 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 		},
 	};
 	@Input() set loadingTpl(val: TemplateRef<Element>) {
-		if (!!val)
-		 this._loadingTpl = val;
-		 else
-		 this._loadingTpl = this.defloadingTpl;
+		this._loadingTpl = val || this.defloadingTpl;
 	}
 	get loadingTpl(): TemplateRef<Element> {
 		return this._loadingTpl ?? this.defloadingTpl;
 	}
 	private _loadingTpl: TemplateRef<Element> = null;
 	private _accord: AccordionInternal = null;
-	bodyDblckcClose = false;
+	bodyDblclkClose = false;
 	multiSelect = false;
 	itemStyle: IAccordionItemStyling = null;
 	isNumbered = false;
 
-	constructor(@Self() private itemsopenSvc: AccordionOpenService) { }
+	constructor(@Self() private itemsOpenSvc: AccordionOpenService) { }
 
 	ngOnInit() {
-		this.bodyDblckcClose = !!this.accordionStyling.bodyDbclkcloseItems ?? false;
+		this.bodyDblclkClose = !!this.accordionStyling.bodyDblclkCloseItems ?? false;
 		this.multiSelect = !!this.accordionStyling.isMultiShow ?? false;
-		this.itemsopenSvc.itemsOpen$.pipe(
+		this.itemsOpenSvc.itemsOpen$.pipe(
 			filter(val => (!!val && !!val.length)),
 			map(pluckOpenTogglesIdsToStr)
 		).subscribe(ids => this.openedItems = ids || null);
@@ -89,18 +86,18 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	ngOnChanges(changes: SimpleChanges) {
 		Object.keys(changes).forEach(prop => {
 			if (prop === 'accordionList' && changes[prop].previousValue !== changes[prop].currentValue)
-				this.itemsopenSvc.setItemsOpen(this.accordionItems?.map(pluckIToggler));
+				this.itemsOpenSvc.setItemsOpen(this.accordionItems?.map(pluckIToggler));
 		});
 	}
 
 	ngOnDestroy() {
-		this.itemsopenSvc.close();
+		this.itemsOpenSvc.close();
 	}
 
-	onItemToggled = ({ itemId, isOpen }: IToggleer = { itemId: 0, isOpen: false }) =>
-		this.itemsopenSvc.setItemsOpen(
-			this.itemsopenSvc.itemsOpenSnapshot
-				.map(({ itemId: eId, isOpen: opened }) => ((eId === +itemId) ? { itemId, isOpen } : { itemId: eId, isOpen: (this.multiSelect) ? opened : false }) as IToggleer)
+	onItemToggled = ({ itemId, isOpen }: IToggler = { itemId: 0, isOpen: false }) =>
+		this.itemsOpenSvc.setItemsOpen(
+			this.itemsOpenSvc.itemsOpenSnapshot
+				.map(({ itemId: eId, isOpen: opened }) => ((eId === +itemId) ? { itemId, isOpen } : { itemId: eId, isOpen: (this.multiSelect) ? opened : false }) as IToggler)
 		);
 
 	public closeAll = () => this.accordionItems?.forEach(({ itemId, ...rest }) => this.onItemToggled({ itemId, isOpen: false }));

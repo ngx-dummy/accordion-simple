@@ -28,7 +28,7 @@ export class AppComponent2 extends AppComponent {
 
 	styling: IAccordionStyling = {
 		...super.styling,
-		bodyDbclkcloseItems: true,
+		bodyDblclkCloseItems: true,
 		itemStyling: {
 			headBgColor: 'grey',
 			padding: 1,

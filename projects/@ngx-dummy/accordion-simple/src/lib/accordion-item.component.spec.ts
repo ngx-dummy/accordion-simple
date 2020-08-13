@@ -1,12 +1,9 @@
 import { DebugElement } from '@angular/core';
-import { TestBed, ComponentFixture, fakeAsync, tick, async } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { cloneDeep } from 'lodash';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 
-import { TestHostModule, TestHostComponent } from '../helpers/test-host.compoent';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 describe('An Accordion-item component', () => {
@@ -29,7 +26,8 @@ describe('An Accordion-item component', () => {
     beforeEach(() => {
       accordItemNativeEl = accordItemCmpFixture.nativeElement as HTMLElement;
       accordItemDebugEl = accordItemCmpFixture.debugElement;
-      accordItemCmp.isOpen$ = of(true);
+      accordItemCmp.isOpen$ = of(false);
+      accordItemCmp.isOpen$ = of(true).pipe(delay(100));
     });
 
     it('should exist', () => {
@@ -43,8 +41,7 @@ describe('An Accordion-item component', () => {
     });
 
     it('should be closed', (cb) => {
-      // it('should be closed', () => {
-      let isOpenObs = of(false).pipe(delay(100));
+      let isOpenObs: Observable<boolean> = new Observable(observer => { Array.from(new Array(3)).fill((_, i) => (i % 2 === 0 ? true : false)).forEach(val => observer.next(val)); });
       accordItemCmp.isOpen$ = isOpenObs;
 
       accordItemCmpFixture.autoDetectChanges();

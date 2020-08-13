@@ -5,28 +5,17 @@ import { MDCRipple } from '@material/ripple';
 
 import { IAccordionStyling, Accordion } from '@ngx-dummy/accordion-simple/index';
 import { dummyAccordionList1 as list1, dummyAccordionList2 } from './helpers/dummy-data';
-import { trigger, style, transition, animate, keyframes } from '@angular/animations';
+import { loaderIn } from './loader.anim';
 
 @Component({
 	selector: 'app-root',
-	animations: [
-		trigger('moveIn', [
-			transition(':enter', [
-				style({ opacity: 0, transform: 'translateY(-3rem)' }),
-				animate('1s ease-in-out', keyframes([
-					style({ offset: .2, opacity: .1, transform: 'translateY(-1rem)' }),
-					style({ offset: .6, opacity: .4, transform: 'translateY(-0.1rem)' }),
-					style({ offset: 1, opacity: 1, transform: 'none' })
-				])
-				)
-			])
-		])
-	],
+	animations: [loaderIn],
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
 	@ViewChild('simpleBodyTmpl', { static: true }) simpleBodyTmpl: TemplateRef<HTMLElement>;
+	@ViewChild('tmpl2', { static: true }) tmpl2: TemplateRef<HTMLElement>;
 	title = 'Accordion Sample';
 	accordList1: Accordion = null;
 	accordList$ = of(dummyAccordionList2).pipe(delay(3000));
@@ -35,7 +24,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 		this.accordList1 = {
 			...list1,
 			items: [
-				...list1.items.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: item.body } }) : item)
+				...list1.items
+					.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: item.body } }) : { ...item })
+					.map(item => item.title.includes('Accordion Card 1') ? ({ ...item, body: { itemTemplate: this.tmpl2, itemBody: 'Lorem ipsum card ...' } }) : { ...item })
 			]
 		};
 	}
@@ -47,10 +38,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 	}
 
 	styling: IAccordionStyling = {
-		itemsGutts: '.1rem',
+		itemsGuts: '.1rem',
 		maxWidth: '99%',
 		margin: '.1rem',
-		numberdItems: true,
+		numberedItems: true,
 		itemStyling: {
 			headBgColor: '#89a',
 			headColor: '#fff',
@@ -62,12 +53,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 	styling1: IAccordionStyling = {
 		...this.styling,
-		itemsGutts: 0,
-		numberdItems: false,
+		itemsGuts: 0,
+		numberedItems: false,
 		margin: '0 auto',
 		isMultiShow: true,
 		maxWidth: '94%',
-		bodyDbclkcloseItems: true,
+		bodyDblclkCloseItems: true,
 
 		itemStyling: {
 			...this.styling.itemStyling,

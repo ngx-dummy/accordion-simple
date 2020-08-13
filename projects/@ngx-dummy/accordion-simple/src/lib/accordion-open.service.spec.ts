@@ -1,6 +1,6 @@
 import { Observable, Subscription } from 'rxjs';
 import { AccordionOpenService } from './accordion-open.service';
-import { IToggleer } from './settings/';
+import { IToggler } from './settings/';
 
 describe('AccordionOpenService', () => {
   let service: AccordionOpenService = null;
@@ -21,7 +21,7 @@ describe('AccordionOpenService', () => {
   });
 
   it('should emit value', () => {
-    const testVals: IToggleer[] = [{ itemId: 0, isOpen: true }];
+    const testVals: IToggler[] = [{ itemId: 0, isOpen: true }];
     service.setItemsOpen(testVals);
 
     expect(service.itemsOpenSnapshot).toBeTruthy();

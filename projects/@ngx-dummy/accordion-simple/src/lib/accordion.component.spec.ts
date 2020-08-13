@@ -7,7 +7,7 @@ import { AccordionComponent } from './accordion.component';
 import { AccordionModule } from './accordion.module';
 import { IAccordionItemStyling } from './settings/IAccordionStylings';
 import { simpleAccordionList, sampleStyling, dummyAccordionList1 } from '../helpers/dummy-data';
-import { TestHostModule, TestHostComponent } from '../helpers/test-host.compoent';
+import { TestHostModule, TestHostComponent } from '../helpers/test-host.component';
 import { AccordionDirective } from './accordion.directive';
 
 describe('An Accordion component', () => {
@@ -28,7 +28,7 @@ describe('An Accordion component', () => {
 
     beforeEach(() => {
       accordCmp.accordionList = simpleAccordionList;
-      accordCmp.accordionStyling = { ...sampleStyling, numberdItems: true, };
+      accordCmp.accordionStyling = { ...sampleStyling, numberedItems: true, };
       const sampleItemStyling = { ...sampleStyling.itemStyling, fontSize: '10px', headBgColor: 'rgb(200, 200, 200)', bodyColor: 'brown', bodyBgColor: 'green' } as IAccordionItemStyling;
       const additionItemStyling = { bodyBgColor: '#a88' };
       accordCmp.accordionStyling.itemStyling = [sampleItemStyling, additionItemStyling];
@@ -48,7 +48,7 @@ describe('An Accordion component', () => {
       expect(cmp.getAttributeNames()).toContain('ngxdaccordion');
     });
 
-    it('shold contain ngxd-accordion-item element as the first child', (cb) => {
+    it('should contain ngxd-accordion-item element as the first child', (cb) => {
       let cmp = accordCmpDebugEl.nativeElement as HTMLElement;
       // let getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(1) as HTMLElement;
       let getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(0) as HTMLElement;
@@ -62,7 +62,7 @@ describe('An Accordion component', () => {
       // accordCmpDebugEl.query(By.css('.accord-item__header')).triggerEventHandler('click', null);
       getAccordItemElHeader().click();
 
-      // TODO: recheck why stoped working !!
+      // TODO: recheck why stopped working !!
       // expect((<HTMLElement>accordCmpDebugEl.nativeElement).querySelector('.accord-item__body').classList.contains('opened')).toBeTruthy();
       // expect(getAccordItemElBody()).toHaveClass('opened');
       cb();
@@ -102,7 +102,7 @@ describe('An Accordion component', () => {
       (<HTMLElement>hostDebEl.query(By.css('#container')).nativeElement).insertAdjacentElement('beforeend', cloneDeep(accordCmpFixture).nativeElement as HTMLElement);
     });
 
-    it('should have 2 Accrodions', () => {
+    it('should have 2 Accordions', () => {
       let cmp = hostCmpFixture.debugElement.query(By.directive(AccordionComponent));
       let accordDirective = hostCmpFixture.debugElement.query(By.directive(AccordionDirective));
       expect(cmp).toBeTruthy();

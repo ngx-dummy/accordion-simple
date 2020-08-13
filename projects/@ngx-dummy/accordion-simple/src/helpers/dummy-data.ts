@@ -137,9 +137,9 @@ export const dummyAccordionList2: Accordion = {
 };
 
 export const sampleStyling: IAccordionStyling = {
-	numberdItems: false,
+	numberedItems: false,
 	maxWidth: '100%',
-	itemsGutts: '1rem',
+	itemsGuts: '1rem',
 	margin: '0',
 	itemStyling: {
 		headBgColor: '#4197b2',

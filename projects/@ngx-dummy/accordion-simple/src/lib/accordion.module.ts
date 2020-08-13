@@ -6,10 +6,11 @@ import { AccordionComponent } from './accordion.component';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
 import { AccordionDirective } from './accordion.directive';
+import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
 @NgModule({
 	imports: [CommonModule, BrowserAnimationsModule],
-	declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective],
+	declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective, AccordionItemImgDirective],
 	exports: [AccordionComponent]
 })
 export class AccordionModule { }

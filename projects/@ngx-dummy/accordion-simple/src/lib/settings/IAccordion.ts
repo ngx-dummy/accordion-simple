@@ -2,14 +2,14 @@ import { TemplateRef } from '@angular/core';
 
 /**
  * @description
- * The default Data structure, thich `AccordionComponent` accepts as an `@Input` `accordionList`
+ * The default Data structure, which `AccordionComponent` accepts as an `@Input` `accordionList`
  * Data type accordion-component accepts as an {@link AccordionComponent#accordionList} Input
  * @member {Object} Accordion @extends AccordionItems
  */
 export interface Accordion extends AccordionItems {
 	/**
 	 * @description
-	 * (Optional) Id propertry of accordion components. Would be set as dom element `id`attribute.
+	 * (Optional) Id property of accordion components. Would be set as dom element `id`attribute.
 	 * @property {string|number} id
 	 * 
 	 * Could be omitted (in the case `id` attribute would be set by `AccordionComponent` itself)
@@ -18,7 +18,7 @@ export interface Accordion extends AccordionItems {
 	id?: string | number | null;
 	/**
 	 * @description
-	 * (Optional) Name propertry of accordion components. Would be set as dom element `name` attribute.
+	 * (Optional) Name property of accordion components. Would be set as dom element `name` attribute.
 	 * @property {string} name
 	 * 
 	 * Could be omitted (in the case `name` attribute would be set by `AccordionComponent` itself)
@@ -69,14 +69,14 @@ export interface ItemTemplateContext {
 	itemBody?: string | object | undefined;
 };
 /**
- * internally extended {@link AccorionItem} interface for managing state of every Accorion item
+ * internally extended {@link AccordionItem} interface for managing state of every Accordion item
  * @internal
  */
 export interface AccordionItemInternal extends AccordionItem {
 	/** unique identifier of every item (used internally) */
 	itemId: number;
 	/** an (optional) identifier of every item (show numbered items in every accordion item element' header,
-	 *  depending on value set in { import("./IAccordionStylings.ts").IAccordionStyling.numberdItems })  
+	 *  depending on value set in { import("./IAccordionStylings.ts").IAccordionStyling.numberedItems })  
 	 * */
 	itemNum?: number | string | null;
 	/**

@@ -1,2 +1,1 @@
-export * from './arrow_down';
-export * from './iconsbase64';
+export * from './icons-base';

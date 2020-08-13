@@ -1,11 +1,11 @@
-<ng-container *ngTemplateOutlet="itemTpl; context: { itemOpened: isOpen$ | async}"></ng-container>
+<ng-container *ngTemplateOutlet="itemTpl; context: { $implicit: isOpen$ | async}"></ng-container>
 
-<ng-template #itemTpl let-isOpen="itemOpened">
+<ng-template #itemTpl let-isOpen>
   <article class="accord-item">
     <header class="accord-item__header" [class.opened]="isOpen">
       <div class="header--control accord-item__logo">
         <span class="accord-item__header--start">
-          <img class="accord-item__header-img" [src]="logo" alt="{{'&#x02261;'}}">
+          <img class="accord-item__header-img accord-item__header--start-img" [src]="logo" alt="{{'&#x02261;'}}">
           <span *ngIf="item.itemNum">{{item.itemNum}}.</span>
         </span>
       </div>
@@ -20,7 +20,7 @@
     </header>
 
     <section class="accord-item__body" [ngClass]="{ 'opened': isOpen , 'closed': !isOpen }">
-      <ng-container [ngTemplateOutlet]="getItemBodyTemplate(item.body, bodyDefaultTmpl)" [ngTemplateOutletContext]="{ $implicit: this.getItemCtx(item.body) }"></ng-container>
+      <ng-container *ngTemplateOutlet="getItemBodyTemplate(item.body, bodyDefaultTmpl); context: { $implicit: this.getItemCtx(item.body) }"></ng-container>
     </section>
   </article>
 
@@ -31,9 +31,9 @@
 </ng-template>
 
 <ng-template #twoImgOpen let-openImg let-closeImg="closer" let-opened="opened">
-  <img class="accord-item__header--end-img" [src]="opened ? openImg : closeImg" [ngClass]="{ 'open': opened, 'close': !opened }" />
+  <img class="accord-item__header-img accord-item__header--end-img" [src]="opened ? openImg : closeImg" [ngClass]="{ 'open': opened, 'close': !opened }" />
 </ng-template>
 
 <ng-template #defaultImgOpen let-openImg let-opened="opened">
-  <img class="accord-item__header--end-img" [src]="openImg" [ngClass]="{ 'open': opened, 'close': !opened }">
+  <img class="accord-item__header-img accord-item__header--end-img" [src]="openImg" [ngClass]="{ 'open': opened, 'close': !opened }">
 </ng-template>

@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Observable, of } from 'rxjs';
-
+import { of } from 'rxjs';
 import { AccordionItemInternal, getItemCtx, getItemBodyTemplate } from './settings/';
 
 @Component({
@@ -12,8 +11,8 @@ import { AccordionItemInternal, getItemCtx, getItemBodyTemplate } from './settin
 export class AccordionItemComponent {
 	getItemCtx = getItemCtx;
 	getItemBodyTemplate = getItemBodyTemplate;
-	isOpen$: Observable<boolean> = of(false);
-	item: Partial<AccordionItemInternal> = { title: 'Test Item', body: 'Some body text...' };
+	isOpen$ = of(false);
+	item: Partial<AccordionItemInternal> = {};
 	logo = null;
 	isImgOpen = false;
 	openSign = null;

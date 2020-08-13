@@ -1,9 +1,9 @@
 import { AccordionItemInternal } from './IAccordion';
 
-export interface IToggleer {
+export interface IToggler {
 	itemId: number;
 	isOpen: boolean;
 }
 
-export const pluckIToggler = ({ itemId, isOpen, ...rest }: AccordionItemInternal) => (<IToggleer>{ itemId, isOpen });
-export const pluckOpenTogglesIdsToStr = (toggles: IToggleer[]): string => toggles.filter(t => t.isOpen === true).map(t => t.itemId).join(',');
+export const pluckIToggler = ({ itemId, isOpen, ...rest }: AccordionItemInternal) => (<IToggler>{ itemId, isOpen });
+export const pluckOpenTogglesIdsToStr = (toggles: IToggler[]): string => toggles.filter(t => t.isOpen === true).map(t => t.itemId).join(',');

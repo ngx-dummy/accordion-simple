@@ -8,13 +8,13 @@ export interface IAccordionStyling {
 	/** `max-width` css style for accordion element */
 	maxWidth?: string | number | null;
 	/** defines whether every accordion item element for particular accordion component element should be numbered (have numbers in header element) */
-	numberdItems?: boolean;
-	/** defines whether every accordion item element could be collaped on double-click inside (previously) opened items' body element */
-	bodyDbclkcloseItems?: boolean;
-	/** defines whether every accordion item element should be collaped upon opening another item of the same accordion component */
+	numberedItems?: boolean;
+	/** defines whether every accordion item element could be collapsed on double-click inside (previously) opened items' body element */
+	bodyDblclkCloseItems?: boolean;
+	/** defines whether every accordion item element should be collapsed upon opening another item of the same accordion component */
 	isMultiShow?: boolean;
 	/** defines margins between accordion elements */
-	itemsGutts?: number | string | null;
+	itemsGuts?: number | string | null;
 	/** defines `margin` styles within accordion elements */
 	margin?: string | number;
 	/** @member {Object} itemStyling - styles and settings for every accordion item element in a particular Accordion */
@@ -23,7 +23,7 @@ export interface IAccordionStyling {
 
 /**
  * @description
- * combined stylings for `AccordionComponent` children `AccordionItemComponet`s elements;
+ * combined stylings for `AccordionComponent` children `AccordionItemComponent`s elements;
  * comprises font-styles of every accordion-item element, as well as spacing styles, and margins, paddings, colors and other styles for both items' header and body elements
  */
 export type IAccordionItemStyling = {

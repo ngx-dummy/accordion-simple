@@ -35,17 +35,17 @@ describe('AppComponent', () => {
   });
 
   it('should get accordion', () => {
-    const getchildAccordion: () => DebugElement = () => appCmpFixture.debugElement.query(By.css('ngxd-accordion:first-of-type'));
-    const getchildAccordionCmpInstance = () => getchildAccordion().componentInstance;
+    const getChildAccordion: () => DebugElement = () => appCmpFixture.debugElement.query(By.css('ngxd-accordion:first-of-type'));
+    const getChildAccordionCmpInstance = () => getChildAccordion().componentInstance;
     app.accordList1 = list1;
     app.accordList$ = of(list1);
     app.ngAfterViewInit();
     appCmpFixture.detectChanges();
 
-    expect(getchildAccordion()).toBeTruthy();
-    expect(getchildAccordionCmpInstance()).toBeInstanceOf(AccordionComponent);
-    expect((getchildAccordionCmpInstance() as AccordionComponent).name.toLowerCase()).toContain('accordion');
-    expect(getchildAccordion().nativeElement.querySelectorAll('ngxd-accordion-item').length).toBeGreaterThan(1);
+    expect(getChildAccordion()).toBeTruthy();
+    expect(getChildAccordionCmpInstance()).toBeInstanceOf(AccordionComponent);
+    expect((getChildAccordionCmpInstance() as AccordionComponent).name.toLowerCase()).toContain('accordion');
+    expect(getChildAccordion().nativeElement.querySelectorAll('ngxd-accordion-item').length).toBeGreaterThan(1);
   });
 
 });

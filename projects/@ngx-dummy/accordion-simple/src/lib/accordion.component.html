@@ -1,9 +1,6 @@
 <div class="accordion" ngxdAccordion>
   <ng-container *ngIf="!!accordionItems?.length; else loadingTpl">
-    <ng-container *ngFor="let item of accordionItems; trackBy: trackByFn" 
-      [ngTemplateOutlet]="accordItemTmpl"
-      [ngTemplateOutletContext]="{ $implicit: item }">
-    </ng-container>
+    <ng-container *ngFor="let item of accordionItems; trackBy: trackByFn" [ngTemplateOutlet]="accordItemTmpl" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
   </ng-container>
 </div>
 
@@ -11,7 +8,7 @@
   <ngxd-accordion-item 
     [ngxdAccordionItem]="item"
     [isNumbered]="isNumbered" 
-    [bodyDblckcClose]="bodyDblckcClose"
+    [bodyDblclkClose]="bodyDblclkClose"
     [openSign]="openSign" 
     [closeSign]="closeSign" 
     [logo]="listLogo" 
@@ -26,7 +23,7 @@
 
 <ng-template #defloadingTpl>
   <style>
-    .loading {
+    .accordion-default-loader--tmpl {
       display: block;
       background-color: transparent;
       min-width: 50px;
@@ -34,21 +31,21 @@
       animation: rotate 1s ease-out infinite;
       border-radius: 50%;
     }
-    .loading > svg {
+    .accordion-default-loader--tmpl > svg {
       transform: rotate(90deg);
       fill: var(--dark-bg);
     }
-    .loading > svg rect:first-of-type {
+    .accordion-default-loader--tmpl > svg rect:first-of-type {
       fill: var(--darker-color);
     }
-    .loading > svg rect:nth-of-type(2) {
+    .accordion-default-loader--tmpl > svg rect:nth-of-type(2) {
       fill: var(--accent-color);
     }
-    .loading > svg rect:n-of-type(3) {
+    .accordion-default-loader--tmpl > svg rect:n-of-type(3) {
       fill: var(--dark-blue-color);
     }
   </style>
-  <div class="loading" @spinnerIn>
+  <div class="accordion-default-loader--tmpl" @spinnerIn>
     <svg width="51px" height="50px" viewBox="0 0 51 50">
       <rect y="0" width="13" height="50">
           <animate attributeName="height" values="50;10;50" begin="0s" dur="1s" repeatCount="indefinite" />
