@@ -12,7 +12,7 @@ export class AccordionItemComponent {
 	getItemCtx = getItemCtx;
 	getItemBodyTemplate = getItemBodyTemplate;
 	isOpen$ = of(false);
-	item: Partial<AccordionItemInternal> = {};
+	item: Partial<AccordionItemInternal> = null;
 	logo = null;
 	isImgOpen = false;
 	openSign = null;
