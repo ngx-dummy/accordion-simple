@@ -68,10 +68,11 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 			},
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;
-		this.hostCmp.closeSign = this.closeSign;
-		this.hostCmp.openSign = this.openSign;
-		this.hostCmp.logo = this.logo;
-		this.hostCmp.isImgOpen = this.isImgOpen;
+		// this.hostCmp.closeSign = this.closeSign;
+		// this.hostCmp.openSign  = this.openSign;
+		// this.hostCmp.logo 		 = this.logo;
+		// this.hostCmp.isImgOpen = this.isImgOpen;
+		['closeSign', 'openSign', 'logo', 'isImgOpen'].forEach(propKey => this.hostCmp[propKey] = this[propKey]);
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
 			filter(val => (!!val && !!val.length)),

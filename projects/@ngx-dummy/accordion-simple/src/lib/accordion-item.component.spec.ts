@@ -1,18 +1,21 @@
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { Subject } from 'rxjs';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
-import { of, Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
 
 describe('An Accordion-item component', () => {
-  let accordItemCmpFixture: ComponentFixture<AccordionItemComponent>;
-  let accordItemCmp: AccordionItemComponent;
-  let accordItemNativeEl: HTMLElement;
-  let accordItemDebugEl: DebugElement;
 
   describe('single component', () => {
+    let accordItemCmpFixture: ComponentFixture<AccordionItemComponent>;
+    let accordItemCmp: AccordionItemComponent;
+    let accordItemNativeEl: HTMLElement;
+    let accordItemDebugEl: DebugElement;
+    const getItemHeader = () => accordItemNativeEl?.querySelector('.accord-item__header');
+    const getItemBody = () => accordItemNativeEl?.querySelector('.accord-item__body');
+    const isOpen$$: Subject<boolean> = new Subject();
+    let isOpen$ = null;
 
     beforeEach(async () => {
       let testingBed = TestBed.configureTestingModule({
@@ -26,8 +29,12 @@ describe('An Accordion-item component', () => {
     beforeEach(() => {
       accordItemNativeEl = accordItemCmpFixture.nativeElement as HTMLElement;
       accordItemDebugEl = accordItemCmpFixture.debugElement;
-      accordItemCmp.isOpen$ = of(false);
-      accordItemCmp.isOpen$ = of(true).pipe(delay(100));
+      isOpen$ = isOpen$$.asObservable();
+      accordItemCmp.isOpen$ = isOpen$;
+      accordItemCmp.item = {
+        body: 'TMPL DATA'
+      };
+      accordItemCmpFixture.autoDetectChanges();
     });
 
     it('should exist', () => {
@@ -35,20 +42,17 @@ describe('An Accordion-item component', () => {
     });
 
     it('should be open', () => {
-      accordItemCmpFixture.autoDetectChanges();
-      expect(accordItemNativeEl.querySelector('.accord-item__header').classList).toContain('opened');
-      expect(accordItemNativeEl.querySelector('.accord-item__body').classList).toContain('opened');
+      isOpen$$.next(true);
+      isOpen$.subscribe(_ => {
+        expect(getItemHeader().classList).toContain('opened');
+        expect(getItemBody().classList).toContain('opened');
+      });
     });
 
-    it('should be closed', (cb) => {
-      let isOpenObs: Observable<boolean> = new Observable(observer => { Array.from(new Array(3)).fill((_, i) => (i % 2 === 0 ? true : false)).forEach(val => observer.next(val)); });
-      accordItemCmp.isOpen$ = isOpenObs;
-
-      accordItemCmpFixture.autoDetectChanges();
-      isOpenObs.subscribe(_isOpenVal => {
-        expect(accordItemNativeEl.querySelector('.accord-item__header').classList).not.toContain('opened');
-        expect(accordItemNativeEl.querySelector('.accord-item__body').classList.contains('closed')).toBeTruthy();
-        cb();
+    it('should be closed', () => {
+      isOpen$$.next(false);
+      isOpen$.subscribe(_isOpenVal => {
+        expect(getItemBody().classList).toContain('closed');
       });
     });
 

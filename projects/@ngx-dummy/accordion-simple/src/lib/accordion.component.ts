@@ -14,8 +14,6 @@ import {
 	pluckOpenTogglesIdsToStr
 } from './settings/';
 
-let idx = 0;
-
 @Component({
 	selector: 'ngxd-accordion',
 	exportAs: 'ngxdAccordion',
@@ -26,12 +24,13 @@ let idx = 0;
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
+	static idx = 0;
 	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) defloadingTpl: TemplateRef<Element>;
 	@HostBinding('attr.data-items-opened') openedItems = undefined;
 	@HostBinding('attr.id') get id() { return `${this.attributes.id}`; }
 	@HostBinding('attr.name') get name() { return this.attributes.name; }
 	@Input() set accordionList(acc: Accordion) {
-		let [name, id] = [(!!acc && !!acc['name'].length && acc.name) ?? 'Sample-Accordion', (!!acc && !!acc['id'] && acc.id) ?? `accordion_${++idx}`];
+		let [name, id] = [(!!acc && !!acc['name']?.length && acc.name) || 'Sample-Accordion', (!!acc && !!acc['id'] && acc.id) || `accordion_${++AccordionComponent.idx}`];
 		this._accord = Object.assign(
 			{ id, name },
 			{ items: acc?.items.map((item, i) => (<AccordionItemInternal>{ ...item, id: (!!item.id && typeof item.id === 'string') ? item.id : `${id}__accord-item_${i}`, itemId: i })) }
@@ -78,7 +77,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 		this.bodyDblclkClose = !!this.accordionStyling.bodyDblclkCloseItems ?? false;
 		this.multiSelect = !!this.accordionStyling.isMultiShow ?? false;
 		this.itemsOpenSvc.itemsOpen$.pipe(
-			filter(val => (!!val && !!val.length)),
+			filter(val => !!val?.length),
 			map(pluckOpenTogglesIdsToStr)
 		).subscribe(ids => this.openedItems = ids || null);
 	}

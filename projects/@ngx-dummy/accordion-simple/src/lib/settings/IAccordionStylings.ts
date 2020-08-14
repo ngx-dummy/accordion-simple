@@ -20,29 +20,41 @@ export interface IAccordionStyling {
 	/** @member {Object} itemStyling - styles and settings for every accordion item element in a particular Accordion */
 	itemStyling?: IAccordionItemStyling | IAccordionItemStyling[];
 }
-
 /**
  * @description
  * combined stylings for `AccordionComponent` children `AccordionItemComponent`s elements;
  * comprises font-styles of every accordion-item element, as well as spacing styles, and margins, paddings, colors and other styles for both items' header and body elements
  */
-export type IAccordionItemStyling = {
+export type IAccordionItemStyling =
+	IAccordionItemFontStyling
+	& IAccordionItemSpacingStyling
+	& IAccordionItemBodyStyling
+	& IAccordionItemHeadStyling;
+
+/**
+ * @description
+ * fonts' definitions for every accordion item el
+ */
+export interface IAccordionItemFontStyling {
 	font?: string | null;
 	fontSize?: number | string;
 	fontFamily?: string;
 	fontStyle?: 'normal' | 'italic' | 'oblique' | 'initial' | 'inherit';
 }
-	& IAccordionItemSpacingStyling
-	& IAccordionItemBodyStyling
-	& IAccordionItemHeadStyling;
-
+/**
+ * @description
+ * margins/paddings definitions for accordion item el
+ */
 export interface IAccordionItemSpacingStyling {
 	padding?: string | number | null;
 	marginBottom?: string | number | null;
 	marginTop?: string | number | null;
 	margin?: string | number | null;
 }
-
+/**
+ * @description
+ * stylings definitions for accordion item element's header
+ */
 export interface IAccordionItemHeadStyling {
 	headFontSize?: string | null;
 	headFont?: string | null;
@@ -50,7 +62,10 @@ export interface IAccordionItemHeadStyling {
 	headBgColor?: string;
 	headHeight?: string | number | null;
 }
-
+/**
+ * @description
+ * stylings definitions for accordion item element's body
+ */
 export interface IAccordionItemBodyStyling {
 	bodyFont?: string | null;
 	bodyFontSize?: string | null;
