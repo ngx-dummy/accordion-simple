@@ -1,10 +1,10 @@
 <center>
-  <a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" taget="_blank">
+  <a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" target="_blank">
     <p align="center">
       <img src="https://avatars3.githubusercontent.com/u/62136587?s=400&u=4580be0183d1496d982253d3a0d803de82465626&v=4" width="200" height="200" />
     </p>
   </a>
-  <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" taget="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>     
+  <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" target="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>     
 
 [![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple.png)](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple)
 
@@ -77,7 +77,7 @@ class AppCmp {
       }]
   };
   styling: IAccordionStyling = {
-    itemsGutts: '1px',
+    itemsGuts: '1px',
     maxWidth: '99%',
     itemStyling: {
       headBgColor: '#ccc',
@@ -127,10 +127,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 <details closed>
 <summary>TODO:</summary>
 
-- [x] Basic accordion-simple component
-- [x] Styling interfaces
 - [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
-- [ ] Add documentation (jsdocs/annotate the styling/settings interfaces
 
 </details>
 

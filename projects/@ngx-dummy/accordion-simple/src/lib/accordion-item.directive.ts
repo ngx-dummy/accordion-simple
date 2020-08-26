@@ -1,15 +1,13 @@
-import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { filter, tap, pluck, map } from 'rxjs/operators';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionOpenService } from './accordion-open.service';
-import { arrow_down, logo_svg } from './theming/';
 import {
 	IToggler,
 	IAccordionItemStyling,
 	AccordionItem,
-	getSvg,
 	AccordionItemInternal,
 	ItemTemplateContext,
 	sanitizeHTML
@@ -25,13 +23,6 @@ import {
 })
 export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input('ngxdAccordionItem') item: AccordionItemInternal = null;
-	@Input() set logo(img: string) {
-		if (typeof this._logo === 'string' && !!this._logo?.length && img === this._logo) return;
-		this._logo = !!img && !!img.length ? img : this._baseLogoImg;
-	}
-	get logo() {
-		return this._logo;
-	}
 	@Input('styling') itemStyles: IAccordionItemStyling = {
 		headHeight: '50px',
 		headBgColor: '#ccc',
@@ -41,22 +32,21 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		fontSize: '10px',
 		bodyPadding: '0',
 	};
+	@Input() logo = undefined;
+	@Input() openSign = undefined;
+	@Input() closeSign = undefined;
 	@Input() bodyDblclkClose = false;
-	@Input() openSign = null;
-	@Input() closeSign = null;
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggler> = new EventEmitter();
 	isOpen = false;
-	private _logo = null;
-	private _baseLogoImg = getSvg(logo_svg, this.sanitizer);
-	private _basePlusImg = getSvg(arrow_down, this.sanitizer);
 
 	constructor(
 		@Inject(AccordionItemComponent) private hostCmp: AccordionItemComponent,
 		@Inject(ElementRef) private hostElRef: ElementRef<HTMLElement>,
 		@Host() private itemStatusSvc: AccordionOpenService,
 		private render: Renderer2,
-		private sanitizer: DomSanitizer
+		private sanitizer: DomSanitizer,
+		private cd: ChangeDetectorRef
 	) { }
 
 	ngOnInit() {
@@ -68,11 +58,6 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 			},
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;
-		// this.hostCmp.closeSign = this.closeSign;
-		// this.hostCmp.openSign  = this.openSign;
-		// this.hostCmp.logo 		 = this.logo;
-		// this.hostCmp.isImgOpen = this.isImgOpen;
-		['closeSign', 'openSign', 'logo', 'isImgOpen'].forEach(propKey => this.hostCmp[propKey] = this[propKey]);
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
 			filter(val => (!!val && !!val.length)),
@@ -87,6 +72,16 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		const itemEl = nativeEl.getElementsByClassName('accord-item').item(0) as HTMLElement;
 		const headEl = nativeEl.getElementsByClassName('accord-item__header').item(0) as HTMLElement;
 		const bodyEl = nativeEl.getElementsByClassName('accord-item__body').item(0) as HTMLElement;
+
+		{
+			/** set up the accordion item header images\' sources */
+			const headElLogoImgEl = headEl.getElementsByClassName('accord-item__header--start-img').item(0) as HTMLImageElement;
+			const headElCloserImgEl = headEl.getElementsByClassName('accord-item__header--end-img').item(0) as HTMLImageElement;
+			this.logo && this.render.setAttribute(headElLogoImgEl, 'data-src', this.logo);
+			this.openSign && this.render.setAttribute(headElCloserImgEl, 'data-opensrc', this.openSign);
+			this.closeSign && this.render.setAttribute(headElCloserImgEl, 'data-closesrc', this.closeSign);
+			this.cd.detectChanges();
+		}
 
 		this.render.setStyle(itemEl, 'margin', this.itemStyles.margin ?? '0');
 		this.render.setStyle(itemEl, 'padding', this.itemStyles.padding ?? '0');
@@ -119,14 +114,5 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 
 	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
 	private toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
-
-	private get isImgOpen() {
-		const imgOpen = (!!this.closeSign && !!this.closeSign.length && !!this.openSign && !!(<string>this.openSign).length);
-		if (!imgOpen) {
-			this.openSign = this._basePlusImg;
-			this.hostCmp.openSign = this.openSign;
-		}
-		return imgOpen;
-	}
 
 }

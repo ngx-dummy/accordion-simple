@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionComponent } from './accordion.component';
@@ -9,7 +11,7 @@ import { AccordionDirective } from './accordion.directive';
 import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
 @NgModule({
-	imports: [CommonModule, BrowserAnimationsModule],
+	imports: [CommonModule, BrowserAnimationsModule, HttpClientModule],
 	declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective, AccordionItemImgDirective],
 	exports: [AccordionComponent]
 })

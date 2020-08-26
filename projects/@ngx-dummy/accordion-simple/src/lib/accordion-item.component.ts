@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
-import { AccordionItemInternal, getItemCtx, getItemBodyTemplate } from './settings/';
+import { AccordionItemInternal, getItemBodyCtx, getItemBodyTemplate } from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion-item',
@@ -9,12 +9,8 @@ import { AccordionItemInternal, getItemCtx, getItemBodyTemplate } from './settin
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccordionItemComponent {
-	getItemCtx = getItemCtx;
+	getItemBodyCtx = getItemBodyCtx;
 	getItemBodyTemplate = getItemBodyTemplate;
 	isOpen$ = of(false);
 	item: Partial<AccordionItemInternal> = null;
-	logo = null;
-	isImgOpen = false;
-	openSign = null;
-	closeSign = null;
 }

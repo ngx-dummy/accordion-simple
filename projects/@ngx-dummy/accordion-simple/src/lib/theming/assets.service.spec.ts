@@ -1,18 +1,28 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-import { AssetsService } from './assets.service';
+import { AssetsService, AssetsServiceToken, assetsSvcFactoryProvider } from './assets.service';
+
+const l = console.log;
 
 describe('AssetsService', () => {
-  let service: AssetsService;
+  let assetSvc: AssetsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AssetsService]
+      imports: [HttpClientModule],
+      providers: [assetsSvcFactoryProvider]
     });
-    service = TestBed.inject(AssetsService);
+    assetSvc = TestBed.inject(AssetsServiceToken);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(assetSvc).toBeTruthy();
+    // expect(true).toBeTruthy();
+  });
+
+  it('should give info about asset', () => {
+    assetSvc.setItem({ aKey: 'src', aVal: '../../helpers/test-assets/logo.png' });
   });
 });

@@ -41,13 +41,13 @@ describe('An Accordion-item component', () => {
       expect(accordItemNativeEl).toBeTruthy();
     });
 
-    it('should be open', () => {
-      isOpen$$.next(true);
-      isOpen$.subscribe(_ => {
-        expect(getItemHeader().classList).toContain('opened');
-        expect(getItemBody().classList).toContain('opened');
-      });
-    });
+    // it('should be open', () => {
+    //   isOpen$$.next(true);
+    //   isOpen$.subscribe(_ => {
+    //     expect(getItemHeader().classList).toContain('opened');
+    //     expect(getItemBody().classList).toContain('opened');
+    //   });
+    // });
 
     it('should be closed', () => {
       isOpen$$.next(false);

@@ -16,7 +16,7 @@
   </div>
   <div class="mdc-layout-grid__inner mb-1">
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-      <ngxd-accordion #acc1="ngxdAccordion" [accordionList]="accordList1" [accordionStyling]="styling" openSign="plus.png" closeSign="minus.png"></ngxd-accordion>
+      <ngxd-accordion #acc1="ngxdAccordion" [accordionList]="accordList1" [accordionStyling]="styling" openSign="plus.png" closeSign  ="minus.png"></ngxd-accordion>
     </div>
   </div>
   <div class="mdc-layout-grid__inner">
@@ -34,6 +34,7 @@
     }
 
     .container-transparent {
+      
       background: transparent;
       display: grid;
       min-height: 6rem;
@@ -128,9 +129,10 @@
     }
 
     .subtitle1 {
-      color: var(--mdc-theme-text-primary-on-light, rgba(250, 250, 250, .9));
+      color: var(--mdc-theme-text-primary-on-dark, rgba(250, 250, 250, .9));
       text-align: start;
       margin: .1rem 1rem;
+      font-family: Lato;
     }
 
     .subtitle2 {
@@ -178,11 +180,12 @@
         font-size: .2rem;
       }
 
-      .mdc-card__actions {
-        display: flex;
+      .flex-card__tmpl {
+        display: grid;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap !important;
       }
     }
   </style>
@@ -202,7 +205,7 @@
         </div>
         <div class="mdc-typography mdc-typography--body2 mt-1 mb-1 body2" [innerHTML]="ctxcontent"></div>
       </div>
-      <div class="mdc-card__actions">
+      <div class="mdc-card__actions flex-card__tmpl">
         <div class="mdc-card__action-buttons">
           <button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/ngx-dummy/accordion-simple'">
             <span class="mdc-button__ripple"></span>

@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 			</div>
 			<div class="mdc-layout-grid__inner mb-1">
 				<div class="mdc-layout-grid__cell mdc-layout-grid__cell--align-center mdc-layout-grid__cell--span-12">
-					<ngxd-accordion [accordionList]="accordList1$ | async" [accordionStyling]="styling" ></ngxd-accordion>
+					<ngxd-accordion [accordionList]="accordList1$ | async" [accordionStyling]="styling" openSign="plus1.png" minus="min.png"></ngxd-accordion>
 				</div>
 			</div>
 		</div>
