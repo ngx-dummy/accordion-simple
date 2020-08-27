@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AssetsService, AssetsServiceToken, assetsSvcFactoryProvider } from './assets.service';
+import { Observable } from 'rxjs';
 
 const l = console.log;
 
@@ -19,10 +20,5 @@ describe('AssetsService', () => {
 
   it('should be created', () => {
     expect(assetSvc).toBeTruthy();
-    // expect(true).toBeTruthy();
-  });
-
-  it('should give info about asset', () => {
-    assetSvc.setItem({ aKey: 'src', aVal: '../../helpers/test-assets/logo.png' });
   });
 });

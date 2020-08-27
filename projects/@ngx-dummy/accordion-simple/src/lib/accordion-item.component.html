@@ -23,7 +23,7 @@
   </div>
   <div class=" header--control accord-item__collapse">
     <span class="accord-item__header--end" [class.active]="isOpen">
-      <!-- img 'src' attr is bound in accordion-item-img directive -->
+      <!-- NOTE: img 'src' attr is bound in the `accordion-item-img.directive` -->
       <img class="accord-item__header-img accord-item__header--end-img" [ngClass]="{ 'open': isOpen, 'close': !isOpen }"  />
     </span>
   </div>
