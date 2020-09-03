@@ -17,3 +17,5 @@ temp="${temp#\"}"
 TAGPREF="v"
 TAG=$TAGPREF"$temp"
 echo "$TAG" | sh $PUSH_TAGGED
+echo "pushing to origin-origin"
+git push origin-origin --all

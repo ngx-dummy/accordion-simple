@@ -1,6 +1,6 @@
 {
   "name": "accordion-simple-lib--project",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "license": "GPL-3.0",
   "description": "A simple accordion component to use in Angular / Ionic projects .. (WIP) and sample app using it",
   "keywords": [
@@ -44,7 +44,7 @@
   "scripts": {
     "clean:docs": "rimraf ./docs/*",
     "build": "ng b",
-    "build:prod": "ng b --prod --no-progress",
+    "build:prod": "ng b --prod",
     "build:sample": "ng b accordion-sample",
     "build:sample:prod": "ng b accordion-sample --prod  -- --base-href /accordion-simple/",
     "sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
@@ -63,7 +63,7 @@
     "test:lib": "ng test",
     "test:sample": "ng test accordion-sample",
     "test": "run-p test:lib test:sample",
-    "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --no-progress",
+    "test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --progress=false",
     "postinstall": "ngcc --tsconfig \"./projects/@ngx-dummy/accordion-simple/tsconfig.lib.json\"",
     "prerelease": "npm run docs",
     "release": "sh ./scripts/release.sh"
