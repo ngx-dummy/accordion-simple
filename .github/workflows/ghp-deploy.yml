@@ -1,19 +1,15 @@
-# A basic CI script to automate publishing @ngx-dummy/accrordion-simple lib
+# A basic CI script to automate publishing @ngx-dummy/accordion-simple lib
 name: ghp-deploy
-# Trigger after release created 
 on:
   release:
     types: [created, published]
   push:
-    # Sequence of patterns matched against refs/tags
-    # Created when `npm run releae` commeand is executed (which pushes tagged commit with version pathed from current package.json version ..)
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v2.0.1
 
 jobs:
   build:
-    if: contains(github.repository_owner, 'ngx-dummy')
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to npm

@@ -52,10 +52,10 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
-			body: (typeof this.item.body === 'string') ? sanitizeHTML(this.item.body, this.sanitizer) : <ItemTemplateContext>{
+			body: (typeof this.item.body === 'string') ? sanitizeHTML(this.item.body, this.sanitizer) : {
 				itemTemplate: this.item.body.itemTemplate,
 				itemBody: sanitizeHTML(this.item.body.itemBody, this.sanitizer)
-			},
+			} as ItemTemplateContext,
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null
 		} as Partial<AccordionItem>;
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SafeResourceUrl } from '@angular/platform-browser';
+import { blobToSafeRes } from '../settings/helpers';
 
 const l = console.log;
 
@@ -17,17 +18,17 @@ export class AssetsService {
   constructor(private http: HttpClient) { }
 
   setItem<T extends Assets, K extends keyof Assets>({ aKey, aVal }: { aKey: K, aVal: T[K]; }) {
-    if (this.keyInAssetsMap(aKey)) return;
-    let res = this.getAssetsByKey(aVal);
+    if (this.keyInAssetsMap(aKey)) { return; }
+    const res = this.getAssetsByKey(aVal);
     this.itemAlterAssetsMap.set(aKey, res.value);
     return this.getItem(aKey);
   }
 
   getItem(itemKey: string): Blob | string | Observable<Blob> | (() => unknown) {
-    if (!this.itemAlterAssetsMap.has(itemKey)) throw Error(`AssetsSvc->itemAlterAssetsMap does not have ${itemKey} entry ..!`);
-    let currValInMpa = this.itemAlterAssetsMap.get(itemKey);
+    if (!this.itemAlterAssetsMap.has(itemKey)) { throw Error(`AssetsSvc->itemAlterAssetsMap does not have ${itemKey} entry ..!`); }
+    const currValInMpa = this.itemAlterAssetsMap.get(itemKey);
     if (currValInMpa instanceof Observable) {
-      let sub = currValInMpa.subscribe((blobRes: string | SafeResourceUrl) => {
+      const sub = currValInMpa.subscribe((blobRes: string | SafeResourceUrl) => {
         this.itemAlterAssetsMap.set(itemKey, blobRes);
       });
       return () => sub.unsubscribe();
@@ -36,20 +37,15 @@ export class AssetsService {
   }
 
   private keyInAssetsMap = (key: string) => (this.itemAlterAssetsMap.has(key));
-  private getAssetsByKey = <T extends Assets, K extends keyof T>(val: T[K]) => ({ 'value': this.getImageBin(val) });
+  private getAssetsByKey = <T extends Assets, K extends keyof T>(val: T[K]) => ({ value: this.getImageBin(val) });
 
   private getImageBin(srcSrt): Observable<Blob> {
     return this.http.get(srcSrt, {
-      headers: new HttpHeaders({ 'Accept': "image/png,image/*" }),
+      headers: new HttpHeaders({ Accept: 'image/png,image/*' }),
       observe: 'body',
       responseType: 'blob'
     }).pipe(
-      tap(val => {
-        l('BINARY ASSETS is  ::');
-        l(val);
-        l(typeof val);
-      })
-      // ,map(val => blobToSafeRes(v))
+      // map(val => blobToSafeRes(val))
     );
   }
 

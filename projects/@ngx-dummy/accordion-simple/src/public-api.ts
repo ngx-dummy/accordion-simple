@@ -10,7 +10,7 @@ export {
   IAccordionItemStyling,
   IAccordionStyling,
   AccordionItem,
-  AccordionItems
+  AccordionItems,ItemTemplateContext
 } from './lib/settings/';
 export { AccordionModule } from './lib/accordion.module';
 export { AccordionComponent } from './lib/accordion.component';

@@ -13,7 +13,7 @@ describe('AppComponent', () => {
   const testTitle = 'Test Sample';
 
   beforeEach(async () => {
-    let testingBed = TestBed.configureTestingModule({
+    const testingBed = TestBed.configureTestingModule({
       imports: [AccordionModule],
       declarations: [
         AppComponent

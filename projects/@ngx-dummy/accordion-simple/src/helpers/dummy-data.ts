@@ -27,7 +27,7 @@ export const dummyAccordionList1: Accordion = {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione
-            Lorem ipsum dolor 	 
+            Lorem ipsum dolor
           </main>
           <footer class="item-footer" style="font-size: .5rem; text-align:right !important;color:red !important;">
             All rights reserved: Vladimir Ovsyukov (ovsyukov@yandex.com)

@@ -18,7 +18,7 @@ describe('An Accordion component', () => {
   describe('single component', () => {
 
     beforeEach(async () => {
-      let testingBed = TestBed.configureTestingModule({
+      const testingBed = TestBed.configureTestingModule({
         imports: [AccordionModule]
       });
       await testingBed.compileComponents();
@@ -37,23 +37,23 @@ describe('An Accordion component', () => {
     });
 
     it('should exist in the dom', () => {
-      let cmp = accordCmpFixture.nativeElement as HTMLElement;
+      const cmp = accordCmpFixture.nativeElement as HTMLElement;
       expect(cmp).toBeTruthy();
     });
 
     it('should contain [ngxdAccordion] directive as attribute of element with .accordion class', () => {
-      let cmp = accordCmpDebugEl.query(By.directive(AccordionDirective)).nativeElement as HTMLElement;
+      const cmp = accordCmpDebugEl.query(By.directive(AccordionDirective)).nativeElement as HTMLElement;
       expect(cmp).toBeTruthy();
       expect(cmp).toHaveClass('accordion');
       expect(cmp.getAttributeNames()).toContain('ngxdaccordion');
     });
 
     it('should contain ngxd-accordion-item element as the first child', (cb) => {
-      let cmp = accordCmpDebugEl.nativeElement as HTMLElement;
+      const cmp = accordCmpDebugEl.nativeElement as HTMLElement;
       // let getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(1) as HTMLElement;
-      let getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(0) as HTMLElement;
-      let getAccordItemElHeader = () => (getAccordItemEl().querySelector('.accord-item__header') as HTMLElement);
-      let getAccordItemElBody = () => (getAccordItemEl().querySelector('.accord-item__body') as HTMLElement);
+      const getAccordItemEl: () => HTMLElement = () => cmp.querySelectorAll('ngxd-accordion-item').item(0) as HTMLElement;
+      const getAccordItemElHeader = () => (getAccordItemEl().querySelector('.accord-item__header') as HTMLElement);
+      const getAccordItemElBody = () => (getAccordItemEl().querySelector('.accord-item__body') as HTMLElement);
 
       expect(Array.from(getAccordItemElBody().classList)).toContain('closed');
       expect(getAccordItemEl().nodeName.toLowerCase()).toEqual('ngxd-accordion-item');
@@ -69,9 +69,9 @@ describe('An Accordion component', () => {
     });
 
     it('should have defined styling being properly applied', () => {
-      let cmp = accordCmpDebugEl.nativeElement as HTMLElement;
-      let getAccordItemEl = () => cmp.querySelector('ngxd-accordion-item');
-      let getAccordItemElBody = () => (getAccordItemEl().querySelector('.accord-item__body') as HTMLElement);
+      const cmp = accordCmpDebugEl.nativeElement as HTMLElement;
+      const getAccordItemEl = () => cmp.querySelector('ngxd-accordion-item');
+      const getAccordItemElBody = () => (getAccordItemEl().querySelector('.accord-item__body') as HTMLElement);
 
       expect(getAccordItemElBody().style.color).toBe('brown');
     });
@@ -84,7 +84,7 @@ describe('An Accordion component', () => {
     let hostCmp: TestHostComponent;
 
     beforeEach(async () => {
-      let testingBed = TestBed.configureTestingModule({
+      const testingBed = TestBed.configureTestingModule({
         imports: [TestHostModule, AccordionModule]
       });
       await testingBed.compileComponents();
@@ -98,13 +98,13 @@ describe('An Accordion component', () => {
       accordCmp.accordionList = dummyAccordionList1;
       accordCmpFixture.detectChanges();
       hostCmpFixture.detectChanges();
-      (<HTMLElement>hostDebEl.query(By.css('#container')).nativeElement).insertAdjacentElement('afterbegin', accordCmpFixture.nativeElement as HTMLElement);
-      (<HTMLElement>hostDebEl.query(By.css('#container')).nativeElement).insertAdjacentElement('beforeend', cloneDeep(accordCmpFixture).nativeElement as HTMLElement);
+      (hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('afterbegin', accordCmpFixture.nativeElement as HTMLElement);
+      (hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('beforeend', cloneDeep(accordCmpFixture).nativeElement as HTMLElement);
     });
 
     it('should have 2 Accordions', () => {
-      let cmp = hostCmpFixture.debugElement.query(By.directive(AccordionComponent));
-      let accordDirective = hostCmpFixture.debugElement.query(By.directive(AccordionDirective));
+      const cmp = hostCmpFixture.debugElement.query(By.directive(AccordionComponent));
+      const accordDirective = hostCmpFixture.debugElement.query(By.directive(AccordionDirective));
       expect(cmp).toBeTruthy();
       expect(cmp.nativeNode.children).toContain(accordDirective.nativeNode);
     });

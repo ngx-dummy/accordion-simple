@@ -1,9 +1,11 @@
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Subject } from 'rxjs';
+import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
+import { AccordionModule } from './accordion.module';
 
 describe('An Accordion-item component', () => {
 
@@ -18,8 +20,9 @@ describe('An Accordion-item component', () => {
     let isOpen$ = null;
 
     beforeEach(async () => {
-      let testingBed = TestBed.configureTestingModule({
-        declarations: [AccordionItemComponent, AccordionItemDirective]
+      const testingBed = TestBed.configureTestingModule({
+        declarations: [AccordionItemComponent, AccordionItemDirective, AccordionItemImgDirective]
+        // imports: [AccordionModule]
       });
       await testingBed.compileComponents();
       accordItemCmpFixture = testingBed.createComponent<AccordionItemComponent>(AccordionItemComponent);

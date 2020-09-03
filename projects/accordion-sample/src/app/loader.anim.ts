@@ -1,4 +1,4 @@
-import { trigger, transition, style, animate, keyframes } from "@angular/animations";
+import { trigger, transition, style, animate, keyframes } from '@angular/animations';
 
 export const loaderIn = trigger('moveIn', [
   transition(':enter', [

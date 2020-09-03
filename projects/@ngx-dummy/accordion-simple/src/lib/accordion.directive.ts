@@ -34,7 +34,7 @@ export class AccordionDirective implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit() {
-		let accordEl = this.hostEl.nativeElement;
+		const accordEl = this.hostEl.nativeElement;
 		this.render.setStyle(accordEl, 'max-width', this.accordCmp.accordionStyling.maxWidth ?? '100%');
 		this.render.setStyle(accordEl, 'margin', this.accordCmp.accordionStyling.margin ?? '0');
 	}

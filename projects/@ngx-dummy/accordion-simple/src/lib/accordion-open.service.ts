@@ -3,8 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { IToggler } from './settings/';
 
 export function iniTogglerFn() {
-  return <IToggler[]>[];
-};
+  return [] as IToggler[];
+}
 
 export const INI_STATE = new InjectionToken<IToggler[]>(
   'Accordion Initial Items Open state provider token',
@@ -17,7 +17,7 @@ export class AccordionOpenService extends BehaviorSubject<IToggler[]> {
 
   get itemsOpen$() { return this.asObservable(); }
   get itemsOpenSnapshot() { return this.value; }
-  
+
   setItemsOpen = (itemsStats: IToggler[]) => this.next(itemsStats);
   close = () => { this.complete(); super.unsubscribe; };
 }

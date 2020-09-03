@@ -20,23 +20,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 	accordList1: Accordion = null;
 	accordList$ = of(dummyAccordionList2).pipe(delay(3000));
 
-	ngOnInit() {
-		this.accordList1 = {
-			...list1,
-			items: [
-				...list1.items
-					.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: item.body } }) : { ...item })
-					.map(item => item.title.includes('Accordion Card 1') ? ({ ...item, body: { itemTemplate: this.tmpl2, itemBody: 'Lorem ipsum card ...' } }) : { ...item })
-			]
-		};
-	}
-
-	ngAfterViewInit() {
-		const btnRipple = document.querySelector('.mdc-button');
-		const ripple = new MDCRipple(btnRipple);
-		return () => ripple.destroy();
-	}
-
 	styling: IAccordionStyling = {
 		itemsGuts: '.1rem',
 		maxWidth: '99%',
@@ -74,4 +57,21 @@ export class AppComponent implements OnInit, AfterViewInit {
 		}
 	};
 
-};
+	ngOnInit() {
+		this.accordList1 = {
+			...list1,
+			items: [
+				...list1.items
+					.map(item => item.title.includes('Accordion Card 2') ? ({ ...item, body: { itemTemplate: this.simpleBodyTmpl, itemBody: item.body } }) : { ...item })
+					.map(item => item.title.includes('Accordion Card 1') ? ({ ...item, body: { itemTemplate: this.tmpl2, itemBody: 'Lorem ipsum card ...' } }) : { ...item })
+			]
+		};
+	}
+
+	ngAfterViewInit() {
+		const btnRipple = document.querySelector('.mdc-button');
+		const ripple = new MDCRipple(btnRipple);
+		return () => ripple.destroy();
+	}
+
+}

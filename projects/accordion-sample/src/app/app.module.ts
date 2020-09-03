@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { AccordionModule } from '@ngx-dummy/accordion-simple/index';
 import { AppComponent2 } from './app2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
 	declarations: [AppComponent, AppComponent2],
-	imports: [BrowserModule, BrowserAnimationsModule, AccordionModule],
+	imports: [BrowserModule, AccordionModule],
 	bootstrap: [AppComponent, AppComponent2],
 })
 export class AppModule { }

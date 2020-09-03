@@ -33,15 +33,15 @@ const spinnerIn = trigger('spinnerIn', [
   ])
 ]);
 
-// const itemsTransition = (items: HTMLElement[], timing: string, easingFn: string, direction: 'open' | 'close', dist: number) => {
-//   return items.forEach(item => {
-//     item.style.transition = `translateY ${timing}, ${easingFn}`;
-//     item.style.transform = `translateY(${(direction === 'open') ? dist : '-' + dist}px)`;
-//     item.addEventListener('transitionend', e => {
-//       item.style.transition = 'none';
-//       item.style.transform = '';
-//     });
-//   });
-// };
+const itemsTransition = (items: HTMLElement[], timing: string, easingFn: string, direction: 'open' | 'close' = 'open', dist: number) => {
+  return items.forEach(item => {
+    item.style.transition = `translateY ${timing}, ${easingFn}`;
+    item.style.transform = `translateY(${(direction === 'open') ? dist : '-' + dist}px)`;
+    item.addEventListener('transitionend', e => {
+      item.style.transition = 'none';
+      item.style.transform = '';
+    });
+  });
+};
 
 export const accordionAnims = [accordItemsIn, spinnerIn];
