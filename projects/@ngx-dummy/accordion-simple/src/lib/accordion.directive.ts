@@ -1,3 +1,11 @@
+/*!
+ * @ngx-dummy/Accordion-Simple library
+ * Simple accordion created for angular / ionic projects.
+ * https://github.com/ngx-dummy/accordion-simple
+ *
+ * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
+ * Published under GNU GPLv3 License
+ */
 import { Directive, ElementRef, OnInit, AfterViewInit, Renderer2, Inject } from '@angular/core';
 import { AccordionComponent } from './accordion.component';
 import { IAccordionItemStyling } from './settings/';

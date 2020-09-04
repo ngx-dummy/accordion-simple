@@ -5,6 +5,12 @@ PACK_VER=$ROOT/scripts/versioning/pack-version.sh
 NODE_JQ=$ROOT/node_modules/node-jq/bin/jq
 PUSH_TAGGED=$ROOT/scripts/push-tagged.sh
 
+if [ $(git status -s | wc -l) -gt 0 ];
+then
+  echo "reinstalling dependencies"
+  npm install
+fi 
+  
 chmod +x $PACK_VER $NODE_JQ $PUSH_TAGGED  
 sh $PACK_VER
 

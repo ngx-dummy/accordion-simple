@@ -1,3 +1,11 @@
+/*!
+ * @ngx-dummy/Accordion-Simple library
+ * Simple accordion created for angular / ionic projects.
+ * https://github.com/ngx-dummy/accordion-simple
+ *
+ * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
+ * Published under GNU GPLv3 License
+ */
 import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, ChangeDetectorRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { filter, tap, pluck, map } from 'rxjs/operators';
