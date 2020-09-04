@@ -9,6 +9,9 @@ then
   git commit -am "release $tag"
   git tag --force -a $tag -m "Release '$tag'"
   git push --force origin $tag
+  git push --force origin-origin $tag
+  echo "pushing to ngx-dummy home (origin-origin)"
+  git push origin-origin --all
   git push
 else
   echo Pleae enter a tag number of a form of: number.number.number

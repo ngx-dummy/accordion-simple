@@ -1,10 +1,10 @@
 <center>
-  <a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" taget="_blank">
+  <a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" target="_blank">
     <p align="center">
       <img src="https://avatars3.githubusercontent.com/u/62136587?s=400&u=4580be0183d1496d982253d3a0d803de82465626&v=4" width="200" height="200" />
     </p>
   </a>
-  <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" taget="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>     
+  <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" target="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>     
 
 [![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple.png)](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple)
 
@@ -22,17 +22,18 @@
 [![bundle size](https://badgen.net/bundlephobia/min/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=@ngx-dummy/accordion-simple)
 [![size](https://badgen.net/packagephobia/publish/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=ngx-dummy/accordion-simple)
 [![deps](https://david-dm.org/ngx-dummy/accordion-simple.svg)](https://david-dm.org/ngx-dummy/accordion-simpe)
-[![Donations](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ovsyukov)
-[![downloads](https://data.jsdelivr.com/v1/package/npm/@ngx-dummy/accordion-simple/badge)](https://www.jsdelivr.com/package/npm/@ngx-dummy/accordion-simple)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5233cc1-3156-4033-9d43-5db2b6cd351b/deploy-status)](https://accordion-simple-tester.netlify.app/)
-
 [![Issues](https://img.shields.io/github/issues/vovansuper/accordion-simple)](https://github.com/VovanSuper/accordion-simple/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ngx-dummy/accordion-simple.svg?style=social&label=Fork)](https://github.com/ngx-dummy/accordion-simple/fork)
 [![GitHub stars](https://img.shields.io/github/stars/ngx-dummy/accordion-simple.svg?style=social&label=Star)](https://github.com/ngx-dummy/accordion-simple)
+[![downloads](https://data.jsdelivr.com/v1/package/npm/@ngx-dummy/accordion-simple/badge)](https://www.jsdelivr.com/package/npm/@ngx-dummy/accordion-simple)
+
+[![Donations](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ovsyukov)
+[![Twitter Follow](https://img.shields.io/twitter/follow/OvsyukovV.svg?style=social)](https://twitter.com/OvsyukovV) 
 
 ---
 
-###  https://vovansuper.github.io/accordion-simple
+#####  https://vovansuper.github.io/accordion-simple
 
 ### Installation:
 
@@ -77,7 +78,7 @@ class AppCmp {
       }]
   };
   styling: IAccordionStyling = {
-    itemsGutts: '1px',
+    itemsGuts: '1px',
     maxWidth: '99%',
     itemStyling: {
       headBgColor: '#ccc',
@@ -127,10 +128,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 <details closed>
 <summary>TODO:</summary>
 
-- [x] Basic accordion-simple component
-- [x] Styling interfaces
 - [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
-- [ ] Add documentation (jsdocs/annotate the styling/settings interfaces)
 
 </details>
 
@@ -138,9 +136,9 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 
  * General typeDoc generated types of the Accordion-simple library are available in [[docs](./docs/typedocs/globals.html)]
 
-* Base component to use as is [[`<ngxd-accordion>`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts)]
+* Base element  is [`<ngxd-accordion>`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts)
 
-* [`Accordion`](./docs/typedocs/classes/_lib_accordion_component_.accordioncomponent.html) should have `Input` on type [[IAccordion]./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
+* [`Accordion`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts) should have `@Input` on type [ [IAccordion ](./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
 
 * Sample usage vovansuper.github.io/accordion-simple
 
