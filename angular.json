@@ -10,7 +10,7 @@
       "prefix": "ngxd",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/@ngx-dummy/accordion-simple/tsconfig.lib.json",
             "project": "projects/@ngx-dummy/accordion-simple/ng-package.json"
@@ -112,7 +112,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": true,
-              "extractCss": true,
               "namedChunks": true,
               "extractLicenses": true,
               "vendorChunk": true,
