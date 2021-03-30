@@ -97,6 +97,7 @@
               "projects/accordion-sample/src/assets/devices.min.scss"
             ],
             "scripts": [
+              "projects/accordion-sample/src/analytics.js",
               "projects/accordion-sample/src/loading.js"
             ]
           },
