@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for @ngx-dummy/accordion-simple">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -38,8 +39,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -49,11 +48,6 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="globals.html">Globals</a>
-				</li>
-			</ul>
 			<h1>@ngx-dummy/accordion-simple</h1>
 		</div>
 	</div>
@@ -97,73 +91,77 @@
 				<a href="#get-the-script-to-your-indexhtml" id="get-the-script-to-your-indexhtml" style="color: inherit; text-decoration: none;">
 					<h5>get the script to your <em>index.html</em>:</h5>
 				</a>
-				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+</code></pre>
 				<a href="#install-using-npm" id="install-using-npm" style="color: inherit; text-decoration: none;">
 					<h5>install using <strong>npm</strong>:</h5>
 				</a>
-				<pre><code class="language-shell">npm install --save @ngx-dummy/accordion-simple</code></pre>
+				<pre><code class="language-shell"><span style="color: #000000">npm install --save @ngx-dummy/accordion-simple</span>
+</code></pre>
 				<a href="#-use-in-your-angularionic-app" id="-use-in-your-angularionic-app" style="color: inherit; text-decoration: none;">
 					<h5>.. use (<em>in your Angular/Ionic app</em>):</h5>
 				</a>
-				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { NgModule, Component, enableProdMode } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/core&#x27;</span>;
-<span class="hljs-keyword">import</span> { BrowserModule } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/platform-browser&#x27;</span>;
-<span class="hljs-keyword">import</span> { platformBrowserDynamic } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@angular/platform-browser-dynamic&#x27;</span>;
-<span class="hljs-keyword">import</span> {
-  AccordionModule,
-  Accordion,
-  IAccordionStyling
-} <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js&#x27;</span>;
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">NgModule</span><span style="color: #000000">, </span><span style="color: #001080">Component</span><span style="color: #000000">, </span><span style="color: #001080">enableProdMode</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@angular/core&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">BrowserModule</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@angular/platform-browser&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">platformBrowserDynamic</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@angular/platform-browser-dynamic&#039;</span><span style="color: #000000">;</span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">AccordionModule</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">Accordion</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">IAccordionStyling</span>
+<span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js&#039;</span><span style="color: #000000">;</span>
 
-<span class="hljs-meta">@Component</span>({
-  selector: <span class="hljs-string">&#x27;my-app&#x27;</span>,
-  template: <span class="hljs-string">&#x27;&lt;ngxd-accordion [accordionList]=&quot;sampleAccordionData&quot; [accordionStyling]=&quot;styling&quot;&gt;&lt;/ngxd-accordion&gt;&#x27;</span>
-})
-<span class="hljs-keyword">class</span> AppCmp {
-  sampleAccordionData: Accordion = {
-    name: <span class="hljs-string">&#x27;sample_accordion&#x27;</span>,
-    items: [{
-        title: <span class="hljs-string">&#x27;Card 1&#x27;</span>,
-        body:
-          <span class="hljs-string">&#x27;Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione&#x27;</span>
-      }, {
-        title: <span class="hljs-string">&#x27;Card 2&#x27;</span>,
-        body: <span class="hljs-string">`
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas.
-        `</span>
-      }]
-  };
-  styling: IAccordionStyling = {
-    itemsGuts: <span class="hljs-string">&#x27;1px&#x27;</span>,
-    maxWidth: <span class="hljs-string">&#x27;99%&#x27;</span>,
-    itemStyling: {
-      headBgColor: <span class="hljs-string">&#x27;#ccc&#x27;</span>,
-      headColor: <span class="hljs-string">&#x27;black&#x27;</span>,
-      bodyBgColor: <span class="hljs-string">&#x27;#f9f9f9&#x27;</span>,
-      bodyPadding: <span class="hljs-string">&#x27;1rem&#x27;</span>,
-      bodyMargin: <span class="hljs-string">&#x27;.1rem&#x27;</span>
-    }
-  };
-}
+<span style="color: #000000">@</span><span style="color: #795E26">Component</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">selector:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;my-app&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">template:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&lt;ngxd-accordion [accordionList]=&quot;sampleAccordionData&quot; [accordionStyling]=&quot;styling&quot;&gt;&lt;/ngxd-accordion&gt;&#039;</span>
+<span style="color: #000000">})</span>
+<span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">AppCmp</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">sampleAccordionData</span><span style="color: #000000">: </span><span style="color: #267F99">Accordion</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;sample_accordion&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">items:</span><span style="color: #000000"> [{</span>
+<span style="color: #000000">        </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Card 1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">body:</span>
+<span style="color: #000000">          </span><span style="color: #A31515">&#039;Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione&#039;</span>
+<span style="color: #000000">      }, {</span>
+<span style="color: #000000">        </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Card 2&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">body:</span><span style="color: #000000"> </span><span style="color: #A31515">`</span>
+<span style="color: #A31515">          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas.</span>
+<span style="color: #A31515">        `</span>
+<span style="color: #000000">      }]</span>
+<span style="color: #000000">  };</span>
+<span style="color: #000000">  </span><span style="color: #001080">styling</span><span style="color: #000000">: </span><span style="color: #267F99">IAccordionStyling</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">itemsGuts:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1px&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">maxWidth:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;99%&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">itemStyling:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">      </span><span style="color: #001080">headBgColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#ccc&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">headColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;black&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">bodyBgColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#f9f9f9&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">bodyPadding:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1rem&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">      </span><span style="color: #001080">bodyMargin:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;.1rem&#039;</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">  };</span>
+<span style="color: #000000">}</span>
 
-<span class="hljs-meta">@NgModule</span>({
-  imports: [BrowserModule, AccordionModule],
-  declarations: [AppCmp],
-  bootstrap: [AppCmp]
-})
-<span class="hljs-keyword">class</span> AppModule {}
+<span style="color: #000000">@</span><span style="color: #795E26">NgModule</span><span style="color: #000000">({</span>
+<span style="color: #000000">  </span><span style="color: #001080">imports:</span><span style="color: #000000"> [</span><span style="color: #001080">BrowserModule</span><span style="color: #000000">, </span><span style="color: #001080">AccordionModule</span><span style="color: #000000">],</span>
+<span style="color: #000000">  </span><span style="color: #001080">declarations:</span><span style="color: #000000"> [</span><span style="color: #001080">AppCmp</span><span style="color: #000000">],</span>
+<span style="color: #000000">  </span><span style="color: #001080">bootstrap:</span><span style="color: #000000"> [</span><span style="color: #001080">AppCmp</span><span style="color: #000000">]</span>
+<span style="color: #000000">})</span>
+<span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">AppModule</span><span style="color: #000000"> {}</span>
 
-platformBrowserDynamic().bootstrapModule(AppModule);
-<span class="hljs-comment">// inside your &#x27;index.html&#x27; :  &lt;my-app&gt;loading&lt;/my-app&gt;</span></code></pre>
+<span style="color: #795E26">platformBrowserDynamic</span><span style="color: #000000">().</span><span style="color: #795E26">bootstrapModule</span><span style="color: #000000">(</span><span style="color: #001080">AppModule</span><span style="color: #000000">);</span>
+<span style="color: #008000">// inside your &#039;index.html&#039; :  &lt;my-app&gt;loading&lt;/my-app&gt;</span>
+</code></pre>
 				<a href="#or-check-the-sibling-sample-app-" id="or-check-the-sibling-sample-app-" style="color: inherit; text-decoration: none;">
 					<h3>or check the sibling <a href="https://github.com/VovanSuper/accordion-simple/tree/master/projects/accordion-sample"><em>sample</em> app</a> :</h3>
 				</a>
 				<a href="#clone-and-deps-install-and-run-sample-app-" id="clone-and-deps-install-and-run-sample-app-" style="color: inherit; text-decoration: none;">
 					<h5>clone <em>(and deps install)</em> and run Sample app :</h5>
 				</a>
-				<pre><code class="language-shell"><span class="hljs-meta">$</span><span class="bash">~&gt; git <span class="hljs-built_in">clone</span> https://github.com/ngx-dummy/accordion-simple.git</span>
-<span class="hljs-meta">$</span><span class="bash">~&gt; <span class="hljs-built_in">cd</span> accordion-simple</span>
-<span class="hljs-meta">$</span><span class="bash">~&gt; npm install -g @angular/cli@latest &amp;&amp; npm i</span>
-<span class="hljs-meta">$</span><span class="bash">~&gt; npm run sample</span></code></pre>
+				<pre><code class="language-shell"><span style="color: #000000">$~&gt; git clone https://github.com/ngx-dummy/accordion-simple.git</span>
+<span style="color: #000000">$~&gt; </span><span style="color: #795E26">cd</span><span style="color: #000000"> accordion-simple</span>
+<span style="color: #000000">$~&gt; npm install -g @angular/cli@latest &amp;&amp; npm i</span>
+<span style="color: #000000">$~&gt; npm run sample</span>
+</code></pre>
 				<a href="#or--try-directly" id="or--try-directly" style="color: inherit; text-decoration: none;">
 					<h5><strong>or .. Try <em>directly</em>:</strong></h5>
 				</a>
@@ -185,9 +183,8 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 					<h2>Documentation</h2>
 				</a>
 				<ul>
-					<li>General typeDoc generated types of the Accordion-simple library are available in [<a href="./docs/typedocs/globals.html">docs</a>]</li>
-				</ul>
-				<ul>
+					<li><p>General typeDoc generated types of the Accordion-simple library are available in [<a href="./docs/typedocs/globals.html">docs</a>]</p>
+					</li>
 					<li><p>Base element  is <a href="./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts"><code>&lt;ngxd-accordion&gt;</code></a></p>
 					</li>
 					<li><p><a href="./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts"><code>Accordion</code></a> should have <code>@Input</code> on type [ <a href="./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts">IAccordion </a>]</p>
@@ -202,59 +199,14 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 				<p>Licensed under the GNU GPLv3 License - see the <a href="LICENSE">LICENSE</a> file for details.</p>
 				<p><a href="LICENSE"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></p>
 				<p>Licensed under the GNU GPLv3 License - see the <a href="LICENSE">LICENSE</a> file for details.
-				<em>Copyright (c) belongs to Vladimir Ovsyukov &lt;<a href="mailto:&#111;&#118;&#115;&#x79;&#x75;&#107;&#x6f;&#x76;&#64;&#121;&#97;&#x6e;&#100;&#101;&#x78;&#46;&#99;&#111;&#109;">&#111;&#118;&#115;&#x79;&#x75;&#107;&#x6f;&#x76;&#64;&#121;&#97;&#x6e;&#100;&#101;&#x78;&#46;&#99;&#111;&#109;</a>&gt;; Please, freely use __AS_IS__ (under conditions defined within the <a href="LICENSE">LICENSE</a>)</em></p>
+				<em>Copyright (c) belongs to Vladimir Ovsyukov &lt;<a href="mailto:ovsyukov@yandex.com">ovsyukov@yandex.com</a>&gt;; Please, freely use <strong>AS_IS</strong> (under conditions defined within the <a href="LICENSE">LICENSE</a>)</em></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_item_img_directive_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion-<wbr>item-<wbr>img.directive&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_item_component_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion-<wbr>item.component&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_item_directive_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion-<wbr>item.directive&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_open_service_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion-<wbr>open.service&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_component_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion.component&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_directive_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion.directive&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_accordion_module_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/accordion.module&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_animations_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/animations&quot;</a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
-					</li>
-					<li class=" tsd-kind-module tsd-is-external">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordion_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/settings/IAccordion&quot;</a>
-					</li>
-					<li class=" tsd-kind-module tsd-is-external">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_settings_iaccordionstylings_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/settings/IAccordion<wbr>Stylings&quot;</a>
-					</li>
-					<li class=" tsd-kind-module tsd-is-external">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_settings_itoggler_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/settings/IToggler&quot;</a>
-					</li>
-					<li class=" tsd-kind-module tsd-is-external">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_settings_helpers_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/settings/helpers&quot;</a>
-					</li>
-					<li class=" tsd-kind-module tsd-is-external">
-						<a href="modules/_projects__ngx_dummy_accordion_simple_src_lib_theming_icons_base_.html">&quot;projects/@ngx-<wbr>dummy/accordion-<wbr>simple/src/lib/theming/icons-<wbr>base&quot;</a>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
 					</li>
 				</ul>
 			</nav>
@@ -269,13 +221,6 @@ platformBrowserDynamic().bootstrapModule(AppModule);
 	<div class="container">
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
 		</div>
 	</div>
 </footer>

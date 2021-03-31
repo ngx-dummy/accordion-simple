@@ -6,4 +6,4 @@ if [[ ! -e $TD_OUT ]]; then
     mkdir $TD_OUT
 fi
 
-typedoc --out $TD_OUT --tsconfig $SRC_DIR/tsconfig.lib.json --exclude "**/*+(index|.spec|.e2e).ts" --excludeNotExported --excludePrivate
+typedoc --entryPoints $SRC_DIR/src/public-api.ts --out $TD_OUT --tsconfig $SRC_DIR/tsconfig.lib.json --exclude "**/*+(index|.spec|.e2e).ts" --excludeInternal --excludeExternals --excludePrivate
