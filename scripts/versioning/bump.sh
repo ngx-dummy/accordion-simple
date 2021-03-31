@@ -40,7 +40,7 @@ function incPatchVersion(version) {
 const replacePackageJsonStringVersion = (packageJsonString, newVersion) => {
 	if (!newVersion) throw new Error('Provide new Version to substitute..');
 
-	// const veres2018Reg = /(?<="version":\s?)(\.\d)+/;
+	// const ver2018Reg = /(?<="version":\s?)(\.\d)+/;
 
 	const newVer = JSON.stringify(newVersion);
 	packageJsonString = packageJsonString.replace(verReg, `$1${newVer}`);
@@ -52,10 +52,10 @@ const updatePackJsonFileInPlace = (packageJsonFile, newVersion) => {
 };
 
 
-async function readVersion(pakcageJsonFilePath) {
+async function readVersion(packageJsonFilePath) {
 	try {
 		const field = '.version';
-		let res = await run(field, pakcageJsonFilePath);
+		let res = await run(field, packageJsonFilePath);
 		return res.toString();
 	}
 	catch (e) {

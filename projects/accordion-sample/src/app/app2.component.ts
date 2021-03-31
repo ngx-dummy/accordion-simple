@@ -33,6 +33,15 @@ import { AppComponent } from './app.component';
 export class AppComponent2 extends AppComponent {
 	title = 'Yet another Accordion Sample';
 	accordList1$: Promise<Accordion> = new Promise(resolve => ( resolve({ ...dummyAccordionList2, items: [...dummyAccordionList1.items, ...dummyAccordionList2.items] })));
+	
+	// colors = ['red', 'blue', 'yellow', 'pink'];
+	// randColor$ = interval(2000).pipe(
+	// 	map(_ => Math.floor(Math.random() * this.colors.length)),
+	// 	tap(ind => console.log("Index ", ind)),
+	// 	map(ind => this.colors[ind] || "#ccc"),
+	// 	tap(val => console.log("Selected color ::: ", val))
+	// );
+
 
 	styling: IAccordionStyling = {
 		...super.styling,

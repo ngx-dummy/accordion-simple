@@ -11,18 +11,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    # Setup .npmrc file to publish to npm
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '14.x'
-        registry-url: 'https://registry.npmjs.org'
-        scope: '@ngx-dummy'
-    - run: |
-        echo Installing..!
-        npm install -g @angular/cli > /dev/null
-        npm ci
-        npm run build:prod --if-present
-    - run: npm run publish:full --if-present
-      env: 
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      - uses: actions/checkout@v2
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@ngx-dummy'
+      - run: |
+          echo Installing..!
+          npm install -g @angular/cli > /dev/null
+          npm ci
+          npm run build:prod --if-present
+      - run: npm run ci:publish:full --if-present
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

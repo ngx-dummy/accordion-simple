@@ -2,7 +2,7 @@
 
 read tag
 
-echo "commiting release '$tag'"
+echo "committing release '$tag'"
 if [ "$tag" != "" ]; 
 then
   git add .
@@ -14,6 +14,6 @@ then
   git push origin-origin --all
   git push
 else
-  echo Pleae enter a tag number of a form of: number.number.number
+  echo Please enter a tag number of a form of: number.number.number
   exit 256
 fi
