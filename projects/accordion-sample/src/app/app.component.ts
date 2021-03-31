@@ -6,9 +6,9 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU GPLv3 License
  */
-import { Component, ViewChild, TemplateRef, OnInit, AfterViewInit } from '@angular/core';
-import { delay } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { Component, ViewChild, TemplateRef, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { delay, map, tap } from 'rxjs/operators';
+import { interval, Observable, of, Subject } from 'rxjs';
 import { MDCRipple } from '@material/ripple';
 
 import { IAccordionStyling, Accordion } from '@ngx-dummy/accordion-simple/index';
@@ -25,8 +25,17 @@ export class AppComponent implements OnInit, AfterViewInit {
 	@ViewChild('simpleBodyTmpl', { static: true }) simpleBodyTmpl: TemplateRef<HTMLElement>;
 	@ViewChild('tmpl2', { static: true }) tmpl2: TemplateRef<HTMLElement>;
 	title = 'Accordion Sample';
-	accordList1: Accordion = null;
+	accordList2: Accordion = null;
 	accordList$ = of(dummyAccordionList2).pipe(delay(3000));
+
+	
+	// colors = ['red', 'blue', 'yellow', 'pink'];
+	// randColor$ = interval(2000).pipe(
+	// 	map(_ => Math.floor(Math.random() * this.colors.length)),
+	// 	tap(ind => console.log("Index ", ind)),
+	// 	map(ind => this.colors[ind] || "#ccc"),
+	// 	tap(val => console.log("Selected color ::: ", val))
+	// );
 
 	styling: IAccordionStyling = {
 		itemsGuts: '.1rem',
@@ -65,8 +74,18 @@ export class AppComponent implements OnInit, AfterViewInit {
 		}
 	};
 
+	// asyncStyling: Observable<IAccordionStyling> = this.randColor$.pipe(
+	// 	map(color => ({
+	// 		...this.styling1,
+	// 		itemStyling: {
+	// 			...this.styling1.itemStyling,
+	// 			headBgColor: color
+	// 		}
+	// 	}))
+	// );
+
 	ngOnInit() {
-		this.accordList1 = {
+		this.accordList2 = {
 			...list1,
 			items: [
 				...list1.items

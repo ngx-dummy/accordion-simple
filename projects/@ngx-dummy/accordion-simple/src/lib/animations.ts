@@ -1,12 +1,13 @@
 /*!
- * @ngx-dummy/Accordion-Simple library
- * Simple accordion created for angular / ionic projects.
- * https://github.com/ngx-dummy/accordion-simple
- *
- * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
- */
-import { trigger, query, stagger, transition, animate, style, keyframes, animation, AnimationMetadataType } from '@angular/animations';
+* @ngx-dummy/Accordion-Simple library
+* Simple accordion created for angular / ionic projects.
+* https://github.com/ngx-dummy/accordion-simple
+*
+* Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
+* Published under GNU GPLv3 License
+*/
+import { trigger, query, stagger, transition, animate, style, keyframes, state, animation } from '@angular/animations';
+export { AnimationEvent as NgAnimationEvent } from '@angular/animations';
 
 const accordItemsIn = trigger('accordItemsIn', [
   transition('* => *', [
@@ -41,15 +42,30 @@ const spinnerIn = trigger('spinnerIn', [
   ])
 ]);
 
-const itemsTransition = (items: HTMLElement[], timing: string, easingFn: string, direction: 'open' | 'close' = 'open', dist: number) => {
-  return items.forEach(item => {
-    item.style.transition = `translateY ${timing}, ${easingFn}`;
-    item.style.transform = `translateY(${(direction === 'open') ? dist : '-' + dist}px)`;
-    item.addEventListener('transitionend', e => {
-      item.style.transition = 'none';
-      item.style.transform = '';
-    });
-  });
-};
+const accordionItemBodyHeightCollapse = trigger('openClose', [
+  state('closed', style({ height: '0', opacity: '0', transform: 'scaleY(0)', transformOrigin: 'top', visibility: 'collapsed' })),
+  state('opened', style({ height: '*', opacity: '1', transform: 'scaleY(1)', transformOrigin: 'top', visibility: 'visible' })),
+  transition('opened <=> closed', animate('.3s ease-out'))
+]);
+
+const accordionItemBodyHeightOpen = animation([
+  style({ height: '{{hParam}}', opacity: '0', transform: 'scaleY(1)', transformOrigin: 'top', }),
+  animate('.3s ease-out')
+]);
+
+// const itemsTransition = (items: HTMLElement[], timing: string, easingFn: string, direction: 'open' | 'close' = 'open', dist: number) => {
+//   return items.forEach(item => {
+//     item.style.transition = `translateY ${timing}, ${easingFn}`;
+//     item.style.transform = `translateY(${(direction === 'open') ? dist : '-' + dist}px)`;
+//     item.addEventListener('transitionend', e => {
+//       item.style.transition = 'none';
+//       item.style.transform = '';
+//     });
+//   });
+// };
 
 export const accordionAnims = [accordItemsIn, spinnerIn];
+
+export const accordionItemAnims = [accordionItemBodyHeightCollapse];
+
+export { accordionItemBodyHeightOpen };

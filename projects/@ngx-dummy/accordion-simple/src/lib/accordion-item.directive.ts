@@ -6,12 +6,15 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU GPLv3 License
  */
-import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, ChangeDetectorRef } from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, ChangeDetectorRef, OnDestroy } from '@angular/core';
+
 import { DomSanitizer } from '@angular/platform-browser';
-import { filter, tap, pluck, map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { filter, tap, pluck, map, takeUntil } from 'rxjs/operators';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionOpenService } from './accordion-open.service';
+import { NgAnimationEvent } from './animations';
 import {
 	IToggler,
 	IAccordionItemStyling,
@@ -29,7 +32,7 @@ import {
 		'(click)': 'onClick([$event.target, $event.currentTarget])'
 	}
 })
-export class AccordionItemDirective implements OnInit, AfterViewInit {
+export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy {
 	@Input('ngxdAccordionItem') item: AccordionItemInternal = null;
 	@Input('styling') itemStyles: IAccordionItemStyling = {
 		headHeight: '50px',
@@ -47,6 +50,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggler> = new EventEmitter();
 	isOpen = false;
+	private hostDestroy$$: Subject<any> = new Subject();
 
 	constructor(
 		@Inject(AccordionItemComponent) private hostCmp: AccordionItemComponent,
@@ -56,6 +60,22 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		private sanitizer: DomSanitizer,
 		private cd: ChangeDetectorRef
 	) { }
+
+	startAnim(e: NgAnimationEvent) {
+		const classes = (<DOMTokenList>e.element.classList);
+		if (e.fromState === 'void') {
+			classes?.add('closed');
+		}
+		if (e.fromState === 'closed' && e.toState === 'opened') {
+			classes.replace('closed', 'opened');
+		}
+	}
+	doneAnim(e: NgAnimationEvent) {
+		const classes = (<DOMTokenList>e.element.classList);
+		if (e.fromState == 'opened' && e.toState == 'closed') {
+			classes.replace('opened', 'closed');
+		}
+	}
 
 	ngOnInit() {
 		this.hostCmp.item = {
@@ -68,11 +88,15 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		} as Partial<AccordionItem>;
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
+			takeUntil(this.hostDestroy$$),
 			filter(val => (!!val && !!val.length)),
 			map((toggles: IToggler[]) => toggles.find(({ itemId }) => itemId === +this.item.itemId)),
 			pluck('isOpen'),
 			tap(isOpen => this.isOpen = isOpen)
 		);
+
+		this.hostCmp.startAnim = this.startAnim;
+		this.hostCmp.doneAnim = this.doneAnim;
 	}
 
 	ngAfterViewInit() {
@@ -99,8 +123,8 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.itemStyles.fontFamily && this.render.setStyle(itemEl, 'font-family', this.itemStyles.fontFamily);
 		this.render.setStyle(itemEl, 'margin-bottom', this.itemStyles.marginBottom);
 		this.render.setStyle(itemEl, 'margin-top', this.itemStyles.marginTop);
+		this.itemStyles.headBgColor && nativeEl.style.setProperty('--ngxd-head-item-color', this.itemStyles.headBgColor);
 
-		this.render.setStyle(headEl, 'background-color', this.itemStyles.headBgColor ?? '#ccc');
 		this.itemStyles.headHeight && this.render.setStyle(headEl, 'height', this.itemStyles.headHeight);
 		this.itemStyles.headFont && this.render.setStyle(headEl, 'font', this.itemStyles.headFont);
 		this.render.setStyle(headEl, 'font-size', this.itemStyles.headFontSize ?? '1.1rem');
@@ -115,6 +139,11 @@ export class AccordionItemDirective implements OnInit, AfterViewInit {
 		this.itemStyles.bodyTextAlign && this.render.setStyle(bodyEl, 'text-align', this.itemStyles.bodyTextAlign);
 
 		this.bodyDblclkClose ? this.render.setStyle(bodyEl, 'cursor', 'grab') : this.render.setStyle(bodyEl, 'cursor', 'default');
+	}
+
+	ngOnDestroy() {
+		this.hostDestroy$$.next();
+		this.hostDestroy$$.complete();
 	}
 
 	onClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);

@@ -17,12 +17,12 @@
 <ng-template #accordItemTmpl let-item>
   <ngxd-accordion-item 
     [ngxdAccordionItem]="item"
-    [isNumbered]="isNumbered" 
-    [bodyDblclkClose]="bodyDblclkClose"
+    [isNumbered]="_isNumbered" 
+    [bodyDblclkClose]="_bodyDblclkClose"
     [openSign]="openSign" 
     [closeSign]="closeSign" 
     [logo]="listLogo" 
-    [styling]="itemStyle"
+    [styling]="_itemStyle"
     [attr.data-idx]="item.itemId" 
     [id]="item.id" 
     (toggled)="onItemToggled($event)" 

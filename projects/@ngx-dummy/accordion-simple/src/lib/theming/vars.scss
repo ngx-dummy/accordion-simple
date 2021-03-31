@@ -6,8 +6,8 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU GPLv3 License
  */
-$item-header__bg: #4197b2;
-$item-header__bg--active: lighten($item-header__bg, 10%);
+$item-header__bg: #056;
+$item-header__bg--active: lighten($item-header__bg, 15%);
 $item-header__bg--opened: darken($item-header__bg, 10%);
 
 :host {

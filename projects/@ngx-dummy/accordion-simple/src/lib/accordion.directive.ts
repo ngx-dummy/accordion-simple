@@ -22,8 +22,8 @@ export class AccordionDirective implements OnInit, AfterViewInit {
 	) { }
 
 	ngOnInit() {
-		this.accordCmp.isNumbered = this.accordCmp.accordionStyling.numberedItems ?? false;
-		this.accordCmp.bodyDblclkClose = this.accordCmp.accordionStyling.bodyDblclkCloseItems ?? false;
+		this.accordCmp._isNumbered = this.accordCmp.accordionStyling.numberedItems ?? false;
+		this.accordCmp._bodyDblclkClose = this.accordCmp.accordionStyling.bodyDblclkCloseItems ?? false;
 
 		let itemStyles: IAccordionItemStyling = Array.isArray(this.accordCmp.accordionStyling.itemStyling) ?
 			this.accordCmp.accordionStyling.itemStyling.reduce((accu = {}, curr) => ({ ...accu, ...curr }))
@@ -36,7 +36,7 @@ export class AccordionDirective implements OnInit, AfterViewInit {
 			marginTop: itemsGuts,
 			...itemStyles,
 		};
-		this.accordCmp.itemStyle = Object.entries(itemStyles)
+		this.accordCmp._itemStyle = Object.entries(itemStyles)
 			.map(([key, val]) => ({ [key]: (typeof val === 'number') ? `${val}px` : val }))
 			.reduce((accu, val) => ({ ...accu, ...val }));
 	}

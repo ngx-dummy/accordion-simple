@@ -33,8 +33,8 @@ import {
 })
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	static idx = 0;
-	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) defloadingTpl: TemplateRef<Element>;
-	@HostBinding('attr.data-items-opened') openedItems = undefined;
+	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) private defloadingTpl: TemplateRef<Element>;
+	@HostBinding('attr.data-items-opened') private _openedItems = undefined;
 	@HostBinding('attr.id') get id() { return `${this.attributes.id}`; }
 	@HostBinding('attr.name') get name() { return this.attributes.name; }
 	@Input() set accordionList(acc: Accordion) {
@@ -74,20 +74,20 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	}
 	private _loadingTpl: TemplateRef<Element> = null;
 	private _accord: AccordionInternal = null;
-	bodyDblclkClose = false;
-	multiSelect = false;
-	itemStyle: IAccordionItemStyling = null;
-	isNumbered = false;
+	_bodyDblclkClose = false;
+	private multiSelect = false;
+	_itemStyle: IAccordionItemStyling = null;
+	_isNumbered = false;
 
 	constructor(@Self() private itemsOpenSvc: AccordionOpenService) { }
 
 	ngOnInit() {
-		this.bodyDblclkClose = !!this.accordionStyling.bodyDblclkCloseItems ?? false;
+		this._bodyDblclkClose = !!this.accordionStyling.bodyDblclkCloseItems ?? false;
 		this.multiSelect = !!this.accordionStyling.isMultiShow ?? false;
 		this.itemsOpenSvc.itemsOpen$.pipe(
 			filter(val => !!val?.length),
 			map(pluckOpenTogglesIdsToStr)
-		).subscribe(ids => this.openedItems = ids || null);
+		).subscribe(ids => this._openedItems = ids || null);
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
