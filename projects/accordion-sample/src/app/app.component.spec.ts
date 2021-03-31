@@ -14,6 +14,7 @@ import { of } from 'rxjs';
 import { AccordionModule, AccordionComponent } from '@ngx-dummy/accordion-simple/index';
 import { AppComponent } from './app.component';
 import { dummyAccordionList1 as list1 } from './helpers/dummy-data';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
   let appCmpFixture: ComponentFixture<AppComponent>;
@@ -22,7 +23,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     const testingBed = TestBed.configureTestingModule({
-      imports: [AccordionModule],
+      imports: [AccordionModule, NoopAnimationsModule],
       declarations: [
         AppComponent
       ],
@@ -45,7 +46,7 @@ describe('AppComponent', () => {
   it('should get accordion', () => {
     const getChildAccordion: () => DebugElement = () => appCmpFixture.debugElement.query(By.css('ngxd-accordion:first-of-type'));
     const getChildAccordionCmpInstance = () => getChildAccordion().componentInstance;
-    app.accordList1 = list1;
+    app.accordList2 = list1;
     app.accordList$ = of(list1);
     app.ngAfterViewInit();
     appCmpFixture.detectChanges();

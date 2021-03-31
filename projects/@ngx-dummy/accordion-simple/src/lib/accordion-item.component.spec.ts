@@ -8,6 +8,7 @@
  */
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Subject } from 'rxjs';
 import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
@@ -29,8 +30,8 @@ describe('An Accordion-item component', () => {
 
     beforeEach(async () => {
       const testingBed = TestBed.configureTestingModule({
-        declarations: [AccordionItemComponent, AccordionItemDirective, AccordionItemImgDirective]
-        // imports: [AccordionModule]
+        declarations: [AccordionItemComponent, AccordionItemDirective, AccordionItemImgDirective],
+        imports: [NoopAnimationsModule]
       });
       await testingBed.compileComponents();
       accordItemCmpFixture = testingBed.createComponent<AccordionItemComponent>(AccordionItemComponent);

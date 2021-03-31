@@ -17,6 +17,7 @@ import { IAccordionItemStyling } from './settings/IAccordionStylings';
 import { simpleAccordionList, sampleStyling, dummyAccordionList1 } from '../helpers/dummy-data';
 import { TestHostModule, TestHostComponent } from '../helpers/test-host.component';
 import { AccordionDirective } from './accordion.directive';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('An Accordion component', () => {
   let accordCmpFixture: ComponentFixture<AccordionComponent>;
@@ -27,7 +28,7 @@ describe('An Accordion component', () => {
 
     beforeEach(async () => {
       const testingBed = TestBed.configureTestingModule({
-        imports: [AccordionModule]
+        imports: [AccordionModule, NoopAnimationsModule]
       });
       await testingBed.compileComponents();
       accordCmpFixture = testingBed.createComponent<AccordionComponent>(AccordionComponent);
