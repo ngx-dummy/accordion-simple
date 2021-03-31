@@ -34,7 +34,7 @@ import {
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	static idx = 0;
 	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) private defloadingTpl: TemplateRef<Element>;
-	@HostBinding('attr.data-items-opened') private _openedItems = undefined;
+	@HostBinding('attr.data-items-opened') _openedItems = undefined;
 	@HostBinding('attr.id') get id() { return `${this.attributes.id}`; }
 	@HostBinding('attr.name') get name() { return this.attributes.name; }
 	@Input() set accordionList(acc: Accordion) {
