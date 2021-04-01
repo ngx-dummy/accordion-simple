@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /*!
  * @ngx-dummy/Accordion-Simple library
  * Simple accordion created for angular / ionic projects.

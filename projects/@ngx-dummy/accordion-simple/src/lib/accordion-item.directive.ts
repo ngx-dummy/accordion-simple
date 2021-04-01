@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/no-host-metadata-property */
 /*!
  * @ngx-dummy/Accordion-Simple library
  * Simple accordion created for angular / ionic projects.
