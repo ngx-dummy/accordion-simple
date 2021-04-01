@@ -6,7 +6,19 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU GPLv3 License
  */
-import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self, SimpleChanges, OnChanges, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
+import {
+	Component,
+	Input,
+	HostBinding,
+	ChangeDetectionStrategy,
+	OnInit,
+	Self,
+	SimpleChanges,
+	OnChanges,
+	OnDestroy,
+	TemplateRef,
+	ViewChild,
+} from '@angular/core';
 import { map, filter } from 'rxjs/operators';
 
 import { AccordionOpenService } from './accordion-open.service';
@@ -19,7 +31,7 @@ import {
 	AccordionItemInternal,
 	AccordionInternal,
 	pluckIToggler,
-	pluckOpenTogglesIdsToStr
+	pluckOpenTogglesIdsToStr,
 } from './settings/';
 
 @Component({
@@ -33,15 +45,36 @@ import {
 })
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	static idx = 0;
-	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) private defloadingTpl: TemplateRef<Element>;
+	@ViewChild('defloadingTpl', { read: TemplateRef, static: true })
+	private defloadingTpl: TemplateRef<Element>;
 	@HostBinding('attr.data-items-opened') _openedItems = undefined;
-	@HostBinding('attr.id') get id() { return `${this.attributes.id}`; }
-	@HostBinding('attr.name') get name() { return this.attributes.name; }
+	@HostBinding('attr.id') get id() {
+		return `${this.attributes.id}`;
+	}
+	@HostBinding('attr.name') get name() {
+		return this.attributes.name;
+	}
 	@Input() set accordionList(acc: Accordion) {
-		let [name, id] = [(!!acc && !!acc['name']?.length && acc.name) || 'Sample-Accordion', (!!acc && !!acc['id'] && acc.id) || `accordion_${++AccordionComponent.idx}`];
+		let [name, id] = [
+			(!!acc && !!acc['name']?.length && acc.name) || 'Sample-Accordion',
+			(!!acc && !!acc['id'] && acc.id) ||
+				`accordion_${++AccordionComponent.idx}`,
+		];
 		this._accord = Object.assign(
 			{ id, name },
-			{ items: acc?.items.map((item, i) => (<AccordionItemInternal>{ ...item, id: (!!item.id && typeof item.id === 'string') ? item.id : `${id}__accord-item_${i}`, itemId: i })) }
+			{
+				items: acc?.items.map(
+					(item, i) =>
+						<AccordionItemInternal>{
+							...item,
+							id:
+								!!item.id && typeof item.id === 'string'
+									? item.id
+									: `${id}__accord-item_${i}`,
+							itemId: i,
+						}
+				),
+			}
 		) as AccordionInternal;
 	}
 	get accordionItems(): AccordionItemInternal[] {
@@ -79,20 +112,26 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	_itemStyle: IAccordionItemStyling = null;
 	_isNumbered = false;
 
-	constructor(@Self() private itemsOpenSvc: AccordionOpenService) { }
+	constructor(@Self() private itemsOpenSvc: AccordionOpenService) {}
 
 	ngOnInit() {
-		this._bodyDblclkClose = !!this.accordionStyling.bodyDblclkCloseItems ?? false;
+		this._bodyDblclkClose =
+			!!this.accordionStyling.bodyDblclkCloseItems ?? false;
 		this.multiSelect = !!this.accordionStyling.isMultiShow ?? false;
-		this.itemsOpenSvc.itemsOpen$.pipe(
-			filter(val => !!val?.length),
-			map(pluckOpenTogglesIdsToStr)
-		).subscribe(ids => this._openedItems = ids || null);
+		this.itemsOpenSvc.itemsOpen$
+			.pipe(
+				filter((val) => !!val?.length),
+				map(pluckOpenTogglesIdsToStr)
+			)
+			.subscribe((ids) => (this._openedItems = ids || null));
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
-		Object.keys(changes).forEach(prop => {
-			if (prop === 'accordionList' && changes[prop].previousValue !== changes[prop].currentValue)
+		Object.keys(changes).forEach((prop) => {
+			if (
+				prop === 'accordionList' &&
+				changes[prop].previousValue !== changes[prop].currentValue
+			)
 				this.itemsOpenSvc.setItemsOpen(this.accordionItems?.map(pluckIToggler));
 		});
 	}
@@ -101,13 +140,25 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 		this.itemsOpenSvc.close();
 	}
 
-	onItemToggled = ({ itemId, isOpen }: IToggler = { itemId: 0, isOpen: false }) =>
+	onItemToggled = (
+		{ itemId, isOpen }: IToggler = { itemId: 0, isOpen: false }
+	) =>
 		this.itemsOpenSvc.setItemsOpen(
-			this.itemsOpenSvc.itemsOpenSnapshot
-				.map(({ itemId: eId, isOpen: opened }) => ((eId === +itemId) ? { itemId, isOpen } : { itemId: eId, isOpen: (this.multiSelect) ? opened : false }) as IToggler)
+			this.itemsOpenSvc.itemsOpenSnapshot.map(
+				({ itemId: eId, isOpen: opened }) =>
+					(eId === +itemId
+						? { itemId, isOpen }
+						: {
+								itemId: eId,
+								isOpen: this.multiSelect ? opened : false,
+						  }) as IToggler
+			)
 		);
 
-	public closeAll = () => this.accordionItems?.forEach(({ itemId, ...rest }) => this.onItemToggled({ itemId, isOpen: false }));
+	public closeAll = () =>
+		this.accordionItems?.forEach(({ itemId, ...rest }) =>
+			this.onItemToggled({ itemId, isOpen: false })
+		);
 
 	public trackByFn = (ind, { itemId, ...rest }) => +itemId;
 
@@ -115,5 +166,4 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 		const { id, name } = this._accord;
 		return { id, name };
 	}
-
 }

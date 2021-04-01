@@ -39,14 +39,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/@ngx-dummy/accordion-simple/tsconfig.lib.json",
-              "projects/@ngx-dummy/accordion-simple/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/@ngx-dummy/accordion-simple/**/*.ts",
+              "projects/@ngx-dummy/accordion-simple/**/*.html"
             ]
           }
         }
@@ -184,15 +181,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/accordion-sample/tsconfig.app.json",
-              "projects/accordion-sample/tsconfig.spec.json",
-              "projects/accordion-sample/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/accordion-sample/**/*.ts",
+              "projects/accordion-sample/**/*.html"
             ]
           }
         },

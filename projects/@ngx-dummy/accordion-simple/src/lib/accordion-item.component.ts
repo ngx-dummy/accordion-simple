@@ -9,7 +9,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
 import { accordionItemAnims } from './animations';
-import { AccordionItemInternal, getItemBodyCtx, getItemBodyTemplate } from './settings/';
+import {
+	AccordionItemInternal,
+	getItemBodyCtx,
+	getItemBodyTemplate,
+} from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion-item',

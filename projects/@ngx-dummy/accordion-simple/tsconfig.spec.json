@@ -1,5 +1,5 @@
 {
-  "extends": "../../../tsconfig.base.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../../out-tsc/spec",
     "types": [
@@ -13,6 +13,6 @@
   "include": [
     "**/*.spec.ts",
     "**/*.d.ts",
-    "src/helpers/test-assets/*.*"
+    "./src/helpers/test-assets/*.*"
   ]
 }

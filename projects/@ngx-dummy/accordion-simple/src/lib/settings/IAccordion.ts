@@ -11,16 +11,16 @@ import { TemplateRef } from '@angular/core';
 /**
  * @description
  * The default Data structure, which `AccordionComponent` accepts as an `@Input` property `accordionList`.
- * 
+ *
  * Data type accordion-component accepts as an {@link AccordionComponent#accordionList} Input
- * 
+ *
  * @member {Object} Accordion @extends AccordionItems
  */
 export interface Accordion extends AccordionItems {
 	/**
 	 * @description
 	 * (Optional) Id property of accordion components. Would be set as dom element `id`attribute.
-	 * 
+	 *
 	 * @property {string|number} id
 	 *
 	 * Could be omitted (in the case `id` attribute would be set by `AccordionComponent` itself)
@@ -30,7 +30,7 @@ export interface Accordion extends AccordionItems {
 	/**
 	 * @description
 	 * (Optional) Name property of accordion components. Would be set as dom element `name` attribute.
-	 * 
+	 *
 	 * @property {string} name
 	 *
 	 * Could be omitted (in the case `name` attribute would be set by `AccordionComponent` itself)
@@ -44,15 +44,15 @@ export interface Accordion extends AccordionItems {
  * Part of `Accordion` defining `AccordionItemComponent'`s basic shape (`id`, `title`, `body`)
  */
 export interface AccordionItems {
-/**
- * @description
- * Items defining Every `AccordionItemsComponent` shape
- * 
- * @member {Object[]} items single accordion item data 					{@link AccordionItem}
- * @member {number|string} items[].id `id` of an accordion item {@link AccordionItem.id}
- * @member {string} items[].title `title` of an accordion item 	{@link AccordionItem.title}
- * @member {string|Object} items[].body 													{@link AccordionItem.body}
- */
+	/**
+	 * @description
+	 * Items defining Every `AccordionItemsComponent` shape
+	 *
+	 * @member {Object[]} items single accordion item data 					{@link AccordionItem}
+	 * @member {number|string} items[].id `id` of an accordion item {@link AccordionItem.id}
+	 * @member {string} items[].title `title` of an accordion item 	{@link AccordionItem.title}
+	 * @member {string|Object} items[].body 													{@link AccordionItem.body}
+	 */
 	items: AccordionItem[];
 }
 
@@ -70,7 +70,7 @@ export interface AccordionItem {
 	 * body data of accordion item
 	 * could be simple string (will be interpolated into body container of the corresponding `AccordionItemComponent` element), or:
 	 * could be {@link ItemTemplateContext}
-	 * 
+	 *
 	 * @member {Object} body complex object containing {@link ItemTemplateContext.itemTemplate}  to provide custom accordion item body
 	 * @member {Object} body.itemTemplate the `TemplateRef` to be used as body of accordion item
 	 * @member {Object} body.itemBody string(/html) to be interpolated to {@link ItemTemplateContext.itemBody}

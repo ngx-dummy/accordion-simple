@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import { Accordion } from '@ngx-dummy/accordion-simple/index';
 
 export const dummyAccordionList1: Accordion = {
@@ -6,7 +7,7 @@ export const dummyAccordionList1: Accordion = {
 	items: [
 		{
 			title: 'Accordion Card 1',
-			body: '[[TMPL]]'
+			body: '[[TMPL]]',
 		},
 		{
 			title: 'Accordion Card 2',

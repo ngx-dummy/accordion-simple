@@ -1,0 +1,51 @@
+{
+	"extends": "../../../.eslintrc.json",
+	"ignorePatterns": ["!**/*"],
+	"overrides": [
+		{
+			"files": ["*.ts"],
+			"parserOptions": {
+				"project": ["projects/@ngx-dummy/accordion-simple/tsconfig.lib.json", "projects/@ngx-dummy/accordion-simple/tsconfig.spec.json"],
+				"createDefaultProgram": true
+			},
+			"rules": {
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"type": "element",
+						"prefix": "ngxd",
+						"style": "kebab-case"
+					}
+				],
+				"@angular-eslint/directive-selector": [
+					"off"
+				],
+				"@angular-eslint/no-input-rename": "off",
+				"@typescript-eslint/explicit-member-accessibility": [
+					"off",
+					{
+						"accessibility": "explicit"
+					}
+				],
+				"@typescript-eslint/no-unused-expressions": [
+					"warn",
+					{
+						"allowShortCircuit": true
+					}
+				],
+				"arrow-parens": ["off", "always"],
+				"import/order": "off",
+				"max-len": [
+					"warn",
+					{
+						"code": 180
+					}
+				]
+			}
+		},
+		{
+			"files": ["*.html"],
+			"rules": {}
+		}
+	]
+}

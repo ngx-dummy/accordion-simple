@@ -11,11 +11,11 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AccordionModule } from '@ngx-dummy/accordion-simple/index';
-import { AppComponent2 } from './app2.component';
+import { App2Component } from './app2.component';
 
 @NgModule({
-	declarations: [AppComponent, AppComponent2],
+	declarations: [AppComponent, App2Component],
 	imports: [BrowserModule, AccordionModule],
-	bootstrap: [AppComponent, AppComponent2],
+	bootstrap: [AppComponent, App2Component],
 })
-export class AppModule { }
+export class AppModule {}

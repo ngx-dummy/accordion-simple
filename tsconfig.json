@@ -1,23 +1,24 @@
-/*
-  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
-  It is not intended to be used to perform a compilation.
-
-  To learn more about this file see: https://angular.io/config/solution-tsconfig.
-*/
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./projects/@ngx-dummy/accordion-simple/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/@ngx-dummy/accordion-simple/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/accordion-sample/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/accordion-sample/tsconfig.spec.json"
-    }
-  ]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"baseUrl": "./",
+		"sourceMap": true,
+		"declaration": true,
+		"downlevelIteration": false,
+		"module": "es2020",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "node",
+		"target": "es2016",
+		"typeRoots": ["node_modules/@types"],
+		"lib": ["dom", "ES2020"],
+		"paths": {
+			"@ngx-dummy/accordion-simple/*": ["projects/@ngx-dummy/accordion-simple/src/lib/*"]
+		}
+	},
+	"exclude": ["node_modules", "tmp"],
+	"angularCompilerOptions": {
+		"fullTemplateTypeCheck": true,
+		"strictInjectionParameters": true
+	}
 }

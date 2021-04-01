@@ -9,9 +9,9 @@
 /**
  * @description
  *  Data type accordion component accepts as an {@link AccordionComponent#accordionStyling} `Input`
- * 
+ *
  *  Comprises {@link AccordionComponent} styling, as well as {@link AccordionItemComponent} stylings
- * 
+ *
  *  Stylings type accordion component accepts as an {@link AccordionComponent#accordionStyling} `Input`
  */
 export interface IAccordionStyling {
@@ -33,14 +33,13 @@ export interface IAccordionStyling {
 /**
  * @description
  * combined stylings for `AccordionComponent` children `AccordionItemComponent`s elements;
- * 
+ *
  * comprises font-styles of every accordion item element, as well as spacing styles, and margins, paddings, colors and other styles for both items' header and body elements
  */
-export type IAccordionItemStyling =
-	IAccordionItemFontStyling
-	& IAccordionItemSpacingStyling
-	& IAccordionItemBodyStyling
-	& IAccordionItemHeadStyling;
+export type IAccordionItemStyling = IAccordionItemFontStyling &
+	IAccordionItemSpacingStyling &
+	IAccordionItemBodyStyling &
+	IAccordionItemHeadStyling;
 
 /**
  * @description

@@ -1,6 +1,18 @@
 import { Accordion, IAccordionStyling } from '../lib/settings/';
 
-export const simpleAccordionList = { id: 'Test ID 1', name: 'Test list1', items: [{ title: 'test item1', body: 'Test body text', id: 0, itemNum: 1, isOpen: false }] };
+export const simpleAccordionList = {
+	id: 'Test ID 1',
+	name: 'Test list1',
+	items: [
+		{
+			title: 'test item1',
+			body: 'Test body text',
+			id: 0,
+			itemNum: 1,
+			isOpen: false,
+		},
+	],
+};
 
 export const dummyAccordionList1: Accordion = {
 	id: 'Accord_1',
@@ -8,7 +20,8 @@ export const dummyAccordionList1: Accordion = {
 	items: [
 		{
 			title: 'Accordion Card 1',
-			body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione',
+			body:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione',
 		},
 		{
 			title: 'Accordion Card 2',
@@ -107,7 +120,8 @@ export const dummyAccordionList2: Accordion = {
 		{
 			id: 0,
 			title: 'Card 1',
-			body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione',
+			body:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione',
 		},
 		{
 			id: 1,
@@ -132,7 +146,7 @@ export const dummyAccordionList2: Accordion = {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione
       `,
-		}
+		},
 	],
 };
 
@@ -149,4 +163,4 @@ export const sampleStyling: IAccordionStyling = {
 		margin: '0',
 		padding: '0',
 	},
-}; 11;
+};
