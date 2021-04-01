@@ -134,7 +134,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 
 ## Documentation
 
- * General typeDoc generated types of the Accordion-simple library are available in [[docs](./docs/typedocs/globals.html)]
+ * General typeDoc generated types of the Accordion-simple library are available in [[docs](./docs/typedocs/index.html)]
 
 * Base element  is [`<ngxd-accordion>`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts)
 
