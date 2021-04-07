@@ -12,20 +12,26 @@ https://github.com/typescript-eslint/tslint-to-eslint-config/blob/master/docs/FA
 Happy linting! 💖
 */
 module.exports = {
-	'env': {
-		'browser': true,
-		'node': true,
-		'es2021': true,
+	env: {
+		browser: true,
+		node: true,
+		es2021: true,
 	},
-	'extends': ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking', 'prettier', 'prettier/@typescript-eslint'],
-	'parser': '@typescript-eslint/parser',
-	'parserOptions': {
-		'ecmaVersion': 12,
-		'project': 'tsconfig.json',
-		'sourceType': 'module',
+	extends: [
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:@typescript-eslint/recommended-requiring-type-checking',
+		'prettier',
+		'prettier/@typescript-eslint',
+	],
+	parser: '@typescript-eslint/parser',
+	parserOptions: {
+		ecmaVersion: 12,
+		project: 'tsconfig.json',
+		sourceType: 'module',
 	},
-	'plugins': ['@typescript-eslint', '@typescript-eslint/tslint'],
-	'rules': {
+	plugins: ['@typescript-eslint', '@typescript-eslint/tslint'],
+	rules: {
 		'@angular-eslint/component-class-suffix': 'error',
 		'@angular-eslint/contextual-lifecycle': 'error',
 		'@angular-eslint/directive-class-suffix': 'error',
@@ -48,24 +54,25 @@ module.exports = {
 		'@typescript-eslint/ban-types': [
 			'error',
 			{
-				'types': {
-					'Object': {
-						'message': 'Avoid using the `Object` type. Did you mean `object`?',
+				types: {
+					Object: {
+						message: 'Avoid using the `Object` type. Did you mean `object`?',
 					},
-					'Function': {
-						'message': 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+					Function: {
+						message:
+							'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
 					},
-					'Boolean': {
-						'message': 'Avoid using the `Boolean` type. Did you mean `boolean`?',
+					Boolean: {
+						message: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
 					},
-					'Number': {
-						'message': 'Avoid using the `Number` type. Did you mean `number`?',
+					Number: {
+						message: 'Avoid using the `Number` type. Did you mean `number`?',
 					},
-					'String': {
-						'message': 'Avoid using the `String` type. Did you mean `string`?',
+					String: {
+						message: 'Avoid using the `String` type. Did you mean `string`?',
 					},
-					'Symbol': {
-						'message': 'Avoid using the `Symbol` type. Did you mean `symbol`?',
+					Symbol: {
+						message: 'Avoid using the `Symbol` type. Did you mean `symbol`?',
 					},
 				},
 			},
@@ -76,7 +83,7 @@ module.exports = {
 		'@typescript-eslint/explicit-member-accessibility': [
 			'off',
 			{
-				'accessibility': 'explicit',
+				accessibility: 'explicit',
 			},
 		],
 		'@typescript-eslint/explicit-module-boundary-types': 'warn',
@@ -84,11 +91,11 @@ module.exports = {
 			'error',
 			4,
 			{
-				'FunctionDeclaration': {
-					'parameters': 'first',
+				FunctionDeclaration: {
+					parameters: 'first',
 				},
-				'FunctionExpression': {
-					'parameters': 'first',
+				FunctionExpression: {
+					parameters: 'first',
 				},
 			},
 		],
@@ -96,13 +103,13 @@ module.exports = {
 		'@typescript-eslint/member-delimiter-style': [
 			'error',
 			{
-				'multiline': {
-					'delimiter': 'semi',
-					'requireLast': true,
+				multiline: {
+					delimiter: 'semi',
+					requireLast: true,
 				},
-				'singleline': {
-					'delimiter': 'semi',
-					'requireLast': false,
+				singleline: {
+					delimiter: 'semi',
+					requireLast: false,
 				},
 			},
 		],
@@ -131,7 +138,7 @@ module.exports = {
 		'@typescript-eslint/no-unused-expressions': [
 			'warn',
 			{
-				'allowShortCircuit': true,
+				allowShortCircuit: true,
 			},
 		],
 		'@typescript-eslint/no-unused-vars': 'warn',
@@ -150,17 +157,17 @@ module.exports = {
 		'@typescript-eslint/triple-slash-reference': [
 			'error',
 			{
-				'path': 'always',
-				'types': 'prefer-import',
-				'lib': 'always',
+				path: 'always',
+				types: 'prefer-import',
+				lib: 'always',
 			},
 		],
 		'@typescript-eslint/tslint/config': [
 			'error',
 			{
-				'rules': {
+				rules: {
 					'import-spacing': true,
-					'whitespace': true,
+					whitespace: true,
 				},
 			},
 		],
@@ -169,14 +176,25 @@ module.exports = {
 		'@typescript-eslint/unified-signatures': 'error',
 		'arrow-body-style': 'error',
 		'arrow-parens': ['off', 'always'],
-		'camelcase': 'error',
-		'complexity': 'off',
+		camelcase: 'error',
+		complexity: 'off',
 		'constructor-super': 'error',
-		'curly': 'error',
+		curly: 'error',
 		'eol-last': 'error',
-		'eqeqeq': ['error', 'smart'],
+		eqeqeq: ['error', 'smart'],
 		'guard-for-in': 'error',
-		'id-blacklist': ['error', 'any', 'Number', 'number', 'String', 'string', 'Boolean', 'boolean', 'Undefined', 'undefined'],
+		'id-blacklist': [
+			'error',
+			'any',
+			'Number',
+			'number',
+			'String',
+			'string',
+			'Boolean',
+			'boolean',
+			'Undefined',
+			'undefined',
+		],
 		'id-match': 'error',
 		'import/no-deprecated': 'warn',
 		'import/order': 'off',
@@ -188,7 +206,7 @@ module.exports = {
 		'max-len': [
 			'error',
 			{
-				'code': 180,
+				code: 180,
 			},
 		],
 		'new-parens': 'error',
@@ -199,7 +217,27 @@ module.exports = {
 		'no-console': [
 			'error',
 			{
-				'allow': ['log', 'warn', 'dir', 'timeLog', 'assert', 'clear', 'count', 'countReset', 'group', 'groupEnd', 'table', 'dirxml', 'error', 'groupCollapsed', 'Console', 'profile', 'profileEnd', 'timeStamp', 'context'],
+				allow: [
+					'log',
+					'warn',
+					'dir',
+					'timeLog',
+					'assert',
+					'clear',
+					'count',
+					'countReset',
+					'group',
+					'groupEnd',
+					'table',
+					'dirxml',
+					'error',
+					'groupCollapsed',
+					'Console',
+					'profile',
+					'profileEnd',
+					'timeStamp',
+					'context',
+				],
 			},
 		],
 		'no-debugger': 'error',
@@ -213,7 +251,7 @@ module.exports = {
 		'no-shadow': [
 			'error',
 			{
-				'hoist': 'all',
+				hoist: 'all',
 			},
 		],
 		'no-throw-literal': 'error',
@@ -229,21 +267,21 @@ module.exports = {
 		'prefer-arrow/prefer-arrow-functions': 'error',
 		'prefer-const': 'error',
 		'quote-props': ['error', 'as-needed'],
-		'radix': 'error',
+		radix: 'error',
 		'require-await': 'off',
 		'space-before-function-paren': [
 			'error',
 			{
-				'anonymous': 'never',
-				'asyncArrow': 'always',
-				'named': 'never',
+				anonymous: 'never',
+				asyncArrow: 'always',
+				named: 'never',
 			},
 		],
 		'spaced-comment': [
 			'error',
 			'always',
 			{
-				'markers': ['/'],
+				markers: ['/'],
 			},
 		],
 		'use-isnan': 'error',

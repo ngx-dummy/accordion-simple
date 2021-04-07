@@ -35,7 +35,7 @@ jobs:
 
     - name: Install packages global
       run: |
-        echo Installing..!
+        echo Installing angular cli
         npm install -g @angular/cli > /dev/null
 
     - name: Build accordion-sample app
