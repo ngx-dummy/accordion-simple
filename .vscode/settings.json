@@ -1,7 +1,23 @@
 {
 	"eslint.options": {
-		"extensions": [".ts", ".html"]
+		"extensions": [".ts", ".html", ".scss"]
 	},
 	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
-	"cSpell.words": ["htmlpreview"]
+	"cSpell.words": ["htmlpreview"],
+	
+	"[scss, css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+	"html.format.wrapAttributes": "auto",
+
+	"[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.suggest.insertMode": "replace",
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	}
 }

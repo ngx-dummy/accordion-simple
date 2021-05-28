@@ -38,7 +38,7 @@
 
 ##### get the script to your *index.html*:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.js"></script>
 ```
 
 ##### install using __npm__: 
@@ -46,7 +46,7 @@
 npm install --save @ngx-dummy/accordion-simple
 ```
 
-##### .. use (*in your Angular/Ionic app*):
+#####  [use (*in your Angular/Ionic app*)](https://stackblitz.com/edit/ngx-dummy-accordion-sample?devtoolsheight=33&file=src/main.ts):
 
 ```typescript
 import { NgModule, Component, enableProdMode } from '@angular/core';
@@ -97,7 +97,7 @@ class AppCmp {
 class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-// inside your 'index.html' :  <my-app>loading</my-app>
+// ... "enableIvy": false, in tsconfig.json
 ```
 
 

@@ -14,8 +14,8 @@ import { AccordionModule } from '@ngx-dummy/accordion-simple/index';
 import { App2Component } from './app2.component';
 
 @NgModule({
-	declarations: [AppComponent, App2Component],
-	imports: [BrowserModule, AccordionModule],
-	bootstrap: [AppComponent, App2Component],
+  declarations: [AppComponent, App2Component],
+  imports: [BrowserModule, AccordionModule],
+  bootstrap: [AppComponent, App2Component],
 })
 export class AppModule {}

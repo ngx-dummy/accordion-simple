@@ -1,9 +1,8 @@
 //** Sample Loading */
 
 (function () {
-
   window.addEventListener('DOMContentLoaded', function (e) {
-    const swiper = initSwiper(); 
+    const swiper = initSwiper();
     // setTimeout(function() {
     //   let app = document.getElementById('app1');
     //   let app2Container = document.getElementById('app2Container');
@@ -21,7 +20,7 @@
     const MDCList = window.mdc.list.MDCList;
     const MDCMenu = window.mdc.menu.MDCMenu;
 
-    const vert_menu_opener = document.getElementById('vert_menu_opener');
+    // const vert_menu_opener = document.getElementById('vert_menu_opener');`
     const forwardBtn = document.getElementById('forward');
     const navToDocs = document.getElementById('nav-to-docs');
     const backBtn = document.getElementById('back');
@@ -29,25 +28,24 @@
     const menu = new MDCMenu(document.querySelector('.mdc-menu'));
     menu.setFixedPosition(true);
     menu.setAnchorElement(vert_menu_opener);
-    vert_menu_opener.addEventListener('click', e => {
+    vert_menu_opener.addEventListener('click', (e) => {
       menu.open = !!!menu.open;
     });
-    forwardBtn.addEventListener('click', e => {
+    forwardBtn.addEventListener('click', (e) => {
       e.preventDefault();
       swiper.slideNext();
       toggleDrawer(drawer);
     });
-    backBtn.addEventListener('click', e => {
+    backBtn.addEventListener('click', (e) => {
       e.preventDefault();
       swiper.slidePrev();
       toggleDrawer(drawer);
     });
-    navToDocs.addEventListener('click', e => {
+    navToDocs.addEventListener('click', (e) => {
       // e.preventDefault();
       swiper.slideTo(swiper.slides.length - 1, 2000);
     });
-    
-    
+
     const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
     topAppBar.setScrollTarget(document.getElementById('main-content'));
     const list = MDCList.attachTo(document.querySelector('.mdc-list'));

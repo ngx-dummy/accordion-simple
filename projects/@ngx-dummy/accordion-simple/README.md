@@ -39,7 +39,7 @@
 
 ##### get the script to your *index.html*:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.js"></script>
 ```
 
 ##### install using __npm__: 

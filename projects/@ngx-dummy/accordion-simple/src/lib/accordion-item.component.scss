@@ -9,122 +9,122 @@
 @use './theming/vars.scss';
 
 .accord-item {
-	display: block;
-	min-width: 10rem;
-	min-height: 1rem;
-	box-sizing: border-box;
-	overflow: hidden;
+  display: block;
+  min-width: 10rem;
+  min-height: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
 
-	.accord-item__header {
-		position: relative;
-		transition: 0.6s ease;
-		overflow: visible;
-		display: flex;
-		min-height: 1rem;
-		background-color: var(--ngxd-head-item-color);
-		color: #fff;
-		flex-direction: row;
-		max-height: 50px;
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		user-select: none;
+  .accord-item__header {
+    position: relative;
+    transition: 0.6s ease;
+    overflow: visible;
+    display: flex;
+    min-height: 1rem;
+    background-color: var(--ngxd-head-item-color);
+    color: #fff;
+    flex-direction: row;
+    max-height: 50px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 
-		&:hover,
+    &:hover,
     &:active {
-			background-color: var(--ngxd-head-item-color--active) !important;
-			cursor: pointer;
-		}
-		&.opened {
-			background-color: var(--ngxd-head-item-color--opened) !important;
-		}
+      background-color: var(--ngxd-head-item-color--active) !important;
+      cursor: pointer;
+    }
+    &.opened {
+      background-color: var(--ngxd-head-item-color--opened) !important;
+    }
 
-		.accord-item__header--btn {
-			background: transparent;
-			max-width: 2rem;
-			text-align: center;
-			vertical-align: middle;
-			border: none;
-			font-size: x-large;
-		}
+    .accord-item__header--btn {
+      background: transparent;
+      max-width: 2rem;
+      text-align: center;
+      vertical-align: middle;
+      border: none;
+      font-size: x-large;
+    }
 
-		.accord-item__collapse--btn {
-			padding-right: 1px;
-		}
+    .accord-item__collapse--btn {
+      padding-right: 1px;
+    }
 
-		.accord-item__header--start,
-		.accord-item__header--end {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			padding-left: 1px;
-			max-width: 1.5rem;
-			flex: 0 0 1rem;
+    .accord-item__header--start,
+    .accord-item__header--end {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 1px;
+      max-width: 1.5rem;
+      flex: 0 0 1rem;
 
-			.accord-item__header--start-img {
-				max-width: 1rem;
-				margin-right: 0.5rem;
-			}
+      .accord-item__header--start-img {
+        max-width: 1rem;
+        margin-right: 0.5rem;
+      }
 
-			& > img {
-				max-width: 1.5rem;
-			}
-		}
+      & > img {
+        max-width: 1.5rem;
+      }
+    }
 
-		.accord-item__header--end {
-			padding-left: 0;
-			padding-right: 1px;
+    .accord-item__header--end {
+      padding-left: 0;
+      padding-right: 1px;
 
-			&.active {
-				transform: rotate(180deg);
-				transition: transform 0.3s ease-out;
-			}
+      &.active {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease-out;
+      }
 
-			&:not(.active) {
-				transform: rotate(0);
-				transition: transform 0.3s ease-out;
-			}
-		}
+      &:not(.active) {
+        transform: rotate(0);
+        transition: transform 0.3s ease-out;
+      }
+    }
 
-		.header--control {
-			padding: 1rem;
-			margin: 0.1rem;
-			display: flex;
-			align-items: center;
-			-moz-user-select: none;
-			-webkit-user-select: none;
-			user-select: none;
-			touch-action: pan-y;
-		}
+    .header--control {
+      padding: 1rem;
+      margin: 0.1rem;
+      display: flex;
+      align-items: center;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      user-select: none;
+      touch-action: pan-y;
+    }
 
-		.accord-item__title {
-			text-align: center;
-			font-size: 14px;
-			flex: 1 1 100%;
-		}
+    .accord-item__title {
+      text-align: center;
+      font-size: 14px;
+      flex: 1 1 100%;
+    }
 
-		.accord-item__collapse {
-			flex: 0 0 1rem;
-		}
-	}
+    .accord-item__collapse {
+      flex: 0 0 1rem;
+    }
+  }
 
-	.accord-item__body {
-		-moz-user-select: text;
-		-webkit-user-select: text;
-		user-select: text;
-		touch-action: pinch-zoom pan-y;
-		transition: all 0.3s ease-out;
-		
-		&.closed {
-			position: absolute;
-			// display: none;
-			opacity: 0;
-		}
+  .accord-item__body {
+    -moz-user-select: text;
+    -webkit-user-select: text;
+    user-select: text;
+    touch-action: pinch-zoom pan-y;
+    transition: all 0.3s ease-out;
 
-		&.opened {
-			// position: relative;
-			// height: auto;
-			opacity: 1;
-			// display: block;
-		}
-	}
+    &.closed {
+      position: absolute;
+      // display: none;
+      opacity: 0;
+    }
+
+    &.opened {
+      // position: relative;
+      // height: auto;
+      opacity: 1;
+      // display: block;
+    }
+  }
 }

@@ -8,25 +8,24 @@
  */
 :host {
   margin: auto;
-  
+
   .accordion {
     display: flex;
     flex-direction: column;
     vertical-align: middle;
     overflow: hidden;
   }
-  
+
   .accordion-horizontal-menu {
     display: flex;
     flex-direction: row;
     vertical-align: middle;
     width: 100%;
-    
+
     & > ngxd-accordion-item {
       flex: 1 1 auto;
     }
   }
-  
 }
 
 @media screen and (max-width: 720px) {

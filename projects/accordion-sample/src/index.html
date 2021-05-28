@@ -8,416 +8,255 @@
  */ -->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>AccordionSample</title>
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/x-icon" href="favicon.ico" />
-		<link rel="manifest" href="manifest.json" />
-		<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png" />
-		<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png" />
-		<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png" />
-		<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png" />
-		<link
-			rel="apple-touch-icon"
-			sizes="114x114"
-			href="apple-icon-114x114.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="120x120"
-			href="apple-icon-120x120.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="144x144"
-			href="apple-icon-144x144.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="152x152"
-			href="apple-icon-152x152.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="apple-icon-180x180.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="192x192"
-			href="android-icon-192x192.png"
-		/>
-		<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-		<meta name="msapplication-TileImage" content="ms-icon-144x144.png" />
-		<meta name="msapplication-TileColor" content="#ffffff" />
-		<meta name="theme-color" content="#ffffff" />
-		<meta
-			name="description"
-			content="Sample app exposing Ngx-dummy/accordion-simple lib usage"
-		/>
-		<meta
-			name="keywords"
-			content="accordion,accordion-component,accordion component,accordion-simple,simple accordion,Angular,Angular9,Angular10,Ionic,Ionic5,typescript,javascript"
-		/>
-		<meta name="author" content="Vladimir Ovsyukov" />
+  <head>
+    <meta charset="utf-8" />
+    <title>AccordionSample</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <meta name="msapplication-TileImage" content="ms-icon-144x144.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Sample app exposing Ngx-dummy/accordion-simple lib usage" />
+    <meta
+      name="keywords"
+      content="accordion,accordion-component,accordion component,accordion-simple,simple accordion,Angular,Angular9,Angular10,Ionic,Ionic5,typescript,javascript"
+    />
+    <meta name="author" content="Vladimir Ovsyukov" />
 
-		<meta
-			name="image"
-			content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png"
-		/>
-		<meta itemprop="name" content="Accordion-Simple library" />
-		<meta
-			itemprop="image"
-			content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png"
-		/>
-		<meta name="twitter:card" content="summary" />
-		<meta name="twitter:title" content="Accordion-Simple library" />
-		<meta name="twitter:site" content="@OvsyukovV" />
-		<meta name="twitter:creator" content="@OvsyukovV" />
-		<meta
-			name="twitter:image:src"
-			content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png"
-		/>
-		<meta name="og:title" content="Accordion-Simple library" />
-		<meta
-			name="og:image"
-			content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png"
-		/>
-		<meta name="og:url" content="//accordion-simple-tester.netlify.app" />
-		<meta name="og:site_name" content="Accordion-Simple library" />
-		<meta name="og:type" content="website" />
-		<link rel="stylesheet" href="//unpkg.com/swiper/swiper-bundle.min.css" />
-		<style>
-			@import url('//fonts.googleapis.com/icon?family=Material+Icons');
-			@import url('//unpkg.com/material-components-web@latest/dist/material-components-web.min.css');
-		</style>
-	</head>
+    <meta name="image" content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png" />
+    <meta itemprop="name" content="Accordion-Simple library" />
+    <meta itemprop="image" content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Accordion-Simple library" />
+    <meta name="twitter:site" content="@OvsyukovV" />
+    <meta name="twitter:creator" content="@OvsyukovV" />
+    <meta name="twitter:image:src" content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png" />
+    <meta name="og:title" content="Accordion-Simple library" />
+    <meta name="og:image" content="//raw.githubusercontent.com/ngx-dummy/accordion-simple/master/docs/ngx-dummy-logo.png" />
+    <meta name="og:url" content="//accordion-simple-tester.netlify.app" />
+    <meta name="og:site_name" content="Accordion-Simple library" />
+    <meta name="og:type" content="website" />
+    <link rel="stylesheet" href="//unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+      @import url('//fonts.googleapis.com/icon?family=Material+Icons');
+      @import url('//unpkg.com/material-components-web@latest/dist/material-components-web.min.css');
+    </style>
+  </head>
 
-	<body class="mdc-typography">
-		<header class="mdc-top-app-bar app-bar" id="app-bar">
-			<div class="mdc-top-app-bar__row">
-				<section
-					class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start"
-				>
-					<button
-						class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
-						aria-label="Open navigation menu"
-					>
-						menu
-					</button>
-					<span
-						class="mdc-top-app-bar__title"
-						onclick="location.href='vovansuper.github.io'"
-						>Usage sample</span
-					>
-				</section>
-				<section
-					class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end"
-					role="toolbar"
-				>
-					<a
-						class="mdc-fab mdc-fab--mini"
-						aria-label="Favorite"
-						class="twitter-share-button"
-						data-show-count="false"
-						href="//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component"
-					>
-						<div class="mdc-fab__ripple"></div>
-						<span class="mdc-fab__icon material-icons">share</span>
-						<img
-							src="twitter-icon-logo.png"
-							style="
-								width: 1rem;
-								opacity: 0.8;
-								transform: translate(-0.2rem, 0.4rem);
-							"
-						/>
-					</a>
-					<button
-						class="material-icons mdc-top-app-bar__action-item mdc-icon-button ml-1 mr-1"
-						aria-label="Favorite"
-						aria-pressed="false"
-						aria-label="Sponsor"
-						title="Sponsor"
-						onclick="location.href='//github.com/sponsors/VovanSuper'"
-						data-icon="octicon-heart"
-						aria-label="Sponsor VovanSuper on GitHub"
-					>
-						favorite
-					</button>
-					<button
-						id="vert_menu_opener"
-						class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
-						aria-label="Options"
-					>
-						more_vert
-					</button>
-					<div class="mdc-menu mdc-menu-surface">
-						<ul
-							class="mdc-list"
-							role="menu"
-							aria-hidden="true"
-							aria-orientation="vertical"
-							tabindex="-1"
-						>
-							<li class="mdc-list-item" role="menuitem">
-								<i
-									class="material-icons mdc-list-item__graphic menu-icon"
-									aria-hidden="true"
-									>home_work</i
-								>
-								<a
-									href="//vovansuper.github.io/accordion-simple"
-									target="_blank"
-									class="mdc-list-item__text"
-									>Sample App</a
-								>
-							</li>
-							<li id="nav-to-docs" class="mdc-list-item" role="menuitem">
-								<!-- <a id="nav-to-docs" class="mdc-list-item__text"> -->
-								<i
-									class="material-icons mdc-list-item__graphic menu-icon"
-									aria-hidden="true"
-									>description</i
-								>
-								<span class="mdc-list-item__text">Docs</span>
-								<!-- </a> -->
-							</li>
-						</ul>
-					</div>
-				</section>
-			</div>
-		</header>
+  <body class="mdc-typography">
+    <header class="mdc-top-app-bar app-bar" id="app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+          <span class="mdc-top-app-bar__title" onclick="location.href='vovansuper.github.io'">Usage sample</span>
+        </section>
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+          <a
+            class="mdc-fab mdc-fab--mini"
+            aria-label="Favorite"
+            class="twitter-share-button"
+            data-show-count="false"
+            href="//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component"
+          >
+            <div class="mdc-fab__ripple"></div>
+            <span class="mdc-fab__icon material-icons">share</span>
+            <img src="twitter-icon-logo.png" style="width: 1rem; opacity: 0.8; transform: translate(-0.2rem, 0.4rem)" />
+          </a>
+          <button
+            class="material-icons mdc-top-app-bar__action-item mdc-icon-button ml-1 mr-1"
+            aria-label="Favorite"
+            aria-pressed="false"
+            aria-label="Sponsor"
+            title="Sponsor"
+            onclick="location.href='//github.com/sponsors/VovanSuper'"
+            data-icon="octicon-heart"
+            aria-label="Sponsor VovanSuper on GitHub"
+          >
+            favorite
+          </button>
+          <button id="vert_menu_opener" class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+          <div class="mdc-menu mdc-menu-surface">
+            <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+              <li class="mdc-list-item" role="menuitem">
+                <i class="material-icons mdc-list-item__graphic menu-icon" aria-hidden="true">home_work</i>
+                <a href="//vovansuper.github.io/accordion-simple" target="_blank" class="mdc-list-item__text">Sample App</a>
+              </li>
+              <li id="nav-to-docs" class="mdc-list-item" role="menuitem">
+                <!-- <a id="nav-to-docs" class="mdc-list-item__text"> -->
+                <i class="material-icons mdc-list-item__graphic menu-icon" aria-hidden="true">description</i>
+                <span class="mdc-list-item__text">Docs</span>
+                <!-- </a> -->
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </header>
 
-		<!-- <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust "> -->
-		<aside class="mdc-drawer mdc-top-app-bar--fixed-adjust mdc-drawer--modal">
-			<div class="mdc-drawer__content">
-				<div class="mdc-drawer__header">
-					<div class="mdc-top-app-bar__row h-a">
-						<section
-							class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start menu-grid--col4"
-						>
-							<div class="">
-								<img class="mdc-image-menu__image" src="ngx-dummy-logo.png" />
-							</div>
-							<div class="mdc-card__action-icons">
-								<button
-									class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded"
-									aria-pressed="false"
-									aria-label="Sponsor"
-									title="Sponsor"
-									onclick="location.href='//github.com/sponsors/ngx-dummy'"
-									data-icon="octicon-heart"
-									aria-label="Sponsor @ngx-dummy on GitHub"
-								>
-									<i
-										class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"
-										>favorite</i
-									>
-									<i class="material-icons mdc-icon-button__icon"
-										>favorite_border</i
-									>
-								</button>
-								<button
-									class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded"
-									title="Share"
-									data-mdc-ripple-is-unbounded="true"
-									onclick="location.href='//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component'"
-								>
-									share
-								</button>
-							</div>
-						</section>
-					</div>
-					<h3 class="mdc-drawer__title">AccordionSimple</h3>
-					<h5 class="mdc-drawer__subtitle2">Demonstrator app</h5>
-				</div>
-				<nav class="mdc-list">
-					<a
-						class="mdc-list-item mdc-list-item--activated"
-						href="//github.com/VovanSuper/accordion-simple"
-						aria-current="page"
-						tabindex="0"
-					>
-						<img
-							class="material-icons mdc-list-item__graphic"
-							src="github-logo.svg"
-							alt="Repo"
-							style="max-height: 90%"
-						/>
-						<span class="mdc-list-item__text">Repository Home</span>
-					</a>
-					<a
-						class="mdc-list-item mdc-list-item--activated"
-						href="."
-						aria-current="page"
-						tabindex="0"
-					>
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-							>home</i
-						>
-						<span class="mdc-list-item__text">Sample</span>
-					</a>
-					<a class="mdc-list-item" id="forward">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-							>east</i
-						>
-						<span class="mdc-list-item__text">Next Slide</span>
-					</a>
-					<a class="mdc-list-item" id="back">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-							>west</i
-						>
-						<span class="mdc-list-item__text">Previous Slide</span>
-					</a>
-				</nav>
-			</div>
-			<footer class="mdc-footer mdc-drawer__footer">
-				<a
-					class="github-button"
-					href="https://github.com/ngx-dummy/accordion-simple/fork"
-					data-icon="octicon-repo-forked"
-					aria-label="Fork ngx-dummy/accordion-simple on GitHub"
-					>Fork</a
-				>
-				<a
-					class="github-button"
-					href="https://github.com/VovanSuper"
-					aria-label="Follow @VovanSuper on GitHub"
-					>Follow @VovanSuper</a
-				>
-				<a
-					class="github-button"
-					href="https://github.com/VovanSuper/accrdion-simple"
-					data-icon="octicon-star"
-					aria-label="Star VovanSuper/accordion-simple on GitHub"
-					>Star</a
-				>
-				<a
-					class="github-button"
-					href="https://github.com/sponsors/VovanSuper"
-					data-icon="octicon-heart"
-					aria-label="Sponsor VovanSuper on GitHub"
-					>Sponsor</a
-				>
-				<a
-					class="github-button"
-					href="https://github.com/sponsors/ngx-dummy"
-					data-icon="octicon-heart"
-					aria-label="Sponsor @Ngx-Dummy on GitHub"
-					>Sponsor Ngx-dummy</a
-				>
-			</footer>
-		</aside>
+    <!-- <aside class="mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust "> -->
+    <aside class="mdc-drawer mdc-top-app-bar--fixed-adjust mdc-drawer--modal">
+      <div class="mdc-drawer__content">
+        <div class="mdc-drawer__header">
+          <div class="mdc-top-app-bar__row h-a">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start menu-grid--col4">
+              <div class="">
+                <img class="mdc-image-menu__image" src="ngx-dummy-logo.png" />
+              </div>
+              <div class="mdc-card__action-icons">
+                <button
+                  class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded"
+                  aria-pressed="false"
+                  aria-label="Sponsor"
+                  title="Sponsor"
+                  onclick="location.href='//github.com/sponsors/ngx-dummy'"
+                  data-icon="octicon-heart"
+                  aria-label="Sponsor @ngx-dummy on GitHub"
+                >
+                  <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+                  <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+                </button>
+                <button
+                  class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded"
+                  title="Share"
+                  data-mdc-ripple-is-unbounded="true"
+                  onclick="location.href='//twitter.com/intent/tweet?ref_src=twsrc%5Etfw&original_referer=https%3A%2F%2Fngx-dummy.github.io%2Faccordion-simple%2F&url=https%3A%2F%2Fgithub.com%2Fvovansuper%2Faccordion-simple&text=ngx-dummy Accordion simple component'"
+                >
+                  share
+                </button>
+              </div>
+            </section>
+          </div>
+          <h3 class="mdc-drawer__title">AccordionSimple</h3>
+          <h5 class="mdc-drawer__subtitle2">Demonstrator app</h5>
+        </div>
+        <nav class="mdc-list">
+          <a class="mdc-list-item mdc-list-item--activated" href="//github.com/VovanSuper/accordion-simple" aria-current="page" tabindex="0">
+            <img class="material-icons mdc-list-item__graphic" src="github-logo.svg" alt="Repo" style="max-height: 90%" />
+            <span class="mdc-list-item__text">Repository Home</span>
+          </a>
+          <a class="mdc-list-item mdc-list-item--activated" href="." aria-current="page" tabindex="0">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+            <span class="mdc-list-item__text">Sample</span>
+          </a>
+          <a class="mdc-list-item" id="forward">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">east</i>
+            <span class="mdc-list-item__text">Next Slide</span>
+          </a>
+          <a class="mdc-list-item" id="back">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true">west</i>
+            <span class="mdc-list-item__text">Previous Slide</span>
+          </a>
+        </nav>
+      </div>
+      <footer class="mdc-footer mdc-drawer__footer">
+        <a
+          class="github-button"
+          href="https://github.com/ngx-dummy/accordion-simple/fork"
+          data-icon="octicon-repo-forked"
+          aria-label="Fork ngx-dummy/accordion-simple on GitHub"
+          >Fork</a
+        >
+        <a class="github-button" href="https://github.com/VovanSuper" aria-label="Follow @VovanSuper on GitHub">Follow @VovanSuper</a>
+        <a
+          class="github-button"
+          href="https://github.com/VovanSuper/accrdion-simple"
+          data-icon="octicon-star"
+          aria-label="Star VovanSuper/accordion-simple on GitHub"
+          >Star</a
+        >
+        <a class="github-button" href="https://github.com/sponsors/VovanSuper" data-icon="octicon-heart" aria-label="Sponsor VovanSuper on GitHub"
+          >Sponsor</a
+        >
+        <a class="github-button" href="https://github.com/sponsors/ngx-dummy" data-icon="octicon-heart" aria-label="Sponsor @Ngx-Dummy on GitHub"
+          >Sponsor Ngx-dummy</a
+        >
+      </footer>
+    </aside>
 
-		<div class="mdc-drawer-scrim"></div>
-		<div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
-			<main class="main-content" id="main-content">
-				<div class="swiper-container" style="overflow: hidden">
-					<div class="swiper-wrapper" style="text-align: center">
-						<div class="container-center swiper-slide">
-							<div class="marvel-device ipad silver device-settings">
-								<div class="camera"></div>
-								<div class="screen">
-									<app-root id="app1">
-										<div class="container-transparent">
-											<svg
-												class="spinner"
-												width="65px"
-												height="65px"
-												viewBox="0 0 66 66"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<circle
-													class="path"
-													fill="none"
-													stroke-width="6"
-													stroke-linecap="round"
-													cx="33"
-													cy="33"
-													r="30"
-												></circle>
-											</svg>
-										</div>
-									</app-root>
-								</div>
-								<div class="home"></div>
-							</div>
-						</div>
-						<div class="container-center swiper-slide">
-							<div class="marvel-device iphone-x">
-								<div class="notch">
-									<div class="camera"></div>
-									<div class="speaker"></div>
-								</div>
-								<div class="top-bar"></div>
-								<div class="sleep"></div>
-								<div class="bottom-bar"></div>
-								<div class="volume"></div>
-								<div class="overflow">
-									<div class="shadow shadow--tr"></div>
-									<div class="shadow shadow--tl"></div>
-									<div class="shadow shadow--br"></div>
-									<div class="shadow shadow--bl"></div>
-								</div>
-								<div class="inner-shadow"></div>
-								<div class="screen">
-									<app-root2 id="app2">
-										<div class="container-transparent">
-											<svg
-												class="spinner"
-												width="65px"
-												height="65px"
-												viewBox="0 0 66 66"
-												xmlns="http://www.w3.org/2000/svg"
-											>
-												<circle
-													class="path"
-													fill="none"
-													stroke-width="6"
-													stroke-linecap="round"
-													cx="33"
-													cy="33"
-													r="30"
-												></circle>
-											</svg>
-										</div>
-									</app-root2>
-								</div>
-							</div>
-						</div>
-						<div class="container-center swiper-slide" style="height: 99vh">
-							<iframe
-								src="//htmlpreview.github.io/?https://raw.githubusercontent.com/VovanSuper/accordion-simple/master/docs/typedocs/index.html"
-								width="100%"
-								height="100%"
-								frameborder="0"
-							></iframe>
-						</div>
-					</div>
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
-				</div>
-			</main>
-			<footer class="footer">
-				(C) Vladimir Ovsyukov -
-				<a href="mailto:ovsyukov@yandex.com?subject=Accordion-Simple component"
-					>mail your ideas</a
-				>
-			</footer>
-		</div>
-		<script
-			src="//platform.twitter.com/widgets.js"
-			charset="utf-8"
-			async
-		></script>
-		<script src="//buttons.github.io/buttons.js" async defer></script>
-		<script src="//unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-		<script src="//unpkg.com/swiper/swiper-bundle.js"></script>
-	</body>
+    <div class="mdc-drawer-scrim"></div>
+    <div class="mdc-drawer-app-content mdc-top-app-bar--fixed-adjust">
+      <main class="main-content" id="main-content">
+        <div class="swiper-container" style="overflow: hidden">
+          <div class="swiper-wrapper" style="text-align: center">
+            <div class="container-center swiper-slide">
+              <div class="marvel-device ipad silver device-settings">
+                <div class="camera"></div>
+                <div class="screen">
+                  <app-root id="app1">
+                    <div class="container-transparent">
+                      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                  </app-root>
+                </div>
+                <div class="home"></div>
+              </div>
+            </div>
+            <div class="container-center swiper-slide">
+              <div class="marvel-device iphone-x">
+                <div class="notch">
+                  <div class="camera"></div>
+                  <div class="speaker"></div>
+                </div>
+                <div class="top-bar"></div>
+                <div class="sleep"></div>
+                <div class="bottom-bar"></div>
+                <div class="volume"></div>
+                <div class="overflow">
+                  <div class="shadow shadow--tr"></div>
+                  <div class="shadow shadow--tl"></div>
+                  <div class="shadow shadow--br"></div>
+                  <div class="shadow shadow--bl"></div>
+                </div>
+                <div class="inner-shadow"></div>
+                <div class="screen">
+                  <app-root2 id="app2">
+                    <div class="container-transparent">
+                      <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+                      </svg>
+                    </div>
+                  </app-root2>
+                </div>
+              </div>
+            </div>
+            <div class="container-center swiper-slide" style="height: 99vh">
+              <iframe
+                src="//htmlpreview.github.io/?https://raw.githubusercontent.com/VovanSuper/accordion-simple/master/docs/typedocs/index.html"
+                width="100%"
+                height="100%"
+                frameborder="0"
+              ></iframe>
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </main>
+      <footer class="footer">
+        (C) Vladimir Ovsyukov -
+        <a href="mailto:ovsyukov@yandex.com?subject=Accordion-Simple component">mail your ideas</a>
+      </footer>
+    </div>
+    <script src="//platform.twitter.com/widgets.js" charset="utf-8" async></script>
+    <script src="//buttons.github.io/buttons.js" async defer></script>
+    <script src="//unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script src="//unpkg.com/swiper/swiper-bundle.js"></script>
+  </body>
 </html>

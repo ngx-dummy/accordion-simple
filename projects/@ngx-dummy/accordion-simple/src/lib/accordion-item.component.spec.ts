@@ -17,62 +17,54 @@ import { AccordionItemDirective } from './accordion-item.directive';
 import { AccordionModule } from './accordion.module';
 
 describe('An Accordion-item component', () => {
-	describe('single component', () => {
-		let accordItemCmpFixture: ComponentFixture<AccordionItemComponent>;
-		let accordItemCmp: AccordionItemComponent;
-		let accordItemNativeEl: HTMLElement;
-		let accordItemDebugEl: DebugElement;
-		const getItemHeader = () =>
-			accordItemNativeEl?.querySelector('.accord-item__header');
-		const getItemBody = () =>
-			accordItemNativeEl?.querySelector('.accord-item__body');
-		const isOpen$$: Subject<boolean> = new Subject();
-		let isOpen$ = null;
+  describe('single component', () => {
+    let accordItemCmpFixture: ComponentFixture<AccordionItemComponent>;
+    let accordItemCmp: AccordionItemComponent;
+    let accordItemNativeEl: HTMLElement;
+    let accordItemDebugEl: DebugElement;
+    const getItemHeader = () => accordItemNativeEl?.querySelector('.accord-item__header');
+    const getItemBody = () => accordItemNativeEl?.querySelector('.accord-item__body');
+    const isOpen$$: Subject<boolean> = new Subject();
+    let isOpen$ = null;
 
-		beforeEach(async () => {
-			const testingBed = TestBed.configureTestingModule({
-				declarations: [
-					AccordionItemComponent,
-					AccordionItemDirective,
-					AccordionItemImgDirective,
-				],
-				imports: [NoopAnimationsModule],
-			});
-			await testingBed.compileComponents();
-			accordItemCmpFixture = testingBed.createComponent<AccordionItemComponent>(
-				AccordionItemComponent
-			);
-			accordItemCmp = accordItemCmpFixture.componentInstance;
-		});
+    beforeEach(async () => {
+      const testingBed = TestBed.configureTestingModule({
+        declarations: [AccordionItemComponent, AccordionItemDirective, AccordionItemImgDirective],
+        imports: [NoopAnimationsModule],
+      });
+      await testingBed.compileComponents();
+      accordItemCmpFixture = testingBed.createComponent<AccordionItemComponent>(AccordionItemComponent);
+      accordItemCmp = accordItemCmpFixture.componentInstance;
+    });
 
-		beforeEach(() => {
-			accordItemNativeEl = accordItemCmpFixture.nativeElement as HTMLElement;
-			accordItemDebugEl = accordItemCmpFixture.debugElement;
-			isOpen$ = isOpen$$.asObservable();
-			accordItemCmp.isOpen$ = isOpen$;
-			accordItemCmp.item = {
-				body: 'TMPL DATA',
-			};
-			accordItemCmpFixture.autoDetectChanges();
-		});
+    beforeEach(() => {
+      accordItemNativeEl = accordItemCmpFixture.nativeElement as HTMLElement;
+      accordItemDebugEl = accordItemCmpFixture.debugElement;
+      isOpen$ = isOpen$$.asObservable();
+      accordItemCmp.isOpen$ = isOpen$;
+      accordItemCmp.item = {
+        body: 'TMPL DATA',
+      };
+      accordItemCmpFixture.autoDetectChanges();
+    });
 
-		it('should exist', () => {
-			expect(accordItemNativeEl).toBeTruthy();
-		});
+    it('should exist', () => {
+      expect(accordItemNativeEl).toBeTruthy();
+    });
 
-		// it('should be open', () => {
-		//   isOpen$$.next(true);
-		//   isOpen$.subscribe(_ => {
-		//     expect(getItemHeader().classList).toContain('opened');
-		//     expect(getItemBody().classList).toContain('opened');
-		//   });
-		// });
+    // it('should be open', () => {
+    //   isOpen$$.next(true);
+    //   isOpen$.subscribe(_ => {
+    //     expect(getItemHeader().classList).toContain('opened');
+    //     expect(getItemBody().classList).toContain('opened');
+    //   });
+    // });
 
-		it('should be closed', () => {
-			isOpen$$.next(false);
-			isOpen$.subscribe((_isOpenVal) => {
-				expect(getItemBody().classList).toContain('closed');
-			});
-		});
-	});
+    it('should be closed', () => {
+      isOpen$$.next(false);
+      isOpen$.subscribe((_isOpenVal) => {
+        expect(getItemBody().classList).toContain('closed');
+      });
+    });
+  });
 });

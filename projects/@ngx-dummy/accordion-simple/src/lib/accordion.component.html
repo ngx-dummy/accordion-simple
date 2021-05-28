@@ -9,105 +9,69 @@
  */ 
 -->
 <div class="accordion" ngxdAccordion>
-	<ng-container *ngIf="!!accordionItems?.length; else loadingTpl">
-		<ng-container
-			*ngFor="let item of accordionItems; trackBy: trackByFn"
-			[ngTemplateOutlet]="accordItemTmpl"
-			[ngTemplateOutletContext]="{ $implicit: item }"
-		></ng-container>
-	</ng-container>
+  <ng-container *ngIf="!!accordionItems; else loadingTpl">
+    <ng-container
+      *ngFor="let item of accordionItems; trackBy: trackByFn"
+      [ngTemplateOutlet]="accordItemTmpl"
+      [ngTemplateOutletContext]="{ $implicit: item }"
+    ></ng-container>
+  </ng-container>
 </div>
 
 <ng-template #accordItemTmpl let-item>
-	<ngxd-accordion-item
-		[ngxdAccordionItem]="item"
-		[isNumbered]="_isNumbered"
-		[bodyDblclkClose]="_bodyDblclkClose"
-		[openSign]="openSign"
-		[closeSign]="closeSign"
-		[logo]="listLogo"
-		[styling]="_itemStyle"
-		[attr.data-idx]="item.itemId"
-		[id]="item.id"
-		(toggled)="onItemToggled($event)"
-		@accordItemsIn
-	>
-	</ngxd-accordion-item>
+  <ngxd-accordion-item
+    [ngxdAccordionItem]="item"
+    [isNumbered]="_isNumbered"
+    [bodyDblclkClose]="_bodyDblclkClose"
+    [openSign]="openSign"
+    [closeSign]="closeSign"
+    [logo]="listLogo"
+    [styling]="_itemStyle"
+    [attr.data-idx]="item.itemId"
+    [id]="item.id"
+    (toggled)="onItemToggled($event)"
+    @accordItemsIn
+  >
+  </ngxd-accordion-item>
 </ng-template>
 
 <ng-template #defloadingTpl>
-	<style>
-		.accordion-default-loader--tmpl {
-			display: block;
-			background-color: transparent;
-			min-width: 50px;
-			min-height: 50px;
-			border-radius: 50%;
-		}
-		.accordion-default-loader--tmpl > svg {
-			transform: rotate(90deg);
-			fill: var(--dark-bg);
-		}
-		.accordion-default-loader--tmpl > svg rect:first-of-type {
-			fill: var(--darker-color);
-		}
-		.accordion-default-loader--tmpl > svg rect:nth-of-type(2) {
-			fill: var(--accent-color);
-		}
-		.accordion-default-loader--tmpl > svg rect:n-of-type(3) {
-			fill: var(--dark-blue-color);
-		}
-	</style>
-	<div class="accordion-default-loader--tmpl" @spinnerIn>
-		<svg width="51px" height="50px" viewBox="0 0 51 50">
-			<rect y="0" width="13" height="50">
-				<animate
-					attributeName="height"
-					values="50;10;50"
-					begin="0s"
-					dur="1s"
-					repeatCount="indefinite"
-				/>
-				<animate
-					attributeName="y"
-					values="0;20;0"
-					begin="0s"
-					dur="1s"
-					repeatCount="indefinite"
-				/>
-			</rect>
-			<rect x="19" y="0" width="13" height="50">
-				<animate
-					attributeName="height"
-					values="50;10;50"
-					begin="0.2s"
-					dur="1s"
-					repeatCount="indefinite"
-				/>
-				<animate
-					attributeName="y"
-					values="0;20;0"
-					begin="0.2s"
-					dur="1s"
-					repeatCount="indefinite"
-				/>
-			</rect>
-			<rect x="38" y="0" width="13" height="50">
-				<animate
-					attributeName="height"
-					values="50;10;50"
-					begin="0.4s"
-					dur="1s"
-					repeatCount="indefinite"
-				/>
-				<animate
-					attributeName="y"
-					values="0;20;0"
-					begin="0.4s"
-					dur="1s"
-					repeatCount="indefinite"
-				/>
-			</rect>
-		</svg>
-	</div>
+  <style>
+    .accordion-default-loader--tmpl {
+      display: block;
+      background-color: transparent;
+      min-width: 50px;
+      min-height: 50px;
+      border-radius: 50%;
+    }
+    .accordion-default-loader--tmpl > svg {
+      transform: rotate(90deg);
+      fill: var(--dark-bg);
+    }
+    .accordion-default-loader--tmpl > svg rect:first-of-type {
+      fill: var(--darker-color);
+    }
+    .accordion-default-loader--tmpl > svg rect:nth-of-type(2) {
+      fill: var(--accent-color);
+    }
+    .accordion-default-loader--tmpl > svg rect:n-of-type(3) {
+      fill: var(--dark-blue-color);
+    }
+  </style>
+  <div class="accordion-default-loader--tmpl" @spinnerIn>
+    <svg width="51px" height="50px" viewBox="0 0 51 50">
+      <rect y="0" width="13" height="50">
+        <animate attributeName="height" values="50;10;50" begin="0s" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;20;0" begin="0s" dur="1s" repeatCount="indefinite" />
+      </rect>
+      <rect x="19" y="0" width="13" height="50">
+        <animate attributeName="height" values="50;10;50" begin="0.2s" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;20;0" begin="0.2s" dur="1s" repeatCount="indefinite" />
+      </rect>
+      <rect x="38" y="0" width="13" height="50">
+        <animate attributeName="height" values="50;10;50" begin="0.4s" dur="1s" repeatCount="indefinite" />
+        <animate attributeName="y" values="0;20;0" begin="0.4s" dur="1s" repeatCount="indefinite" />
+      </rect>
+    </svg>
+  </div>
 </ng-template>

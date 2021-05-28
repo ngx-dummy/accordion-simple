@@ -17,13 +17,7 @@ module.exports = {
     node: true,
     es2021: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'prettier',
-    'prettier/@typescript-eslint',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:@typescript-eslint/recommended-requiring-type-checking', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
@@ -59,8 +53,7 @@ module.exports = {
             message: 'Avoid using the `Object` type. Did you mean `object`?',
           },
           Function: {
-            message:
-              'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
+            message: 'Avoid using the `Function` type. Prefer a specific function type, like `() => void`.',
           },
           Boolean: {
             message: 'Avoid using the `Boolean` type. Did you mean `boolean`?',
@@ -183,18 +176,7 @@ module.exports = {
     'eol-last': 'error',
     eqeqeq: ['error', 'smart'],
     'guard-for-in': 'error',
-    'id-blacklist': [
-      'error',
-      'any',
-      'Number',
-      'number',
-      'String',
-      'string',
-      'Boolean',
-      'boolean',
-      'Undefined',
-      'undefined',
-    ],
+    'id-blacklist': ['error', 'any', 'Number', 'number', 'String', 'string', 'Boolean', 'boolean', 'Undefined', 'undefined'],
     'id-match': 'error',
     'import/no-deprecated': 'warn',
     'import/order': 'off',
