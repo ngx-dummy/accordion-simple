@@ -12,17 +12,17 @@
 	.accordion {
 		display: flex;
 		flex-direction: column;
-		vertical-align: middle;
 		overflow: hidden;
+		vertical-align: middle;
 	}
 
 	.accordion-horizontal-menu {
 		display: flex;
 		flex-direction: row;
-		width: 100%;
 		vertical-align: middle;
+		width: 100%;
 
-		& > ngxd-accordion-item {
+		ngxd-accordion-item {
 			flex: 1 1 auto;
 		}
 	}

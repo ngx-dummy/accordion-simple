@@ -80,7 +80,7 @@
 					<a href="https://github.com/ngx-dummy/accordion-simple"><img src="https://img.shields.io/github/stars/ngx-dummy/accordion-simple.svg?style=social&label=Star" alt="GitHub stars"></a>
 				<a href="https://www.jsdelivr.com/package/npm/@ngx-dummy/accordion-simple"><img src="https://data.jsdelivr.com/v1/package/npm/@ngx-dummy/accordion-simple/badge" alt="downloads"></a></p>
 				<p><a href="https://paypal.me/ovsyukov"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donations"></a>
-				<a href="https://twitter.com/OvsyukovV"><img src="https://img.shields.io/twitter/follow/OvsyukovV.svg?style=social" alt="Twitter Follow"></a> </p>
+				<a href="https://twitter.com/OvsyukovV"><img src="https://img.shields.io/twitter/follow/OvsyukovV.svg?style=social" alt="Twitter Follow"></a></p>
 				<hr>
 				<a href="#httpsvovansupergithubioaccordion-simple" id="httpsvovansupergithubioaccordion-simple" style="color: inherit; text-decoration: none;">
 					<h5><a href="https://vovansuper.github.io/accordion-simple">https://vovansuper.github.io/accordion-simple</a></h5>
@@ -91,7 +91,7 @@
 				<a href="#get-the-script-to-your-indexhtml" id="get-the-script-to-your-indexhtml" style="color: inherit; text-decoration: none;">
 					<h5>get the script to your <em>index.html</em>:</h5>
 				</a>
-				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
 </code></pre>
 				<a href="#install-using-npm" id="install-using-npm" style="color: inherit; text-decoration: none;">
 					<h5>install using <strong>npm</strong>:</h5>
@@ -105,46 +105,48 @@
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">BrowserModule</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@angular/platform-browser&#039;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">platformBrowserDynamic</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@angular/platform-browser-dynamic&#039;</span><span style="color: #000000">;</span>
 <span style="color: #AF00DB">import</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #001080">AccordionModule</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">Accordion</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">IAccordionStyling</span>
+<span style="color: #000000">    </span><span style="color: #001080">AccordionModule</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">Accordion</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">IAccordionStyling</span><span style="color: #000000">,</span>
 <span style="color: #000000">} </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js&#039;</span><span style="color: #000000">;</span>
 
 <span style="color: #000000">@</span><span style="color: #795E26">Component</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">selector:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;my-app&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">template:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&lt;ngxd-accordion [accordionList]=&quot;sampleAccordionData&quot; [accordionStyling]=&quot;styling&quot;&gt;&lt;/ngxd-accordion&gt;&#039;</span>
+<span style="color: #000000">    </span><span style="color: #001080">selector:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;my-app&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">template:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;&lt;ngxd-accordion [accordionList]=&quot;sampleAccordionData&quot; [accordionStyling]=&quot;styling&quot;&gt;&lt;/ngxd-accordion&gt;&#039;</span><span style="color: #000000">,</span>
 <span style="color: #000000">})</span>
 <span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">AppCmp</span><span style="color: #000000"> {</span>
-<span style="color: #000000">  </span><span style="color: #001080">sampleAccordionData</span><span style="color: #000000">: </span><span style="color: #267F99">Accordion</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">    </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;sample_accordion&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">items:</span><span style="color: #000000"> [{</span>
-<span style="color: #000000">        </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Card 1&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">body:</span>
-<span style="color: #000000">          </span><span style="color: #A31515">&#039;Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione&#039;</span>
-<span style="color: #000000">      }, {</span>
-<span style="color: #000000">        </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Card 2&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">        </span><span style="color: #001080">body:</span><span style="color: #000000"> </span><span style="color: #A31515">`</span>
+<span style="color: #000000">    </span><span style="color: #001080">sampleAccordionData</span><span style="color: #000000">: </span><span style="color: #267F99">Accordion</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">        </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;sample_accordion&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">items:</span><span style="color: #000000"> [</span>
+<span style="color: #000000">            {</span>
+<span style="color: #000000">                </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Card 1&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">body:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas. Veritatis doloremque optio dignissimos enim voluptatum voluptas nemo suscipit commodi. Adipisci, ratione&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            },</span>
+<span style="color: #000000">            {</span>
+<span style="color: #000000">                </span><span style="color: #001080">title:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Card 2&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">                </span><span style="color: #001080">body:</span><span style="color: #000000"> </span><span style="color: #A31515">`</span>
 <span style="color: #A31515">          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit vero quo, veritatis ex atque voluptate dolore unde quas.</span>
-<span style="color: #A31515">        `</span>
-<span style="color: #000000">      }]</span>
-<span style="color: #000000">  };</span>
-<span style="color: #000000">  </span><span style="color: #001080">styling</span><span style="color: #000000">: </span><span style="color: #267F99">IAccordionStyling</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">    </span><span style="color: #001080">itemsGuts:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1px&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">maxWidth:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;99%&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">itemStyling:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">      </span><span style="color: #001080">headBgColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#ccc&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">      </span><span style="color: #001080">headColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;black&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">      </span><span style="color: #001080">bodyBgColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#f9f9f9&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">      </span><span style="color: #001080">bodyPadding:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1rem&#039;</span><span style="color: #000000">,</span>
-<span style="color: #000000">      </span><span style="color: #001080">bodyMargin:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;.1rem&#039;</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">  };</span>
+<span style="color: #A31515">        `</span><span style="color: #000000">,</span>
+<span style="color: #000000">            },</span>
+<span style="color: #000000">        ],</span>
+<span style="color: #000000">    };</span>
+<span style="color: #000000">    </span><span style="color: #001080">styling</span><span style="color: #000000">: </span><span style="color: #267F99">IAccordionStyling</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">        </span><span style="color: #001080">itemsGuts:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1px&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">maxWidth:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;99%&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        </span><span style="color: #001080">itemStyling:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">            </span><span style="color: #001080">headBgColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#ccc&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">headColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;black&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">bodyBgColor:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;#f9f9f9&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">bodyPadding:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;1rem&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">            </span><span style="color: #001080">bodyMargin:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;.1rem&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">        },</span>
+<span style="color: #000000">    };</span>
 <span style="color: #000000">}</span>
 
 <span style="color: #000000">@</span><span style="color: #795E26">NgModule</span><span style="color: #000000">({</span>
-<span style="color: #000000">  </span><span style="color: #001080">imports:</span><span style="color: #000000"> [</span><span style="color: #001080">BrowserModule</span><span style="color: #000000">, </span><span style="color: #001080">AccordionModule</span><span style="color: #000000">],</span>
-<span style="color: #000000">  </span><span style="color: #001080">declarations:</span><span style="color: #000000"> [</span><span style="color: #001080">AppCmp</span><span style="color: #000000">],</span>
-<span style="color: #000000">  </span><span style="color: #001080">bootstrap:</span><span style="color: #000000"> [</span><span style="color: #001080">AppCmp</span><span style="color: #000000">]</span>
+<span style="color: #000000">    </span><span style="color: #001080">imports:</span><span style="color: #000000"> [</span><span style="color: #001080">BrowserModule</span><span style="color: #000000">, </span><span style="color: #001080">AccordionModule</span><span style="color: #000000">],</span>
+<span style="color: #000000">    </span><span style="color: #001080">declarations:</span><span style="color: #000000"> [</span><span style="color: #001080">AppCmp</span><span style="color: #000000">],</span>
+<span style="color: #000000">    </span><span style="color: #001080">bootstrap:</span><span style="color: #000000"> [</span><span style="color: #001080">AppCmp</span><span style="color: #000000">],</span>
 <span style="color: #000000">})</span>
 <span style="color: #0000FF">class</span><span style="color: #000000"> </span><span style="color: #267F99">AppModule</span><span style="color: #000000"> {}</span>
 
@@ -185,7 +187,7 @@
 				<ul>
 					<li><p>General typeDoc generated types of the Accordion-simple library are available in [<a href="./docs/typedocs/index.html">docs</a>]</p>
 					</li>
-					<li><p>Base element  is <a href="./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts"><code>&lt;ngxd-accordion&gt;</code></a></p>
+					<li><p>Base element is <a href="./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts"><code>&lt;ngxd-accordion&gt;</code></a></p>
 					</li>
 					<li><p><a href="./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts"><code>Accordion</code></a> should have <code>@Input</code> on type [ <a href="./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts">IAccordion </a>]</p>
 					</li>

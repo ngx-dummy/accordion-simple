@@ -10,4 +10,5 @@
 /tools/internal-rules/node_modules/**
 test.js
 **/node_modules/**
+**/dist/**
 !.eslintrc.js

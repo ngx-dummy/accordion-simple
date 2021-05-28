@@ -1,25 +1,33 @@
 {
-	"extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines", "stylelint-config-idiomatic-order", "stylelint-prettier/recommended"],
-	"plugins": ["stylelint-declaration-use-variable", "stylelint-prettier", "stylelint-order"],
+	"extends": ["stylelint-config-standard", "stylelint-config-airbnb"],
+	"plugins": ["stylelint-order", "stylelint-declaration-use-variable", "stylelint-declaration-strict-value", "stylelint-prettier"],
 	"ignoreFiles": ["**/src/scss/vendor/**/*.scss"],
 	"rules": {
+		"order/properties-order": [
+			["position", "display", "height", "width", "margin", "padding", "overflow", "border", "border-radius", "z-index", "top", "right", "bottom", "left"],
+			{
+				"unspecified": "bottom"
+			}
+		],
 		"at-rule-no-unknown": [
 			true,
 			{
-				"ignoreAtRules": ["extends", "ignores", "include", "mixin", "extend", "if", "else", "each", "warn", "function", "return", "for"]
+				"ignoreAtRules": ["extends", "ignores", "include", "mixin", "extend", "if", "else", "each", "warn", "function", "return", "for", "use"]
 			}
 		],
-		"sh-waqar/declaration-use-variable": [
-			[
-				"/color/",
-				"fill",
-				"font-size",
-				"font-family",
-				"z-index",
-				{
-					"ignoreValues": ["transparent", "inherit", "/rgba(.*)/"]
-				}
-			]
+		"scale-unlimited/declaration-strict-value": [
+			"color",
+			{
+				"severity": "warning"
+			}
+		],
+		"color-hex-case": "lower",
+		"block-no-empty": true,
+		"comment-empty-line-before": [
+			"always",
+			{
+				"severity": "warning"
+			}
 		],
 		"selector-pseudo-element-no-unknown": [
 			true,
@@ -34,8 +42,6 @@
 			}
 		],
 		"max-nesting-depth": 4,
-		"max-line-length": 155,
-		"string-quotes": "single",
 		"selector-max-compound-selectors": 5,
 		"selector-class-pattern": "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
 		"order/order": ["custom-properties", "declarations"],
@@ -43,13 +49,6 @@
 		"no-descending-specificity": true,
 		"no-duplicate-at-import-rules": true,
 		"no-duplicate-selectors": true,
-		"rule-empty-line-before": [
-			"always-multi-line",
-			{
-				"except": ["first-nested"],
-				"ignore": ["after-comment"]
-			}
-		],
 		"prettier/prettier": true
 	}
 }

@@ -6,11 +6,13 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU GPLv3 License
  */
+$white: #fff;
 $item-header__bg: #056;
 $item-header__bg--active: lighten($item-header__bg, 15%);
 $item-header__bg--opened: darken($item-header__bg, 10%);
 
 :host {
+	--color-white: #{$white};
 	--ngxd-head-item-color: #{$item-header__bg};
 	--ngxd-head-item-color--active: #{$item-header__bg--active};
 	--ngxd-head-item-color--opened: #{$item-header__bg--opened};
