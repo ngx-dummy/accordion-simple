@@ -17,8 +17,8 @@ import { AccordionDirective } from './accordion.directive';
 import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
 @NgModule({
-  imports: [BrowserAnimationsModule, HttpClientModule],
-  declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective, AccordionItemImgDirective],
-  exports: [AccordionComponent],
+	imports: [BrowserAnimationsModule, HttpClientModule],
+	declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective, AccordionItemImgDirective],
+	exports: [AccordionComponent],
 })
 export class AccordionModule {}

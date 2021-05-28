@@ -17,11 +17,4 @@ export {
 	IAccordionStyling,
 } from './IAccordionStylings';
 
-export {
-	Accordion,
-	AccordionItem,
-	AccordionItems,
-	AccordionItemInternal,
-	AccordionInternal,
-	ItemTemplateContext,
-} from './IAccordion';
+export { Accordion, AccordionItem, AccordionItems, AccordionItemInternal, AccordionInternal, ItemTemplateContext } from './IAccordion';

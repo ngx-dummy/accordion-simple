@@ -2,210 +2,224 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&display=swap');
 
 :root {
-  --light-bg: #fafafa;
-  --medium-bg: #f4f4f4;
-  --dark-bg: #e2e1e1;
-  --light-blue-color: #4d4dfa;
-  --yellow-color: #dcdf36;
-  --darker-color: #607386;
-  --item-color: #adbdce;
-  --accent-color: #42b883;
-  --warn-color: #f85a40;
-  --light-warn-color: #f07764;
-  --dark-blue-color: #52529b;
-  --mdc-typography-font-family: 'Lato', sans-serif;
-  --mdc-theme-on-primary: #{var(--warn-color)};
-  --mdc-theme-secondary: var(--light-warn-color);
+	--light-bg: #fafafa;
+	--medium-bg: #f4f4f4;
+	--dark-bg: #e2e1e1;
+	--light-blue-color: #4d4dfa;
+	--yellow-color: #dcdf36;
+	--darker-color: #607386;
+	--item-color: #adbdce;
+	--accent-color: #42b883;
+	--warn-color: #f85a40;
+	--light-warn-color: #f07764;
+	--dark-blue-color: #52529b;
+	--mdc-typography-font-family: 'Lato', sans-serif;
+	--mdc-theme-on-primary: #{var(--warn-color)};
+	--mdc-theme-secondary: var(--light-warn-color);
 }
 
 body {
-  overflow: hidden;
-  box-sizing: border-box;
-  font-size: 14px;
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  background: var(--dark-bg);
-  color: var(--darker-color);
-  font-family: var(--mdc-typography-font-family);
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+	box-sizing: border-box;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: var(--dark-bg);
+	color: var(--darker-color);
+	font-family: var(--mdc-typography-font-family);
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 $offset: 188;
 $duration: 1.5s;
 
 *:focus {
-  outline: none;
+	outline: none;
 }
 
 .mdc-drawer-app-content {
-  flex: auto;
-  overflow: auto;
-  position: relative;
+	flex: auto;
+	overflow: auto;
+	position: relative;
 }
 
 .main-content {
-  margin: .2rem;
-  overflow: auto;
-  height: 100%;
+	margin: 0.2rem;
+	overflow: auto;
+	height: 100%;
 }
 
 .app-bar {
-  position: absolute;
-  top: 0;
-  background: linear-gradient(var(--dark-blue-color), var(--darker-color));
-  transition: 1s ease-in;
-  background-color: var(--light-warn-color);
+	position: absolute;
+	top: 0;
+	background: linear-gradient(var(--dark-blue-color), var(--darker-color));
+	transition: 1s ease-in;
+	background-color: var(--light-warn-color);
 }
 
 .mdc-top-app-bar {
-  z-index: 7;
+	z-index: 7;
 }
 
-.mdc-top-app-bar__title{
-  cursor: pointer;
+.mdc-top-app-bar__title {
+	cursor: pointer;
 }
 
 .menu-grid--col4 {
-  display: grid;
-  grid-template-columns: 4fr 1fr 1fr;
-  grid-row-gap: 1rem;
-  grid-column-gap: 1rem;
+	display: grid;
+	grid-template-columns: 4fr 1fr 1fr;
+	grid-row-gap: 1rem;
+	grid-column-gap: 1rem;
 
-  .mdc-image-menu__image {
-    max-height: 4rem;
-    margin: 0 1rem 0 -1rem;
-  }
+	.mdc-image-menu__image {
+		max-height: 4rem;
+		margin: 0 1rem 0 -1rem;
+	}
 }
 .mdc-drawer__header {
-  background-color: var(--medium-bg);
-  box-sizing: border-box;
+	background-color: var(--medium-bg);
+	box-sizing: border-box;
 }
 .mdc-drawer__footer {
-  justify-content: space-evenly;;
-  align-items: center;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  min-height: 64px;
-  padding: 0 16px 4px;
-  background-color: var(--dark-bg);
+	justify-content: space-evenly;
+	align-items: center;
+	flex-shrink: 0;
+	box-sizing: border-box;
+	min-height: 64px;
+	padding: 0 16px 4px;
+	background-color: var(--dark-bg);
 }
-  
+
 .screen {
-  overflow-y: auto !important;
-  padding: 1rem; 
-  box-sizing: border-box;
+	overflow-y: auto !important;
+	padding: 1rem;
+	box-sizing: border-box;
 }
 
 .device-settings {
-  max-width: 70vw;
-  max-height: 70vh;
-  text-align: center;
+	max-width: 70vw;
+	max-height: 70vh;
+	text-align: center;
 }
 
 .light-bg {
-  background: radial-gradient(var(--dark-bg),var(--light-bg));
+	background: radial-gradient(var(--dark-bg), var(--light-bg));
 }
 
 .container-transparent {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  background: rgba($color: var(--darker-color), $alpha: 0.1);
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: rgba($color: var(--darker-color), $alpha: 0.1);
 }
 
 .spinner {
-  margin-top: 20%;
-  animation: rotator $duration linear infinite;
+	margin-top: 20%;
+	animation: rotator $duration linear infinite;
 }
 
 .path {
-  stroke-dasharray: $offset;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation:
-    dash $duration ease-in-out infinite, 
-    colors ($duration * 2) ease-in-out infinite;
+	stroke-dasharray: $offset;
+	stroke-dashoffset: 0;
+	transform-origin: center;
+	animation: dash $duration ease-in-out infinite, colors ($duration * 2) ease-in-out infinite;
 }
 
 .mdc-list-item {
-  list-style: none;
-  text-decoration: none;
-  color: var(--warn-color);
-  
-  a {
-    text-decoration: none;
-    color: var(--warn-color);
-  }
+	list-style: none;
+	text-decoration: none;
+	color: var(--warn-color);
+
+	a {
+		text-decoration: none;
+		color: var(--warn-color);
+	}
 }
 
 .footer {
-  background-color: rgba(200, 200, 200, .1);
-  min-height: .1rem;
-  margin:0;
-  position:absolute;
-  bottom: 0; 
-  width: 100%; 
-  text-align: center;
-  font-size: xx-small;
+	background-color: rgba(200, 200, 200, 0.1);
+	min-height: 0.1rem;
+	margin: 0;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	font-size: xx-small;
 }
 
 .menu-icon {
-  color: var(--warn-color) !important;
+	color: var(--warn-color) !important;
 }
 
 .mb-1 {
-  margin-bottom: 1rem;
+	margin-bottom: 1rem;
 }
 .mt-1 {
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .ml-1 {
-  margin-left: 1rem;
+	margin-left: 1rem;
 }
 
 .mr-1 {
-  margin-right: 1rem;
+	margin-right: 1rem;
 }
 
 .h-a {
-  height: auto;
+	height: auto;
 }
 
 @media screen and (max-width: 500px) {
-  .ml-1 {
-    margin-left: 0.1rem;
-  }
-  .mr-1 {
-    margin-right: 0.1rem;
-  }
+	.ml-1 {
+		margin-left: 0.1rem;
+	}
+	.mr-1 {
+		margin-right: 0.1rem;
+	}
 }
 
 @keyframes colors {
-	0% { stroke: var(--dark-blue-color); }
-	25% { stroke: var(--warn-color); }
-	50% { stroke: var(--yellow-color); }
-	75% { stroke: var(--accent-color); }
-  100% { stroke: var(--light-blue-color); }
+	0% {
+		stroke: var(--dark-blue-color);
+	}
+	25% {
+		stroke: var(--warn-color);
+	}
+	50% {
+		stroke: var(--yellow-color);
+	}
+	75% {
+		stroke: var(--accent-color);
+	}
+	100% {
+		stroke: var(--light-blue-color);
+	}
 }
 
 @keyframes dash {
- 0% { stroke-dashoffset: $offset; }
- 50% {
-   stroke-dashoffset: $offset / 4;
-   transform: rotate(135deg);
- }
- 100% {
-   stroke-dashoffset: $offset;
-   transform: rotate(450deg);
- }
+	0% {
+		stroke-dashoffset: $offset;
+	}
+	50% {
+		stroke-dashoffset: $offset / 4;
+		transform: rotate(135deg);
+	}
+	100% {
+		stroke-dashoffset: $offset;
+		transform: rotate(450deg);
+	}
 }
 
 @keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(270deg);
+	}
 }

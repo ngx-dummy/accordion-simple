@@ -1,8 +1,5 @@
 import { browser, by, element, WebElementPromise } from 'protractor';
-import {
-	dummyAccordionList1,
-	dummyAccordionList2,
-} from '../../src/app/helpers/dummy-data';
+import { dummyAccordionList1, dummyAccordionList2 } from '../../src/app/helpers/dummy-data';
 
 export class AppPage {
 	navigateHome(): Promise<unknown> {
@@ -14,9 +11,7 @@ export class AppPage {
 	}
 
 	getTitleText(): Promise<string> {
-		return element(
-			by.css('app-root#app1 .app-title:first-of-type')
-		).getText() as Promise<string>;
+		return element(by.css('app-root#app1 .app-title:first-of-type')).getText() as Promise<string>;
 	}
 
 	getFirstAccordion(): WebElementPromise {
@@ -28,37 +23,25 @@ export class AppPage {
 	}
 
 	async getAccordionFirstItemBodyEl() {
-		return (await this.getFirstAccordion()).findElement(
-			by.css('ngxd-accordion-item:first-of-type .accord-item__body')
-		);
+		return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:first-of-type .accord-item__body'));
 	}
 
 	async getAccordionFirstItemHeaderEl() {
-		return (await this.getFirstAccordion()).findElement(
-			by.css('ngxd-accordion-item:first-of-type .accord-item__header')
-		);
+		return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:first-of-type .accord-item__header'));
 	}
 	async getAccordionSecondItemBodyEl() {
-		return (await this.getFirstAccordion()).findElement(
-			by.css('ngxd-accordion-item:nth-of-type(2) .accord-item__body')
-		);
+		return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(2) .accord-item__body'));
 	}
 
 	async getAccordionSecondItemHeaderEl() {
-		return (await this.getFirstAccordion()).findElement(
-			by.css('ngxd-accordion-item:nth-of-type(2) .accord-item__header')
-		);
+		return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(2) .accord-item__header'));
 	}
 
 	async getAccordionThirdItemBodyEl() {
-		return (await this.getFirstAccordion()).findElement(
-			by.css('ngxd-accordion-item:nth-of-type(3) .accord-item__body')
-		);
+		return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(3) .accord-item__body'));
 	}
 
 	async getAccordionThirdItemHeaderEl() {
-		return (await this.getFirstAccordion()).findElement(
-			by.css('ngxd-accordion-item:nth-of-type(3) .accord-item__header')
-		);
+		return (await this.getFirstAccordion()).findElement(by.css('ngxd-accordion-item:nth-of-type(3) .accord-item__header'));
 	}
 }

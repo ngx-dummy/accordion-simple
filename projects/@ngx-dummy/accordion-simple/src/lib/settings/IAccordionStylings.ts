@@ -36,10 +36,7 @@ export interface IAccordionStyling {
  *
  * comprises font-styles of every accordion item element, as well as spacing styles, and margins, paddings, colors and other styles for both items' header and body elements
  */
-export type IAccordionItemStyling = IAccordionItemFontStyling &
-	IAccordionItemSpacingStyling &
-	IAccordionItemBodyStyling &
-	IAccordionItemHeadStyling;
+export type IAccordionItemStyling = IAccordionItemFontStyling & IAccordionItemSpacingStyling & IAccordionItemBodyStyling & IAccordionItemHeadStyling;
 
 /**
  * @description

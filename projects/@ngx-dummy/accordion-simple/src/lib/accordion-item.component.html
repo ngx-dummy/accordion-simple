@@ -11,41 +11,41 @@
 <ng-container *ngTemplateOutlet="itemTpl; context: { $implicit: isOpen$ | async }"></ng-container>
 
 <ng-template #itemTpl let-isOpen>
-  <article class="accord-item">
-    <header class="accord-item__header" [class.opened]="isOpen">
-      <ng-container *ngTemplateOutlet="headerDefaultTmpl; context: { $implicit: isOpen }"></ng-container>
-    </header>
-    <!-- <section class="accord-item__body" [ngClass]="{ 'opened': isOpen , 'closed': !isOpen }" > -->
-    <section
-      class="accord-item__body closed"
-      [@openClose]="isOpen ? 'opened' : 'closed'"
-      (@openClose.start)="startAnim($event)"
-      (@openClose.done)="doneAnim($event)"
-    >
-      <ng-container *ngTemplateOutlet="getItemBodyTemplate(item.body, bodyDefaultTmpl); context: { $implicit: getItemBodyCtx(item.body) }"></ng-container>
-    </section>
-  </article>
+	<article class="accord-item">
+		<header class="accord-item__header" [class.opened]="isOpen">
+			<ng-container *ngTemplateOutlet="headerDefaultTmpl; context: { $implicit: isOpen }"></ng-container>
+		</header>
+		<!-- <section class="accord-item__body" [ngClass]="{ 'opened': isOpen , 'closed': !isOpen }" > -->
+		<section
+			class="accord-item__body closed"
+			[@openClose]="isOpen ? 'opened' : 'closed'"
+			(@openClose.start)="startAnim($event)"
+			(@openClose.done)="doneAnim($event)"
+		>
+			<ng-container *ngTemplateOutlet="getItemBodyTemplate(item.body, bodyDefaultTmpl); context: { $implicit: getItemBodyCtx(item.body) }"></ng-container>
+		</section>
+	</article>
 </ng-template>
 
 <ng-template #headerDefaultTmpl let-isOpen>
-  <div class="header--control accord-item__logo">
-    <span class="accord-item__header--start">
-      <img class="accord-item__header-img accord-item__header--start-img" />
-      <span *ngIf="item.itemNum">{{ item.itemNum }}.</span>
-    </span>
-  </div>
-  <div class="header--control accord-item__title">
-    {{ item.title }}
-  </div>
-  <div class="header--control accord-item__collapse">
-    <span class="accord-item__header--end" [class.active]="isOpen">
-      <!-- NOTE: img 'src' attr is bound in the `accordion-item-img.directive` -->
-      <img class="accord-item__header-img accord-item__header--end-img" [ngClass]="{ open: isOpen, close: !isOpen }" />
-    </span>
-  </div>
+	<div class="header--control accord-item__logo">
+		<span class="accord-item__header--start">
+			<img class="accord-item__header-img accord-item__header--start-img" />
+			<span *ngIf="item.itemNum">{{ item.itemNum }}.</span>
+		</span>
+	</div>
+	<div class="header--control accord-item__title">
+		{{ item.title }}
+	</div>
+	<div class="header--control accord-item__collapse">
+		<span class="accord-item__header--end" [class.active]="isOpen">
+			<!-- NOTE: img 'src' attr is bound in the `accordion-item-img.directive` -->
+			<img class="accord-item__header-img accord-item__header--end-img" [ngClass]="{ open: isOpen, close: !isOpen }" />
+		</span>
+	</div>
 </ng-template>
 
 <ng-template #bodyDefaultTmpl let-defctx>
-  {{ defctx }}
-  <ng-content select=".accord-item__footer"></ng-content>
+	{{ defctx }}
+	<ng-content select=".accord-item__footer"></ng-content>
 </ng-template>

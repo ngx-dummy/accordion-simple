@@ -25,13 +25,7 @@ export class AssetsService {
 
 	constructor(private http: HttpClient) {}
 
-	setItem<T extends Assets, K extends keyof Assets>({
-		aKey,
-		aVal,
-	}: {
-		aKey: K;
-		aVal: T[K];
-	}) {
+	setItem<T extends Assets, K extends keyof Assets>({ aKey, aVal }: { aKey: K; aVal: T[K] }) {
 		if (this.keyInAssetsMap(aKey)) {
 			return;
 		}
@@ -42,26 +36,20 @@ export class AssetsService {
 
 	getItem(itemKey: string): Blob | string | Observable<Blob> | (() => unknown) {
 		if (!this.itemAlterAssetsMap.has(itemKey)) {
-			throw Error(
-				`AssetsSvc->itemAlterAssetsMap does not have ${itemKey} entry ..!`
-			);
+			throw Error(`AssetsSvc->itemAlterAssetsMap does not have ${itemKey} entry ..!`);
 		}
 		const currValInMpa = this.itemAlterAssetsMap.get(itemKey);
 		if (currValInMpa instanceof Observable) {
-			const sub = currValInMpa.subscribe(
-				(blobRes: string | SafeResourceUrl) => {
-					this.itemAlterAssetsMap.set(itemKey, blobRes);
-				}
-			);
+			const sub = currValInMpa.subscribe((blobRes: string | SafeResourceUrl) => {
+				this.itemAlterAssetsMap.set(itemKey, blobRes);
+			});
 			return () => sub.unsubscribe();
 		}
 		return this.itemAlterAssetsMap.get(itemKey);
 	}
 
 	private keyInAssetsMap = (key: string) => this.itemAlterAssetsMap.has(key);
-	private getAssetsByKey = <T extends Assets, K extends keyof T>(
-		val: T[K]
-	) => ({ value: this.getImageBin(val) });
+	private getAssetsByKey = <T extends Assets, K extends keyof T>(val: T[K]) => ({ value: this.getImageBin(val) });
 
 	private getImageBin(srcSrt): Observable<Blob> {
 		return this.http
@@ -77,9 +65,7 @@ export class AssetsService {
 }
 
 export const assetsSvcFactory = (http: HttpClient) => new AssetsService(http);
-export const AssetsServiceToken = new InjectionToken<AssetsService>(
-	'AssetsServiceToken'
-);
+export const AssetsServiceToken = new InjectionToken<AssetsService>('AssetsServiceToken');
 
 export const assetsSvcFactoryProvider: Provider = {
 	provide: AssetsServiceToken,

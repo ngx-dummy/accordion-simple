@@ -1,23 +1,18 @@
 {
-  "extends": "../../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../../out-tsc/lib",
-    "declarationMap": true,
-    "declaration": true,
-    "inlineSources": true,
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "enableResourceInlining": true
-  },
-  "exclude": [
-    "src/helpers/*",
-    "src/test.ts",
-    "**/*.spec.ts",
-    "node_modules"
-  ],
-  "files": ["src/public-api.ts"]
+	"extends": "../../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": "../../../out-tsc/lib",
+		"declarationMap": true,
+		"declaration": true,
+		"inlineSources": true
+	},
+	"angularCompilerOptions": {
+		"fullTemplateTypeCheck": true,
+		"strictInjectionParameters": true,
+		"skipTemplateCodegen": true,
+		"strictMetadataEmit": true,
+		"enableResourceInlining": true
+	},
+	"exclude": ["src/helpers/*", "src/test.ts", "**/*.spec.ts", "node_modules"],
+	"files": ["src/public-api.ts"]
 }

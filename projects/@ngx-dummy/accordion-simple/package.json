@@ -1,57 +1,57 @@
 {
-  "name": "@ngx-dummy/accordion-simple",
-  "version": "0.4.16",
-  "license": "GPL-3.0",
-  "description": "A simple accordion component to use in Angular / Ionic projects ..",
-  "keywords": [
-    "accordion",
-    "accordion-component",
-    "accordion component",
-    "accordion-simple",
-    "simple accordion",
-    "Angular",
-    "Angular9",
-    "Angular10",
-    "Ionic",
-    "Ionic5",
-    "typescript",
-    "javascript",
-    "widget",
-    "foldable",
-    "collapse",
-    "expandable",
-    "toggle",
-    "ui"
-  ],
-  "private": false,
-  "author": {
-    "name": "Vladimir Ovsyukov",
-    "email": "ovsyukov@yandex.com"
-  },
-  "engines": {
-    "node": ">=12.11.1",
-    "npm": ">=6.12.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ngx-dummy/accordion-simple.git"
-  },
-  "bugs": {
-    "email": "ovsyukov@yandex.com",
-    "url": "https://github.com/ngx-dummy/accordion-simple/issues"
-  },
-  "homepage": "https://github.com/ngx-dummy/accordion-simple#README",
-  "scripts": {
-    "build": "ng b"
-  },
-  "peerDependencies": {
-    "@angular/common": "11.x",
-    "@angular/core": "11.x",
-    "@angular/animations": "11.x",
-    "@angular/platform-browser": "11.x",
-    "rxjs": "^6.6.7"
-  },
-  "devDependencies": {
-    "typescript": "~4.1.4"
-  }
+	"name": "@ngx-dummy/accordion-simple",
+	"version": "0.4.16",
+	"license": "GPL-3.0",
+	"description": "A simple accordion component to use in Angular / Ionic projects ..",
+	"keywords": [
+		"accordion",
+		"accordion-component",
+		"accordion component",
+		"accordion-simple",
+		"simple accordion",
+		"Angular",
+		"Angular9",
+		"Angular10",
+		"Ionic",
+		"Ionic5",
+		"typescript",
+		"javascript",
+		"widget",
+		"foldable",
+		"collapse",
+		"expandable",
+		"toggle",
+		"ui"
+	],
+	"private": false,
+	"author": {
+		"name": "Vladimir Ovsyukov",
+		"email": "ovsyukov@yandex.com"
+	},
+	"engines": {
+		"node": ">=12.11.1",
+		"npm": ">=6.12.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/ngx-dummy/accordion-simple.git"
+	},
+	"bugs": {
+		"email": "ovsyukov@yandex.com",
+		"url": "https://github.com/ngx-dummy/accordion-simple/issues"
+	},
+	"homepage": "https://github.com/ngx-dummy/accordion-simple#README",
+	"scripts": {
+		"build": "ng b"
+	},
+	"peerDependencies": {
+		"@angular/common": "11.x",
+		"@angular/core": "11.x",
+		"@angular/animations": "11.x",
+		"@angular/platform-browser": "11.x",
+		"rxjs": "^6.6.7"
+	},
+	"devDependencies": {
+		"typescript": "~4.1.4"
+	}
 }

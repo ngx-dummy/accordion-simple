@@ -11,8 +11,7 @@ $item-header__bg--active: lighten($item-header__bg, 15%);
 $item-header__bg--opened: darken($item-header__bg, 10%);
 
 :host {
-  --ngxd-head-item-color: #{$item-header__bg};
-  --ngxd-head-item-color--active: #{$item-header__bg--active};
-  --ngxd-head-item-color--opened: #{$item-header__bg--opened};
+	--ngxd-head-item-color: #{$item-header__bg};
+	--ngxd-head-item-color--active: #{$item-header__bg--active};
+	--ngxd-head-item-color--opened: #{$item-header__bg--opened};
 }
-

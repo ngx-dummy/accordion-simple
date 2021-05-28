@@ -1,8 +1,21 @@
 {
-  "singleQuote": true,
-  "tabWidth": 2,
-  "semi": true,
-  "bracketSpacing": true,
-  "trailingComma": "es5",
-  "printWidth": 155
+	"arrowParens": "always",
+	"endOfLine": "auto",
+	"tabWidth": 2,
+	"semi": true,
+	"bracketSpacing": true,
+	"singleQuote": true,
+	"trailingComma": "es5",
+	"printWidth": 155,
+	"htmlWhitespaceSensitivity": "ignore",
+	"useTabs": true,
+	"proseWrap": "preserve",
+	"overrides": [
+		{
+			"files": ["*.scss"],
+			"options": {
+				"singleQuote": true
+			}
+		}
+	]
 }
