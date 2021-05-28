@@ -9,9 +9,9 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"moduleResolution": "node",
-		"target": "es2016",
+		"target": "es2017",
 		"typeRoots": ["node_modules/@types"],
-		"lib": ["dom", "ES2020"],
+		"lib": ["dom", "es2020"],
 		"paths": {
 			"@ngx-dummy/accordion-simple/*": ["projects/@ngx-dummy/accordion-simple/src/lib/*"]
 		}

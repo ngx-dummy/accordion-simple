@@ -1,11 +1,13 @@
 #!/usr/bin/env sh
 
+CHANGESL=$(git status -s | wc -l)
+CHANGES=$(git status -s | wc)
 ROOT=$(pwd)
 PACK_VER=$ROOT/scripts/versioning/pack-version.sh
 NODE_JQ=$ROOT/node_modules/node-jq/bin/jq
 PUSH_TAGGED=$ROOT/scripts/push-tagged.sh
 
-if [ $(git status -s | wc -l) -gt 0 ];
+if [[ ($CHANGESL -gt 0) && ($CHANGES == *package.json*) ]];
 then
   echo "reinstalling dependencies"
   npm install

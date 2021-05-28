@@ -8,23 +8,24 @@ on:
 
 jobs:
   build:
+    if: startsWith(github.repository_owner, 'ngx')
     name: Create Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Create Release
-        if: startsWith(github.repository_owner, 'ngx')
         id: create_release
         uses: actions/create-release@latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions
+          RELEASE_VERSION: "${{  toJSON(github.ref) }} | cut -d / -f 3"
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
           body: |
             Changes in this Release
             - Extended library functionality
-            - Version bump to "${{  toJSON(github.ref) }} | cut -d / -f 3"
+            - Version bump to $RELEASE_VERSION
           draft: false
           prerelease: false

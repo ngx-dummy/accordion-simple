@@ -21,7 +21,6 @@
 [![bundle size](https://badgen.net/bundlephobia/minzip/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=@ngx-dummy/accordion-simple)
 [![bundle size](https://badgen.net/bundlephobia/min/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=@ngx-dummy/accordion-simple)
 [![size](https://badgen.net/packagephobia/publish/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=ngx-dummy/accordion-simple)
-[![deps](https://david-dm.org/ngx-dummy/accordion-simple.svg)](https://david-dm.org/ngx-dummy/accordion-simpe)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5233cc1-3156-4033-9d43-5db2b6cd351b/deploy-status)](https://accordion-simple-tester.netlify.app/)
 [![Issues](https://img.shields.io/github/issues/vovansuper/accordion-simple)](https://github.com/VovanSuper/accordion-simple/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ngx-dummy/accordion-simple.svg?style=social&label=Fork)](https://github.com/ngx-dummy/accordion-simple/fork)
@@ -49,7 +48,7 @@
 npm install --save @ngx-dummy/accordion-simple
 ```
 
-##### .. use (_in your Angular/Ionic app_):
+##### [use (_in your Angular/Ionic app_)](https://stackblitz.com/edit/ngx-dummy-accordion-sample?devtoolsheight=33&file=src/main.ts):
 
 ```typescript
 import { NgModule, Component, enableProdMode } from '@angular/core';
@@ -102,7 +101,7 @@ class AppCmp {
 class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-// inside your 'index.html' :  <my-app>loading</my-app>
+
 ```
 
 ### or check the sibling [_sample_ app](https://github.com/VovanSuper/accordion-simple/tree/master/projects/accordion-sample) :

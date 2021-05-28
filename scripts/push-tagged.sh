@@ -12,6 +12,7 @@ then
   git push --force origin-origin $tag
   echo "pushing to ngx-dummy home (origin-origin)"
   git push origin-origin --all
+  echo "git push"
   git push
 else
   echo Please enter a tag number of a form of: number.number.number
