@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.actor, ngx)
+    if: contains(github.repository_owner, 'ngx-dummy')
     runs-on: ubuntu-latest
 
     name: Deploying package to npm packages registry

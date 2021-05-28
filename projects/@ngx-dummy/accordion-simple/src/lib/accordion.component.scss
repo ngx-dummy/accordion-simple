@@ -11,16 +11,16 @@
 
 	.accordion {
 		display: flex;
-		flex-direction: column;
 		overflow: hidden;
+		flex-direction: column;
 		vertical-align: middle;
 	}
 
 	.accordion-horizontal-menu {
 		display: flex;
+		width: 100%;
 		flex-direction: row;
 		vertical-align: middle;
-		width: 100%;
 
 		ngxd-accordion-item {
 			flex: 1 1 auto;

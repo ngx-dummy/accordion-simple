@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    if: contains(github.actor, 'ngx-dummy')
+    if: contains(github.repository_owner, 'ngx-dummy')
     name: Create Release
     runs-on: ubuntu-latest
     steps:

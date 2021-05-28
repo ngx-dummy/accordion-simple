@@ -20,6 +20,10 @@
 }
 
 body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 	background: var(--dark-bg);
 	box-sizing: border-box;
 	color: var(--darker-color);
@@ -28,10 +32,6 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-weight: 400;
-	height: 100%;
-	margin: 0;
-	overflow: hidden;
-	padding: 0;
 }
 
 $offset: 188;
@@ -42,9 +42,9 @@ $duration: 1.5s;
 }
 
 .mdc-drawer-app-content {
-	flex: auto;
-	overflow: auto;
 	position: relative;
+	overflow: auto;
+	flex: auto;
 }
 
 .main-content {
@@ -54,10 +54,10 @@ $duration: 1.5s;
 }
 
 .app-bar {
-	background: linear-gradient(var(--dark-blue-color), var(--darker-color));
-	background-color: var(--light-warn-color);
 	position: absolute;
 	top: 0;
+	background: linear-gradient(var(--dark-blue-color), var(--darker-color));
+	background-color: var(--light-warn-color);
 	transition: 1s ease-in;
 }
 
@@ -87,19 +87,19 @@ $duration: 1.5s;
 }
 
 .mdc-drawer__footer {
+	padding: 0 16px 4px;
 	align-items: center;
 	background-color: var(--dark-bg);
 	box-sizing: border-box;
 	flex-shrink: 0;
 	justify-content: space-evenly;
 	min-height: 64px;
-	padding: 0 16px 4px;
 }
 
 .screen {
+	padding: 1rem;
 	box-sizing: border-box;
 	overflow-y: auto !important;
-	padding: 1rem;
 }
 
 .device-settings {
@@ -113,11 +113,11 @@ $duration: 1.5s;
 }
 
 .container-transparent {
-	background: rgba($color: var(--darker-color), $alpha: 0.1);
 	height: 100%;
+	width: 100%;
 	margin: 0;
 	padding: 0;
-	width: 100%;
+	background: rgba($color: var(--darker-color), $alpha: 0.1);
 }
 
 .spinner {
@@ -144,14 +144,14 @@ $duration: 1.5s;
 }
 
 .footer {
-	background-color: rgba(200, 200, 200, 0.1);
-	bottom: 0;
-	font-size: xx-small;
-	margin: 0;
-	min-height: 0.1rem;
 	position: absolute;
-	text-align: center;
 	width: 100%;
+	margin: 0;
+	bottom: 0;
+	background-color: rgba(200, 200, 200, 0.1);
+	font-size: xx-small;
+	min-height: 0.1rem;
+	text-align: center;
 }
 
 .menu-icon {
