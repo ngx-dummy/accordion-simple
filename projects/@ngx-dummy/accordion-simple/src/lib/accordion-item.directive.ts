@@ -57,7 +57,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
   @Input() isNumbered = false;
   @Output() toggled: EventEmitter<IToggler> = new EventEmitter();
   isOpen = false;
-  private hostDestroy$$: Subject<any> = new Subject();
+  private hostDestroy$$: Subject<void> = new Subject();
 
   constructor(
     @Inject(AccordionItemComponent) private hostCmp: AccordionItemComponent,
@@ -69,6 +69,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
   ) {}
 
   startAnim(e: NgAnimationEvent) {
+    (<HTMLElement>e.element).style.willChange = 'height, opacity, visibility';
     const classes = <DOMTokenList>e.element.classList;
     if (e.fromState === 'void') {
       classes?.add('closed');
@@ -78,6 +79,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
     }
   }
   doneAnim(e: NgAnimationEvent) {
+    (<HTMLElement>e.element).style.willChange = 'auto';
     const classes = <DOMTokenList>e.element.classList;
     if (e.fromState == 'opened' && e.toState == 'closed') {
       classes.replace('opened', 'closed');

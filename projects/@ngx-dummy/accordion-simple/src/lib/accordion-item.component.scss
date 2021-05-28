@@ -73,6 +73,7 @@
     .accord-item__header--end {
       padding-left: 0;
       padding-right: 1px;
+      will-change: transform;
 
       &.active {
         transform: rotate(180deg);
@@ -112,6 +113,7 @@
     -webkit-user-select: text;
     user-select: text;
     touch-action: pinch-zoom pan-y;
+    transform-origin: top;
     transition: all 0.3s ease-out;
 
     &.closed {

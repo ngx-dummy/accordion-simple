@@ -102,33 +102,17 @@ export const accordionItemAnimations: {
       style({
         height: '0',
         opacity: '0',
-        // transform: 'scaleY(0)',
-        transformOrigin: 'top',
         visibility: 'collapsed',
       })
     ),
     state(
       'opened',
       style({
-        // height: '{{hParam}}',
         height: '*',
         opacity: '1',
-        // transform: 'scaleY(1)',
-        transformOrigin: 'top',
         visibility: 'visible',
       })
     ),
     transition('opened <=> closed', animate('.3s ease-out')),
   ]),
 };
-
-// const itemsTransition = (items: HTMLElement[], timing: string, easingFn: string, direction: 'open' | 'close' = 'open', dist: number) => {
-//   return items.forEach(item => {
-//     item.style.transition = `translateY ${timing}, ${easingFn}`;
-//     item.style.transform = `translateY(${(direction === 'open') ? dist : '-' + dist}px)`;
-//     item.addEventListener('transitionend', e => {
-//       item.style.transition = 'none';
-//       item.style.transform = '';
-//     });
-//   });
-// };

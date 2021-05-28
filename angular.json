@@ -73,7 +73,6 @@
             "main": "projects/accordion-sample/src/main.ts",
             "polyfills": "projects/accordion-sample/src/polyfills.ts",
             "tsConfig": "projects/accordion-sample/tsconfig.app.json",
-            "aot": true,
             "assets": [
               {
                 "glob": "favicon.ico",
@@ -96,7 +95,13 @@
             "scripts": [
               "projects/accordion-sample/src/analytics.js",
               "projects/accordion-sample/src/loading.js"
-            ]
+            ],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -108,10 +113,7 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": true,
-              "namedChunks": true,
               "extractLicenses": true,
-              "vendorChunk": true,
               "buildOptimizer": true,
               "budgets": [
                 {
