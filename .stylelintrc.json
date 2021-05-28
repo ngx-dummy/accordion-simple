@@ -53,6 +53,7 @@
 		"no-duplicate-selectors": true,
 		"prettier/prettier": true,
 		"declaration-property-value-blacklist": null,
-		"rule-empty-line-before": null
+		"rule-empty-line-before": null,
+		"string-quotes": "single"
 	}
 }

@@ -8,13 +8,13 @@ on:
 
 jobs:
   build:
-    if: contains(github.repository_owner, 'ngx-dummy')
     name: Create Release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@master
+        uses: actions/checkout@v2
       - name: Create Release
+        if: startsWith(github.repository_owner, 'ngx')
         id: create_release
         uses: actions/create-release@latest
         env:

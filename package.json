@@ -26,7 +26,7 @@
 		"email": "ovsyukov@yandex.com"
 	},
 	"engines": {
-		"node": ">=12.11.1",
+		"node": ">=12.16.2",
 		"npm": ">=6.12.1"
 	},
 	"repository": {
@@ -48,7 +48,7 @@
 		"clean:dist": "rimraf ./dist/**",
 		"sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --configuration production",
 		"ci:publish:exec": "sh ./scripts/publish.sh",
-		"ci:publish:full": "run-s clean:dist pretty-quick build:prod ci:publish:exec",
+		"ci:publish:full": "run-s clean:dist ci:publish:exec",
 		"docs:gh-pages": "sh ./scripts/docs.sh",
 		"docs:typedocs": "sh ./scripts/typedocs.sh",
 		"docs": "run-s clean:docs docs:gh-pages docs:typedocs",
@@ -70,8 +70,8 @@
 		"test": "run-p test:lib test:sample",
 		"test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --progress=false",
 		"postinstall": "ngcc --tsconfig \"./projects/@ngx-dummy/accordion-simple/tsconfig.lib.json\"",
-		"pretty-quick": "pretty-quick",
-		"prerelease": "npm run docs",
+		"pretty-quick": "pretty-quick --staged",
+		"prerelease": "run-s pretty-quick build:prod build:sample:prod  docs",
 		"release": "sh ./scripts/release.sh"
 	},
 	"dependencies": {
