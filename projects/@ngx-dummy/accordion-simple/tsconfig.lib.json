@@ -5,6 +5,7 @@
 		"declarationMap": true,
 		"declaration": true,
 		"forceConsistentCasingInFileNames": true,
+		"strictPropertyInitialization": false,
 		"strict": true,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,

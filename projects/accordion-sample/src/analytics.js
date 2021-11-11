@@ -3,7 +3,7 @@
 	d = d || document;
 	// <!-- Global site tag (gtag.js) - Google Analytics -->
 	(function (w, d, t, u) {
-		let s = d.createElement(t);
+		var s = d.createElement(t);
 		s.async = 1;
 		s.src = u;
 		w.dataLayer = w.dataLayer || [];

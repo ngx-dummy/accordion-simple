@@ -27,7 +27,7 @@ import { IToggler, IAccordionItemStyling, AccordionItem, AccordionItemInternal, 
 	},
 })
 export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy {
-	@Input('ngxdAccordionItem') item: AccordionItemInternal = null;
+	@Input('ngxdAccordionItem') item!: AccordionItemInternal;
 	@Input('styling') itemStyles: IAccordionItemStyling = {
 		headHeight: '50px',
 		headBgColor: '#ccc',
@@ -37,9 +37,9 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 		fontSize: '10px',
 		bodyPadding: '0',
 	};
-	@Input() logo = undefined;
-	@Input() openSign = undefined;
-	@Input() closeSign = undefined;
+	@Input() logo: string;
+	@Input() openSign: string;
+	@Input() closeSign: string;
 	@Input() bodyDblclkClose = false;
 	@Input() isNumbered = false;
 	@Output() toggled: EventEmitter<IToggler> = new EventEmitter();
@@ -80,8 +80,8 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 				typeof this.item.body === 'string'
 					? sanitizeHTML(this.item.body, this.sanitizer)
 					: ({
-							itemTemplate: this.item.body.itemTemplate,
-							itemBody: sanitizeHTML(this.item.body.itemBody, this.sanitizer),
+							itemTemplate: this.item.body?.itemTemplate,
+							itemBody: sanitizeHTML(this.item.body?.itemBody, this.sanitizer),
 					  } as ItemTemplateContext),
 			itemNum: this.isNumbered ? +this.item.itemId + 1 : null,
 		} as Partial<AccordionItem>;
@@ -89,9 +89,9 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
 			takeUntil(this.hostDestroy$$),
 			filter((val) => !!val && !!val.length),
-			map((toggles: IToggler[]) => toggles.find(({ itemId }) => itemId === +this.item.itemId)),
-			pluck('isOpen'),
-			tap((isOpen) => (this.isOpen = isOpen))
+			map((toggles: IToggler[]) => toggles.find(({ itemId }) => itemId === +this.item.itemId)!),
+			pluck<IToggler, 'isOpen'>('isOpen'),
+			tap((isOpen = false) => (this.isOpen = isOpen))
 		);
 
 		this.hostCmp.startAnim = this.startAnim;
@@ -145,8 +145,11 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 		this.hostDestroy$$.complete();
 	}
 
-	onClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
-	onDblClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this.handleClick({ ...dataset }) : void 0);
+	onClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) =>
+		!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0;
+
+	onDblClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) =>
+		!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this.handleClick({ ...dataset }) : void 0;
 
 	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
 	private toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });

@@ -35,10 +35,10 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 	@HostBinding('attr.src') get src() {
 		return this._src;
 	}
-	private nativeImgEl: HTMLImageElement = undefined;
-	private _src: string | SafeResourceUrl = undefined;
-	private _openSign: string | SafeResourceUrl = undefined;
-	private _closeSign: string | SafeResourceUrl = undefined;
+	private nativeImgEl: HTMLImageElement;
+	private _src: string | SafeResourceUrl | undefined;
+	private _openSign: string | SafeResourceUrl | undefined;
+	private _closeSign: string | SafeResourceUrl | undefined;
 	private _baseLogoImg = getSvgSafeRes(logo_svg, this.sanitizer);
 	private _baseChevronImg = getSvgSafeRes(arrow_down, this.sanitizer);
 	private isSet = false;
@@ -63,8 +63,8 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 			// return this.setNoRecheck();
 			return this.setItemHeaderImgSageSrc(this.readElDataSet('src') || this._baseLogoImg);
 		} else if (this.isCloserImg()) {
-			this._openSign = this.readElDataSet('opensrc');
-			this._closeSign = this.readElDataSet('closesrc');
+			this._openSign = this.readElDataSet('opensrc') ?? undefined;
+			this._closeSign = this.readElDataSet('closesrc') ?? undefined;
 			if (!this.isImgOpenClose()) {
 				// this._src = this._baseChevronImg;
 				// return this.setNoRecheck();
@@ -95,7 +95,7 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 
 	private doOpenCloseSrcRecheck = () => {
 		this.zone.runOutsideAngular(() => {
-			this._src = this.nativeImgEl.classList.contains('open') ? this._closeSign : this._openSign;
+			this._src = this.nativeImgEl?.classList.contains('open') ? this._closeSign : this._openSign;
 		});
 	};
 	private setItemHeaderImgSrc = (imgRef: HTMLImageElement, src: string | SafeResourceUrl) => this.renderer.setAttribute(imgRef, 'src', src as string);

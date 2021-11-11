@@ -24,8 +24,8 @@ import { Accordion, IAccordionStyling, IAccordionItemStyling, IToggler, Accordio
 })
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	static idx = 0;
-	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) private defloadingTpl: TemplateRef<Element>;
-	@HostBinding('attr.data-items-opened') _openedItems = undefined;
+	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) private defloadingTpl!: TemplateRef<Element>;
+	@HostBinding('attr.data-items-opened') _openedItems: string;
 	@HostBinding('attr.id') get id() {
 		return `${this.attributes.id}`;
 	}
@@ -51,9 +51,9 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	get accordionItems(): AccordionItemInternal[] {
 		return this._accord?.items;
 	}
-	@Input() openSign = null;
-	@Input() closeSign = null;
-	@Input() listLogo = null;
+	@Input() openSign: string;
+	@Input() closeSign: string;
+	@Input() listLogo: string;
 	@Input() accordionStyling: IAccordionStyling = {
 		numberedItems: false,
 		isMultiShow: false,
@@ -76,11 +76,11 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	get loadingTpl(): TemplateRef<Element> {
 		return this._loadingTpl ?? this.defloadingTpl;
 	}
-	private _loadingTpl: TemplateRef<Element> = null;
-	private _accord: AccordionInternal = null;
+	private _loadingTpl: TemplateRef<Element>;
+	private _accord: AccordionInternal;
 	_bodyDblclkClose = false;
 	private multiSelect = false;
-	_itemStyle: IAccordionItemStyling = null;
+	_itemStyle: IAccordionItemStyling;
 	_isNumbered = false;
 
 	constructor(@Self() private itemsOpenSvc: AccordionOpenService) {}
@@ -93,7 +93,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 				filter((val) => !!val?.length),
 				map(pluckOpenTogglesIdsToStr)
 			)
-			.subscribe((ids) => (this._openedItems = ids || null));
+			.subscribe((ids) => (this._openedItems = ids));
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
@@ -121,7 +121,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 
 	public closeAll = () => this.accordionItems?.forEach(({ itemId, ...rest }) => this.onItemToggled({ itemId, isOpen: false }));
 
-	public trackByFn = (ind, { itemId, ...rest }) => +itemId;
+	public trackByFn = (_ind: number, { itemId, ...rest }: any) => +itemId;
 
 	private get attributes(): Partial<Accordion> {
 		const { id, name } = this._accord;

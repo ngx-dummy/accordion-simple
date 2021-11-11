@@ -75,12 +75,12 @@ export interface AccordionItem {
 	 * @member {Object} body.itemTemplate the `TemplateRef` to be used as body of accordion item
 	 * @member {Object} body.itemBody string(/html) to be interpolated to {@link ItemTemplateContext.itemBody}
 	 *  */
-	body: string | ItemTemplateContext | undefined;
+	body: string | ItemTemplateContext;
 }
 
 export interface ItemTemplateContext {
-	itemTemplate: TemplateRef<Element | HTMLElement> | undefined;
-	itemBody?: string | object | undefined;
+	itemTemplate: TemplateRef<Element | HTMLElement>;
+	itemBody?: string | object;
 }
 /**
  * internally extended {@link AccordionItem} interface for managing state of every Accordion item
@@ -96,7 +96,7 @@ export interface AccordionItemInternal extends AccordionItem {
 	/**
 	 * identifies whether any item is open or closed
 	 */
-	isOpen?: boolean;
+	isOpen: boolean;
 }
 /**
  * internally extended {@link Accordion} interface for managing state of an Accordion

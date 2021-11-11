@@ -8,7 +8,7 @@
  */
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
-import { accordionItemAnimations } from './animations';
+import { accordionItemAnimations, NgAnimationEvent } from './animations';
 import { AccordionItemInternal, getItemBodyCtx, getItemBodyTemplate } from './settings/';
 
 @Component({
@@ -22,7 +22,7 @@ export class AccordionItemComponent {
 	getItemBodyCtx = getItemBodyCtx;
 	getItemBodyTemplate = getItemBodyTemplate;
 	isOpen$ = of(false);
-	item: Partial<AccordionItemInternal> = null;
-	startAnim = null;
-	doneAnim = null;
+	item: Partial<AccordionItemInternal>;
+	startAnim: (e: NgAnimationEvent) => void;
+	doneAnim: (e: NgAnimationEvent) => void;
 }
