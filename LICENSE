@@ -1,4 +1,4 @@
-                    GNU GENERAL PUBLIC LICENSE
+                   GNU Lesser General Public License
                        Version 3, 29 June 2007
 
  Copyright (C) 2020 Vladimir A. Ovsyukov <ovsyukov@yandex.com>
@@ -8,31 +8,17 @@
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction (i.e, for commercial / non commercial purposes, 
- modify the software or create derivatives, distribute original or modified works),
- in accordance with conditions described below. 
+modify the software or create derivatives, distribute original or modified works),
+in accordance with conditions described below. 
 
                           Quick Summary
 
-You may copy, distribute and modify the software as long as you track 
-changes/dates in source files. Any modifications to or software 
-including (via compiler) GPL-licensed code must also be made 
-available under the GPL along with build & install instructions.
+A one using this program ( as well as any portion of that) may copy, distribute and modify the software, and, is kindly asked (but NOT MUST) to: 
 
-A one using this program ( as well as any portion of that) is kindly asked to: 
+If you modify a copy of the Library, and, in your modifications, a facility refers to a function or data to be supplied by an Application that uses the facility (other than as an argument passed when the facility is invoked), then you may (but NOT MUST to) convey a copy of the modified version:
 
-1. Include Original:
-  The copies of the original software, mention of the license file 
-  (and therefore the source code) location (the github repository of the software url) or 
-  instructions to obtain copies should be distributed with software using the provided library or code under the current license, Or:
-2. Include License:
-  Including the full text of license in modified software (in case condition in paragraph 1. was not fulfilled), And / Or:
-3. State Changes:
-  All code linked with GPL 3.0 source code should be disclosed under a GPL 3.0 compatible license, And:
-4. Include Copyright:
-  The original copyright should be retained, And / Or:
-5. Include Install Instructions:
-  If the software is part of a consumer device, the one using the software 
-  should include the installation information necessary to modify and reinstall the software.
+a) under this License, provided that you make a good faith effort to ensure that, in the event an Application does not supply the function or data, the facility still operates, and performs whatever part of its purpose remains meaningful, or
+b) under the GNU GPL, with none of the additional permissions of this License applicable to that copy.
 
                       Terms of warranties and liabilities
                       

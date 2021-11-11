@@ -6,8 +6,8 @@
 	"bracketSpacing": true,
 	"singleQuote": true,
 	"trailingComma": "es5",
-	"printWidth": 155,
-	"htmlWhitespaceSensitivity": "ignore",
+	"printWidth": 190,
+	"htmlWhitespaceSensitivity": "css",
 	"useTabs": true,
 	"proseWrap": "preserve",
 	"overrides": [

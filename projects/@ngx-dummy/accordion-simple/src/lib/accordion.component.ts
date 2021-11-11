@@ -6,33 +6,12 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU GPLv3 License
  */
-import {
-	Component,
-	Input,
-	HostBinding,
-	ChangeDetectionStrategy,
-	OnInit,
-	Self,
-	SimpleChanges,
-	OnChanges,
-	OnDestroy,
-	TemplateRef,
-	ViewChild,
-} from '@angular/core';
+import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self, SimpleChanges, OnChanges, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
 import { map, filter } from 'rxjs/operators';
 
 import { AccordionOpenService } from './accordion-open.service';
 import { accordionAnimations } from './animations';
-import {
-	Accordion,
-	IAccordionStyling,
-	IAccordionItemStyling,
-	IToggler,
-	AccordionItemInternal,
-	AccordionInternal,
-	pluckIToggler,
-	pluckOpenTogglesIdsToStr,
-} from './settings/';
+import { Accordion, IAccordionStyling, IAccordionItemStyling, IToggler, AccordionItemInternal, AccordionInternal, pluckIToggler, pluckOpenTogglesIdsToStr } from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion',
@@ -45,8 +24,7 @@ import {
 })
 export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	static idx = 0;
-	@ViewChild('defloadingTpl', { read: TemplateRef, static: true })
-	private defloadingTpl: TemplateRef<Element>;
+	@ViewChild('defloadingTpl', { read: TemplateRef, static: true }) private defloadingTpl: TemplateRef<Element>;
 	@HostBinding('attr.data-items-opened') _openedItems = undefined;
 	@HostBinding('attr.id') get id() {
 		return `${this.attributes.id}`;
@@ -55,10 +33,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 		return this.attributes.name;
 	}
 	@Input() set accordionList(acc: Accordion) {
-		let [name, id] = [
-			(!!acc && !!acc['name']?.length && acc.name) || 'Sample-Accordion',
-			(!!acc && !!acc['id'] && acc.id) || `accordion_${++AccordionComponent.idx}`,
-		];
+		let [name, id] = [(!!acc && !!acc['name']?.length && acc.name) || 'Sample-Accordion', (!!acc && !!acc['id'] && acc.id) || `accordion_${++AccordionComponent.idx}`];
 		this._accord = Object.assign(
 			{ id, name },
 			{
@@ -123,8 +98,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 
 	ngOnChanges(changes: SimpleChanges) {
 		Object.keys(changes).forEach((prop) => {
-			if (prop === 'accordionList' && changes[prop].previousValue !== changes[prop].currentValue)
-				this.itemsOpenSvc.setItemsOpen(this.accordionItems?.map(pluckIToggler));
+			if (prop === 'accordionList' && changes[prop].previousValue !== changes[prop].currentValue) this.itemsOpenSvc.setItemsOpen(this.accordionItems?.map(pluckIToggler));
 		});
 	}
 

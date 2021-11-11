@@ -6,11 +6,11 @@
   </a>
   <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" target="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>
 
-[![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple.png)](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple)
+[![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple.png)](https://www.npmjs.com/package/@ngx-dummy/accordion-simple)
 
 </center>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](LICENSE)
 
 <!-- ![NPM Deploy](https://github.com/VovanSuper/accordion-simple/workflows/npm-deploy/badge.svg)
 ![Github Pages Deploy](https://github.com/VovanSuper/accordion-simple/workflows/ghp-deploy/badge.svg) -->
@@ -131,7 +131,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 <details closed>
 <summary>TODO:</summary>
 
-- [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
+- [ x ] Dynamic styling of accordion and accordion items (headers, bodies...)
 
 </details>
 
@@ -151,7 +151,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 
 Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](LICENSE)
 
-Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
+Licensed under the GNU LGPLv3 License - see the [LICENSE](LICENSE) file for details.
 _Copyright (c) belongs to Vladimir Ovsyukov <<ovsyukov@yandex.com>>; Please, freely use **AS_IS** (under conditions defined within the [LICENSE](LICENSE))_

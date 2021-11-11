@@ -22,8 +22,7 @@ import { loaderIn } from './loader.anim';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-	@ViewChild('simpleBodyTmpl', { static: true })
-	simpleBodyTmpl: TemplateRef<HTMLElement>;
+	@ViewChild('simpleBodyTmpl', { static: true }) simpleBodyTmpl: TemplateRef<HTMLElement>;
 	@ViewChild('tmpl2', { static: true }) tmpl2: TemplateRef<HTMLElement>;
 	title = 'Accordion Sample';
 	accordList2: Accordion = null;

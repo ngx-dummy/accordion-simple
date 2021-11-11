@@ -6,11 +6,11 @@
   </a>
   <h2 align="center"><b style="color: teal;"><a href="https://www.npmjs.com/package/@ngx-dummy/accordion-simple" target="_blank">@Ngx-dummy/Accordion-simple</a></b> <i>library</i></h2>
 
-[![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple.png)](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple)
+[![npm version](https://badge.fury.io/js/%40ngx-dummy%2Faccordion-simple.png)](https://www.npmjs.com/package/@ngx-dummy/accordion-simple)
 
 </center>
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](LICENSE)
 
 <!-- ![NPM Deploy](https://github.com/VovanSuper/accordion-simple/workflows/npm-deploy/badge.svg)
 ![Github Pages Deploy](https://github.com/VovanSuper/accordion-simple/workflows/ghp-deploy/badge.svg) -->
@@ -101,7 +101,7 @@ class AppCmp {
 class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-
+// ... "enableIvy": false, in tsconfig.json
 ```
 
 ### or check the sibling [_sample_ app](https://github.com/VovanSuper/accordion-simple/tree/master/projects/accordion-sample) :
@@ -123,7 +123,7 @@ $~> npm run sample
 
 ## Main idea
 
-Simple Angular accordion component and a simple demostrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
+Simple Angular accordion component and a simple demonstrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
 
 Any suggestions for improvement are welcome. Please [setup a new issue](https://github.com/VovanSuper/accordion-simple/issues/new) if you have any problems using this package or find ways in which it could be improved.
 To ask for features / report on a bug follow the guide in : [Issue Report](./.github/ISSUE_TEMPLATE/bug_report.md)
@@ -131,7 +131,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 <details closed>
 <summary>TODO:</summary>
 
-- [ ] Dynamic styling of accordion and accordion items (headers, bodies...)
+- [ x ] Dynamic styling of accordion and accordion items (headers, bodies...)
 
 </details>
 
@@ -151,7 +151,7 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 
 Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](LICENSE)
 
-Licensed under the GNU GPLv3 License - see the [LICENSE](LICENSE) file for details.
+Licensed under the GNU LGPLv3 License - see the [LICENSE](LICENSE) file for details.
 _Copyright (c) belongs to Vladimir Ovsyukov <<ovsyukov@yandex.com>>; Please, freely use **AS_IS** (under conditions defined within the [LICENSE](LICENSE))_

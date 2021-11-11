@@ -4,6 +4,10 @@
 		"outDir": "../../../out-tsc/lib",
 		"declarationMap": true,
 		"declaration": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
 		"inlineSources": true
 	},
 	"angularCompilerOptions": {
@@ -11,6 +15,8 @@
 		"strictInjectionParameters": true,
 		"skipTemplateCodegen": true,
 		"strictMetadataEmit": true,
+		"strictInputAccessModifiers": true,
+		"strictTemplates": true,
 		"enableResourceInlining": true
 	},
 	"exclude": ["src/helpers/*", "src/test.ts", "**/*.spec.ts", "node_modules"],

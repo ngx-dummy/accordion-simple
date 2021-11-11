@@ -3,7 +3,10 @@
 		"extensions": [".ts", ".html", ".scss"]
 	},
 	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
-	"cSpell.words": ["htmlpreview"],
+	"cSpell.words": [
+		"browserconfig",
+		"htmlpreview"
+	],
 	
 	"[scss, css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
