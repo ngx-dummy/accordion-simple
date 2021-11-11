@@ -4,7 +4,7 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
@@ -111,14 +111,8 @@ describe('An Accordion component', () => {
 			accordCmp.accordionList = dummyAccordionList1;
 			accordCmpFixture.detectChanges();
 			hostCmpFixture.detectChanges();
-			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement(
-				'afterbegin',
-				accordCmpFixture.nativeElement as HTMLElement
-			);
-			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement(
-				'beforeend',
-				cloneDeep(accordCmpFixture).nativeElement as HTMLElement
-			);
+			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('afterbegin', accordCmpFixture.nativeElement as HTMLElement);
+			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('beforeend', cloneDeep(accordCmpFixture).nativeElement as HTMLElement);
 		});
 
 		it('should have 2 Accordions', () => {

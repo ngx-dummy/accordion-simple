@@ -4,7 +4,7 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
 import { Injectable, Inject, InjectionToken } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';

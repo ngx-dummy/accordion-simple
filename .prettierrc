@@ -6,7 +6,7 @@
 	"bracketSpacing": true,
 	"singleQuote": true,
 	"trailingComma": "es5",
-	"printWidth": 190,
+	"printWidth": 170,
 	"htmlWhitespaceSensitivity": "css",
 	"useTabs": true,
 	"proseWrap": "preserve",

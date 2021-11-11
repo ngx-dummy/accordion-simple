@@ -4,7 +4,7 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';

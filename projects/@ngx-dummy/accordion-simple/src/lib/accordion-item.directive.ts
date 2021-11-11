@@ -5,22 +5,9 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
-import {
-	Directive,
-	ElementRef,
-	Output,
-	EventEmitter,
-	AfterViewInit,
-	Input,
-	Renderer2,
-	Inject,
-	OnInit,
-	Host,
-	ChangeDetectorRef,
-	OnDestroy,
-} from '@angular/core';
+import { Directive, ElementRef, Output, EventEmitter, AfterViewInit, Input, Renderer2, Inject, OnInit, Host, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
@@ -159,8 +146,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 	}
 
 	onClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0);
-	onDblClick = ([{ outerHTML }, { dataset }]) =>
-		!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this.handleClick({ ...dataset }) : void 0;
+	onDblClick = ([{ outerHTML }, { dataset }]) => (!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this.handleClick({ ...dataset }) : void 0);
 
 	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
 	private toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });

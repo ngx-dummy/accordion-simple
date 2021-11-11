@@ -5,7 +5,7 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
  -->
 <div class="mdc-layout-grid">
@@ -24,24 +24,12 @@
 	</div>
 	<div class="mdc-layout-grid__inner mb-1">
 		<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-			<ngxd-accordion
-				#acc1="ngxdAccordion"
-				[accordionList]="accordList2"
-				[accordionStyling]="styling"
-				openSign="plus.png"
-				closeSign="minus.png"
-			></ngxd-accordion>
+			<ngxd-accordion #acc1="ngxdAccordion" [accordionList]="accordList2" [accordionStyling]="styling" openSign="plus.png" closeSign="minus.png"></ngxd-accordion>
 		</div>
 	</div>
 	<div class="mdc-layout-grid__inner">
 		<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-			<ngxd-accordion
-				#acc2="ngxdAccordion"
-				[loadingTpl]="simpleLoader"
-				[accordionList]="accordList$ | async"
-				[accordionStyling]="styling1"
-				listLogo="list_white_48dp.png"
-			></ngxd-accordion>
+			<ngxd-accordion #acc2="ngxdAccordion" [loadingTpl]="simpleLoader" [accordionList]="accordList$ | async" [accordionStyling]="styling1" listLogo="list_white_48dp.png"></ngxd-accordion>
 		</div>
 	</div>
 </div>
@@ -233,11 +221,7 @@
 						<span class="material-icons">description</span>
 						Docs
 					</button>
-					<button
-						class="mdc-button mdc-card__action mdc-card__action--button"
-						onclick="location.href='//github.com/VovanSuper' "
-						aria-label="Follow VovanSuper on GitHub"
-					>
+					<button class="mdc-button mdc-card__action mdc-card__action--button" onclick="location.href='//github.com/VovanSuper' " aria-label="Follow VovanSuper on GitHub">
 						<span class="mdc-button__ripple"></span>
 						<span class="material-icons">thumb_up_alt</span>
 						Follow

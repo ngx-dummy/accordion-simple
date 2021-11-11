@@ -4,7 +4,7 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
 import { Directive, ElementRef, OnInit, AfterViewInit, Renderer2, Inject } from '@angular/core';
 import { AccordionComponent } from './accordion.component';
@@ -14,11 +14,7 @@ import { IAccordionItemStyling } from './settings/';
 	selector: '[ngxdAccordion]',
 })
 export class AccordionDirective implements OnInit, AfterViewInit {
-	constructor(
-		@Inject(ElementRef) private hostEl: ElementRef<HTMLElement>,
-		@Inject(AccordionComponent) private accordCmp: AccordionComponent,
-		private render: Renderer2
-	) {}
+	constructor(@Inject(ElementRef) private hostEl: ElementRef<HTMLElement>, @Inject(AccordionComponent) private accordCmp: AccordionComponent, private render: Renderer2) {}
 
 	ngOnInit() {
 		this.accordCmp._isNumbered = this.accordCmp.accordionStyling.numberedItems ?? false;

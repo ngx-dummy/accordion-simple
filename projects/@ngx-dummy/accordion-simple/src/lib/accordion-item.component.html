@@ -5,7 +5,7 @@
  * https://github.com/ngx-dummy/accordion-simple
  *
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
- * Published under GNU GPLv3 License
+ * Published under GNU LGPLv3 License
  */
 -->
 <ng-container *ngTemplateOutlet="itemTpl; context: { $implicit: isOpen$ | async }"></ng-container>
@@ -16,12 +16,7 @@
 			<ng-container *ngTemplateOutlet="headerDefaultTmpl; context: { $implicit: isOpen }"></ng-container>
 		</header>
 		<!-- <section class="accord-item__body" [ngClass]="{ 'opened': isOpen , 'closed': !isOpen }" > -->
-		<section
-			class="accord-item__body closed"
-			[@openClose]="isOpen ? 'opened' : 'closed'"
-			(@openClose.start)="startAnim($event)"
-			(@openClose.done)="doneAnim($event)"
-		>
+		<section class="accord-item__body closed" [@openClose]="isOpen ? 'opened' : 'closed'" (@openClose.start)="startAnim($event)" (@openClose.done)="doneAnim($event)">
 			<ng-container *ngTemplateOutlet="getItemBodyTemplate(item.body, bodyDefaultTmpl); context: { $implicit: getItemBodyCtx(item.body) }"></ng-container>
 		</section>
 	</article>
