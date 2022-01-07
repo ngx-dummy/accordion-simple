@@ -72,7 +72,7 @@
 		"test:ci": "ng test --karma-config=karma-ci.conf.js --no-watch --progress=false",
 		"postinstall": "ngcc --tsconfig \"./projects/@ngx-dummy/accordion-simple/tsconfig.lib.json\"",
 		"pretty-quick": "pretty-quick --staged",
-		"prerelease": "run-s pretty-quick build:prod build:sample:prod  docs",
+		"prerelease": "run-s build:prod build:sample:prod docs",
 		"release": "sh ./scripts/release.sh"
 	},
 	"dependencies": {
