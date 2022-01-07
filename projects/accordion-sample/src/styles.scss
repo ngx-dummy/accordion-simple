@@ -131,14 +131,42 @@ $duration: 1.5s;
 	stroke-dashoffset: 0;
 }
 
-.mdc-list-item {
-	color: var(--warn-color);
-	list-style: none;
-	text-decoration: none;
+.mdc-drawer__content {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 
-	a {
-		color: var(--warn-color);
-		text-decoration: none;
+	.flex-list {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		flex: auto;
+
+		.flex-spacer {
+			flex: auto;
+			max-height: 10rem;
+		}
+
+		.gh-list {
+			flex: 1 1 50%;
+		}
+		.nav-list {
+			flex: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.mdc-list-item {
+			color: var(--warn-color);
+			list-style: none;
+			text-decoration: none;
+
+			a {
+				color: var(--warn-color);
+				text-decoration: none;
+			}
+		}
 	}
 }
 

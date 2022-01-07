@@ -146,23 +146,28 @@
 					<h3 class="mdc-drawer__title">AccordionSimple</h3>
 					<h5 class="mdc-drawer__subtitle2">Demonstrator app</h5>
 				</div>
-				<nav class="mdc-list">
-					<a class="mdc-list-item mdc-list-item--activated" href="//github.com/VovanSuper/accordion-simple" aria-current="page" tabindex="0">
-						<img class="material-icons mdc-list-item__graphic" src="github-logo.svg" alt="Repo" style="max-height: 90%" />
-						<span class="mdc-list-item__text">Repository Home</span>
-					</a>
-					<a class="mdc-list-item mdc-list-item--activated" href="." aria-current="page" tabindex="0">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
-						<span class="mdc-list-item__text">Sample</span>
-					</a>
-					<a class="mdc-list-item" id="forward">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">east</i>
-						<span class="mdc-list-item__text">Next Slide</span>
-					</a>
-					<a class="mdc-list-item" id="back">
-						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">west</i>
-						<span class="mdc-list-item__text">Previous Slide</span>
-					</a>
+				<nav class="mdc-list-group flex-list">
+					<div class="mdc-list gh-list">
+						<a class="mdc-list-item mdc-list-item--activated" href="//github.com/VovanSuper/accordion-simple" aria-current="page" tabindex="0">
+							<img class="material-icons mdc-list-item__graphic" src="github-logo.svg" alt="Repo" style="max-height: 90%" />
+							<span class="mdc-list-item__text">Repository Home</span>
+						</a>
+					</div>
+					<!-- <span class="flex-spacer"></span> -->
+					<div class="mdc-list nav-list">
+						<a class="mdc-list-item mdc-list-item--activated" href="." aria-current="page" tabindex="0">
+							<i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+							<span class="mdc-list-item__text">Sample</span>
+						</a>
+						<a class="mdc-list-item" id="forward">
+							<i class="material-icons mdc-list-item__graphic" aria-hidden="true">east</i>
+							<span class="mdc-list-item__text">Next Slide</span>
+						</a>
+						<a class="mdc-list-item" id="back">
+							<i class="material-icons mdc-list-item__graphic" aria-hidden="true">west</i>
+							<span class="mdc-list-item__text">Previous Slide</span>
+						</a>
+					</div>
 				</nav>
 			</div>
 			<footer class="mdc-footer mdc-drawer__footer">

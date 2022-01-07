@@ -29,7 +29,13 @@
 	</div>
 	<div class="mdc-layout-grid__inner">
 		<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-			<ngxd-accordion #acc2="ngxdAccordion" [loadingTpl]="simpleLoader" [accordionList]="accordList$ | async" [accordionStyling]="styling1" listLogo="list_white_48dp.png"></ngxd-accordion>
+			<ngxd-accordion
+				#acc2="ngxdAccordion"
+				[loadingTpl]="simpleLoader"
+				[accordionList]="accordList$ | async"
+				[accordionStyling]="styling1"
+				listLogo="list_white_48dp.png"
+			></ngxd-accordion>
 		</div>
 	</div>
 </div>

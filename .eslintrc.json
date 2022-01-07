@@ -1,6 +1,12 @@
 {
 	"root": true,
-	"ignorePatterns": ["projects/**/*"],
+	"ignorePatterns": ["**/*.json", "dist/*", "docs/*", "node_modules/**/*"],
+	"parserOptions": {
+		"ecmaVersion": 2021
+	},
+	"env": {
+		"es6": true
+	},
 	"overrides": [
 		{
 			"files": ["*.ts"],
