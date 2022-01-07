@@ -9,10 +9,12 @@
  */ 
 -->
 <div class="accordion" ngxdAccordion>
-	<ng-container *ngIf="!!accordionItems; else loadingTpl">
-		<ng-container *ngFor="let item of accordionItems; trackBy: trackByFn" [ngTemplateOutlet]="accordItemTmpl" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
-	</ng-container>
+	<ng-container *ngIf="!!accordionItems; then itemsTmpl; else $any(loadingTpl)"> </ng-container>
 </div>
+
+<ng-template #itemsTmpl>
+	<ng-container *ngFor="let item of accordionItems; trackBy: trackByFn" [ngTemplateOutlet]="accordItemTmpl" [ngTemplateOutletContext]="{ $implicit: item }"></ng-container>
+</ng-template>
 
 <ng-template #accordItemTmpl let-item>
 	<ngxd-accordion-item

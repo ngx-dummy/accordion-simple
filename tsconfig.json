@@ -19,6 +19,7 @@
 	"exclude": ["node_modules", "tmp"],
 	"angularCompilerOptions": {
 		"fullTemplateTypeCheck": true,
-		"strictInjectionParameters": true
+		"strictInjectionParameters": true,
+		"strictTemplates": true
 	}
 }
