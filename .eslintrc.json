@@ -1,6 +1,6 @@
 {
 	"root": true,
-	"ignorePatterns": ["**/*.json", "dist/*", "docs/*", "node_modules/**/*"],
+	"ignorePatterns": ["**/*.json", "dist/**", "docs/**", "node_modules/**/*"],
 	"parserOptions": {
 		"ecmaVersion": 2021
 	},

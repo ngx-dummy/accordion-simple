@@ -113,7 +113,7 @@
 
 		&.closed {
 			position: absolute;
-			opacity: 0%;
+			opacity: 0;
 
 			// display: none;
 		}
@@ -121,7 +121,7 @@
 		&.opened {
 			// position: relative;
 			// height: auto;
-			opacity: 100%;
+			opacity: 1;
 
 			// display: block;
 		}

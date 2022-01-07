@@ -58,7 +58,7 @@ $duration: 1.5s;
 }
 
 .swiper-slide:not(.swiper-slide-visible.swiper-slide-active) {
-	opacity: 0%;
+	opacity: 0;
 }
 
 .mdc-top-app-bar {
@@ -138,9 +138,9 @@ $duration: 1.5s;
 
 	.flex-list {
 		display: flex;
+		flex: auto;
 		flex-direction: column;
 		justify-content: space-between;
-		flex: auto;
 
 		.flex-spacer {
 			flex: auto;
@@ -150,9 +150,10 @@ $duration: 1.5s;
 		.gh-list {
 			flex: 1 1 50%;
 		}
+
 		.nav-list {
-			flex: auto;
 			display: flex;
+			flex: auto;
 			flex-direction: column;
 			justify-content: space-between;
 		}

@@ -137,9 +137,7 @@
 						"production": {
 							"browserTarget": "accordion-sample:build:production"
 						},
-						"ci": {
-							"progress": false
-						}
+						"ci": {}
 					}
 				},
 				"extract-i18n": {

@@ -54,11 +54,7 @@ npm install --save @ngx-dummy/accordion-simple
 import { NgModule, Component, enableProdMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-	AccordionModule,
-	Accordion,
-	IAccordionStyling,
-} from 'https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js';
+import { AccordionModule, Accordion, IAccordionStyling } from 'https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js';
 
 @Component({
 	selector: 'my-app',
@@ -128,12 +124,18 @@ Simple Angular accordion component and a simple demostrator app; the app is a si
 Any suggestions for improvement are welcome. Please [setup a new issue](https://github.com/VovanSuper/accordion-simple/issues/new) if you have any problems using this package or find ways in which it could be improved.
 To ask for features / report on a bug follow the guide in : [Issue Report](./.github/ISSUE_TEMPLATE/bug_report.md)
 
+<br />
+
 <details closed>
 <summary>TODO:</summary>
 
 - [ x ] Dynamic styling of accordion and accordion items (headers, bodies...)
 
 </details>
+
+<br />
+
+---
 
 ## Documentation
 
@@ -144,6 +146,21 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 - [`Accordion`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts) should have `@Input` on type [ [IAccordion ](./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
 
 - Sample usage vovansuper.github.io/accordion-simple
+
+---
+
+<br/>
+
+<details closed>
+<summary>Other projects:</summary>
+
+|     Name      |                    URL                     |
+| :-----------: | :----------------------------------------: |
+| Select Simple | https://github.com/ngx-dummy/select-simple |
+
+</details>
+
+<br/>
 
 ---
 
