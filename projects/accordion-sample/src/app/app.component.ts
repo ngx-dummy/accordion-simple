@@ -6,7 +6,7 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
-import { Component, ViewChild, TemplateRef, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, TemplateRef, OnInit, AfterViewInit } from '@angular/core';
 import { delay } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { MDCRipple } from '@material/ripple';

@@ -6,7 +6,7 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
-import { trigger, query, stagger, transition, animate, style, keyframes, state, animation, AnimationTriggerMetadata } from '@angular/animations';
+import { trigger, query, stagger, transition, animate, style, keyframes, state, AnimationTriggerMetadata } from '@angular/animations';
 export { AnimationEvent as NgAnimationEvent } from '@angular/animations';
 
 export const accordionAnimations: {

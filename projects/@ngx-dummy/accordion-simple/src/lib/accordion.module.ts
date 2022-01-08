@@ -8,7 +8,7 @@
  */
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AccordionComponent } from './accordion.component';
 import { AccordionItemComponent } from './accordion-item.component';

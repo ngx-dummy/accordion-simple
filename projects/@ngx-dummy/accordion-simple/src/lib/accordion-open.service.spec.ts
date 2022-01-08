@@ -6,7 +6,7 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AccordionOpenService } from './accordion-open.service';
 import { IToggler } from './settings/';
 

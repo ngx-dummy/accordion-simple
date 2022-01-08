@@ -10,7 +10,7 @@
 import { AfterContentChecked, AfterViewInit, Directive, ElementRef, HostBinding, Renderer2, NgZone } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { getSvgSafeRes } from './settings/';
-import { arrow_down, logo_svg } from './theming/';
+import { arrow_down, logo_svg } from './theming/icons-base';
 
 const l = console.log;
 

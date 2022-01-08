@@ -6,10 +6,10 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
-import { Component, ChangeDetectionStrategy, TemplateRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { of } from 'rxjs';
 import { accordionItemAnimations, NgAnimationEvent } from './animations';
-import { AccordionItemInternal, getItemBodyCtx, getItemBodyTemplate, ItemTemplateContext } from './settings/';
+import { AccordionItemInternal, getItemBodyCtx, getItemBodyTemplate } from './settings/';
 
 @Component({
 	selector: 'ngxd-accordion-item',

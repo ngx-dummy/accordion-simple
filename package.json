@@ -1,6 +1,6 @@
 {
 	"name": "ngx-dummy",
-	"version": "0.5.14",
+	"version": "0.5.15",
 	"license": "LGPL-3.0-or-later",
 	"description": "A simple accordion component to use in Angular / Ionic projects .. (WIP) and sample app using it",
 	"keywords": [
@@ -26,7 +26,7 @@
 		"email": "ovsyukov@yandex.com"
 	},
 	"engines": {
-		"node": ">=12.16.2",
+		"node": ">=14.17.2",
 		"npm": ">=6.12.1"
 	},
 	"repository": {
