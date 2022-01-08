@@ -6,7 +6,21 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
-import { Component, Input, HostBinding, ChangeDetectionStrategy, OnInit, Self, SimpleChanges, OnChanges, OnDestroy, TemplateRef, ViewChild } from '@angular/core';
+import {
+	Component,
+	Input,
+	HostBinding,
+	ChangeDetectionStrategy,
+	OnInit,
+	Self,
+	SimpleChanges,
+	OnChanges,
+	OnDestroy,
+	TemplateRef,
+	ViewChild,
+	ElementRef,
+	Renderer2,
+} from '@angular/core';
 import { map, filter } from 'rxjs/operators';
 
 import { AccordionOpenService } from './accordion-open.service';
@@ -83,7 +97,7 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	_itemStyle: IAccordionItemStyling;
 	_isNumbered = false;
 
-	constructor(@Self() private itemsOpenSvc: AccordionOpenService) {}
+	constructor(@Self() private itemsOpenSvc: AccordionOpenService, private hostEl: ElementRef<Element>, private renderer: Renderer2) {}
 
 	ngOnInit() {
 		this._bodyDblclkClose = !!this.accordionStyling.bodyDblclkCloseItems ?? false;
@@ -94,6 +108,30 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 				map(pluckOpenTogglesIdsToStr)
 			)
 			.subscribe((ids) => (this._openedItems = ids));
+
+		this._isNumbered = this.accordionStyling.numberedItems ?? false;
+		this._bodyDblclkClose = this.accordionStyling.bodyDblclkCloseItems ?? false;
+
+		let itemStyles: IAccordionItemStyling = Array.isArray(this.accordionStyling.itemStyling)
+			? this.accordionStyling.itemStyling.reduce((accu = {}, curr) => ({ ...accu, ...curr }))
+			: { ...this.accordionStyling.itemStyling };
+
+		const itemsGuts = this.accordionStyling.itemsGuts ?? 0;
+		itemStyles = {
+			padding: '0',
+			marginBottom: itemsGuts,
+			marginTop: itemsGuts,
+			...itemStyles,
+		};
+		this._itemStyle = Object.entries(itemStyles)
+			.map(([key, val]) => ({
+				[key]: typeof val === 'number' ? `${val}px` : val,
+			}))
+			.reduce((accu, val) => ({ ...accu, ...val }));
+
+		const accordEl = this.hostEl.nativeElement;
+		this.renderer.setStyle(accordEl, 'max-width', this.accordionStyling.maxWidth ?? '100%');
+		this.renderer.setStyle(accordEl, 'margin', this.accordionStyling.margin ?? '0');
 	}
 
 	ngOnChanges(changes: SimpleChanges) {

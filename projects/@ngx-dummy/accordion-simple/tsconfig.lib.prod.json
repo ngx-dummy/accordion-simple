@@ -12,7 +12,7 @@
 		"strictMetadataEmit": true,
 		"strictInputAccessModifiers": true,
 		"strictTemplates": true,
-		"enableResourceInlining": true
-		// "compilationMode": "partial"
+		"enableResourceInlining": true,
+		"compilationMode": "partial"
 	}
 }

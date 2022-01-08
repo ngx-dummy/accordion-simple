@@ -13,12 +13,11 @@ import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform
 import { AccordionComponent } from './accordion.component';
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
-import { AccordionDirective } from './accordion.directive';
 import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
 @NgModule({
 	imports: [BrowserAnimationsModule, HttpClientModule],
-	declarations: [AccordionComponent, AccordionItemComponent, AccordionDirective, AccordionItemDirective, AccordionItemImgDirective],
+	declarations: [AccordionComponent, AccordionItemComponent, AccordionItemDirective, AccordionItemImgDirective],
 	exports: [AccordionComponent],
 })
 export class AccordionModule {}
