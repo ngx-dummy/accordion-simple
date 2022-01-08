@@ -16,7 +16,6 @@ import { AccordionModule } from './accordion.module';
 import { IAccordionItemStyling } from './settings/IAccordionStylings';
 import { simpleAccordionList, sampleStyling, dummyAccordionList1 } from '../helpers/dummy-data';
 import { TestHostModule, TestHostComponent } from '../helpers/test-host.component';
-import { AccordionDirective } from './accordion.directive';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('An Accordion component', () => {
@@ -53,13 +52,6 @@ describe('An Accordion component', () => {
 		it('should exist in the dom', () => {
 			const cmp = accordCmpFixture.nativeElement as HTMLElement;
 			expect(cmp).toBeTruthy();
-		});
-
-		it('should contain [ngxdAccordion] directive as attribute of element with .accordion class', () => {
-			const cmp = accordCmpDebugEl.query(By.directive(AccordionDirective)).nativeElement as HTMLElement;
-			expect(cmp).toBeTruthy();
-			expect(cmp).toHaveClass('accordion');
-			expect(cmp.getAttributeNames()).toContain('ngxdaccordion');
 		});
 
 		it('should contain ngxd-accordion-item element as the first child', (cb) => {
@@ -113,13 +105,6 @@ describe('An Accordion component', () => {
 			hostCmpFixture.detectChanges();
 			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('afterbegin', accordCmpFixture.nativeElement as HTMLElement);
 			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('beforeend', cloneDeep(accordCmpFixture).nativeElement as HTMLElement);
-		});
-
-		it('should have 2 Accordions', () => {
-			const cmp = hostCmpFixture.debugElement.query(By.directive(AccordionComponent));
-			const accordDirective = hostCmpFixture.debugElement.query(By.directive(AccordionDirective));
-			expect(cmp).toBeTruthy();
-			expect(cmp.nativeNode.children).toContain(accordDirective.nativeNode);
 		});
 	});
 });
