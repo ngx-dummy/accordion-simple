@@ -23,6 +23,23 @@ export class AccordionItemComponent {
 	getItemBodyTemplate = getItemBodyTemplate!;
 	isOpen$ = of(false);
 	item: Partial<AccordionItemInternal>;
-	startAnim: (e: NgAnimationEvent) => void;
-	doneAnim: (e: NgAnimationEvent) => void;
+
+	startAnim(e: NgAnimationEvent) {
+		(<HTMLElement>e.element).style.willChange = 'height, opacity, visibility';
+		const classes = <DOMTokenList>e.element.classList;
+		if (e.fromState === 'void') {
+			classes?.add('closed');
+		}
+		if (e.fromState === 'closed' && e.toState === 'opened') {
+			classes.replace('closed', 'opened');
+		}
+	}
+
+	doneAnim(e: NgAnimationEvent) {
+		(<HTMLElement>e.element).style.willChange = 'auto';
+		const classes = <DOMTokenList>e.element.classList;
+		if (e.fromState == 'opened' && e.toState == 'closed') {
+			classes.replace('opened', 'closed');
+		}
+	}
 }

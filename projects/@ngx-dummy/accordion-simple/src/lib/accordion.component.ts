@@ -90,12 +90,13 @@ export class AccordionComponent implements OnInit, OnChanges, OnDestroy {
 	get loadingTpl(): TemplateRef<Element> {
 		return this._loadingTpl ?? this.defloadingTpl;
 	}
-	private _loadingTpl: TemplateRef<Element>;
-	private _accord: AccordionInternal;
 	_bodyDblclkClose = false;
-	private multiSelect = false;
 	_itemStyle: IAccordionItemStyling;
 	_isNumbered = false;
+
+	private _loadingTpl: TemplateRef<Element>;
+	private _accord: AccordionInternal;
+	private multiSelect = false;
 
 	constructor(@Self() private itemsOpenSvc: AccordionOpenService, private hostEl: ElementRef<Element>, private renderer: Renderer2) {}
 

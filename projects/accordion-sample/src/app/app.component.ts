@@ -11,7 +11,7 @@ import { delay } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { MDCRipple } from '@material/ripple';
 
-import { IAccordionStyling, Accordion } from '@ngx-dummy/accordion-simple/index';
+import { IAccordionStyling, Accordion } from '@ngx-dummy/accordion-simple/settings';
 import { dummyAccordionList1 as list1, dummyAccordionList2 } from './helpers/dummy-data';
 import { loaderIn } from './loader.anim';
 

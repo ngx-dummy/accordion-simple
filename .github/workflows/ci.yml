@@ -12,10 +12,11 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [ 12 ]
+        node-version: [ 14, 16 ]
     
     steps:
     - uses: actions/checkout@v2
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
@@ -43,6 +44,7 @@ jobs:
         echo Installing local packages and Building Sample app
         npm ci
         npm run build:sample --if-present
+
     - name: Make a drop
       uses: actions/upload-artifact@v1
       with:

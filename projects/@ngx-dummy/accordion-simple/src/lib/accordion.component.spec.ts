@@ -6,6 +6,7 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
@@ -16,7 +17,6 @@ import { AccordionModule } from './accordion.module';
 import { IAccordionItemStyling } from './settings/IAccordionStylings';
 import { simpleAccordionList, sampleStyling, dummyAccordionList1 } from '../helpers/dummy-data';
 import { TestHostModule, TestHostComponent } from '../helpers/test-host.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('An Accordion component', () => {
 	let accordCmpFixture: ComponentFixture<AccordionComponent>;

@@ -30,6 +30,7 @@ export class AccordionOpenService extends BehaviorSubject<IToggler[]> {
 	}
 
 	setItemsOpen = (itemsStats: IToggler[]) => this.next(itemsStats);
+
 	close = () => {
 		this.complete();
 		super.unsubscribe();

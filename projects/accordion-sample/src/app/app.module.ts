@@ -10,7 +10,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { AccordionModule } from '@ngx-dummy/accordion-simple/index';
+import { AccordionModule } from '@ngx-dummy/accordion-simple/accordion.module';
 import { App2Component } from './app2.component';
 
 @NgModule({

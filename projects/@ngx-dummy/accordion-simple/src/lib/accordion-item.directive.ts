@@ -55,24 +55,6 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 		private cd: ChangeDetectorRef
 	) {}
 
-	startAnim(e: NgAnimationEvent) {
-		(<HTMLElement>e.element).style.willChange = 'height, opacity, visibility';
-		const classes = <DOMTokenList>e.element.classList;
-		if (e.fromState === 'void') {
-			classes?.add('closed');
-		}
-		if (e.fromState === 'closed' && e.toState === 'opened') {
-			classes.replace('closed', 'opened');
-		}
-	}
-	doneAnim(e: NgAnimationEvent) {
-		(<HTMLElement>e.element).style.willChange = 'auto';
-		const classes = <DOMTokenList>e.element.classList;
-		if (e.fromState == 'opened' && e.toState == 'closed') {
-			classes.replace('opened', 'closed');
-		}
-	}
-
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
@@ -93,9 +75,6 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 			pluck<IToggler, 'isOpen'>('isOpen'),
 			tap((isOpen = false) => (this.isOpen = isOpen))
 		);
-
-		this.hostCmp.startAnim = this.startAnim;
-		this.hostCmp.doneAnim = this.doneAnim;
 	}
 
 	ngAfterViewInit() {
@@ -146,11 +125,11 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 	}
 
 	onClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) =>
-		!!outerHTML && !!dataset && outerHTML.includes('header') ? this.handleClick({ ...dataset }) : void 0;
+		!!outerHTML && !!dataset && outerHTML.includes('header') ? this._handleClick({ ...dataset }) : void 0;
 
 	onDblClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) =>
-		!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this.handleClick({ ...dataset }) : void 0;
+		!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this._handleClick({ ...dataset }) : void 0;
 
-	private handleClick = ({ idx, ...rest } = { idx: -1 }) => this.toggle(+idx);
-	private toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
+	private _handleClick = ({ idx, ...rest } = { idx: -1 }) => this._toggle(+idx);
+	private _toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });
 }

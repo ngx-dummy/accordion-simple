@@ -52,13 +52,9 @@ npm install --save @ngx-dummy/accordion-simple
 
 ```typescript
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import {
-	AccordionModule,
-	Accordion,
-	IAccordionStyling,
-} from 'https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js';
+import { AccordionModule, Accordion, IAccordionStyling } from 'https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js';
 
 @Component({
 	selector: 'my-app',
@@ -94,7 +90,7 @@ class AppCmp {
 }
 
 @NgModule({
-	imports: [BrowserModule, AccordionModule],
+	imports: [BrowserAnimationsModule, AccordionModule],
 	declarations: [AppCmp],
 	bootstrap: [AppCmp],
 })
@@ -119,14 +115,18 @@ $~> npm run sample
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vovansuper/accordion-simple)
 
+**Make sure in install `BrowserAnimationsModule` or `NoopAnimationsModule` in the `AppModule` of Your application**
+
 ---
 
 ## Main idea
 
-Simple Angular accordion component and a simple demonstrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
+Simple Angular accordion component and a simple demostrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
 
 Any suggestions for improvement are welcome. Please [setup a new issue](https://github.com/VovanSuper/accordion-simple/issues/new) if you have any problems using this package or find ways in which it could be improved.
 To ask for features / report on a bug follow the guide in : [Issue Report](./.github/ISSUE_TEMPLATE/bug_report.md)
+
+<br />
 
 <details closed>
 <summary>TODO:</summary>
@@ -134,6 +134,10 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 - [ x ] Dynamic styling of accordion and accordion items (headers, bodies...)
 
 </details>
+
+<br />
+
+---
 
 ## Documentation
 
@@ -144,6 +148,21 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 - [`Accordion`](./projects/@ngx-dummy/accordion-simple/src/lib/accordion.component.ts) should have `@Input` on type [ [IAccordion ](./projects/@ngx-dummy/accordion-simple/src/lib/settings/IAccordion.ts)]
 
 - Sample usage vovansuper.github.io/accordion-simple
+
+---
+
+<br/>
+
+<details closed>
+<summary>Other projects:</summary>
+
+|     Name      |                    URL                     |
+| :-----------: | :----------------------------------------: |
+| Select Simple | https://github.com/ngx-dummy/select-simple |
+
+</details>
+
+<br/>
 
 ---
 
