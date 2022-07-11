@@ -156,9 +156,9 @@ To ask for features / report on a bug follow the guide in : [Issue Report](./.gi
 <details closed>
 <summary>Other projects:</summary>
 
-|     Name      |                    URL                     |
-| :-----------: | :----------------------------------------: |
-| Select Simple | https://github.com/ngx-dummy/select-simple |
+|     Name      |                          URL                           |
+| :-----------: | :----------------------------------------------------: |
+| Select Simple | https://www.npmjs.com/package/@ngx-dummy/select-simple |
 
 </details>
 
