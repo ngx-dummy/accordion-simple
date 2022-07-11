@@ -85,15 +85,18 @@ describe('An Accordion component', () => {
 
 	describe('several Accordions in a surface', () => {
 		let hostCmpFixture: ComponentFixture<TestHostComponent>;
+		let accordCmpFixture: ComponentFixture<AccordionComponent>;
 		let hostDebEl: DebugElement;
 		let hostCmp: TestHostComponent;
 
 		beforeEach(async () => {
 			const testingBed = TestBed.configureTestingModule({
-				imports: [TestHostModule, AccordionModule],
+				imports: [TestHostModule, NoopAnimationsModule, AccordionModule],
 			});
 			await testingBed.compileComponents();
+
 			accordCmpFixture = testingBed.createComponent<AccordionComponent>(AccordionComponent);
+
 			hostCmpFixture = testingBed.createComponent<TestHostComponent>(TestHostComponent);
 			accordCmp = accordCmpFixture.componentInstance;
 			hostCmp = hostCmpFixture.componentInstance;
@@ -101,10 +104,19 @@ describe('An Accordion component', () => {
 		});
 		beforeEach(() => {
 			accordCmp.accordionList = dummyAccordionList1;
+			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('afterbegin', accordCmpFixture.debugElement.nativeElement);
+			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('beforeend', accordCmpFixture.nativeElement as HTMLElement);
+
 			accordCmpFixture.detectChanges();
 			hostCmpFixture.detectChanges();
-			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('afterbegin', accordCmpFixture.nativeElement as HTMLElement);
-			(hostDebEl.query(By.css('#container')).nativeElement as HTMLElement).insertAdjacentElement('beforeend', cloneDeep(accordCmpFixture).nativeElement as HTMLElement);
+		});
+
+		it('should have accordion component', () => {
+			const getAllElements = () => hostDebEl.queryAll(By.directive(AccordionComponent));
+			console.log({ ELEMENTS: getAllElements() });
+
+			expect(getAllElements()).toBeTruthy();
+			expect(getAllElements().length).toBeGreaterThanOrEqual(1);
 		});
 	});
 });

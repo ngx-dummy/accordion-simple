@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
 	template: `
-		<section class="container" style="background-color: #ccc">
+		<section class="host" style="background-color: #ccc">
 			<header>
 				<h4 style="text-align: center">--- Test component start ---</h4>
 			</header>
