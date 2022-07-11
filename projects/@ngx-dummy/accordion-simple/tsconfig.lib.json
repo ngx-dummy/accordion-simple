@@ -1,15 +1,7 @@
 {
 	"extends": "../../../tsconfig.json",
 	"compilerOptions": {
-		"outDir": "../../../out-tsc/lib",
-		"declarationMap": true,
-		"declaration": true,
-		"forceConsistentCasingInFileNames": true,
-		"strictPropertyInitialization": false,
-		"strict": true,
-		"noImplicitReturns": true,
-		"noFallthroughCasesInSwitch": true,
-		"inlineSources": true
+		"outDir": "../../../out-tsc/lib"
 	},
 	"angularCompilerOptions": {
 		"fullTemplateTypeCheck": false,

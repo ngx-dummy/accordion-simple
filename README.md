@@ -52,7 +52,7 @@ npm install --save @ngx-dummy/accordion-simple
 
 ```typescript
 import { NgModule, Component, enableProdMode } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AccordionModule, Accordion, IAccordionStyling } from 'https://cdn.jsdelivr.net/npm/@ngx-dummy/accordion-simple@latest/bundles/ngx-dummy-accordion-simple.umd.min.js';
 
@@ -90,7 +90,7 @@ class AppCmp {
 }
 
 @NgModule({
-	imports: [BrowserModule, AccordionModule],
+	imports: [BrowserAnimationsModule, AccordionModule],
 	declarations: [AppCmp],
 	bootstrap: [AppCmp],
 })
@@ -114,6 +114,8 @@ $~> npm run sample
 ##### **or .. Try _directly_:**
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/vovansuper/accordion-simple)
+
+**Make sure in install `BrowserAnimationsModule` or `NoopAnimationsModule` in the `AppModule` of Your application**
 
 ---
 

@@ -16,7 +16,7 @@ const l = console.log;
 
 enum ImgClasses {
 	LOGO = 'accord-item__header--start-img',
-	ENDIMG = 'accord-item__header--end-img',
+	ENDING = 'accord-item__header--end-img',
 }
 enum ImgLoadClass {
 	SUCCESS = 'img-loaded__success',
@@ -85,7 +85,7 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 		if (target.classList.contains(ImgClasses.LOGO)) {
 			// this.setItemHeaderImgSrc(target, this._baseLogoImg);
 			this.setItemHeaderImgSageSrc(this._baseLogoImg);
-		} else if (target.classList.contains(ImgClasses.ENDIMG)) {
+		} else if (target.classList.contains(ImgClasses.ENDING)) {
 			// this.setItemHeaderImgSrc(target, this._baseChevronImg);
 			this.setItemHeaderImgSageSrc(this._baseChevronImg);
 		} else {
@@ -114,7 +114,7 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 	};
 	private isImgOpenClose = () => !!this._closeSign && !!(this._closeSign as string).length && !!this._openSign && !!(this._openSign as string).length;
 	private isLogoImg = () => this.nativeImgEl?.classList.contains(ImgClasses.LOGO);
-	private isCloserImg = () => this.nativeImgEl?.classList.contains(ImgClasses.ENDIMG);
+	private isCloserImg = () => this.nativeImgEl?.classList.contains(ImgClasses.ENDING);
 	private setNoRecheck = () => {
 		this.isSet = true;
 		this.needToRecheck = false;

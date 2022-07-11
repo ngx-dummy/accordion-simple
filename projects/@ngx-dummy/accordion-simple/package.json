@@ -30,7 +30,7 @@
 		"email": "ovsyukov@yandex.com"
 	},
 	"engines": {
-		"node": ">=12.11.1",
+		"node": ">=14.17.2",
 		"npm": ">=6.12.1"
 	},
 	"repository": {

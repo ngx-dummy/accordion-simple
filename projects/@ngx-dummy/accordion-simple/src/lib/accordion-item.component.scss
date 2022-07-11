@@ -108,22 +108,10 @@
 	.accord-item__body {
 		touch-action: pinch-zoom pan-y;
 		transform-origin: top;
-		transition: all 0.3s ease-out;
 		user-select: text;
 
 		&.closed {
 			position: absolute;
-			opacity: 0;
-
-			// display: none;
-		}
-
-		&.opened {
-			// position: relative;
-			// height: auto;
-			opacity: 1;
-
-			// display: block;
 		}
 	}
 }

@@ -1,8 +1,14 @@
 {
 	"extends": "./tsconfig.lib.json",
 	"compilerOptions": {
-		"declarationMap": false,
-		"strict": true
+		"declarationMap": true,
+		"declaration": true,
+		"forceConsistentCasingInFileNames": true,
+		"strictPropertyInitialization": false,
+		"strict": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"inlineSources": true
 	},
 	"angularCompilerOptions": {
 		"enableIvy": true,
