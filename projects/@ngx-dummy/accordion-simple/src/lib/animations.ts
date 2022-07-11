@@ -102,7 +102,7 @@ export const accordionItemAnimations: {
 			style({
 				height: '0',
 				opacity: '0',
-				visibility: 'collapsed',
+				visibility: 'collapse',
 			})
 		),
 		state(

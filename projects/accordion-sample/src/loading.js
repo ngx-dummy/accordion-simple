@@ -15,7 +15,7 @@
 		//   app2Container.appendChild(clone);
 		//   app3Container.appendChild(clone2);
 		// }, 2000);
-		const MDCTopAppBar = window.mdc.topAppBar.MDCTopAppBar;
+		const MDCTopAppBar = window.mdc.topAppBar?.MDCTopAppBar;
 		const MDCDrawer = window.mdc.drawer.MDCDrawer;
 		const MDCList = window.mdc.list.MDCList;
 		const MDCMenu = window.mdc.menu.MDCMenu;
@@ -46,11 +46,11 @@
 			swiper.slideTo(swiper.slides.length - 1, 2000);
 		});
 
-		const topAppBar = MDCTopAppBar.attachTo(document.getElementById('app-bar'));
-		topAppBar.setScrollTarget(document.getElementById('main-content'));
+		const topAppBar = MDCTopAppBar?.attachTo(document.getElementById('app-bar'));
+		topAppBar?.setScrollTarget(document.getElementById('main-content'));
 		const list = MDCList.attachTo(document.querySelector('.mdc-list'));
 		list.wrapFocus = true;
-		topAppBar.listen('MDCTopAppBar:nav', () => {
+		topAppBar?.listen('MDCTopAppBar:nav', () => {
 			toggleDrawer(drawer);
 		});
 	});
