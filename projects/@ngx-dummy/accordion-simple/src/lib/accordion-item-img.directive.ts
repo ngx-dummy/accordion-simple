@@ -12,8 +12,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { getSvgSafeRes } from './settings/';
 import { arrow_down, logo_svg } from './theming/icons-base';
 
-const l = console.log;
-
 enum ImgClasses {
 	LOGO = 'accord-item__header--start-img',
 	ENDING = 'accord-item__header--end-img',
@@ -52,12 +50,8 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 	}
 
 	ngAfterContentChecked() {
-		if (this._isSet && !this._needToRecheck) {
-			return;
-		}
-		if (this._isSet && this._needToRecheck) {
-			return this._doOpenCloseSrcRecheck();
-		}
+		if (this._isSet && !this._needToRecheck) return;
+		if (this._isSet && this._needToRecheck) return this._doOpenCloseSrcRecheck();
 
 		if (this._isLogoImg()) {
 			// this._src = this.readElDataSet('src') || this._baseLogoImg;
@@ -90,15 +84,11 @@ export class AccordionItemImgDirective implements AfterViewInit, AfterContentChe
 			// this.setItemHeaderImgSrc(target, this._baseChevronImg);
 			this._setItemHeaderImgSafeSrc(this._baseChevronImg);
 		} else {
-			return l('Not an Accordion Item header image');
+			return console.log('Not an Accordion Item header image');
 		}
 	};
 
-	private _doOpenCloseSrcRecheck = () => {
-		this.zone.runOutsideAngular(() => {
-			this._src = this._nativeImgEl?.classList.contains('open') ? this._closeSign : this._openSign;
-		});
-	};
+	private _doOpenCloseSrcRecheck = () => this.zone.runOutsideAngular(() => (this._src = this._nativeImgEl?.classList.contains('open') ? this._closeSign : this._openSign));
 	private _setItemHeaderImgSrc = (imgRef: HTMLImageElement, src: string | SafeResourceUrl) => this.renderer.setAttribute(imgRef, 'src', src as string);
 	private _setItemHeaderImgSafeSrc = (src: string | SafeResourceUrl) => {
 		this._src = src;

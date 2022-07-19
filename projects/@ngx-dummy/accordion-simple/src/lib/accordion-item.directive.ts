@@ -22,7 +22,7 @@ import { IToggler, IAccordionItemStyling, AccordionItem, AccordionItemInternal, 
 	selector: '[ngxdAccordionItem]',
 	host: {
 		'[class.opened]': 'isOpen',
-		'(dblclick)': 'onDblClick([$event.target, $event.currentTarget])',
+		'(dblclick)': 'onDClick([$event.target, $event.currentTarget])',
 		'(click)': 'onClick([$event.target, $event.currentTarget])',
 	},
 })
@@ -58,6 +58,7 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 	ngOnInit() {
 		this.hostCmp.item = {
 			...this.item,
+			itemNum: this.isNumbered ? +this.item.itemId + 1 : null,
 			body:
 				typeof this.item.body === 'string'
 					? sanitizeHTML(this.item.body, this.sanitizer)
@@ -65,7 +66,6 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 							itemTemplate: this.item.body?.itemTemplate,
 							itemBody: sanitizeHTML(this.item.body?.itemBody, this.sanitizer),
 					  } as ItemTemplateContext),
-			itemNum: this.isNumbered ? +this.item.itemId + 1 : null,
 		} as Partial<AccordionItem>;
 
 		this.hostCmp.isOpen$ = this.itemStatusSvc.itemsOpen$.pipe(
@@ -124,11 +124,8 @@ export class AccordionItemDirective implements OnInit, AfterViewInit, OnDestroy 
 		this.hostDestroy$$.complete();
 	}
 
-	onClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) =>
-		!!outerHTML && !!dataset && outerHTML.includes('header') ? this._handleClick({ ...dataset }) : void 0;
-
-	onDblClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) =>
-		!!outerHTML && this.bodyDblclkClose && outerHTML.includes('accord-item__body') ? this._handleClick({ ...dataset }) : void 0;
+	onClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) => (outerHTML?.includes('header') ? this._handleClick({ ...dataset }) : void 0);
+	onDClick = ([{ outerHTML }, { dataset }]: [{ outerHTML: string }, { dataset: any }]) => (outerHTML?.includes('accord-item__body') ? this._handleClick({ ...dataset }) : void 0);
 
 	private _handleClick = ({ idx, ...rest } = { idx: -1 }) => this._toggle(+idx);
 	private _toggle = (itemId: number) => this.toggled.emit({ itemId, isOpen: !this.isOpen });

@@ -9,12 +9,11 @@
 import { DebugElement } from '@angular/core';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Subject } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { AccordionItemImgDirective } from './accordion-item-img.directive';
 
 import { AccordionItemComponent } from './accordion-item.component';
 import { AccordionItemDirective } from './accordion-item.directive';
-import { AccordionModule } from './accordion.module';
 
 describe('An Accordion-item component', () => {
 	describe('single component', () => {
@@ -25,7 +24,7 @@ describe('An Accordion-item component', () => {
 		const getItemHeader = () => accordItemNativeEl?.querySelector('.accord-item__header');
 		const getItemBody = () => accordItemNativeEl?.querySelector('.accord-item__body');
 		const isOpen$$: Subject<boolean> = new Subject();
-		let isOpen$ = null;
+		let isOpen$: Observable<boolean> = null;
 
 		beforeEach(async () => {
 			const testingBed = TestBed.configureTestingModule({
@@ -52,13 +51,13 @@ describe('An Accordion-item component', () => {
 			expect(accordItemNativeEl).toBeTruthy();
 		});
 
-		// it('should be open', () => {
-		//   isOpen$$.next(true);
-		//   isOpen$.subscribe(_ => {
-		//     expect(getItemHeader().classList).toContain('opened');
-		//     expect(getItemBody().classList).toContain('opened');
-		//   });
-		// });
+		it('should be open when isOpen$$ emits value of `True`', () => {
+			isOpen$$.next(true);
+			isOpen$.subscribe((_isOpenVal) => {
+				expect(getItemHeader().classList).toContain('opened');
+				expect(getItemBody().classList).toContain('opened');
+			});
+		});
 
 		it('should be closed', () => {
 			isOpen$$.next(false);

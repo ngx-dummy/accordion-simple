@@ -1,6 +1,6 @@
 {
 	"extends": ["stylelint-config-standard-scss", "stylelint-prettier", "stylelint-config-property-sort-order-smacss"],
-	"plugins": ["stylelint-order", "stylelint-declaration-use-variable", "stylelint-declaration-strict-value", "stylelint-prettier"],
+	"plugins": ["stylelint-order", "stylelint-declaration-strict-value", "stylelint-prettier"],
 	"ignoreFiles": ["**/src/scss/vendor/**/*.scss"],
 	"overrides": [
 		{

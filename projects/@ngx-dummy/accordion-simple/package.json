@@ -1,8 +1,8 @@
 {
-	"name": "@ngx-dummy/accordion-simple",
+	"name": "ngx-dummy",
 	"version": "0.5.18",
 	"license": "LGPL-3.0-or-later",
-	"description": "A simple accordion component to use in Angular / Ionic projects ..",
+	"description": "A simple accordion component to use in Angular / Ionic projects",
 	"keywords": [
 		"accordion",
 		"accordion-component",
@@ -12,10 +12,11 @@
 		"Angular",
 		"Angular12",
 		"Angular13",
+		"Angular14",
 		"Ionic",
 		"Ionic5",
 		"Ionic6",
-		"typescript",
+		"Typescript",
 		"javascript",
 		"widget",
 		"foldable",
@@ -35,7 +36,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/ngx-dummy/accordion-simple.git"
+		"url": "https://github.com/ngx-dummy/accordion-simple.git"
 	},
 	"bugs": {
 		"email": "ovsyukov@yandex.com",
