@@ -28,11 +28,12 @@
 	"private": false,
 	"author": {
 		"name": "Vladimir Ovsyukov",
-		"email": "ovsyukov@yandex.com"
+		"email": "ovsyukov@yandex.com",
+		"url": "https://www.ovsyukov.ru"
 	},
 	"engines": {
-		"node": ">=14.17.2",
-		"npm": ">=6.12.1"
+		"node": ">=16.17.1 || >=19.0.1",
+		"npm": ">=8.15.1 || >=9.1.0"
 	},
 	"repository": {
 		"type": "git",
