@@ -27,6 +27,6 @@ jobs:
           body: |
             Changes in this Release
             - Extended library functionality
-            - Version bump to $RELEASE_VERSION
+            - Version bump to ${{ env.RELEASE_VERSION }}
           draft: false
           prerelease: false
