@@ -61,7 +61,7 @@ describe('An Accordion component', () => {
 			const getAccordItemElHeader = () => getAccordItemEl().querySelector('.accord-item__header') as HTMLElement;
 			const getAccordItemElBody = () => getAccordItemEl().querySelector('.accord-item__body') as HTMLElement;
 
-			expect(Array.from(getAccordItemElBody().classList)).toContain('closed');
+			expect(Array.from(getAccordItemElBody().classList)).not.toContain('opened');
 			expect(getAccordItemEl().nodeName.toLowerCase()).toEqual('ngxd-accordion-item');
 			accordCmpFixture.autoDetectChanges();
 

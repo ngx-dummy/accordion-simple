@@ -15,8 +15,7 @@
 		<header class="accord-item__header" [class.opened]="isOpen">
 			<ng-container *ngTemplateOutlet="headerDefaultTmpl; context: { $implicit: isOpen }"></ng-container>
 		</header>
-		<!-- <section class="accord-item__body" [ngClass]="{ 'opened': isOpen , 'closed': !isOpen }" > -->
-		<section class="accord-item__body closed" [@openClose]="isOpen ? 'opened' : 'closed'" (@openClose.start)="startAnim($event)" (@openClose.done)="doneAnim($event)">
+		<section class="accord-item__body" [@openClose]="isOpen ? 'opened' : 'closed'" (@openClose.start)="startAnim($event)" (@openClose.done)="doneAnim($event)">
 			<ng-container *ngTemplateOutlet="getItemBodyTemplate($any(item.body), bodyDefaultTmpl); context: { $implicit: getItemBodyCtx($any(item.body)) }"></ng-container>
 		</section>
 	</article>

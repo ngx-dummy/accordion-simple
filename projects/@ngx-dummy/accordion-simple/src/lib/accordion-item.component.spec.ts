@@ -54,15 +54,15 @@ describe('An Accordion-item component', () => {
 		it('should be open when isOpen$$ emits value of `True`', () => {
 			isOpen$$.next(true);
 			isOpen$.subscribe((_isOpenVal) => {
+				expect(accordItemNativeEl.classList).toContain('opened');
 				expect(getItemHeader().classList).toContain('opened');
-				expect(getItemBody().classList).toContain('opened');
 			});
 		});
 
-		it('should be closed', () => {
+		it('should be closed (not to container `opened` class)', () => {
 			isOpen$$.next(false);
 			isOpen$.subscribe((_isOpenVal) => {
-				expect(getItemBody().classList).toContain('closed');
+				expect(getItemHeader().classList).not.toContain('opened');
 			});
 		});
 	});
