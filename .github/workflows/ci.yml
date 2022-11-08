@@ -15,15 +15,15 @@ jobs:
         node-version: [ 16, 18 ]
     
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@latest
     
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
     - name: Cache node modules
-      uses: actions/cache@v1
+      uses: actions/cache@latest
       env:
         cache-name: cache-node-modules
       with:
@@ -46,7 +46,7 @@ jobs:
         npm run build:sample --if-present
 
     - name: Make a drop
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@latest
       with:
         name: drop
         path: dist/accordion-sample
