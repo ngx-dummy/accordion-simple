@@ -1,6 +1,6 @@
 {
 	"name": "ngx-dummy",
-	"version": "0.5.18",
+	"version": "0.5.19",
 	"license": "LGPL-3.0-or-later",
 	"description": "A simple accordion component to use in Angular / Ionic projects .. (WIP) and sample app using it",
 	"keywords": [
@@ -50,7 +50,7 @@
 		"build": "ng b @ngx-dummy/accordion-simple",
 		"build:prod": "ng b --configuration production @ngx-dummy/accordion-simple",
 		"build:sample": "ng b accordion-sample",
-		"build:sample:prod": "ng b accordion-sample --configuration production -- --base-href /accordion-simple/",
+		"build:sample:prod": "ng b accordion-sample --configuration production --base-href /accordion-simple/",
 		"sample": "ng serve accordion-sample -o --host 0.0.0.0 --port 8881 --live-reload",
 		"clean:dist": "rimraf ./dist/**",
 		"sample:prod": "ng serve accordion-sample -o --host 0.0.0.0 --port 8882 --live-reload --configuration production",
