@@ -23,7 +23,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Cache node modules
-      uses: actions/cache@latest
+      uses: actions/cache@v3
       env:
         cache-name: cache-node-modules
       with:
@@ -46,7 +46,7 @@ jobs:
         npm run build:sample --if-present
 
     - name: Make a drop
-      uses: actions/upload-artifact@latest
+      uses: actions/upload-artifact@v3
       with:
         name: drop
         path: dist/accordion-sample
