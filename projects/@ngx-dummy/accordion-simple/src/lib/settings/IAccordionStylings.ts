@@ -6,13 +6,14 @@
  * Copyright  Vladimir Ovsyukov <ovsyukov@yandex.com>
  * Published under GNU LGPLv3 License
  */
+
 /**
  * @description
- *  Data type accordion component accepts as an {@link AccordionComponent#accordionStyling} `Input`
+ *  Data type accordion component accepts as an {@link ../accordion-item.component.ts|#accordionStyling} `Input`
  *
- *  Comprises {@link AccordionComponent} styling, as well as {@link AccordionItemComponent} stylings
+ *  Comprises {@link AccordionComponent} styling, as well as {@link ../accordion-item.component.ts|AccordionItemComponent} stylings
  *
- *  Stylings type accordion component accepts as an {@link AccordionComponent#accordionStyling} `Input`
+ *  Stylings type accordion component accepts as an {@link ../accordion-item.component.ts|AccordionComponent#accordionStyling} `Input`  {@link }
  */
 export interface IAccordionStyling {
 	/** `max-width` css style for accordion element */

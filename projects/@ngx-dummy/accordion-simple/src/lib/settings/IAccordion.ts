@@ -12,7 +12,7 @@ import { TemplateRef } from '@angular/core';
  * @description
  * The default Data structure, which `AccordionComponent` accepts as an `@Input` property `accordionList`.
  *
- * Data type accordion-component accepts as an {@link AccordionComponent#accordionList} Input
+ * Data type accordion-component accepts as an {@link ../accordion-item.component.ts|AccordionComponent#accordionList} Input
  *
  * @member {Object} Accordion @extends AccordionItems
  */
@@ -48,10 +48,10 @@ export interface AccordionItems {
 	 * @description
 	 * Items defining Every `AccordionItemsComponent` shape
 	 *
-	 * @member {Object[]} items single accordion item data 					{@link AccordionItem}
-	 * @member {number|string} items[].id `id` of an accordion item {@link AccordionItem.id}
-	 * @member {string} items[].title `title` of an accordion item 	{@link AccordionItem.title}
-	 * @member {string|Object} items[].body 													{@link AccordionItem.body}
+	 * @member {Object[]} items single accordion item data
+	 * @member {number|string} items[].id `id` of an accordion item
+	 * @member {string} items[].title `title` of an accordion item
+	 * @member {string|Object} items[].body
 	 */
 	items: AccordionItem[];
 }

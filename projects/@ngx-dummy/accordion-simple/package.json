@@ -28,11 +28,12 @@
 	"private": false,
 	"author": {
 		"name": "Vladimir Ovsyukov",
-		"email": "ovsyukov@yandex.com"
+		"email": "ovsyukov@yandex.com",
+		"url": "https://www.ovsyukov.ru"
 	},
 	"engines": {
-		"node": ">=14.17.2",
-		"npm": ">=6.12.1"
+		"node": ">=16.10.0 || >=18.9.0",
+		"npm": ">=8.15.0 || >=9.1.0"
 	},
 	"repository": {
 		"type": "git",
@@ -51,9 +52,9 @@
 		"@angular/core": "13.x",
 		"@angular/animations": "13.x",
 		"@angular/platform-browser": "13.x",
-		"rxjs": "^7.5.1"
+		"rxjs": "^6.5.3 || ^7.4.0"
 	},
 	"devDependencies": {
-		"typescript": "~4.5.4"
+		"typescript": "~4.6.1"
 	}
 }

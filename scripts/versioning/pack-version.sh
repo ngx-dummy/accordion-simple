@@ -26,7 +26,7 @@ function patchVersionPacksJson(...packJsonFilePaths) {
 }
 
 const patchPackagesVersions = async () => {
-  await patchVersionPacksJson([mainPackJsonPath, accordSimplePackJsonPath]);
+  await patchVersionPacksJson(mainPackJsonPath, accordSimplePackJsonPath);
 };
 
 patchPackagesVersions();

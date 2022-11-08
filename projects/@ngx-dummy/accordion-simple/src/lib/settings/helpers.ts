@@ -31,8 +31,3 @@ export const blobToSafeRes = (blob: Blob, sanitizer: DomSanitizer) => prepRes(UR
 export const bodyWithTmpl = (item: string | ItemTemplateContext): item is ItemTemplateContext => !!item && typeof item !== 'string' && !!item.itemTemplate;
 export const getItemBodyTemplate = (item: string | ItemTemplateContext, defaultTmpl: TemplateRef<Element>) => (!!bodyWithTmpl(item) ? item.itemTemplate : defaultTmpl);
 export const getItemBodyCtx = (item: string | ItemTemplateContext) => (bodyWithTmpl(item) && typeof item.itemBody === 'string' ? item.itemBody : item);
-
-// export const svgToBase64srcWithBuf = (rawSvg: string) => {
-// 	let buf = Buffer.from(rawSvg);
-// 	return buf.toString('base64url');
-// };

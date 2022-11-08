@@ -1,6 +1,6 @@
 //** Sample Loading */
 
-(function () {
+(function (window, document) {
 	window.addEventListener('DOMContentLoaded', function (e) {
 		const swiper = initSwiper();
 		// setTimeout(function() {
@@ -22,7 +22,7 @@
 
 		// const vert_menu_opener = document.getElementById('vert_menu_opener');`
 		const forwardBtn = document.getElementById('forward');
-		const navToDocs = document.getElementById('nav-to-docs');
+		const navToDocs = document.querySelector('#nav-to-docs > a.mdc-list-item__text');
 		const backBtn = document.getElementById('back');
 		const drawer = MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
 		const menu = new MDCMenu(document.querySelector('.mdc-menu'));
@@ -42,7 +42,7 @@
 			toggleDrawer(drawer);
 		});
 		navToDocs.addEventListener('click', (e) => {
-			// e.preventDefault();
+			e.preventDefault();
 			swiper.slideTo(swiper.slides.length - 1, 2000);
 		});
 
@@ -68,4 +68,4 @@
 			},
 		});
 	}
-})();
+})(window, document);

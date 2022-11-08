@@ -14,6 +14,7 @@ export interface IToggler {
 }
 
 export const pluckIToggler = ({ itemId, isOpen, ...rest }: AccordionItemInternal) => <IToggler>{ itemId, isOpen };
+
 export const pluckOpenTogglesIdsToStr = (toggles: IToggler[]): string =>
 	toggles
 		.filter((t) => t.isOpen === true)

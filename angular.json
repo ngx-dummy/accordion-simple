@@ -20,13 +20,7 @@
 							"tsConfig": "projects/@ngx-dummy/accordion-simple/tsconfig.lib.prod.json"
 						},
 						"ci": {
-							"budgets": [
-								{
-									"type": "anyComponentStyle",
-									"maximumWarning": "6kb"
-								}
-							],
-							"progress": false
+							"tsConfig": "projects/@ngx-dummy/accordion-simple/tsconfig.lib.ci.json"
 						}
 					}
 				},
@@ -84,7 +78,11 @@
 							}
 						],
 						"styles": ["projects/accordion-sample/src/styles.scss", "projects/accordion-sample/src/assets/devices.min.scss"],
-						"scripts": ["projects/accordion-sample/src/analytics.js", "projects/accordion-sample/src/loading.js"],
+						"scripts": [
+							"projects/accordion-sample/src/scripts/analytics.js",
+							"projects/accordion-sample/src/scripts/loading.js",
+							"projects/accordion-sample/src/scripts/embedded-docs.js"
+						],
 						"vendorChunk": true,
 						"extractLicenses": false,
 						"buildOptimizer": false,
@@ -187,6 +185,5 @@
 				}
 			}
 		}
-	},
-	"defaultProject": "@ngx-dummy/accordion-simple"
+	}
 }

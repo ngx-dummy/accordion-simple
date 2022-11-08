@@ -6,6 +6,7 @@ const { run } = require('node-jq');
 const { sed } = require('shelljs');
 
 const l = console.log;
+const err = console.error;
 
 const verReg = new RegExp(/([\"|\']version[\"|\']\s?\:\s*)\"([\.\d]+)\"/gi);
 
@@ -59,7 +60,7 @@ async function readVersion(packageJsonFilePath) {
 		return res.toString();
 	}
 	catch (e) {
-		l(e.message || e);
+		err(e.message || e);
 	}
 }
 

@@ -12,17 +12,17 @@
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPLv3-blue.svg)](LICENSE)
 
-<!-- ![NPM Deploy](https://github.com/VovanSuper/accordion-simple/workflows/npm-deploy/badge.svg)
-![Github Pages Deploy](https://github.com/VovanSuper/accordion-simple/workflows/ghp-deploy/badge.svg) -->
+![CI](https://github.com/ngx-dummy/accordion-simple/actions/workflows/ci.yml/badge.svg)
+![RELEASE](https://github.com/ngx-dummy/accordion-simple/actions/workflows/releases.yml/badge.svg)
 
-![CI](https://github.com/VovanSuper/accordion-simple/workflows/CI/badge.svg)
-![RELEASE](https://github.com/VovanSuper/accordion-simple/workflows/RELEASE/badge.svg)
+<!-- ![NPM Deploy](https://github.com/ngx-dummy/accordion-simple/actions/workflows/npm-deploy.yml/badge.svg)
+![Github Pages Deploy](https://github.com/ngx-dummy/accordion-simple/actions/workflows/ghp-deploy.yml/badge.svg) -->
 
 [![bundle size](https://badgen.net/bundlephobia/minzip/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=ngx-dummy/accordion-simple)
 [![bundle size](https://badgen.net/bundlephobia/min/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=ngx-dummy/accordion-simple)
 [![size](https://badgen.net/packagephobia/publish/@ngx-dummy/accordion-simple)](https://bundlephobia.com/result?p=ngx-dummy/accordion-simple)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f5233cc1-3156-4033-9d43-5db2b6cd351b/deploy-status)](https://accordion-simple-tester.netlify.app/)
-[![Issues](https://img.shields.io/github/issues/vovansuper/accordion-simple)](https://github.com/VovanSuper/accordion-simple/issues)
+[![Issues](https://img.shields.io/github/issues/ngx-dummy/accordion-simple)](https://github.com/ngx-dummy/accordion-simple/issues)
 [![GitHub forks](https://img.shields.io/github/forks/ngx-dummy/accordion-simple.svg?style=social&label=Fork)](https://github.com/ngx-dummy/accordion-simple/fork)
 [![GitHub stars](https://img.shields.io/github/stars/ngx-dummy/accordion-simple.svg?style=social&label=Star)](https://github.com/ngx-dummy/accordion-simple)
 [![downloads](https://data.jsdelivr.com/v1/package/npm/@ngx-dummy/accordion-simple/badge)](https://www.jsdelivr.com/package/npm/@ngx-dummy/accordion-simple)
@@ -32,7 +32,7 @@
 
 ---
 
-##### https://vovansuper.github.io/accordion-simple
+#### https://vovansuper.github.io/accordion-simple
 
 ### Installation:
 
@@ -97,7 +97,7 @@ class AppCmp {
 class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
-// ... "enableIvy": false, in tsconfig.json
+// ... "enableIvy": false, in tsconfig.json to use cdn.jsdelivr.net (not recommended)
 ```
 
 ### or check the sibling [_sample_ app](https://github.com/VovanSuper/accordion-simple/tree/master/projects/accordion-sample) :
@@ -121,7 +121,7 @@ $~> npm run sample
 
 ## Main idea
 
-Simple Angular accordion component and a simple demostrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
+Simple Angular accordion component and a simple demonstrator app; the app is a simple demonstrator project - showcasing the integration of the accordion library and applying basic setting of it.
 
 Any suggestions for improvement are welcome. Please [setup a new issue](https://github.com/VovanSuper/accordion-simple/issues/new) if you have any problems using this package or find ways in which it could be improved.
 To ask for features / report on a bug follow the guide in : [Issue Report](./.github/ISSUE_TEMPLATE/bug_report.md)
