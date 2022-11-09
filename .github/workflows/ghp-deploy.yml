@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    if: startsWith(github.repository_owner, 'ngx')
     runs-on: ubuntu-latest
 
     name: Deploying package to github packages registry
